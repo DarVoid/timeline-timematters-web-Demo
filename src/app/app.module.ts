@@ -27,6 +27,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatStepperModule} from '@angular/material/stepper';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     KeywordExctractionComponent,
     FrameComponent,
     ScoreComponent,
-    SafePipe
+    SafePipe,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

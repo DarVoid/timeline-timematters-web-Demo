@@ -1,8 +1,8 @@
 <header class="header--standard">
   <mat-toolbar ngbDropdown>
-    <p><span title="placeholder ate termos logo"><i class="fas fa-clock"></i> </span> TimeMatters Demo </p>
+    <p><i class="fas fa-clock"></i> TimeMatters Demo </p>
     <div class="spacer"></div>
-    <button mat-button ><i class="fas fa-home"></i> Home</button>
+    <button mat-button  (click)='changePage("1")' ><i class="fas fa-home"></i> Home</button>
     <button mat-button [matMenuTriggerFor]="menu1" ngbDropdownToggle ><mat-icon>keyboard_arrow_down</mat-icon>Score Extractor</button>
     <button mat-button ><i class="fas fa-laptop-code"></i> API</button>
     <button mat-button ><i class="fas fa-mobile-alt"></i> Mobile App</button>
@@ -11,9 +11,9 @@
 </header>
 
 <mat-menu #menu1="matMenu">
-  <button mat-menu-item class="mat-menu-item"  (click)='changePage(1)'>Single Text <i class="fas fa-square"></i> </button>
+  <button mat-menu-item class="mat-menu-item"  (click)='changePage("1")'>Single Text <i class="fas fa-square"></i> </button>
   <div class="divider"></div>
-  <button mat-menu-item class="mat-menu-item"  (click)='changePage(0)'>Multi Doc <i class="fas fa-clone"></i> </button>
+  <button mat-menu-item class="mat-menu-item"  (click)='changePage("2")'>Multi Doc <i class="fas fa-clone"></i> </button>
   <div class="divider"></div>
   <button mat-menu-item class="mat-menu-item"  >Query <i class="fas fa-search"></i></button>
 </mat-menu>
@@ -41,19 +41,19 @@
 </section>
 
 
-  <div *ngIf="page==0 else pagina1">
-     <!--<app-landing-page></app-landing-page>-->
+  <div *ngIf='page=="0" else pagina1'>
+     <app-landing-page></app-landing-page>
   </div>
   <ng-template #pagina1>
-    <div *ngIf="page==1 else pagina2">
+    <div *ngIf='page=="1" else pagina2'>
       <app-keyword-exctraction></app-keyword-exctraction>
     </div>
     <ng-template #pagina2>
-      <div *ngIf="page==2 else pagina3">
-        <h1>pagina3 em construção</h1>
+      <div *ngIf='page=="2" else pagina3'>
+        <p>pagina3 em construção</p>
       </div>
       <ng-template #pagina3>
-        <h1>pagina4 em construção</h1>
+        <p>pagina4 em construção</p>
       </ng-template>
     </ng-template>
   </ng-template>
