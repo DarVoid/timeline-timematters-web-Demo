@@ -1,0 +1,74 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@include mat-core();
+
+$candy-app-primary: mat-palette($mat-indigo);
+$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+$candy-app-warn: mat-palette($mat-red);
+
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+
+@include angular-material-theme($candy-app-theme);
+
+b.purple{
+  background-color:purple !important;
+
+}
+.black{
+  background-color:black !important;
+}
+b.blue{
+  background-color:blue !important;
+
+}
+b.green{
+  background-color:green !important;
+
+}
+b.red{
+  background-color:red !important;
+
+}
+b.yellow{
+  background-color:yellowgreen !important;
+
+}
+.viewable{
+  display: block;
+}
+.nonviewable{
+  display: none;
+}
+.score{
+  width:65%;
+
+}
+a:link {
+  text-decoration: none;
+  color:white !important;
+  text-decoration-color:white !important;
+}
+
+a:visited {
+  text-decoration: none;
+  color:white !important;
+  text-decoration-color:white !important;
+}
+
+a:hover {
+  text-decoration: none !important;
+  color:white !important;
+}
+
+a:active {
+  text-decoration: none;
+  color:white !important;
+  text-decoration-color:white !important;
+}
+.example-full-width{
+  width: 100% !important;
+}

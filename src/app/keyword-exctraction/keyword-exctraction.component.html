@@ -1,0 +1,234 @@
+<!--<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>-->
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap" rel="stylesheet">
+
+ <!---->
+<div class="fundo">
+  <div *ngIf="result else textBox" >
+    <br>
+    <br>
+    <div class="col-md-10 col-sm-8 col-xs-6 my-col2">
+        <span title="não suportado, api não tem a opção "><p class="frase1">Time spent to run TimeMatters algorithm: x </p></span>
+
+      <div>
+      <div *ngIf="!result else graficos">
+        <h1>No Data</h1>
+      </div>
+        <ng-template #graficos >
+          <mat-tab-group>
+            <mat-tab label="Anotated Text">
+
+              <h2>Annotated text</h2>
+              <p class="frase2">The top {{result.TempExpressions.length}} Temporal Expressions are annotated in the text.</p>
+              <p class="frase3">Language: {{languagueSelected}}</p>
+              <hr>
+              <app-frame [argumentos]="result" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>
+              <hr>
+              <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
+              <mat-slide-toggle (click)="toggleKeywords()">{{withKeywordsSentence}}</mat-slide-toggle>
+              <!--EM CIMA-->
+              <br>
+              <br><div class="col-lg-12 text-right">
+
+              <button type="reset" (click)="goBack()" class="btn btn-link">Reset</button>
+              <button *ngIf="result" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
+              </div>
+          </mat-tab>
+          <mat-tab label="Graphs">
+            <h2>Graphics</h2>
+            <div class="row my-row justify-content-center">
+              <div class="score">
+                <app-score [argumentos]="result" ></app-score>
+              </div>
+        </div>
+          </mat-tab>
+          <mat-tab label="Timeline">
+            <!--WIP-->
+            <mat-vertical-stepper >
+              <div *ngFor="let item of dataset">
+              <mat-step  [completed]="false" label='{{item.x.substring(0,10)}}' matStepperIcon="phone" >
+                <p>Date Score: {{item.y}}</p>
+              </mat-step>
+              </div>
+          </mat-vertical-stepper>
+          <!--WIP-->
+          </mat-tab>
+          </mat-tab-group>
+
+
+        </ng-template>
+      </div>
+
+
+  </div>
+</div>
+
+<ng-template #textBox>
+
+  <br/>
+  <form (submit)="getKeyword($event)">
+      <div class="col-md-11 col-sm-8 col-xs-6 my-col">
+
+        <h2>Free text input</h2>
+
+        <div class="col-lg-12 text-right">
+          <span title="Example Texts"><button class="btn btn-link" mat-button type="button" mat-icon-button [matMenuTriggerFor]="menuy" aria-label="Example icon-button with a menu">
+           <mat-icon>more_vert</mat-icon>
+        </button></span>
+        <mat-menu #menuy="matMenu">
+          <button (click)="setDefaultText(0,'English')" mat-menu-item>
+            <span>EN - haiti earthquake</span>
+          </button>
+          <button (click)="setDefaultText(1,'French')"  mat-menu-item >
+            <span>FR - Religion</span>
+          </button>
+          <button (click)="setDefaultText(2,'Italian')" mat-menu-item>
+            <span>It - Sports </span>
+          </button>
+          <button (click)="setDefaultText(3,'Portuguese')" mat-menu-item>
+            <span>Pt - Sports </span>
+          </button>
+        </mat-menu>
+        </div>
+
+         <div class="col-lg-12">
+            <div class="form-group">
+              <mat-card>
+                <div class='{{loading?"viewable": "nonviewable"}}'><mat-progress-bar mode="indeterminate"></mat-progress-bar></div>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Content</mat-label>
+                  <textarea matInput class="text-area" style="width:100%;"type="text"  name="texto" value="{{conteudoDefault}}" min_rows="4" rows="7" name="texto"></textarea>
+                </mat-form-field>
+
+
+                 <br/>
+                 <br/>
+                 <!--DATEPICKER PARA DATA ACTUAL-->
+              <div *ngIf="algoritmoSelected=='py_heideltime'">
+
+                <mat-form-field (change)="selecionarDataReferencia($event)">
+                  <mat-label>Document Creation Date:</mat-label>
+                  <input matInput name="docCreatDate" type="date"/>
+                </mat-form-field>
+              </div>
+              <!--EM CIMA-->
+                </mat-card>
+
+
+              <!--
+                EXTRA options
+              -->
+              <br/>
+              <br/>
+              <mat-slide-toggle name="options" (click)="toggleOption()">Options</mat-slide-toggle>
+              <br><br>
+
+                <div class='{{hiddenoption?"viewable": "nonviewable"}}'>
+                  <mat-card>
+                  <br>
+                  <mat-slide-toggle name="KW" (click)="toggleOptionKeywords()">toggle yake Options    .</mat-slide-toggle><mat-slide-toggle name="docOrSentece" (click)="toggleDocOrSentence()">{{byDocOrSentece?'Anotate Dates by Doc':'Anotate Dates by Sentence'}}</mat-slide-toggle>
+                  <br>
+                  <br>
+                  <div class='{{hiddenoptionKW?"viewable": "nonviewable"}}'>
+                    <mat-form-field (change)="selecionarngram($event)" name="ngrams">
+                      <mat-label>ngrams</mat-label>
+                      <input  matInput type="number" name="ngram" placeholder="ngrams" min="1" value="1"/>
+                    </mat-form-field>
+                    <mat-form-field (change)="selecionarNKeywords($event)" name="number_keywords">
+                      <mat-label>Number of Keywords</mat-label>
+                      <input  matInput type="number" name="nkey" placeholder="number of keywords" min="1" value="10"/>
+                    </mat-form-field>
+                    <mat-form-field (changeValue)="selecionarContextualWindow($event)" name="windowContext">
+                      <mat-label>Contextual Window</mat-label>
+                      <input  matInput type="number" name="context" placeholder="Contextual Window" min="1" value="full_sentence"/>
+
+                    </mat-form-field>
+                  </div>
+                  <mat-form-field name="valorAlgoritmo">
+                    <mat-label>Algorithm </mat-label>
+                    <mat-select (valueChange)="selecionarAlgoritmo($event)" >
+                      <mat-option hidden>py_heideltime</mat-option>
+                      <mat-option *ngFor="let algo of algoritmosDate" [value]="algo">
+                        {{algo}}
+                      </mat-option>
+                    </mat-select>
+
+                  </mat-form-field>
+                  <br>
+                  <mat-form-field >
+                    <mat-label>Date Granularity </mat-label>
+                    <mat-select (valueChange)="selecionarGranularidade($event)">
+                      <mat-option hidden>full</mat-option>
+                      <mat-option *ngFor="let granu of dateGranularityOptions" [value]="granu">
+                        {{granu}}
+                      </mat-option>
+                    </mat-select>
+
+                  </mat-form-field>
+                  <br>
+                  <div *ngIf="algoritmoSelected=='py_heideltime' else rule_based">
+                    <!--OPÇÕES RELATIVAS AO PY_HEIDELTIME-->
+                    <mat-form-field name="lingua">
+                      <mat-label>Language </mat-label>
+                      <mat-select (valueChange)="selecionarLanguage($event)" >
+                        <mat-option hidden>English</mat-option>
+                        <mat-option *ngFor="let lingo of languageOptions" [value]="lingo">
+                          {{lingo}}
+                        </mat-option>
+                      </mat-select>
+
+                    </mat-form-field>
+                    <mat-form-field (changeValue)="selecionarTipoDocumento($event)" name="tipoDoc">
+                      <mat-label>Document Type</mat-label>
+                      <mat-select (valueChange)="selecionarTipoDocumento($event)" >
+                        <mat-option *ngFor="let typeo of documentTypeOptions" [value]="typeo">
+                          {{typeo}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <mat-label>N-size context Vector</mat-label>
+                      <input (change)="selecionaTamanhoSimbaVectors($event)" name="simba" matInput type="number" placeholder="N"/>
+                    </mat-form-field>
+                    <!--FIM OPÇÕES RELATIVAS AO PY_HEIDELTIME-->
+                  </div>
+                  <ng-template #rule_based>
+                    <!--OPÇÕES RELATIVAS AO RULE_BASED-->
+                  <span title="inferior year limit">
+                      <mat-form-field name="beginDateControl">
+                        <mat-label>Begin Date</mat-label>
+                        <input matInput type="number" name="dataInicio" placeholder="0" min="0" value="0"/>
+                      </mat-form-field>
+                  </span>
+                    <span title="superior year limit">
+                      <mat-form-field name="endDateControl">
+                        <mat-label>End Date</mat-label>
+                        <input matInput type="number" name="dataFim" placeholder="2100" min="0" value="2100"/>
+                      </mat-form-field>
+                    </span>
+                    <!--FIM OPÇÕES RELATIVAS AO RULEBASED-->
+                  </ng-template></mat-card>
+              </div>
+
+              <!--OPÇÕES A ADICIONAR-->
+
+              <!--ACABA AQUI-->
+
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-12 text-right">
+              <button type="reset" (click)="deleteContent($event)" class="btn btn-link">Reset</button>
+              <button type="submit" class="btn btn-primary"><i class="fas fa-code"></i> Tag Dates </button>
+
+             </div>
+          </div>
+      </div>
+
+  </form>
+</ng-template>
+
+</div>
+

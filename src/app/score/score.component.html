@@ -1,0 +1,41 @@
+
+<div *ngIf="!argumentos else graficos">
+  <h1>No Data</h1>
+</div>
+<ng-template #graficos >
+  <mat-tab-group>
+    <mat-tab label="Dates">
+      <div *ngIf="argumentos" class='chart-wrapper' >
+        <canvas baseChart
+            [chartType]="chartType"
+            [datasets]="chartDatasets"
+            [labels]="chartLabels"
+            [colors]="chartColors"
+            [options]="chartOptions"
+            [legend]="false"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)">
+
+        </canvas>
+      </div>
+  </mat-tab>
+    <mat-tab label="Keywords">
+
+      <div *ngIf="argumentos" class='chart-wrapper' >
+        <canvas baseChart
+        [chartType]="chartType"
+        [datasets]="chartDatasetsKeyword"
+        [labels]="chartLabelsKeyword"
+        [colors]="chartColors"
+        [options]="chartOptions"
+        [legend]="false"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+
+        </canvas>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+
+</ng-template>

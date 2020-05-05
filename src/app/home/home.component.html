@@ -1,0 +1,59 @@
+<header class="header--standard">
+  <mat-toolbar ngbDropdown>
+    <p><span title="placeholder ate termos logo"><i class="fas fa-clock"></i> </span> TimeMatters Demo </p>
+    <div class="spacer"></div>
+    <button mat-button ><i class="fas fa-home"></i> Home</button>
+    <button mat-button [matMenuTriggerFor]="menu1" ngbDropdownToggle ><mat-icon>keyboard_arrow_down</mat-icon>Score Extractor</button>
+    <button mat-button ><i class="fas fa-laptop-code"></i> API</button>
+    <button mat-button ><i class="fas fa-mobile-alt"></i> Mobile App</button>
+    <button mat-button [matMenuTriggerFor]="menu2" ngbDropdownToggle><mat-icon>keyboard_arrow_down</mat-icon>About </button>
+  </mat-toolbar>
+</header>
+
+<mat-menu #menu1="matMenu">
+  <button mat-menu-item class="mat-menu-item"  (click)='changePage(1)'>Single Text <i class="fas fa-square"></i> </button>
+  <div class="divider"></div>
+  <button mat-menu-item class="mat-menu-item"  (click)='changePage(0)'>Multi Doc <i class="fas fa-clone"></i> </button>
+  <div class="divider"></div>
+  <button mat-menu-item class="mat-menu-item"  >Query <i class="fas fa-search"></i></button>
+</mat-menu>
+
+<mat-menu #menu2="matMenu" ngbDropdownMenu>
+  <button mat-menu-item class="mat-menu-item" ngbDropdownItem>People <i class="fas fa-user-circle"></i></button>
+  <div class="divider"></div>
+  <button mat-menu-item class="mat-menu-item" ngbDropdownItem><a target="_blank" href="https://github.com/liaad/time-matters">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></button>
+  <div class="divider"></div>
+  <button mat-menu-item class="mat-menu-item" ngbDropdownItem>Related Work <i class="fas fa-book-open"></i></button>
+</mat-menu>
+
+<section class="NavSection">
+  <div class="layout">
+    <div class="layout-row">
+      <div class="layout-col">
+        <div class="headliner">
+          <h1>
+            App to extract dates from documents
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <div *ngIf="page==0 else pagina1">
+     <!--<app-landing-page></app-landing-page>-->
+  </div>
+  <ng-template #pagina1>
+    <div *ngIf="page==1 else pagina2">
+      <app-keyword-exctraction></app-keyword-exctraction>
+    </div>
+    <ng-template #pagina2>
+      <div *ngIf="page==2 else pagina3">
+        <h1>pagina3 em construção</h1>
+      </div>
+      <ng-template #pagina3>
+        <h1>pagina4 em construção</h1>
+      </ng-template>
+    </ng-template>
+  </ng-template>
