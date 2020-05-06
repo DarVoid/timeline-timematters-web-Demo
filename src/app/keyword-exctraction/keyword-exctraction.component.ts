@@ -1,8 +1,10 @@
+import { Color } from 'ng2-charts';
 import { Component, OnInit } from '@angular/core';
 import { TimelineService } from '../services/timeline.service';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import {take} from 'rxjs/operators';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {ThemePalette} from '@angular/material/core';
 
 
 @Component({
@@ -38,7 +40,7 @@ export class KeywordExctractionComponent implements OnInit {
   public dataset: any;
   public numberOfKeyWords: number;
   public contextWindow: any;
-  public simbaValue:number;
+  public simbaValue: number;
   constructor(private timeline: TimelineService) {
     /*private timeline: TimelineService*/
     this.ngramSelected = 1;

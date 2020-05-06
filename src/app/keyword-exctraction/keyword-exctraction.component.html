@@ -106,12 +106,13 @@
                   <textarea matInput class="text-area" style="width:100%;"type="text"  name="texto" value="{{conteudoDefault}}" min_rows="4" rows="7" name="texto"></textarea>
                 </mat-form-field>
 
-                <div class="col-lg-16 text-center"><mat-form-field  *ngIf="algoritmoSelected=='py_heideltime'" (change)="selecionarDataReferencia($event)">
-                  <mat-label>Document Creation Date:</mat-label>
-                  <input matInput name="docCreatDate" class="date" type="date"/>
-                </mat-form-field>
+                <div class="col-lg-16 text-center">
+                  <mat-form-field  *ngIf="algoritmoSelected=='py_heideltime'" (change)="selecionarDataReferencia($event)">
+                    <mat-label>Document Creation Date:</mat-label>
+                    <input matInput name="docCreatDate" class="date" type="date"/>
+                  </mat-form-field>
 
-                <mat-slide-toggle name="options" class="options" (click)="toggleOption()">Advanced Options</mat-slide-toggle>
+                  <mat-slide-toggle class="example-margin" (click)="toggleOption()">Advanced Options</mat-slide-toggle>
                 </div>
                 </mat-card>
               <!--

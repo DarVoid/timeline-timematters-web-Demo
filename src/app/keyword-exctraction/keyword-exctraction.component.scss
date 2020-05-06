@@ -72,7 +72,7 @@ textarea {
     font-size: 15px;
     color: #2b3e50;
     background-color: white;
-   
+
     border-radius:2px;
 }
 
@@ -94,7 +94,7 @@ textarea {
 
 .btn-link:hover, .btn-link:active, .btn-link:focus {
     color: #993d26;
-    
+
 }
 
 
@@ -126,9 +126,6 @@ app-frame {
         text-align: right;
     }
 }
-.options {
-    color: #ffffff;
-}
 
 .date {
     font-family: 'Work Sans', sans-serif;
@@ -148,7 +145,7 @@ app-frame {
 }
 
 .mat-menu-item {
-    margin:-8px auto; 
+    margin:-8px auto;
     color: white;
     text-align: center;
     background-color: #c75c42;
@@ -169,4 +166,4 @@ button:focus {
     overflow: hidden;
     background-color: white;
 
-  } 
+  }
