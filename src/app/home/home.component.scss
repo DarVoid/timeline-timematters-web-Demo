@@ -1,0 +1,188 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+h1 {
+  font-size: 27px;
+  font-family: 'Work Sans', sans-serif;
+  margin-bottom: 0;
+  padding-top: 20px;
+  color: #ffffff;
+  background-color: #c75c42;
+  padding-left: 20px;
+}
+
+.headliner {
+  margin-bottom: 0px;
+  min-height: 1px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.layout-col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+[class*=layout-col] {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding: 15px;
+}
+
+.layout-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  justify-content: center;
+}
+
+.layout {
+  width: 100%;
+  padding-right: 48px;
+  padding-left: 48px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1199px) {
+  .layout {
+      max-width: 991px;
+  }
+}
+
+@media (max-width: 1399px) {
+  .layout {
+    max-width: 1100px;
+  }
+}
+
+@media (max-width: 1399px) {
+  div.headliner {
+    margin-bottom: -30px;
+  }
+}
+
+@media (max-width: 1399px) {
+  div.headliner {
+    margin: -10px 0 -40px;
+}
+}
+
+section.NavSection {
+  background-color: #c75c42;
+  padding-bottom: 25px;
+}
+
+p {
+  color: white;
+  font-family: 'Work Sans';
+  font-size: 35px;
+  padding-left: 50px;
+  padding-top:15px;
+  line-height:1.125;
+  font-weight: 600;
+}
+
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$app-primary: mat-palette($mat-green, A100);
+$app-accent:  mat-palette($mat-cyan, 800);
+
+$app-theme: mat-light-theme($app-primary, $app-accent);
+
+@mixin mix-app-theme($app-theme) {
+
+  $primary: map-get($app-theme, primary);
+  $accent: map-get($app-theme, accent);
+
+  .mat-menu-item {
+    /*color: burlywood;*/
+    margin:-8px auto; 
+    color: white;
+    text-align: center;
+  }
+
+  .mat-menu-item:hover {
+   /* background-color: #374457 ;*/
+   background-color: #374457;
+  }
+
+  button:focus {
+    outline: 0px;
+  }
+
+  .mat-button {
+      color: white;
+     margin-left: 60px;
+     font-family: 'Work Sans';
+     position: sticky;
+   }
+
+   .header--standard {
+     border-bottom: none;
+     position: sticky;
+     top: 0;
+     z-index: 9;
+     background-color: #c75c42;
+   }
+
+   .mat-toolbar, .mat-menu-item {
+     /*#ba4d32*/
+    /*background-color: #c75c42;*/
+    background-color: #c75c42;
+    font-family: 'Work Sans', sans-serif;
+  }
+
+  
+
+  .divider {
+    height: 0.2px;
+    margin: 9.5px 0;
+    overflow: hidden;
+    background-color: white;
+    
+  }
+
+  .mat-button:hover {
+   /*background-color: #374457;*/
+   background-color: #374457;
+  }
+
+/*
+  .mat-button:hover {
+    background-color: mat-color($accent);
+    color: mat-color($accent, default-contrast);
+  }
+
+  .mat-button-checked {
+    background-color: mat-color($primary);
+    color: mat-color($primary, default-contrast);
+    */
+  }
+
+// Include the mixin
+@include mix-app-theme($app-theme);
