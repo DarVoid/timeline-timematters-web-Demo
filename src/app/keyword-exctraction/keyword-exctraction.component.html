@@ -9,7 +9,7 @@
   <div *ngIf="result else textBox" >
     <br>
     <br>
-    <div class="col-md-10 col-sm-8 col-xs-6 my-col2">
+    <div class="col-md-11 col-sm-8 col-xs-6 my-col2">
         <span title="não suportado, api não tem a opção "><p class="frase1">Time spent to run TimeMatters algorithm: x </p></span>
 
       <div>
@@ -18,7 +18,7 @@
       </div>
         <ng-template #graficos >
           <mat-tab-group>
-            <mat-tab label="Anotated Text">
+            <mat-tab class="afterAnnotated" label="Anotated Text">
 
               <h2>Annotated text</h2>
               <p class="frase2">The top {{result.TempExpressions.length}} Temporal Expressions are annotated in the text.</p>
@@ -27,7 +27,7 @@
               <app-frame [argumentos]="result" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>
               <hr>
               <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
-              <mat-slide-toggle (click)="toggleKeywords()">{{withKeywordsSentence}}</mat-slide-toggle>
+              <mat-slide-toggle class="keywordOnOff" (click)="toggleKeywords()">{{withKeywordsSentence}}</mat-slide-toggle>
               <!--EM CIMA-->
               <br>
               <br><div class="col-lg-12 text-right">
@@ -36,7 +36,7 @@
               <button *ngIf="result" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
               </div>
           </mat-tab>
-          <mat-tab label="Graphs">
+          <mat-tab class="afterGraphs" label="Graphs">
             <h2>Graphics</h2>
             <div class="row my-row justify-content-center">
               <div class="score">
@@ -44,7 +44,7 @@
               </div>
         </div>
           </mat-tab>
-          <mat-tab label="Timeline">
+          <mat-tab class="afterGraphs" label="Timeline">
             <!--WIP-->
             <mat-vertical-stepper >
               <div *ngFor="let item of dataset">
@@ -86,12 +86,15 @@
                   <button (click)="setDefaultText(0,'English')" mat-menu-item>
                     <span>EN - haiti earthquake</span>
                   </button>
+                  <div class="divider"></div>
                   <button (click)="setDefaultText(1,'French')"  mat-menu-item >
                     <span>FR - Religion</span>
                   </button>
+                  <div class="divider"></div>
                   <button (click)="setDefaultText(2,'Italian')" mat-menu-item>
                     <span>It - Sports </span>
                   </button>
+                  <div class="divider"></div>
                   <button (click)="setDefaultText(3,'Portuguese')" mat-menu-item>
                     <span>Pt - Sports </span>
                   </button>
@@ -105,17 +108,16 @@
 
                 <div class="col-lg-16 text-center"><mat-form-field  *ngIf="algoritmoSelected=='py_heideltime'" (change)="selecionarDataReferencia($event)">
                   <mat-label>Document Creation Date:</mat-label>
-                  <input matInput name="docCreatDate" type="date"/>
+                  <input matInput name="docCreatDate" class="date" type="date"/>
                 </mat-form-field>
 
-                <mat-slide-toggle name="options" (click)="toggleOption()">Options</mat-slide-toggle>
+                <mat-slide-toggle name="options" class="options" (click)="toggleOption()">Advanced Options</mat-slide-toggle>
                 </div>
                 </mat-card>
               <!--
                 EXTRA options
               -->
-              <br><br>
-
+              <br>
                 <div class='{{hiddenoption?"viewable ": "nonviewable"}}'>
                   <div class="col-lg-16 text-center">
 
@@ -132,7 +134,7 @@
                       </mat-form-field>
                     <br>
                     <div class="col-lg-12 space-center">
-                      <mat-slide-toggle name="KW" (click)="toggleOptionKeywords()">Yake Options</mat-slide-toggle>
+                      <mat-slide-toggle name="KW" class="toggleYake" (click)="toggleOptionKeywords()">Yake Options</mat-slide-toggle>
                     </div>
                     <div class="col-lg-12 text-center">
                       <mat-slide-toggle  name="docOrSentece" (click)="toggleDocOrSentence()">{{byDocOrSentece?'Anotate Dates by Doc':'Anotate Dates by Sentence'}}</mat-slide-toggle>

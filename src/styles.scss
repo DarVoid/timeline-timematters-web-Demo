@@ -15,26 +15,26 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 @include angular-material-theme($candy-app-theme);
 
 b.purple{
-  background-color:purple !important;
+  background-color:#915e8b !important;
 
 }
 .black{
-  background-color:black !important;
+  background-color:#3c3d35 !important;
 }
 b.blue{
-  background-color:blue !important;
+  background-color:#386c7d !important;
 
 }
 b.green{
-  background-color:green !important;
+  background-color:#41692b !important;
 
 }
 b.red{
-  background-color:red !important;
+  background-color:#a33a14 !important;
 
 }
 b.yellow{
-  background-color:yellowgreen !important;
+  background-color:#99b019 !important;
 
 }
 .viewable{
