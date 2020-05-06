@@ -1,8 +1,9 @@
 <header class="header--standard">
   <mat-toolbar ngbDropdown>
-    <p><i class="fas fa-clock"></i> TimeMatters Demo </p>
+    <p><!--i class="fas fa-clock"></>-->
+      <img class="ceninha" src="..\assets\TimeMatters.png" /> TimeMatters Demo </p>
     <div class="spacer"></div>
-    <button mat-button  (click)='changePage("1")' ><i class="fas fa-home"></i> Home</button>
+    <button mat-button  (click)='changePage("0")' ><i class="fas fa-home"></i> Home</button>
     <button mat-button [matMenuTriggerFor]="menu1" ngbDropdownToggle ><mat-icon>keyboard_arrow_down</mat-icon>Score Extractor</button>
     <button mat-button ><i class="fas fa-laptop-code"></i> API</button>
     <button mat-button ><i class="fas fa-mobile-alt"></i> Mobile App</button>
