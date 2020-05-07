@@ -14,7 +14,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { SideNewsComponent } from './side-news/side-news.component';
 import { KeywordExctractionComponent } from './keyword-exctraction/keyword-exctraction.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FrameComponent } from './frame/frame.component';
@@ -33,7 +32,6 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    SideNewsComponent,
     KeywordExctractionComponent,
     FrameComponent,
     ScoreComponent,

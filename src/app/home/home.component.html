@@ -5,7 +5,7 @@
     <div class="spacer"></div>
     <button mat-button  (click)='changePage("0")' ><i class="fas fa-home"></i> Home</button>
     <button mat-button [matMenuTriggerFor]="menu1" ngbDropdownToggle ><mat-icon>keyboard_arrow_down</mat-icon>Score Extractor</button>
-    <button mat-button ><a  target="_blank" href="https://tm-websuiteapps.ipt.pt/timematters/apidocs/"><i class="fas fa-laptop-code"></i> API</a></button>
+    <a  target="_blank" href="https://tm-websuiteapps.ipt.pt/timematters/apidocs/"><button mat-button ><i class="fas fa-laptop-code"></i> API</button></a>
     <button mat-button ><i class="fas fa-mobile-alt"></i> Mobile App</button>
     <button mat-button [matMenuTriggerFor]="menu2" ngbDropdownToggle><mat-icon>keyboard_arrow_down</mat-icon>About </button>
   </mat-toolbar>
@@ -22,7 +22,7 @@
 <mat-menu #menu2="matMenu" ngbDropdownMenu>
   <button mat-menu-item class="mat-menu-item" ngbDropdownItem>People <i class="fas fa-user-circle"></i></button>
   <div class="divider"></div>
-  <button mat-menu-item class="mat-menu-item" ngbDropdownItem><a target="_blank" href="https://github.com/liaad/time-matters">GitHub <i class="fab fa-github" aria-hidden="true"></i></a></button>
+  <a target="_blank" href="https://github.com/liaad/time-matters"><button mat-menu-item class="mat-menu-item" ngbDropdownItem>GitHub <i class="fab fa-github" aria-hidden="true"></i></button></a>
   <div class="divider"></div>
   <button mat-menu-item class="mat-menu-item" ngbDropdownItem>Related Work <i class="fas fa-book-open"></i></button>
 </mat-menu>
