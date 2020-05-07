@@ -139,8 +139,25 @@ export class KeywordExctractionComponent implements OnInit {
     this.languagueSelected = event;
   }
   setDefaultText(num:number, language:string){
+
     this.selecionarLanguage(language);
+    console.log();
     this.conteudoDefault = this.listaConteudos[num];
+  }
+  setDefaultTexto(texto: any){
+    console.log(texto.value);
+    this.conteudoDefault = texto.value;
+  }
+
+  public putOnClipboard(event : any, cena:string){
+    event.preventDefault();
+    let clipboard = document.createElement('input');
+    console.log(cena);
+    clipboard.setAttribute('value', cena);
+    document.body.appendChild(clipboard);
+    clipboard.select();
+    document.execCommand('copy');
+    document.body.removeChild(clipboard);
   }
   public copyToClipboard(event: any) {
     event.preventDefault();

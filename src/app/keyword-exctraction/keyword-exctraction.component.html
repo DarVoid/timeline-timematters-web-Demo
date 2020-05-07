@@ -47,8 +47,8 @@
             <!--WIP-->
             <mat-vertical-stepper >
               <div *ngFor="let item of dataset">
-              <mat-step  [completed]="false" label='{{item.x.substring(0,10)}}' matStepperIcon="phone" >
-                <div [innerHTML]="item.y | safe:'html'"></div>
+              <mat-step  [completed]="false" label='{{item.x.substring(0,10)}}'  matStepperIcon="phone" >
+                <div (click)="putOnClipboard($event,item.x.substring(0,10))" [innerHTML]="item.y | safe:'html'"></div>
               </mat-step>
               </div>
           </mat-vertical-stepper>
@@ -100,9 +100,9 @@
                 </mat-menu>
                 </div>
                 <div class='{{loading?"viewable": "nonviewable"}}'><mat-progress-bar mode="indeterminate"></mat-progress-bar></div>
-                <mat-form-field class="example-full-width">
+                <mat-form-field class="example-full-width" >
                   <mat-label>Content</mat-label>
-                  <textarea matInput class="text-area" style="width:100%;"type="text"  name="texto" value="{{conteudoDefault}}" min_rows="4" rows="7" name="texto"></textarea>
+                  <textarea matInput #texto class="text-area" (change)='setDefaultTexto(texto)' style="width:100%;" type="text" value="{{conteudoDefault}}" min_rows="4" rows="7" name="texto"></textarea>
                 </mat-form-field>
 
                 <div class="col-lg-16 text-center">
