@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import {take} from 'rxjs/operators';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {ThemePalette} from '@angular/material/core';
-
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-keyword-exctraction',
@@ -162,7 +162,7 @@ export class KeywordExctractionComponent implements OnInit {
   public copyToClipboard(event: any) {
     event.preventDefault();
     let clipboard = document.createElement('input');
-    clipboard.setAttribute('value', this.result['TextNormalized']);
+    clipboard.setAttribute('value', this.result.TextNormalized);
     document.body.appendChild(clipboard);
     clipboard.select();
     document.execCommand('copy');
@@ -232,8 +232,16 @@ export class KeywordExctractionComponent implements OnInit {
             //console.log();
             //console.log(Object.keys(this.result.Score)[i].split('-').join(''));
 
-            /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join(''))?'':c.pop();
+            /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join('')) ?'':c.pop();
+
         }
+        // tslint:disable-next-line: forin
+        for (let data in c){
+          let j = Date.parse(c[data].x.split('-').join(' '));
+          console.log (j);
+          c[data]['dateparsed']=j;
+        }
+        c = c.sort(( a , b ) => { return a.dateparsed - b.dateparsed; });
         //console.log("a,b,join");
         //console.log(a);
         //console.log(b);
