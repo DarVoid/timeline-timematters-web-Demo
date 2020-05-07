@@ -20,7 +20,7 @@ b.purple{
 
 }
 .black{
-  background-color:#3c3d35 !important;
+  background-color:orange !important;
 }
 b.blue{
   background-color:#386c7d !important;
@@ -202,13 +202,13 @@ $app-theme: mat-light-theme($app-primary, $app-accent);
    margin: 9.5px 0;
    overflow: hidden;
    background-color: white;
-   
+
  }
 
  .mat-button:hover {
   background-color: #374457;
  }
-  
+
 }
 
 @include mix-app-theme($app-theme);
@@ -321,4 +321,7 @@ app-frame {
   overflow: hidden;
   background-color: white;
 
+}
+.afterAnnotated{
+  color:black;
 }

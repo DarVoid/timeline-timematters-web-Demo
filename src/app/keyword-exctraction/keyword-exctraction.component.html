@@ -17,23 +17,25 @@
         <h1>No Data</h1>
       </div>
         <ng-template #graficos >
+          <mat-card>
           <mat-tab-group>
-            <mat-tab class="afterAnnotated" label="Anotated Text">
-              <h2>Annotated text</h2>
-              <p class="frase2">The top {{result.TempExpressions.length}} Temporal Expressions are annotated in the text.</p>
-              <p class="frase3">Language: {{languagueSelected}}</p>
-              <hr>
-              <app-frame [argumentos]="result" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>
-              <hr>
-              <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
-              <mat-slide-toggle class="keywordOnOff" color="warn" (click)="toggleKeywords()">{{withKeywordsSentence}}</mat-slide-toggle>
-              <!--EM CIMA-->
-              <br>
-              <br><div class="col-lg-12 text-right">
+            <mat-tab  label="Anotated Text">
+                <h2 class="afterAnnotated">Anotated text</h2>
+                <p class="afterAnnotated">The top {{result.TempExpressions.length}} Temporal Expressions are annotated in the text.</p>
+                <p class="afterAnnotated">Language: {{languagueSelected}}</p>
+                <hr>
+                <app-frame [argumentos]="result" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>
+                <hr>
+                <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
+                <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleKeywords()">{{withKeywordsSentence}}</mat-slide-toggle>
+                <!--EM CIMA-->
+                <br>
+                <br><div class="col-lg-12 text-right">
 
-              <button type="reset" (click)="goBack()" class="btn btn-link">Go back</button>
-              <button *ngIf="result" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
-              </div>
+                <button type="reset" (click)="goBack()" class="btn btn-link">Go back</button>
+                <button *ngIf="result" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
+                </div>
+
           </mat-tab>
           <mat-tab *ngIf="byDocOrSentece" class="afterGraphs" label="Graphs">
             <h2>Graphics</h2>
@@ -54,7 +56,7 @@
           </mat-vertical-stepper>
           <!--WIP-->
           </mat-tab>
-          </mat-tab-group>
+          </mat-tab-group></mat-card>
 
 
         </ng-template>
@@ -127,7 +129,7 @@
                         <mat-label class="algorithm">Algorithm </mat-label>
                         <mat-select  class="algorithm"(valueChange)="selecionarAlgoritmo($event)" >
                           <mat-option class="mat-menu-item2" hidden>py_heideltime</mat-option>
-                          
+
                           <mat-option class="mat-menu-item2" *ngFor="let algo of algoritmosDate" [value]="algo">
                             {{algo}}
                           </mat-option>
