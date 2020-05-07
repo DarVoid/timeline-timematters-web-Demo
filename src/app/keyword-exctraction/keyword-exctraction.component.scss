@@ -1,67 +1,7 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
-
-.fundo {
-    background-color: #463940;
-    height:750px;
-    padding-top: 20px;
-    padding-bottom:100%;
-}
-.my-col {
-   /* background-color: #374457;*/
-   background-color: #374457;
-    height:70%;
-    width: 100%;
-    border-radius: 3px;
-    margin: auto;
-    margin-top:20px;
-    padding-bottom:7px;
-}
-.my-col2 {
-    background-color: #374457;
-    height:70%;
-    width: 100%;
-    border-radius: 3px;
-    margin: auto;
-    margin-top:20px;
-    padding-bottom:10px;
-}
-
-.example-flex-container {
-  display: flex;
-  justify-content: space-between;
-  width: 480px;
-}
-
-.my-row {
-    height: 300px;
-    width:900px;
-    margin: auto;
-}
-
-h2 {
-    color: white;
-    padding-left:15px;
-    padding-top:20px;
-    font-size: 32px;
-}
-
-.frase1, .frase2, .frase3 {
-    color: #ffffff;
-    padding-left: 15px;
-    font-size: 15px;
-    font-family: 'Work Sans', sans-serif;
-}
-
-.frase1 {
-    padding-top: 25px;
-}
+@import '~bootstrap/dist/css/bootstrap.min.css';    
 
 form, h2 {
     font-family: 'Work Sans', sans-serif;
-}
-
-.result {
-    text-align: justify;
 }
 
 textarea {
@@ -72,7 +12,7 @@ textarea {
     font-size: 15px;
     color: #2b3e50;
     background-color: white;
-
+    font-family: 'Work Sans', sans-serif;
     border-radius:2px;
 }
 
@@ -80,6 +20,7 @@ textarea {
     color: #BC4123;
     font-family: 'Work Sans', sans-serif;
 }
+
 .btn-primary {
     background-color: #BC4123;
     border-color: transparent;
@@ -94,54 +35,15 @@ textarea {
 
 .btn-link:hover, .btn-link:active, .btn-link:focus {
     color: #993d26;
-
 }
-
 
 hr {
     border-top: 1px solid grey;
-}
-
-.score {
-    margin-top: 30px;
-}
-
-app-frame {
-    color: white;
-}
-
-.control-label {
-    text-align: right;
-    margin-bottom: 0;
-    padding-top: 9px;
-    font-size: 18px;
-    font-weight: normal;
-    color: #ffffff;
-}
-
-@media (min-width: 768px) {
-    .control-label {
-        padding-top: 9px;
-        margin-bottom: 0;
-        text-align: right;
-    }
-}
+  }
 
 .date {
     font-family: 'Work Sans', sans-serif;
     font-size: 16px;
-}
-
-.keywordOnOff {
-    padding-left: 13px;
-}
-
-.my-row2 {
-
-    width: 90%;
-    margin: auto;
-    margin-top:-50px;
-    overflow: hidden;
 }
 
 .mat-menu-item {
@@ -159,11 +61,3 @@ app-frame {
 button:focus {
     outline: 0px;
 }
-
-.divider {
-    height: 0.2px;
-    margin: 9.5px 0;
-    overflow: hidden;
-    background-color: white;
-
-  }
