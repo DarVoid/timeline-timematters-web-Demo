@@ -7,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutPeopleComponent implements OnInit {
   public people: Array<any>;
+  public developers: Array<any>;
   constructor() {
-    this.people = [
+    this.developers = [
       {name: 'Jorge',
         photoSrc: 'assets/fotoJorge.png',
         links:[
@@ -30,27 +31,31 @@ export class AboutPeopleComponent implements OnInit {
           icon: '<i class="fab fa-github"></i>'
         }
       ]
-      },
+      }
+
+    ];
+    this.people = [
       {name: 'Ricardo Campos',
       photoSrc: 'assets/ricardo.png',
       links:[
-        { tipo: 'GitHub',
-          link: 'https://github.com/tiagorafael982',
-          icon: '<i class="fab fa-github"></i>'
-        },
-        { tipo: 'LinkedIn',
-        link: 'https://www.linkedin.com/in/camposricardo/',
-        icon: '<i class="fab fa-linkedin"></i>'
-        },
-        { tipo: 'Website',
-        link: 'http://www.ccc.ipt.pt/~ricardo/',
-        icon: '<i class="fas fa-globe-americas"></i>'
-        },
-
-      ]
+      { tipo: 'GitHub',
+        link: 'https://github.com/tiagorafael982',
+        icon: '<i class="fab fa-github"></i>'
+      },
+      { tipo: 'LinkedIn',
+      link: 'https://www.linkedin.com/in/camposricardo/',
+      icon: '<i class="fab fa-linkedin"></i>'
+      },
+      { tipo: 'Website',
+      link: 'http://www.ccc.ipt.pt/~ricardo/',
+      icon: '<i class="fas fa-globe-americas"></i>'
       },
 
+    ]
+    }
+
     ];
+
   }
 
   ngOnInit(): void {
