@@ -1,24 +1,49 @@
 <div class="fundo">
-  <mat-divider></mat-divider>
-  <div mat-subheader>Know the team:</div>
-  <mat-list>
-    <mat-list-item *ngFor="let person of people">
-      <img matListAvatar [src]="person.photoSrc"/>
-      <h3 matLine> {{person.name}}</h3>
-      <p *ngFor="let cont of person.links"><a target="_blank" href={{cont.link}}>{{cont.tipo}}<span [innerHTML]="cont.icon | safe:'html'"></span></a></p>
+  <div class="container col-md-8">
+    <h3 class="authors">Authors</h3>
+    <mat-divider></mat-divider>
+    <div class="jumbotron">
+      <mat-list class="linha">
+        <mat-list-item *ngFor="let person of people">
+            <img matListAvatar [src]="person.photoSrc"/>
+            <h3 class="nome" matLine> {{person.name}}</h3>
+            <p *ngFor="let cont of person.links">
+              <a target="_blank" href={{cont.link}}>{{cont.tipo}}
+                <span [innerHTML]="cont.icon | safe:'html'">
+                </span>
+              </a>
+            </p>  
+        </mat-list-item>
+      </mat-list>
+        <mat-divider></mat-divider>
+        <div class="text" mat-subheader>Web Developers</div>
+        <mat-list class="developer">
+          <mat-list-item *ngFor="let person of developer1">
+              <img matListAvatar [src]="person.photoSrc"/>
+              <h3 class="nome" matLine> {{person.name}}</h3>
+              <p  *ngFor="let cont of person.links"> 
+                <a target="_blank" href={{cont.link}}>
+                  {{cont.tipo}}
+                  <span [innerHTML]="cont.icon | safe:'html'"></span>
+                </a>
+              </p>
+          </mat-list-item> 
+        </mat-list>
+        <mat-list>
+          <mat-list-item *ngFor="let person of developer2">
+              <img matListAvatar [src]="person.photoSrc"/>
+              <h3 class="nome" matLine> {{person.name}}</h3>
+              <p  *ngFor="let cont of person.links"> 
+                <a target="_blank" href={{cont.link}}>
+                  {{cont.tipo}}
+                  <span [innerHTML]="cont.icon | safe:'html'"></span>
+                </a>
+              </p>
+          </mat-list-item>
+        </mat-list>
+    </div>
+  </div>
+ 
 
-    </mat-list-item>
-  </mat-list>
-
-  <mat-divider></mat-divider>
-  <div mat-subheader>Web Developers</div>
-  <mat-list>
-    <mat-list-item *ngFor="let person of developers">
-      <img matListAvatar [src]="person.photoSrc"/>
-      <h3 matLine> {{person.name}}</h3>
-      <p *ngFor="let cont of person.links"><a target="_blank" href={{cont.link}}>{{cont.tipo}}<span [innerHTML]="cont.icon | safe:'html'"></span></a></p>
-
-    </mat-list-item>
-  </mat-list>
 
 </div>

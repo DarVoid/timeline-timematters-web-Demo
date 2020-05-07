@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutPeopleComponent implements OnInit {
   public people: Array<any>;
-  public developers: Array<any>;
+  public developer1: Array<any>;
+  public developer2: Array<any>;
   constructor() {
-    this.developers = [
+    this.developer1 = [
       {name: 'Jorge Duque',
         photoSrc: 'assets/fotoJorge.png',
         links:[
@@ -22,7 +23,9 @@ export class AboutPeopleComponent implements OnInit {
             icon: '<i class="fab fa-linkedin"></i>'
           },
         ]
-      },
+      }
+    ];
+    this.developer2 = [
       {name: 'Tiago Vasconcelos',
       photoSrc: 'assets/tiago.png',
       links:[
@@ -32,8 +35,7 @@ export class AboutPeopleComponent implements OnInit {
         }
       ]
       }
-
-    ];
+    ]
     this.people = [
       {name: 'Ricardo Campos',
       photoSrc: 'assets/ricardo.png',

@@ -1,9 +1,56 @@
+* {
+  font-family: 'Work Sans', sans-serif;
+}
+
 .fundo {
   background-color: #463940;
   height:750px;
   padding-top: 20px;
   padding-bottom:100%;
 }
-h3{
+
+.authors {
   color: white;
+  font-size: 25px;
+  font-family: 'Work Sans', sans-serif;
 }
+
+.jumbotron {
+  background-color: #374457;
+}
+
+.text {
+  color: #ffffff;
+  font-size: 18px;
+  padding-top:-25px;
+}
+
+.linha {
+  padding-bottom: 30px;
+}
+
+.nome {
+  color: #ffffff;
+  font-family: 'Work Sans', sans-serif;
+}
+
+ p {
+  padding-right: 70px;
+  text-align: center;
+}
+
+
+.mat-list-base .mat-list-item .mat-list-avatar, .mat-list-base .mat-list-option .mat-list-avatar {
+  flex-shrink: 0;
+  width: 60px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.developer {
+  padding-bottom: 26px;
+}
+
+
+
