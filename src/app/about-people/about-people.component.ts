@@ -22,6 +22,11 @@ export class AboutPeopleComponent implements OnInit {
             link: 'https://www.linkedin.com/in/djorge7/',
             icon: '<i class="fab fa-linkedin"></i>'
           },
+          { tipo: 'email',
+            link: 'mailto://jorgeraposoduque@gmail.com',
+            icon: '<i class="far fa-envelope"></i>'
+          },
+
         ]
       }
     ];

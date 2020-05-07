@@ -1,9 +1,11 @@
 <div class="fundo">
   <div class="container col-md-8">
-    <h3 class="authors">Authors</h3>
     <mat-divider></mat-divider>
     <div class="jumbotron">
+      <mat-divider></mat-divider>
+      <div class="text" mat-subheader>Authors</div>
       <mat-list class="linha">
+
         <mat-list-item *ngFor="let person of people">
             <img matListAvatar [src]="person.photoSrc"/>
             <h3 class="nome" matLine> {{person.name}}</h3>
@@ -12,7 +14,7 @@
                 <span [innerHTML]="cont.icon | safe:'html'">
                 </span>
               </a>
-            </p>  
+            </p>
         </mat-list-item>
       </mat-list>
         <mat-divider></mat-divider>
@@ -21,19 +23,19 @@
           <mat-list-item *ngFor="let person of developer1">
               <img matListAvatar [src]="person.photoSrc"/>
               <h3 class="nome" matLine> {{person.name}}</h3>
-              <p  *ngFor="let cont of person.links"> 
+              <p  *ngFor="let cont of person.links">
                 <a target="_blank" href={{cont.link}}>
                   {{cont.tipo}}
                   <span [innerHTML]="cont.icon | safe:'html'"></span>
                 </a>
               </p>
-          </mat-list-item> 
+          </mat-list-item>
         </mat-list>
         <mat-list>
           <mat-list-item *ngFor="let person of developer2">
               <img matListAvatar [src]="person.photoSrc"/>
               <h3 class="nome" matLine> {{person.name}}</h3>
-              <p  *ngFor="let cont of person.links"> 
+              <p  *ngFor="let cont of person.links">
                 <a target="_blank" href={{cont.link}}>
                   {{cont.tipo}}
                   <span [innerHTML]="cont.icon | safe:'html'"></span>
@@ -43,7 +45,7 @@
         </mat-list>
     </div>
   </div>
- 
+
 
 
 </div>
