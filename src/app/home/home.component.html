@@ -16,15 +16,15 @@
   <div class="divider"></div>
   <button mat-menu-item class="mat-menu-item"  (click)='changePage("2")'>Multi Doc <i class="fas fa-clone"></i> </button>
   <div class="divider"></div>
-  <button mat-menu-item class="mat-menu-item"  >Query <i class="fas fa-search"></i></button>
+  <button mat-menu-item class="mat-menu-item" (click)='changePage("3")' >Query <i class="fas fa-search"></i></button>
 </mat-menu>
 
 <mat-menu #menu2="matMenu" ngbDropdownMenu>
-  <button mat-menu-item class="mat-menu-item" ngbDropdownItem>People <i class="fas fa-user-circle"></i></button>
+  <button mat-menu-item class="mat-menu-item" (click)='changePage("4")' ngbDropdownItem>People <i class="fas fa-user-circle"></i></button>
   <div class="divider"></div>
   <a target="_blank" href="https://github.com/liaad/time-matters"><button mat-menu-item class="mat-menu-item" ngbDropdownItem>GitHub <i class="fab fa-github" aria-hidden="true"></i></button></a>
   <div class="divider"></div>
-  <button mat-menu-item class="mat-menu-item" ngbDropdownItem>Related Work <i class="fas fa-book-open"></i></button>
+  <button mat-menu-item class="mat-menu-item" (click)='changePage("5")' ngbDropdownItem>Related Work <i class="fas fa-book-open"></i></button>
 </mat-menu>
 
 <section class="NavSection">
@@ -51,10 +51,24 @@
     </div>
     <ng-template #pagina2>
       <div *ngIf='page=="2" else pagina3'>
-        <p>pagina3 em construção</p>
+        <app-multi-doc></app-multi-doc>
       </div>
       <ng-template #pagina3>
-        <p>pagina4 em construção</p>
+        <div *ngIf='page=="3" else pagina4'>
+          <app-query></app-query>
+        </div>
+        <ng-template #pagina4>
+          <div *ngIf='page=="4" else pagina5'>
+           <app-about-people></app-about-people>
+          </div>
+          <ng-template #pagina5>
+            <div *ngIf='page=="5"'>
+              <app-about-related-work></app-about-related-work>
+            </div>
+
+          </ng-template>
+
+        </ng-template>
       </ng-template>
     </ng-template>
   </ng-template>

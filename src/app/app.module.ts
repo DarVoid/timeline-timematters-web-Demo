@@ -27,6 +27,11 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatStepperModule} from '@angular/material/stepper';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { AboutPeopleComponent } from './about-people/about-people.component';
+import { AboutRelatedWorkComponent } from './about-related-work/about-related-work.component';
+import { MultiDocComponent } from './multi-doc/multi-doc.component';
+import { QueryComponent } from './query/query.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,11 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     FrameComponent,
     ScoreComponent,
     SafePipe,
-    LandingPageComponent
+    LandingPageComponent,
+    AboutPeopleComponent,
+    AboutRelatedWorkComponent,
+    MultiDocComponent,
+    QueryComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +68,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     MatProgressBarModule,
     MatSelectModule,
     MatInputModule,
-    MatStepperModule
+    MatStepperModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,6 +6,7 @@ import {take} from 'rxjs/operators';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {ThemePalette} from '@angular/material/core';
 import {DatePipe} from '@angular/common';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-keyword-exctraction',
@@ -41,7 +42,7 @@ export class KeywordExctractionComponent implements OnInit {
   public numberOfKeyWords: number;
   public contextWindow: any;
   public simbaValue: number;
-  constructor(private timeline: TimelineService) {
+  constructor(private timeline: TimelineService, private _snackBar: MatSnackBar) {
     /*private timeline: TimelineService*/
     this.ngramSelected = 1;
     this.byDocOrSentece = true;
@@ -161,6 +162,9 @@ export class KeywordExctractionComponent implements OnInit {
   }
   public copyToClipboard(event: any) {
     event.preventDefault();
+    this._snackBar.open('Message copied to Clipboard', 'Length: '+this.result.TextNormalized.length+' characters',{
+      duration: 2000
+    });
     let clipboard = document.createElement('input');
     clipboard.setAttribute('value', this.result.TextNormalized);
     document.body.appendChild(clipboard);
@@ -179,6 +183,10 @@ export class KeywordExctractionComponent implements OnInit {
     //console.log(event.target.docCreatDate.value);
     //{{ dateObj | date:'mm:ss' }}
     this.loading = true;
+
+    this._snackBar.open('Your request is being processed','',{
+      duration: 2000
+    });
     this.optio = {
 
       docCreatTime : this.documentCreationTime,
