@@ -196,7 +196,7 @@ export class KeywordExctractionComponent implements OnInit {
     this.timeline.getTextKeyDateFromSingleDoc(this.conteudoDefault, this.optio).subscribe((res) =>
       {
         if (res) {
-        console.log('nice');
+        //console.log('nice');
         this.result = res;
         //pedido recebido aqui
         //console.log(res);
@@ -238,7 +238,7 @@ export class KeywordExctractionComponent implements OnInit {
         // tslint:disable-next-line: forin
         for (let data in c){
           let j = Date.parse(c[data].x.split('-').join(' '));
-          console.log (j);
+          //console.log (j);
           c[data]['dateparsed']=j;
         }
         c = c.sort(( a , b ) => { return a.dateparsed - b.dateparsed; });

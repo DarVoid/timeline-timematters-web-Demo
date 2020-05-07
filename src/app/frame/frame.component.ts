@@ -109,7 +109,7 @@ export class FrameComponent implements OnInit, OnChanges {
           });
         }
 
-        console.log(this.textoArray);
+        //console.log(this.textoArray);
         /*console.log('dados grafico');
         console.log(this.grafico);*/
         //console.log('keywords Scores');
