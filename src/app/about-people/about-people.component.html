@@ -1,1 +1,10 @@
-<p>about-people works!</p>
+<mat-list>
+  <mat-list-item *ngFor="let person of people">
+    <img matListAvatar src="person.photoSrc" alt="...">
+    <h3 matLine> {{person.name}} </h3>
+    <p matLine>
+      <span> {{person.githubLink}} </span>
+      <span class="demo-2"> -- {{person.linkedIn}} </span>
+    </p>
+  </mat-list-item>
+</mat-list>
