@@ -162,7 +162,9 @@ export class KeywordExctractionComponent implements OnInit {
     //console.log(event.target.docCreatDate.value);
     //{{ dateObj | date:'mm:ss' }}
     this.loading = true;
-
+    if(this.conteudoDefault=''){
+      return;
+    }
     this.optio = {
 
       docCreatTime : this.documentCreationTime,
