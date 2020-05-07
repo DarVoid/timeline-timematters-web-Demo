@@ -1,10 +1,12 @@
-<mat-list>
+<div class="fundo">
+  <mat-list>
   <mat-list-item *ngFor="let person of people">
-    <img matListAvatar src="person.photoSrc" alt="...">
-    <h3 matLine> {{person.name}} </h3>
-    <p matLine>
-      <span> {{person.githubLink}} </span>
-      <span class="demo-2"> -- {{person.linkedIn}} </span>
-    </p>
+    <img matListAvatar [src]="person.photoSrc"/>
+    <h3 matLine> {{person.name}}</h3>
+    <p><a  target="_blank" href={{person.githubLink}}> <i class="fab fa-github"></i> GitHub</a></p><p><a target="_blank" href={{person.linkedIn}}><i class="fab fa-linkedin"></i> LinkedIn</a></p>
+
   </mat-list-item>
 </mat-list>
+
+
+</div>

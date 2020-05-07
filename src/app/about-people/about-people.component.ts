@@ -10,10 +10,16 @@ export class AboutPeopleComponent implements OnInit {
   constructor() {
     this.people = [
       {name: 'Jorge',
-      photoSrc: './../../assets/fotoJorge.png',
+      photoSrc: 'assets/fotoJorge.png',
       githubLink: 'https://github.com/DarVoid/',
       linkedIn: 'https://www.linkedin.com/in/djorge7/'
-      }
+      },
+      {name: 'Tiago',
+      photoSrc: 'assets/fotoJorge.png',
+      githubLink: 'https://github.com/DarVoid/',
+      linkedIn: 'https://www.linkedin.com/in/djorge7/'
+      },
+
     ];
   }
 
