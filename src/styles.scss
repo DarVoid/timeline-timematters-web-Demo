@@ -2,7 +2,7 @@
 @import '~@angular/material/theming';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;overflow-y: scroll; }
 
 @include mat-core();
 
@@ -75,3 +75,4 @@ a:active {
 .ceninha{
   height: 50px;
 }
+
