@@ -10,7 +10,7 @@ export class AboutPeopleComponent implements OnInit {
   public developers: Array<any>;
   constructor() {
     this.developers = [
-      {name: 'Jorge',
+      {name: 'Jorge Duque',
         photoSrc: 'assets/fotoJorge.png',
         links:[
           { tipo: 'GitHub',
@@ -23,7 +23,7 @@ export class AboutPeopleComponent implements OnInit {
           },
         ]
       },
-      {name: 'Tiago',
+      {name: 'Tiago Vasconcelos',
       photoSrc: 'assets/tiago.png',
       links:[
         { tipo: 'GitHub',
