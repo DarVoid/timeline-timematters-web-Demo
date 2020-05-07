@@ -10,14 +10,44 @@ export class AboutPeopleComponent implements OnInit {
   constructor() {
     this.people = [
       {name: 'Jorge',
-      photoSrc: 'assets/fotoJorge.png',
-      githubLink: 'https://github.com/DarVoid/',
-      linkedIn: 'https://www.linkedin.com/in/djorge7/'
+        photoSrc: 'assets/fotoJorge.png',
+        links:[
+          { tipo: 'GitHub',
+            link: 'https://github.com/DarVoid/',
+            icon: '<i class="fab fa-github"></i>'
+          },
+          { tipo: 'LinkedIn',
+            link: 'https://www.linkedin.com/in/djorge7/',
+            icon: '<i class="fab fa-linkedin"></i>'
+          },
+        ]
       },
       {name: 'Tiago',
-      photoSrc: 'assets/fotoJorge.png',
-      githubLink: 'https://github.com/DarVoid/',
-      linkedIn: 'https://www.linkedin.com/in/djorge7/'
+      photoSrc: 'assets/tiago.png',
+      links:[
+        { tipo: 'GitHub',
+          link: 'https://github.com/tiagorafael982',
+          icon: '<i class="fab fa-github"></i>'
+        }
+      ]
+      },
+      {name: 'Ricardo Campos',
+      photoSrc: 'assets/ricardo.png',
+      links:[
+        { tipo: 'GitHub',
+          link: 'https://github.com/tiagorafael982',
+          icon: '<i class="fab fa-github"></i>'
+        },
+        { tipo: 'LinkedIn',
+        link: 'https://www.linkedin.com/in/camposricardo/',
+        icon: '<i class="fab fa-linkedin"></i>'
+        },
+        { tipo: 'Website',
+        link: 'http://www.ccc.ipt.pt/~ricardo/',
+        icon: '<i class="fas fa-globe-americas"></i>'
+        },
+
+      ]
       },
 
     ];

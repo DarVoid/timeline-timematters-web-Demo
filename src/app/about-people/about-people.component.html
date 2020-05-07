@@ -3,7 +3,7 @@
   <mat-list-item *ngFor="let person of people">
     <img matListAvatar [src]="person.photoSrc"/>
     <h3 matLine> {{person.name}}</h3>
-    <p><a  target="_blank" href={{person.githubLink}}> <i class="fab fa-github"></i> GitHub</a></p><p><a target="_blank" href={{person.linkedIn}}><i class="fab fa-linkedin"></i> LinkedIn</a></p>
+    <p *ngFor="let cont of person.links"><a target="_blank" href={{cont.link}}>{{cont.tipo}}<span [innerHTML]="cont.icon | safe:'html'"></span></a></p>
 
   </mat-list-item>
 </mat-list>
