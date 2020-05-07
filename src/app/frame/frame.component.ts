@@ -29,7 +29,7 @@ export class FrameComponent implements OnInit, OnChanges {
     if(this.docOrSentence == 'doc'){
       if (this.argumentos) {
         this.textoNormalizado = this.argumentos.TextNormalized;
-        console.log(this.argumentos.TextNormalized);
+        //console.log(this.argumentos.TextNormalized);
         this.keywordScores = this.argumentos.RelevantKWs;
         this.dateScores = this.argumentos.Score;
 
@@ -79,11 +79,11 @@ export class FrameComponent implements OnInit, OnChanges {
 
           // console.log(titulo);
           // console.log(cor);
-          x = '<span title="' + titulo+ '">' + '<b class="'+cor+'">' + textoAEscrever + '</b>' + '</span>';
+          x = '<span title="' + titulo + '">' + '<b class="' + cor + '">' + textoAEscrever + '</b>' + '</span>';
 
           return x;
         });
-        if(!this.keywordsMatter){
+        if (!this.keywordsMatter) {
 
           this.texto = this.texto.replace(/<kw>(.*?)<\/kw>/gi, (x) => {
 
@@ -118,18 +118,19 @@ export class FrameComponent implements OnInit, OnChanges {
         //console.log(this.dateScores);
       }
     } else {
+      if (this.argumentos) {
       // BEGIN SENTENCE CODE
-      console.log(this.argumentos.SentencesTokens);
+      //console.log(this.argumentos.SentencesTokens);
       this.keywordScores = this.argumentos.RelevantKWs;
       this.dateScores = this.argumentos.Score;
-      console.log(this.dateScores);
+      //console.log(this.dateScores);
       this.texto = '';
       let frases = [];
       // tslint:disable-next-line: forin
       for (let i in this.argumentos.SentencesTokens) {
         frases.push(this.argumentos.SentencesTokens[i.toString()].join(' '));
-        console.log('frase ' + i);
-        console.log(frases[i]);
+        //console.log('frase ' + i);
+        //console.log(frases[i]);
       }
       // tslint:disable-next-line: whitespace
       // tslint:disable-next-line: forin
@@ -140,8 +141,8 @@ export class FrameComponent implements OnInit, OnChanges {
           let titulo = this.dateScores[valor.toLowerCase()];
           let cor = '';
           if (titulo) {
-            console.log('titulo');
-            console.log(titulo[Object.keys(titulo)[0].toString()][0]);
+            //console.log('titulo');
+            //console.log(titulo[Object.keys(titulo)[0].toString()][0]);
             titulo = titulo[Object.keys(titulo)[0].toString()][0];
           } else {
             titulo = 'ta a falhar';
@@ -189,7 +190,7 @@ export class FrameComponent implements OnInit, OnChanges {
         this.texto = frases.join(' ');
 
       }// end iteration phrases
-      if(!this.keywordsMatter){
+      if (!this.keywordsMatter) {
 
         this.texto = this.texto.replace(/<kw>(.*?)<\/kw>/gi, (x) => {
 
@@ -215,6 +216,6 @@ export class FrameComponent implements OnInit, OnChanges {
         });
       }
     }// END SENTENCE CODE
-
+  }
 } // end ngChanges
 } // component end

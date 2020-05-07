@@ -176,37 +176,54 @@ export class KeywordExctractionComponent implements OnInit {
       documentType: this.documentTypeSelected,
       N: this.simbaValue
     };
-    console.log(this.optio);
+    //console.log(this.optio);
     this.timeline.getTextKeyDateFromSingleDoc(this.conteudoDefault, this.optio).subscribe((res) =>
       {
         if (res) {
         console.log('nice');
         this.result = res;
         //pedido recebido aqui
-        console.log('');
+        //console.log(res);
         this.requestMade = true;
         this.loading = false;
-        let c= [];
-        let a ={};
-        let b ={};
+        let c = [];
+        let a = {};
+        let b = {};
         // tslint:disable-next-line: forin
-        for(let i in Object.keys(this.result.Score)){
-          console.log(this.result.Score[Object.keys(this.result.Score)[i]][0]);
-          a = this.result.Score[Object.keys(this.result.Score)[i]][0];
+        for (let i in Object.keys(this.result.Score)) {
+          //console.log(this.result.Score[Object.keys(this.result.Score)[i]][0]);
+          // handle Dataset
+          if (this.byDocOrSentece) {
+            a = '<p>Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p>';
+          }else {
+            let valorDeA = '';
+            // tslint:disable-next-line: forin
+            for (let xd in this.result.Score[Object.keys(this.result.Score)[i]]) {
+              valorDeA += '<span title="'+this.result.SentencesNormalized[xd.toString()]+'"><p>Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
+            }
+            a = valorDeA;
+          }
           b = Object.keys(this.result.Score)[i];
 
+          //console.log("a");
+          //console.log(a);
+          //console.log("b");
+          //console.log(b);
+          //console.log("end");
+
+
             c.push({x:b,y:a});
-            console.log();
-            console.log(Object.keys(this.result.Score)[i].split('-').join(''));
+            //console.log();
+            //console.log(Object.keys(this.result.Score)[i].split('-').join(''));
 
             /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join(''))?'':c.pop();
         }
-        console.log("a,b,join");
-        console.log(a);
-        console.log(b);
-        console.log(this.result.Score);
-        console.log(c);
-        console.log("end");
+        //console.log("a,b,join");
+        //console.log(a);
+        //console.log(b);
+        //console.log(this.result.Score);
+        //console.log(c);
+        //console.log("end");
         this.dataset = c;
 
         return ' ';

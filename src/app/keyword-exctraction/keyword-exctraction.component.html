@@ -48,7 +48,7 @@
             <mat-vertical-stepper >
               <div *ngFor="let item of dataset">
               <mat-step  [completed]="false" label='{{item.x.substring(0,10)}}' matStepperIcon="phone" >
-                <p>Date Score: {{item.y}}</p>
+                <div [innerHTML]="item.y | safe:'html'"></div>
               </mat-step>
               </div>
           </mat-vertical-stepper>
