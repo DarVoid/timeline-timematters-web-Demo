@@ -13,17 +13,17 @@
 
 <mat-menu #menu1="matMenu">
   <button mat-menu-item class="mat-menu-item"  (click)='changePage("1")'>Single Text <i class="fas fa-square"></i> </button>
-  <div class="divider"></div>
+  
   <button mat-menu-item class="mat-menu-item"  (click)='changePage("2")'>Multi Doc <i class="fas fa-clone"></i> </button>
-  <div class="divider"></div>
+  
   <button mat-menu-item class="mat-menu-item" (click)='changePage("3")' >Query <i class="fas fa-search"></i></button>
 </mat-menu>
 
 <mat-menu #menu2="matMenu" ngbDropdownMenu>
   <button mat-menu-item class="mat-menu-item" (click)='changePage("4")' ngbDropdownItem>People <i class="fas fa-user-circle"></i></button>
-  <div class="divider"></div>
+  
   <a target="_blank" href="https://github.com/liaad/time-matters"><button mat-menu-item class="mat-menu-item" ngbDropdownItem>GitHub <i class="fab fa-github" aria-hidden="true"></i></button></a>
-  <div class="divider"></div>
+ 
   <button mat-menu-item class="mat-menu-item" (click)='changePage("5")' ngbDropdownItem>Related Work <i class="fas fa-book-open"></i></button>
 </mat-menu>
 
