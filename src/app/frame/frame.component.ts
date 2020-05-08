@@ -22,8 +22,6 @@ export class FrameComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    console.log('iniciado');
-
   }
   ngOnChanges() {
     if(this.docOrSentence == 'doc'){

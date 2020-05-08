@@ -61,7 +61,7 @@ export class KeywordExctractionComponent implements OnInit {
 
     this.conteudoDefault = this.listaConteudos[0];
     this.algoritmosDate = ['py_heideltime' , 'py_rule_based'];
-    this.algoritmoSelected = this.algoritmosDate[1];
+    this.algoritmoSelected = this.algoritmosDate[0];
     this.dateGranularityOptions = ['full', 'year', 'month', 'day'];
     this.dateGranularitySelected = this.dateGranularityOptions[0];
     this.documentTypeOptions = ['news', 'narrative', 'colloquial', 'scientific'];

@@ -21,10 +21,10 @@ export class LinhaTemporalComponent implements OnInit {
   public options: any = {
     chart: {
       type: 'scatter',
-      height: 200
+      height: 300
     },
     title: {
-      text: 'Sample Scatter Plot'
+      text: 'Timeline'
     },
     credits: {
       enabled: false
@@ -51,27 +51,27 @@ export class LinhaTemporalComponent implements OnInit {
     ]
   }
   @Input() argumentos: any;
-  public chart1:any;
+  public chart1: any;
   public b: any;
   public rendering: string;
   constructor() {
-    this.rendering = 'renderig';
+    this.rendering = 'rendering...';
   }
 
   ngOnInit() {
     let p = [ ];
-    console.log(this.options.series[0]);
+    //console.log(this.options.series[0]);
 
     // tslint:disable-next-line: forin
     for(let y in this.argumentos){
-      console.log(this.argumentos[y]);
+      //console.log(this.argumentos[y]);
       let valor = this.argumentos[y].y.substring(10, this.argumentos[y].y.length-4);
-      console.log(new Date(this.argumentos[y].x).getTime());
+      //console.log(new Date(this.argumentos[y].x).getTime());
 
       p.push([new Date(this.argumentos[y].x).getTime(), valor*1]);
     }
     this.options.series[0].data = p;
-    console.log(this.options.series[0]);
+    //console.log(this.options.series[0]);
   }
   public update(){
     Highcharts.chart('container', this.options);
