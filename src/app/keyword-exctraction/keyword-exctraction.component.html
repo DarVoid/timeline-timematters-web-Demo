@@ -41,7 +41,7 @@
               </div>
         </div>
           </mat-tab>
-          <mat-tab class="afterGraphs" label="Timeline">
+          <mat-tab label="Timeline">
             <!--WIP-->
             <mat-vertical-stepper >
               <div *ngFor="let item of dataset">
@@ -50,6 +50,11 @@
               </mat-step>
               </div>
           </mat-vertical-stepper>
+          <!--WIP-->
+          </mat-tab>
+          <mat-tab label="timeline2">
+            <!--WIP-->
+            <app-linha-temporal [argumentos]="dataset"></app-linha-temporal>
           <!--WIP-->
           </mat-tab>
           </mat-tab-group></mat-card>

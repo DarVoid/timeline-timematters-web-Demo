@@ -25,8 +25,7 @@ export class AboutPeopleComponent implements OnInit {
           { tipo: 'email',
             link: 'mailto://jorgeraposoduque@gmail.com',
             icon: '<i class="far fa-envelope"></i>'
-          },
-
+          }
         ]
       }
     ];

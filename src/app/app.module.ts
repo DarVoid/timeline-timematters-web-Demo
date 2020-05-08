@@ -32,6 +32,7 @@ import { AboutRelatedWorkComponent } from './about-related-work/about-related-wo
 import { MultiDocComponent } from './multi-doc/multi-doc.component';
 import { QueryComponent } from './query/query.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { LinhaTemporalComponent } from './linha-temporal/linha-temporal.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     AboutPeopleComponent,
     AboutRelatedWorkComponent,
     MultiDocComponent,
-    QueryComponent
+    QueryComponent,
+    LinhaTemporalComponent
   ],
   imports: [
     BrowserModule,
