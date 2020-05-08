@@ -16,6 +16,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class KeywordExctractionComponent implements OnInit {
   public result: any;
   public requestMade: boolean;
+  public requestReceived: boolean;
   public withKeywords: boolean;
   public withKeywordsSentence: string;
   public picker: any;
@@ -177,15 +178,15 @@ export class KeywordExctractionComponent implements OnInit {
   }
   goBack(){
     this.result=false;
+    this.requestMade = false;
+    this.loading = false;
   }
   public getKeyword(event:any) {
 
     this.loading = true;
     event.preventDefault();
-    //console.log(event.target.docCreatDate.value);
-    //{{ dateObj | date:'mm:ss' }}
-    this.loading = true;
-
+    // console.log(event.target.docCreatDate.value);
+    // {{ dateObj | date:'mm:ss' }}
     this._snackBar.open('Your request is being processed','',{
       duration: 2000
     });
@@ -210,8 +211,6 @@ export class KeywordExctractionComponent implements OnInit {
         this.result = res;
         //pedido recebido aqui
         //console.log(res);
-        this.requestMade = true;
-        this.loading = false;
         let c = [];
         let a = {};
         let b = {};
@@ -259,13 +258,15 @@ export class KeywordExctractionComponent implements OnInit {
         //console.log(c);
         //console.log("end");
         this.dataset = c;
-
+        this.requestMade = true;
+        this.loading = false;
         return ' ';
         }
         else {
           console.log('oof');
           return ' ';
         }
+
       }
     );
 
