@@ -22,7 +22,7 @@ export class AboutPeopleComponent implements OnInit {
             link: 'https://www.linkedin.com/in/djorge7/',
             icon: '<i class="fab fa-linkedin"></i>'
           },
-          { tipo: 'email',
+          { tipo: 'Email',
             link: 'mailto://jorgeraposoduque@gmail.com',
             icon: '<i class="far fa-envelope"></i>'
           }
@@ -36,7 +36,15 @@ export class AboutPeopleComponent implements OnInit {
         { tipo: 'GitHub',
           link: 'https://github.com/tiagorafael982',
           icon: '<i class="fab fa-github"></i>'
-        }
+        },
+        { tipo: 'LinkedIn',
+        link: 'https://www.linkedin.com/in/tiago-c%C3%A2ndido-4590951a8/',
+        icon: '<i class="fab fa-linkedin"></i>'
+      },
+      { tipo: 'Email',
+        link: 'mailto://tiago-rafael_98@hotmail.com',
+        icon: '<i class="far fa-envelope"></i>'
+      }
       ]
       }
     ]
