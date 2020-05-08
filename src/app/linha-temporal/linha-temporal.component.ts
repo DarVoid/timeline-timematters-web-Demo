@@ -53,7 +53,9 @@ export class LinhaTemporalComponent implements OnInit {
   @Input() argumentos: any;
   public chart1:any;
   public b: any;
+  public rendering: string;
   constructor() {
+    this.rendering = 'renderig';
   }
 
   ngOnInit() {
@@ -73,6 +75,7 @@ export class LinhaTemporalComponent implements OnInit {
   }
   public update(){
     Highcharts.chart('container', this.options);
+    this.rendering = ' ';
   }
 
 }
