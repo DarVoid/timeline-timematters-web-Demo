@@ -70,9 +70,8 @@ export class LinhaTemporalComponent implements OnInit {
     }
     this.options.series[0].data = p;
     console.log(this.options.series[0]);
-    //this.update();
   }
-  update(){
+  public update(){
     Highcharts.chart('container', this.options);
   }
 

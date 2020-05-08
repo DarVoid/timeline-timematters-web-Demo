@@ -42,6 +42,7 @@ export class KeywordExctractionComponent implements OnInit {
   public numberOfKeyWords: number;
   public contextWindow: any;
   public simbaValue: number;
+  public cheating:boolean;
   constructor(private timeline: TimelineService, private _snackBar: MatSnackBar) {
     /*private timeline: TimelineService*/
     this.ngramSelected = 1;
@@ -72,6 +73,7 @@ export class KeywordExctractionComponent implements OnInit {
     this.numberOfKeyWords = 10;
     this.contextWindow = "full_sentence";
     this.simbaValue = 10;
+    this.cheating = false;
 
   }
   toggleOptionKeywords(){
