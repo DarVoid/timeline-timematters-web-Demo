@@ -197,13 +197,6 @@ $app-theme: mat-light-theme($app-primary, $app-accent);
     background-color: #c75c42;
   }
 
- .divider {
-   height: 0.2px;
-   margin: 9.5px 0;
-   overflow: hidden;
-   background-color: white;
-
- }
 
  .mat-button:hover {
   background-color: #374457;
