@@ -21,7 +21,7 @@ export class LinhaTemporalComponent implements OnInit {
   public options: any = {
     chart: {
       type: 'scatter',
-      height: 700
+      height: 200
     },
     title: {
       text: 'Sample Scatter Plot'
@@ -31,28 +31,22 @@ export class LinhaTemporalComponent implements OnInit {
     },
     tooltip: {
       formatter: function() {
-        return 'x: ' + Highcharts.dateFormat('%e %b %y %H:%M:%S', this.x) +
-          'y: ' + this.y.toFixed(2);
+        return 'Date: '+ Highcharts.dateFormat('%e %b %Y', this.x) +
+          '; Score: ' + this.y.toFixed(3);
       }
     },
     xAxis: {
       type: 'datetime',
       labels: {
         formatter: function() {
-          return Highcharts.dateFormat('%e %b %y', this.value);
+          return Highcharts.dateFormat('%e %b %Y', this.value);
         }
       }
     },
     series: [
-      {
-        name: 'Normal',
+      { name:'scores',
         turboThreshold: 500000,
         data: [[new Date('2018-01-25 18:38:31').getTime(), 2]]
-      },
-      {
-        name: 'Abnormal',
-        turboThreshold: 500000,
-        data: [[new Date('2018-02-05 18:38:31').getTime(), 7]]
       }
     ]
   }
@@ -63,8 +57,20 @@ export class LinhaTemporalComponent implements OnInit {
   }
 
   ngOnInit() {
+    let p = [ ];
+    console.log(this.options.series[0]);
 
+    // tslint:disable-next-line: forin
+    for(let y in this.argumentos){
+      console.log(this.argumentos[y]);
+      let valor = this.argumentos[y].y.substring(10, this.argumentos[y].y.length-4);
+      console.log(new Date(this.argumentos[y].x).getTime());
 
+      p.push([new Date(this.argumentos[y].x).getTime(), valor*1]);
+    }
+    this.options.series[0].data = p;
+    console.log(this.options.series[0]);
+    //this.update();
   }
   update(){
     Highcharts.chart('container', this.options);
