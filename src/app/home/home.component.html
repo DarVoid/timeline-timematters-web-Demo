@@ -1,30 +1,37 @@
 <header class="header--standard">
   <mat-toolbar ngbDropdown>
     <p class="tituloProjeto"><!--i class="fas fa-clock"></>-->
-      <img class="ceninha" src="..\assets\TimeMatters.png" /> TimeMatters Demo </p>
+      <img class="ceninha" src="..\assets\TimeMatters.png" /> Time-Matters Demo  </p>
     <div class="spacer"></div>
     <button mat-button  (click)='changePage("0")' ><i class="fas fa-home"></i> Home</button>
-    <button mat-button [matMenuTriggerFor]="menu1" ngbDropdownToggle ><mat-icon>keyboard_arrow_down</mat-icon>Score Extractor</button>
+    <button mat-button [matMenuTriggerFor]="menu1" ngbDropdownToggle><mat-icon>keyboard_arrow_down</mat-icon>Tag Dates</button>
     <a  target="_blank" href="https://tm-websuiteapps.ipt.pt/timematters/apidocs/"><button mat-button ><i class="fas fa-laptop-code"></i> API</button></a>
+    <a target="_blank" href="https://github.com/liaad/time-matters"><button mat-button>GitHub <i class="fab fa-github" aria-hidden="true"></i></button></a>
     <button mat-button ><i class="fas fa-mobile-alt"></i> Mobile App</button>
+    <button mat-button [matMenuTriggerFor]="menu3" ngbDropdownToggle><mat-icon>keyboard_arrow_down</mat-icon> Related Projects</button>
     <button mat-button [matMenuTriggerFor]="menu2" ngbDropdownToggle><mat-icon>keyboard_arrow_down</mat-icon>About </button>
   </mat-toolbar>
 </header>
 
 <mat-menu #menu1="matMenu">
-  <button mat-menu-item   (click)='changePage("1")'>Single Text <i class="fas fa-square"></i> </button>
-
-  <button mat-menu-item  (click)='changePage("2")'>Multi Doc <i class="fas fa-clone"></i> </button>
-
+  <button mat-menu-item   (click)='changePage("1")'>Free Text Input <i class="fas fa-square"></i> </button>
+  <div class="divider"></div>
+  <button mat-menu-item  (click)='changePage("2")'>Specify URL <i class="fas fa-clone"></i> </button>
+<!-- 
   <button mat-menu-item (click)='changePage("3")' >Query <i class="fas fa-search"></i></button>
+  -->
 </mat-menu>
 
 <mat-menu #menu2="matMenu" ngbDropdownMenu>
   <button mat-menu-item class="mat-menu-item" (click)='changePage("4")' ngbDropdownItem>People <i class="fas fa-user-circle"></i></button>
-
-  <a target="_blank" href="https://github.com/liaad/time-matters"><button mat-menu-item class="mat-menu-item" ngbDropdownItem>GitHub <i class="fab fa-github" aria-hidden="true"></i></button></a>
-
+  <div class="divider"></div>
   <button mat-menu-item class="mat-menu-item" (click)='changePage("5")' ngbDropdownItem>Related Work <i class="fas fa-book-open"></i></button>
+</mat-menu>
+
+<mat-menu #menu3="matMenu">
+  <a target="_blank" href="https://hub.docker.com/r/liaad/time-matters"><button mat-menu-item class="mat-menu-item">Dockerized Time-Matters <i class="fab fa-docker"></i> </button></a>
+  <div class="divider"></div>
+  <a target="_blank" href=""><button mat-menu-item class="mat-menu-item">Time-Matters Query  <i class="fas fa-search"></i> </button></a>
 </mat-menu>
 
 <section class="NavSection">
@@ -34,7 +41,10 @@
         <div class="headliner">
           <br>
           <h1 class="miniText">
-            App to extract dates from documents
+            Temporal annotation of texts with scores
+          </h1>
+          <h1 class="miniText2">
+            To learn more, visit our <a target="_blank" href="https://github.com/liaad/time-matters"><b>Github web page.</b></a>
           </h1>
           <br>
         </div>
@@ -45,7 +55,7 @@
 
 
   <div *ngIf='page=="0" else pagina1'>
-     <app-landing-page></app-landing-page>
+    <app-keyword-exctraction></app-keyword-exctraction>
   </div>
   <ng-template #pagina1>
     <div *ngIf='page=="1" else pagina2'>

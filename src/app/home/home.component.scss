@@ -2,9 +2,19 @@
   font-size: 27px;
   font-family: 'Work Sans', sans-serif;
   margin-bottom: 0;
-  padding-top: 20px;
   color: #ffffff;
-  background-color: #c75c42;
+  /*background-color: #c75c42;*/
+  background-color: #cc4625;
+  padding-left: 20px;
+}
+
+.miniText2 {
+  font-size: 17px;
+  font-family: 'Work Sans', sans-serif;
+  margin-bottom: 0;
+  color: #ffffff;
+  /*background-color: #c75c42;*/
+  background-color: #cc4625;
   padding-left: 20px;
 }
 
@@ -26,12 +36,14 @@ $app-theme: mat-light-theme($app-primary, $app-accent);
     margin:-8px auto; 
     color: white;
     text-align: center;
-    background-color: #c75c42;
+    /*background-color: #c75c42; */
+    background-color: #cc4625;
     font-family: 'Work Sans', sans-serif;
   }
 
   .mat-menu-item:hover {
-   background-color: #374457;
+   /*background-color: #374457;*/
+   background-color: rgba(0,64,107,0.89);
   }
 
   button:focus {
@@ -40,13 +52,14 @@ $app-theme: mat-light-theme($app-primary, $app-accent);
 
   .mat-button {
      color: white;
-     margin-left: 60px;
+     margin-left: 22px;
      font-family: 'Work Sans';
      position: sticky;
    }
 
    .mat-toolbar {
-    background-color: #c75c42;
+    /*background-color: #c75c42;*/
+    background-color: #cc4625;
     font-family: 'Work Sans', sans-serif;
   }
 }

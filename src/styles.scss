@@ -161,8 +161,9 @@ a:active {
 }
 
 section.NavSection {
-  background-color: #c75c42;
-  padding-bottom: 25px;
+ /* background-color: #c75c42;*/
+  background-color: #cc4625;
+  padding-bottom: 10px;
 }
 
 .tituloProjeto {
@@ -194,12 +195,14 @@ $app-theme: mat-light-theme($app-primary, $app-accent);
     position: sticky;
     top: 0;
     z-index: 9;
-    background-color: #c75c42;
+   /* background-color: #c75c42;*/
+   background-color: #cc4625;
   }
 
 
  .mat-button:hover {
-  background-color: #374457;
+  /*background-color: #374457;*/
+  background-color: rgba(0,64,107,0.89);
  }
 
 }
@@ -209,29 +212,30 @@ $app-theme: mat-light-theme($app-primary, $app-accent);
 // KEYWORD EXTRACTION COMPONENTE SCSS
 
 .fundo {
-  background-color: #463940;
-  height:750px;
+  /*background-color: #463940;*/
+  background-color: #d6d0d0;
   padding-top: 20px;
-  padding-bottom:100%;
+  padding-bottom: 5%;
 }
 
 .my-col {
-  background-color: #374457;
+  /*background-color: #374457;*/
+   background: linear-gradient(to bottom, rgba(0,64,107,0.5) 0%,rgba(0,64,107,0.89) 100%);
    height:70%;
    width: 100%;
    border-radius: 3px;
    margin: auto;
-   margin-top:20px;
+   margin-top:10px;
    padding-bottom:7px;
 }
 
 .my-col2 {
-  background-color: #374457;
+  background: linear-gradient(to bottom, rgba(0,64,107,0.5) 0%,rgba(0,64,107,0.89) 100%);
   height:70%;
   width: 100%;
   border-radius: 3px;
   margin: auto;
-  margin-top:20px;
+  margin-top:10px;
   padding-bottom:10px;
 }
 
@@ -309,10 +313,10 @@ app-frame {
 }
 
 .divider {
-  height: 0.2px;
+  height: 0.01px;
   margin: 9.5px 0;
   overflow: hidden;
-  background-color: #374457;
+  background-color: #ffffff;
 
 }
 .afterAnnotated{

@@ -17,17 +17,19 @@ textarea {
 }
 
 .btn-link{
-    color: #BC4123;
+    /*color: #BC4123;*/ 
+    color: #cc4625;
     font-family: 'Work Sans', sans-serif;
 }
 
 .btn-primary {
-    background-color: #BC4123;
+    /*background-color: #BC4123;*/ 
+    background-color: #cc4625;
     border-color: transparent;
     font-family: 'Work Sans', sans-serif;
 }
 
-.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active {
     background-color: #993d26;
     border-color: transparent;
     box-shadow: 0 0 0 0.2rem rgba(153,61,38,.5);
@@ -49,8 +51,9 @@ hr {
 .mat-menu-item, .mat-menu-item2 {
     color: white;
     text-align: center;
-    background-color: #c75c42;
-    font-family: 'Work Sans', sans-serif;
+   /* background-color: #c75c42;*/
+   background-color: #cc4625;
+   font-family: 'Work Sans', sans-serif;
 }
 
 .mat-menu-item {
