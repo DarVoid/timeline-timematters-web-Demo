@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HomeComponent } from './home.component';
 
@@ -24,6 +25,7 @@ describe('HomeComponent', () => {
         MatListModule,
         MatSidenavModule,
         MatToolbarModule,
+        NgbCollapseModule
       ]
     }).compileComponents();
   }));

@@ -1,3 +1,18 @@
+nav {
+  background-color: #cc4625;
+  position: sticky;
+}
+
+.navbar-brand, .navbar-brand:hover {
+  color: white;
+  font-family: 'Work Sans';
+  font-size: 35px;
+  padding-left: 50px;
+  padding-top: 10px;
+  line-height:1.125;
+  font-weight: 600;
+}
+
 .miniText {
   font-size: 27px;
   font-family: 'Work Sans', sans-serif;
@@ -32,35 +47,32 @@ $app-theme: mat-light-theme($app-primary, $app-accent);
   $primary: map-get($app-theme, primary);
   $accent: map-get($app-theme, accent);
 
-  .mat-menu-item {
-    margin:-8px auto; 
-    color: white;
-    text-align: center;
-    /*background-color: #c75c42; */
-    background-color: #cc4625;
+  * {
     font-family: 'Work Sans', sans-serif;
   }
 
-  .mat-menu-item:hover {
-   /*background-color: #374457;*/
+  .nav-item{
+    /*margin:-8px auto; */
+    color: white;
+    text-align: center;
+    background-color: #cc4625;
+    font-size:15px;
+    padding-left: 50px;
+  }
+
+  .dropdown-item {
+    color: white;
+    text-align: center;
+    background-color: #cc4625;
+  }
+
+  .nav-link:hover, .dropdown-item:hover {
    background-color: rgba(0,64,107,0.89);
+   border-radius: 4px;
   }
 
   button:focus {
     outline: 0px;
-  }
-
-  .mat-button {
-     color: white;
-     margin-left: 22px;
-     font-family: 'Work Sans';
-     position: sticky;
-   }
-
-   .mat-toolbar {
-    /*background-color: #c75c42;*/
-    background-color: #cc4625;
-    font-family: 'Work Sans', sans-serif;
   }
 }
 
