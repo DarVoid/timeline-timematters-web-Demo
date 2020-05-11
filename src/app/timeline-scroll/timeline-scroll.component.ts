@@ -40,7 +40,7 @@ export class TimelineScrollComponent implements OnInit {
       console.log(h);
       console.log(this.argumentos[h]);
       if(this.argumentos[h].x.length==4){
-        events.push({"start_date":  {"year": this.argumentos[h].x}, "text": {"headline": this.argumentos[h].y}});
+        events.push({"start_date":  {"year": this.argumentos[h].x}, "text": {"text": this.argumentos[h].y}});
 
       }else if (this.argumentos[h].x.split('-').length==2){
         events.push({"start_date":  {"year": this.argumentos[h].x.split('-')[0],"month":this.argumentos[h].x.split('-')[1] }, "text": {"headline": this.argumentos[h].y}});
