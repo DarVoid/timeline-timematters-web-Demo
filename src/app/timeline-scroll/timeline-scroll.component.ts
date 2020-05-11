@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-declare  var TL:  zany;
+declare  var TL: any;
 
 
 
