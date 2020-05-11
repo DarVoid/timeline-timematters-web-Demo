@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 //import TL from '../../assets/TL1.js';
 declare  var TL: any;
+declare  var $: any;
 
 
 
@@ -17,7 +17,7 @@ export class TimelineScrollComponent implements OnInit {
   public texto: string;
   public events: Array<any>;
   public titulo: string;
-  public timeline:any;
+  public timeline: any;
 
   constructor() {
     //console.log(this.TLObj);
@@ -26,8 +26,10 @@ export class TimelineScrollComponent implements OnInit {
    }
 
   ngOnInit() {
+    //setTimeout(()=>{this.update();}, 5);
   }
-  public update() {
+
+  update() {
     this.rendering = '';
 
     console.log(this.argumentos);
@@ -48,7 +50,7 @@ export class TimelineScrollComponent implements OnInit {
         events.push({"start_date":  {"year": this.argumentos[h].x.split('-')[0],"month":this.argumentos[h].x.split('-')[1], "day":this.argumentos[h].x.split('-')[2] }, "text": {"headline": this.argumentos[h].y}});
       }
     }
-    j={"events": events};
+    j = {"events": events};
 
     console.log(j);
     let additionalOptions = {

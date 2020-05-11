@@ -34,7 +34,7 @@ import { QueryComponent } from './query/query.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { LinhaTemporalComponent } from './linha-temporal/linha-temporal.component';
 import { TimelineScrollComponent } from './timeline-scroll/timeline-scroll.component';
-import { RunScriptsDirective } from './run-scripts.directive';
+
 
 @NgModule({
   declarations: [
@@ -50,8 +50,7 @@ import { RunScriptsDirective } from './run-scripts.directive';
     MultiDocComponent,
     QueryComponent,
     LinhaTemporalComponent,
-    TimelineScrollComponent,
-    RunScriptsDirective
+    TimelineScrollComponent
   ],
   imports: [
     BrowserModule,
