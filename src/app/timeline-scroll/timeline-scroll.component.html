@@ -1,10 +1,2 @@
-<!--<link rel="stylesheet" type="text/css" href="https://cdn.knightlab.com/libs/timeline/latest/css/timeline.css">
- and then one of either
-<script type="text/javascript" src="https://cdn.knightlab.com/libs/timeline/latest/js/timeline.js"></script>
-<script type="text/javascript" src="https://cdn.knightlab.com/libs/timeline/latest/js/storyjs-embed.js"></script>
--->
 
-<script src="//cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
-<div on-mouseover='update()'><p>{{rendering}}</p></div>
-<div id="my-timeline" style="width: 100%; height: 600px"> </div>
-  <div id="timeline-embed" style="width: 100%; height: 600px"></div>
+<div  [innerHTML]="texto | safe:'html'" runScripts></div>
