@@ -65,8 +65,8 @@ export class LinhaTemporalComponent implements OnInit {
     // tslint:disable-next-line: forin
     for(let y in this.argumentos){
       //console.log(this.argumentos[y]);
-      let valor = this.argumentos[y].y.substring(10, this.argumentos[y].y.length-4);
-      //console.log(new Date(this.argumentos[y].x).getTime());
+      let valor = this.argumentos[y].y.substring(27, this.argumentos[y].y.length-4);
+      //console.log(valor);
 
       p.push([new Date(this.argumentos[y].x).getTime(), valor*1]);
     }

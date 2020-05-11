@@ -42,22 +42,23 @@ export class TimelineScrollComponent implements OnInit {
       console.log(h);
       console.log(this.argumentos[h]);
       if(this.argumentos[h].x.length==4){
-        events.push({"start_date":  {"year": this.argumentos[h].x}, "text": {"text": this.argumentos[h].y}});
+        events.push({"start_date":  {"year": this.argumentos[h].x}, "text": {"headline": this.argumentos[h].y}});
 
       }else if (this.argumentos[h].x.split('-').length==2){
-        events.push({"start_date":  {"year": this.argumentos[h].x.split('-')[0],"month":this.argumentos[h].x.split('-')[1] }, "text": {"text": this.argumentos[h].y}});
+        events.push({"start_date":  {"year": this.argumentos[h].x.split('-')[0],"month":this.argumentos[h].x.split('-')[1] }, "text": {"headline": this.argumentos[h].y}});
       }else {
-        events.push({"start_date":  {"year": this.argumentos[h].x.split('-')[0],"month":this.argumentos[h].x.split('-')[1], "day":this.argumentos[h].x.split('-')[2] }, "text": {"text": this.argumentos[h].y,}});
+        events.push({"start_date":  {"year": this.argumentos[h].x.split('-')[0],"month":this.argumentos[h].x.split('-')[1], "day":this.argumentos[h].x.split('-')[2] }, "text": {"headline": this.argumentos[h].y}});
       }
     }
     j = {"events": events,
-    "title": {"text": {"headline":"Timeline","text":"Here are the date scores presented in a timeline fashion"}}};
+    "title": {"text": {"headline":"Timeline","text":"Here are the date scores presented in a timeline fashion"}}
+
+    };
 
     console.log(j);
     let additionalOptions = {
       start_at_end: false,
-      default_bg_color: {r:255, g:255, b:255},
-      timenav_height: 150
+      default_bg_color: {r:255, g:255, b:255}
     }
     // tslint:disable-next-line: no-unused-expression
     new TL.Timeline('my-timeline', j, additionalOptions);

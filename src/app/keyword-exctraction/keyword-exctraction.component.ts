@@ -219,12 +219,12 @@ export class KeywordExctractionComponent implements OnInit {
           //console.log(this.result.Score[Object.keys(this.result.Score)[i]][0]);
           // handle Dataset
           if (this.byDocOrSentece) {
-            a = '<p>Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p>';
+            a = '<p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p>';
           }else {
             let valorDeA = '';
             // tslint:disable-next-line: forin
             for (let xd in this.result.Score[Object.keys(this.result.Score)[i]]) {
-              valorDeA += '<span title="'+this.result.SentencesNormalized[xd.toString()]+'"><p>Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
+              valorDeA += '<span title="'+this.result.SentencesNormalized[xd.toString()]+'"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
             }
             a = valorDeA;
           }
