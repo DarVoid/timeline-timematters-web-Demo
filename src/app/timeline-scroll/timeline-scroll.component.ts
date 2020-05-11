@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 //import TL from '../../assets/TL1.js';
 declare  var TL: any;
 
@@ -27,6 +28,7 @@ export class TimelineScrollComponent implements OnInit {
   ngOnInit() {
   }
   public update() {
+    this.rendering = '';
 
     console.log(this.argumentos);
     let j: any;
@@ -37,7 +39,14 @@ export class TimelineScrollComponent implements OnInit {
 
       console.log(h);
       console.log(this.argumentos[h]);
-      events.push({"start_date":  {"year": this.argumentos[h].x}, "text": {"headline": this.argumentos[h].y.substring(3,this.argumentos[h].y.length-4)}});
+      if(this.argumentos[h].x.length==4){
+        events.push({"start_date":  {"year": this.argumentos[h].x}, "text": {"headline": this.argumentos[h].y}});
+
+      }else if (this.argumentos[h].x.split('-').length==2){
+        events.push({"start_date":  {"year": this.argumentos[h].x.split('-')[0],"month":this.argumentos[h].x.split('-')[1] }, "text": {"headline": this.argumentos[h].y}});
+      }else {
+        events.push({"start_date":  {"year": this.argumentos[h].x.split('-')[0],"month":this.argumentos[h].x.split('-')[1], "day":this.argumentos[h].x.split('-')[2] }, "text": {"headline": this.argumentos[h].y}});
+      }
     }
     j={"events": events};
 
