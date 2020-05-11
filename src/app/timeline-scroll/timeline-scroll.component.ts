@@ -45,18 +45,19 @@ export class TimelineScrollComponent implements OnInit {
         events.push({"start_date":  {"year": this.argumentos[h].x}, "text": {"text": this.argumentos[h].y}});
 
       }else if (this.argumentos[h].x.split('-').length==2){
-        events.push({"start_date":  {"year": this.argumentos[h].x.split('-')[0],"month":this.argumentos[h].x.split('-')[1] }, "text": {"headline": this.argumentos[h].y}});
+        events.push({"start_date":  {"year": this.argumentos[h].x.split('-')[0],"month":this.argumentos[h].x.split('-')[1] }, "text": {"text": this.argumentos[h].y}});
       }else {
-        events.push({"start_date":  {"year": this.argumentos[h].x.split('-')[0],"month":this.argumentos[h].x.split('-')[1], "day":this.argumentos[h].x.split('-')[2] }, "text": {"headline": this.argumentos[h].y}});
+        events.push({"start_date":  {"year": this.argumentos[h].x.split('-')[0],"month":this.argumentos[h].x.split('-')[1], "day":this.argumentos[h].x.split('-')[2] }, "text": {"text": this.argumentos[h].y,}});
       }
     }
-    j = {"events": events};
+    j = {"events": events,
+    "title": {"text": {"headline":"Timeline","text":"Here are the date scores presented in a timeline fashion"}}};
 
     console.log(j);
     let additionalOptions = {
-      start_at_end: true,
-      default_bg_color: {r:0, g:0, b:0},
-      timenav_height: 250
+      start_at_end: false,
+      default_bg_color: {r:255, g:255, b:255},
+      timenav_height: 150
     }
     // tslint:disable-next-line: no-unused-expression
     new TL.Timeline('my-timeline', j, additionalOptions);
