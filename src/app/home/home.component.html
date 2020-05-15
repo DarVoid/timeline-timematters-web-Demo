@@ -1,86 +1,119 @@
-<header class="header--standard">
-  <mat-toolbar ngbDropdown>
-    <p class="tituloProjeto"><!--i class="fas fa-clock"></>-->
-      <img class="ceninha" src="..\assets\TimeMatters.png" /> Time-Matters Demo  </p>
-    <div class="spacer"></div>
-    <button mat-button  (click)='changePage("0")' ><i class="fas fa-home"></i> Home</button>
-    <button mat-button [matMenuTriggerFor]="menu1" ngbDropdownToggle><mat-icon>keyboard_arrow_down</mat-icon>Tag Dates</button>
-    <a  target="_blank" href="https://tm-websuiteapps.ipt.pt/timematters/apidocs/"><button mat-button ><i class="fas fa-laptop-code"></i> API</button></a>
-    <a target="_blank" href="https://github.com/liaad/time-matters"><button mat-button>GitHub <i class="fab fa-github" aria-hidden="true"></i></button></a>
-    <button mat-button ><i class="fas fa-mobile-alt"></i> Mobile App</button>
-    <button mat-button [matMenuTriggerFor]="menu3" ngbDropdownToggle><mat-icon>keyboard_arrow_down</mat-icon> Related Projects</button>
-    <button mat-button [matMenuTriggerFor]="menu2" ngbDropdownToggle><mat-icon>keyboard_arrow_down</mat-icon>About </button>
-  </mat-toolbar>
-</header>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav 
+      #drawer class="sidenav" 
+      [ngClass]="{hidden: (isHandset$ | async) === false}"
+      fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar class="navSideTitle">Time-Matters Demo</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item class="mat-list-item" href="#">Home <span class="material-icons">home</span></a>
+      <a mat-list-item class="mat-list-item" [matMenuTriggerFor]="menu1">Tag Dates <mat-icon>keyboard_arrow_down</mat-icon></a>
+      <a mat-list-item class="mat-list-item" href="https://tm-websuiteapps.ipt.pt/timematters/apidocs/" target="_blank">API <span class="material-icons">computer</span></a>
+      <a mat-list-item class="mat-list-item" href="https://github.com/liaad/time-matters" target="_blank">GitHub <i class="fab fa-github material-icons" aria-hidden="true"></i></a>
+      <a mat-list-item class="mat-list-item" href="#">Mobile App <span class="material-icons">mobile_screen_share</span></a>
+      <a mat-list-item class="mat-list-item" [matMenuTriggerFor]="menu3">Related Projects <mat-icon>keyboard_arrow_down</mat-icon></a>
+      <a mat-list-item class="mat-list-item" [matMenuTriggerFor]="menu2">About <mat-icon>keyboard_arrow_down</mat-icon></a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
 
-<mat-menu #menu1="matMenu">
-  <button mat-menu-item   (click)='changePage("1")'>Free Text Input <i class="fas fa-square"></i> </button>
-  <div class="divider"></div>
-  <button mat-menu-item  (click)='changePage("2")'>Specify URL <i class="fas fa-clone"></i> </button>
-<!--
-  <button mat-menu-item (click)='changePage("3")' >Query <i class="fas fa-search"></i></button>
-  -->
-</mat-menu>
+    <header class="header--standard">
+      <mat-toolbar color="primary">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <p class="tituloProjeto">
+          <img class="ceninha" src="..\assets\TimeMatters.png" /> Time-Matters Demo  </p>
+        <div class="spacer"></div>
+        <button mat-button  (click)='changePage("0")' ><i class="fas fa-home"></i> Home</button>
+        <button mat-button [matMenuTriggerFor]="menu1" ngbDropdownToggle><mat-icon>keyboard_arrow_down</mat-icon> Tag Dates</button>
+        <a  target="_blank" href="https://tm-websuiteapps.ipt.pt/timematters/apidocs/"><button mat-button ><i class="fas fa-laptop-code"></i> API</button></a>
+        <a target="_blank" href="https://github.com/liaad/time-matters"><button mat-button><i class="fab fa-github" aria-hidden="true"></i> GitHub</button></a>
+        <button mat-button ><i class="fas fa-mobile-alt"></i> Mobile App</button>
+        <button mat-button [matMenuTriggerFor]="menu3" ngbDropdownToggle><mat-icon>keyboard_arrow_down</mat-icon> Related Projects</button>
+        <button mat-button [matMenuTriggerFor]="menu2" ngbDropdownToggle><mat-icon>keyboard_arrow_down</mat-icon> About</button>
+          </mat-toolbar>
+    </header>
+    
+    <mat-menu #menu1="matMenu">
+      <button mat-menu-item   (click)='changePage("1")'>Free Text Input <i class="fas fa-square"></i> </button>
+      <div class="divider"></div>
+      <button mat-menu-item  (click)='changePage("2")'>Specify URL <i class="fas fa-clone"></i> </button>
+    </mat-menu>
+    
+    <mat-menu #menu2="matMenu" ngbDropdownMenu>
+      <button mat-menu-item class="mat-menu-item" (click)='changePage("4")' ngbDropdownItem>People <i class="fas fa-user-circle"></i></button>
+      <div class="divider"></div>
+      <button mat-menu-item class="mat-menu-item" (click)='changePage("5")' ngbDropdownItem>Related Work <i class="fas fa-book-open"></i></button>
+    </mat-menu>
+    
+    <mat-menu #menu3="matMenu">
+      <a target="_blank" href="https://hub.docker.com/r/liaad/time-matters"><button mat-menu-item class="mat-menu-item">Dockerized Time-Matters <i class="fab fa-docker"></i> </button></a>
+      <div class="divider"></div>
+      <a target="_blank" href=""><button mat-menu-item class="mat-menu-item">Time-Matters Query  <i class="fas fa-search"></i> </button></a>
+    </mat-menu>
 
-<mat-menu #menu2="matMenu" ngbDropdownMenu>
-  <button mat-menu-item class="mat-menu-item" (click)='changePage("4")' ngbDropdownItem>People <i class="fas fa-user-circle"></i></button>
-  <div class="divider"></div>
-  <button mat-menu-item class="mat-menu-item" (click)='changePage("5")' ngbDropdownItem>Related Work <i class="fas fa-book-open"></i></button>
-</mat-menu>
-
-<mat-menu #menu3="matMenu">
-  <a target="_blank" href="https://hub.docker.com/r/liaad/time-matters"><button mat-menu-item class="mat-menu-item">Dockerized Time-Matters <i class="fab fa-docker"></i> </button></a>
-  <div class="divider"></div>
-  <a target="_blank" href=""><button mat-menu-item class="mat-menu-item">Time-Matters Query  <i class="fas fa-search"></i> </button></a>
-</mat-menu>
-
-<section class="NavSection">
-  <div class="layout">
-    <div class="layout-row">
-      <div class="layout-col">
-        <div class="headliner">
-          <br>
-          <h1 class="miniText">
-            Temporal annotation of texts with scores
-          </h1>
-          <h1 class="miniText2">
-            To learn more, visit our <a target="_blank" href="https://github.com/liaad/time-matters"><b>Github web page.</b></a>
-          </h1>
-          <br>
+    <section class="NavSection">
+      <div class="layout">
+        <div class="layout-row">
+          <div class="layout-col">
+            <div class="headliner">
+              <br>
+              <h1 class="miniText">
+                Temporal annotation of texts with scores
+              </h1>
+              <h1 class="miniText2">
+                To learn more, visit our <a target="_blank" href="https://github.com/liaad/time-matters"><b>Github web page.</b></a>
+              </h1>
+              <br>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 
-  <div *ngIf='page=="0" else pagina1'>
-    <app-keyword-exctraction></app-keyword-exctraction>
-  </div>
-  <ng-template #pagina1>
-    <div *ngIf='page=="1" else pagina2'>
+    <div *ngIf='page=="0" else pagina1'>
       <app-keyword-exctraction></app-keyword-exctraction>
     </div>
-    <ng-template #pagina2>
-      <div *ngIf='page=="2" else pagina3'>
-        <app-multi-doc></app-multi-doc>
+    <ng-template #pagina1>
+      <div *ngIf='page=="1" else pagina2'>
+        <app-keyword-exctraction></app-keyword-exctraction>
       </div>
-      <ng-template #pagina3>
-        <div *ngIf='page=="3" else pagina4'>
-          <app-query></app-query>
+      <ng-template #pagina2>
+        <div *ngIf='page=="2" else pagina3'>
+          <app-multi-doc></app-multi-doc>
         </div>
-        <ng-template #pagina4>
-          <div *ngIf='page=="4" else pagina5'>
-           <app-about-people></app-about-people>
+        <ng-template #pagina3>
+          <div *ngIf='page=="3" else pagina4'>
+            <app-query></app-query>
           </div>
-          <ng-template #pagina5>
-            <div *ngIf='page=="5"'>
-              <app-about-related-work></app-about-related-work>
+          <ng-template #pagina4>
+            <div *ngIf='page=="4" else pagina5'>
+             <app-about-people></app-about-people>
             </div>
-
+            <ng-template #pagina5>
+              <div *ngIf='page=="5"'>
+                <app-about-related-work></app-about-related-work>
+              </div>
+  
+            </ng-template>
+  
           </ng-template>
-
         </ng-template>
       </ng-template>
     </ng-template>
-  </ng-template>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
+
