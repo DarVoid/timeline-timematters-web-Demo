@@ -1,60 +1,38 @@
+<header class="header--standard">
+  <mat-toolbar ngbDropdown>
+    <p class="tituloProjeto"><!--i class="fas fa-clock"></>-->
+      <img class="ceninha" src="..\assets\TimeMatters.png" /> Time-Matters Demo  </p>
+    <div class="spacer"></div>
+    <button mat-button  (click)='changePage("0")' ><i class="fas fa-home"></i> Home</button>
+    <button mat-button [matMenuTriggerFor]="menu1" ngbDropdownToggle><mat-icon>keyboard_arrow_down</mat-icon>Tag Dates</button>
+    <a  target="_blank" href="https://tm-websuiteapps.ipt.pt/timematters/apidocs/"><button mat-button ><i class="fas fa-laptop-code"></i> API</button></a>
+    <a target="_blank" href="https://github.com/liaad/time-matters"><button mat-button>GitHub <i class="fab fa-github" aria-hidden="true"></i></button></a>
+    <button mat-button ><i class="fas fa-mobile-alt"></i> Mobile App</button>
+    <button mat-button [matMenuTriggerFor]="menu3" ngbDropdownToggle><mat-icon>keyboard_arrow_down</mat-icon> Related Projects</button>
+    <button mat-button [matMenuTriggerFor]="menu2" ngbDropdownToggle><mat-icon>keyboard_arrow_down</mat-icon>About </button>
+  </mat-toolbar>
+</header>
 
-<nav class="navbar navbar-expand-lg navbar-light header--standard">
-  <p class="navbar-brand layout2"><!--i class="fas fa-clock"></>-->
-    <img class="ceninha" src="..\assets\TimeMatters.png" /> Time-Matters Demo  </p>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="spacer"></div>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/keyword-exctraction">Home <i class="fas fa-home"></i></a>
-      </li>
-      
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Tag Dates
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/keyword-exctraction">Free Text Input</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Specify URL</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://tm-websuiteapps.ipt.pt/timematters/apidocs/" target="_blank">API <i class="fas fa-laptop-code"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://github.com/liaad/time-matters" target="_blank">GitHub <i class="fab fa-github" aria-hidden="true"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Mobile App <i class="fas fa-mobile-alt"></i></a>
-      </li>
+<mat-menu #menu1="matMenu">
+  <button mat-menu-item   (click)='changePage("1")'>Free Text Input <i class="fas fa-square"></i> </button>
+  <div class="divider"></div>
+  <button mat-menu-item  (click)='changePage("2")'>Specify URL <i class="fas fa-clone"></i> </button>
+<!--
+  <button mat-menu-item (click)='changePage("3")' >Query <i class="fas fa-search"></i></button>
+  -->
+</mat-menu>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Related Projects
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" target="_blank" href="https://hub.docker.com/r/liaad/time-matters">Dockerized Time-Matters <i class="fab fa-docker"></i></a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" target="_blank" href="#">Time-Matters Query  <i class="fas fa-search"></i> </a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          About
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="about-people">People <i class="fas fa-user-circle"></i> </a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="about-related-work">Related Work <i class="fas fa-book-open"></i></a>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
+<mat-menu #menu2="matMenu" ngbDropdownMenu>
+  <button mat-menu-item class="mat-menu-item" (click)='changePage("4")' ngbDropdownItem>People <i class="fas fa-user-circle"></i></button>
+  <div class="divider"></div>
+  <button mat-menu-item class="mat-menu-item" (click)='changePage("5")' ngbDropdownItem>Related Work <i class="fas fa-book-open"></i></button>
+</mat-menu>
+
+<mat-menu #menu3="matMenu">
+  <a target="_blank" href="https://hub.docker.com/r/liaad/time-matters"><button mat-menu-item class="mat-menu-item">Dockerized Time-Matters <i class="fab fa-docker"></i> </button></a>
+  <div class="divider"></div>
+  <a target="_blank" href=""><button mat-menu-item class="mat-menu-item">Time-Matters Query  <i class="fas fa-search"></i> </button></a>
+</mat-menu>
 
 <section class="NavSection">
   <div class="layout">
@@ -74,3 +52,35 @@
     </div>
   </div>
 </section>
+
+
+  <div *ngIf='page=="0" else pagina1'>
+    <app-keyword-exctraction></app-keyword-exctraction>
+  </div>
+  <ng-template #pagina1>
+    <div *ngIf='page=="1" else pagina2'>
+      <app-keyword-exctraction></app-keyword-exctraction>
+    </div>
+    <ng-template #pagina2>
+      <div *ngIf='page=="2" else pagina3'>
+        <app-multi-doc></app-multi-doc>
+      </div>
+      <ng-template #pagina3>
+        <div *ngIf='page=="3" else pagina4'>
+          <app-query></app-query>
+        </div>
+        <ng-template #pagina4>
+          <div *ngIf='page=="4" else pagina5'>
+           <app-about-people></app-about-people>
+          </div>
+          <ng-template #pagina5>
+            <div *ngIf='page=="5"'>
+              <app-about-related-work></app-about-related-work>
+            </div>
+
+          </ng-template>
+
+        </ng-template>
+      </ng-template>
+    </ng-template>
+  </ng-template>

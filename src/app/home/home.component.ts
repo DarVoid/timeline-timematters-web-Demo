@@ -35,7 +35,3 @@ export class HomeComponent implements OnInit{
   }
 
 }
-
-export class NgbdCollapseBasic {
-  public isCollapsed = true;
-}
