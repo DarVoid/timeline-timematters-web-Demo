@@ -214,6 +214,14 @@ $app-theme: mat-light-theme($app-primary, $app-accent);
 @include mix-app-theme($app-theme);
 
 // KEYWORD EXTRACTION COMPONENTE SCSS
+body {
+  background-color: #d6d0d0;
+}
+
+.mat-drawer-container {
+  background-color: #d6d0d0;
+  display:inline;
+}
 
 .fundo {
   /*background-color: #463940;*/
