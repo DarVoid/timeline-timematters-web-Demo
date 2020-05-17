@@ -2,13 +2,71 @@
   <div class="container col-md-8">
     
     <div class="jumbotron">
-     
-      <div class="text" mat-subheader>Authors</div>
+     <div class="knowTeam" mat-subheader>Know the team:</div> <br>
+     <p class="text">This project was developed by researchers affiliated to the Polytechnic Institute of Tomar, Ci2 Smart Cities Research Center, LIAAD INESC TEC, University of Porto, University of Beira Interior and University of Caen.</p>
+     <mat-divider></mat-divider>
+      <div class="subtitles" mat-subheader>Authors</div>
       <mat-list class="linha">
-
-        <mat-list-item *ngFor="let person of people">
+        <mat-list-item *ngFor="let person of people1">
             <img matListAvatar [src]="person.photoSrc"/>
-            <h3 class="nome" matLine> {{person.name}}</h3>
+            <h3 class="nome" matLine> <b>{{person.name}}</b></h3>
+            <h1 class="nome" matLine>{{person.profession}}</h1>
+            <p *ngFor="let cont of person.links">
+              <a target="_blank" href={{cont.link}}>{{cont.tipo}}
+                <span [innerHTML]="cont.icon | safe:'html'">
+                </span>
+              </a>
+            </p>
+        </mat-list-item>
+      </mat-list>
+      
+      <mat-list class="linha">
+        <mat-list-item *ngFor="let person of people2">
+            <img matListAvatar [src]="person.photoSrc"/>
+            <h3 class="nome" matLine> <b>{{person.name}}</b></h3>
+            <h1 class="nome" matLine>{{person.profession}}</h1>
+            <p *ngFor="let cont of person.links">
+              <a target="_blank" href={{cont.link}}>{{cont.tipo}}
+                <span [innerHTML]="cont.icon | safe:'html'">
+                </span>
+              </a>
+            </p>
+        </mat-list-item>
+      </mat-list>
+      
+      <mat-list class="linha">
+        <mat-list-item *ngFor="let person of people3">
+            <img matListAvatar [src]="person.photoSrc"/>
+            <h3 class="nome" matLine> <b>{{person.name}}</b></h3>
+            <h1 class="nome" matLine>{{person.profession}}</h1>
+            <p *ngFor="let cont of person.links">
+              <a target="_blank" href={{cont.link}}>{{cont.tipo}}
+                <span [innerHTML]="cont.icon | safe:'html'">
+                </span>
+              </a>
+            </p>
+        </mat-list-item>
+      </mat-list>
+      
+      <mat-list class="linha">
+        <mat-list-item *ngFor="let person of people4">
+            <img matListAvatar [src]="person.photoSrc"/>
+            <h3 class="nome" matLine> <b>{{person.name}}</b></h3>
+            <h1 class="nome" matLine>{{person.profession}}</h1>
+            <p *ngFor="let cont of person.links">
+              <a target="_blank" href={{cont.link}}>{{cont.tipo}}
+                <span [innerHTML]="cont.icon | safe:'html'">
+                </span>
+              </a>
+            </p>
+        </mat-list-item>
+      </mat-list>
+      <p class="text">Time-Matters python package has been developed by Jorge Mendes under the supervision of Ricardo Campos in the scope of the Final Project of the Computer Science degree of the Polytechnic Institute of Tomar, Portugal.</p>
+      <mat-list class="linha">
+        <mat-list-item *ngFor="let person of people5">
+            <img matListAvatar [src]="person.photoSrc"/>
+            <h3 class="nome" matLine> <b>{{person.name}}</b></h3>
+            <h1 class="nome" matLine>{{person.profession}}</h1>
             <p *ngFor="let cont of person.links">
               <a target="_blank" href={{cont.link}}>{{cont.tipo}}
                 <span [innerHTML]="cont.icon | safe:'html'">
@@ -18,11 +76,12 @@
         </mat-list-item>
       </mat-list>
         <mat-divider></mat-divider>
-        <div class="text" mat-subheader>Web Developers</div>
+        <div class="subtitles" mat-subheader>Web Developers</div>
         <mat-list class="developer">
           <mat-list-item *ngFor="let person of developer1">
               <img matListAvatar [src]="person.photoSrc"/>
-              <h3 class="nome" matLine> {{person.name}}</h3>
+              <h3 class="nome" matLine> <b>{{person.name}}</b></h3>
+              <h1 class="nome" matLine>{{person.profession}}</h1>
               <p  *ngFor="let cont of person.links">
                 <a target="_blank" href={{cont.link}}>
                   {{cont.tipo}}
@@ -34,7 +93,8 @@
         <mat-list>
           <mat-list-item *ngFor="let person of developer2">
               <img matListAvatar [src]="person.photoSrc"/>
-              <h3 class="nome" matLine> {{person.name}}</h3>
+              <h3 class="nome" matLine> <b>{{person.name}}</b></h3>
+              <h1 class="nome" matLine>{{person.profession}}</h1>
               <p  *ngFor="let cont of person.links">
                 <a target="_blank" href={{cont.link}}>
                   {{cont.tipo}}
