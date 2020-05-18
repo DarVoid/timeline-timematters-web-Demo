@@ -29,7 +29,7 @@
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
                 <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleKeywords()">{{withKeywordsSentence}}</mat-slide-toggle>
                 <br>
-                <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleRel()">{{showOnlyRelSent}}</mat-slide-toggle>
+                <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleRel()">{{showOnlyRel?"Showing Important dates Only":"Showing All Dates"}}</mat-slide-toggle>
                 <!--EM CIMA-->
                 <br>
                 <br>
@@ -61,7 +61,7 @@
           </mat-tab>
           <mat-tab label="Timeline2">
             <!--WIP-->
-            <app-timeline-scroll [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelevante"></app-timeline-scroll>
+            <app-timeline-scroll [argumentosTodos]="dataset" [argumentosRelevantes]="dataset"></app-timeline-scroll>
           <!--WIP-->
           </mat-tab>
           </mat-tab-group></mat-card>
