@@ -11,7 +11,10 @@ declare  var $: any;
   styleUrls: ['./timeline-scroll.component.scss']
 })
 export class TimelineScrollComponent implements OnInit {
-  @Input() argumentos: any;
+  @Input() argumentosTodos: any;
+  @Input() argumentosRelevantes: any;
+  public relevant: boolean;
+  public argumentos: any;
   public obejct: any;
   public rendering: string;
   public texto: string;
@@ -28,7 +31,21 @@ export class TimelineScrollComponent implements OnInit {
   ngOnInit() {
     //setTimeout(()=>{this.update();}, 5);
   }
-
+  setRelevance(rel: string) {
+    if (rel = "impOnly"){
+      this.relevant = false;
+    } else {
+      this.relevant = true;
+    }
+    if (this.relevant) {
+      this.argumentos = this.argumentosRelevantes;
+      console.log(this.argumentos);
+    } else {
+      this.argumentos = this.argumentosTodos;
+      console.log(this.argumentos);
+    }
+    this.update();
+  }
   update() {
     this.rendering = '';
 
@@ -41,12 +58,12 @@ export class TimelineScrollComponent implements OnInit {
 
       console.log(h);
       console.log(this.argumentos[h]);
-      if(this.argumentos[h].x.length==4){
-        events.push({"start_date":  {"year": this.argumentos[h].x}, "text": {"headline": this.argumentos[h].y}});
+      if (this.argumentos[h].x.length === 4) {
+        events.push({ "start_date":  { "year": this.argumentos[h].x}, "text": { "headline" : this.argumentos[h].y}});
 
-      }else if (this.argumentos[h].x.split('-').length==2){
+      } else if (this.argumentos[h].x.split('-').length === 2) {
         events.push({"start_date":  {"year": this.argumentos[h].x.split('-')[0],"month":this.argumentos[h].x.split('-')[1] }, "text": {"headline": this.argumentos[h].y}});
-      }else {
+      } else {
         events.push({"start_date":  {"year": this.argumentos[h].x.split('-')[0],"month":this.argumentos[h].x.split('-')[1], "day":this.argumentos[h].x.split('-')[2] }, "text": {"headline": this.argumentos[h].y}});
       }
     }

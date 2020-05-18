@@ -24,10 +24,12 @@
                 <p class="afterAnnotated">The top {{result.TempExpressions.length}} Temporal Expressions are annotated in the text.</p>
                 <p class="afterAnnotated">Language: {{languagueSelected}}</p>
                 <hr>
-                <app-frame [argumentos]="result" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>
+                <app-frame [argumentos]="result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>
                 <hr>
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
                 <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleKeywords()">{{withKeywordsSentence}}</mat-slide-toggle>
+                <br>
+                <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleRel()">{{showOnlyRelSent}}</mat-slide-toggle>
                 <!--EM CIMA-->
                 <br>
                 <br>
@@ -59,7 +61,7 @@
           </mat-tab>
           <mat-tab label="Timeline2">
             <!--WIP-->
-            <app-timeline-scroll [argumentos]="dataset" ></app-timeline-scroll>
+            <app-timeline-scroll [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelevante"></app-timeline-scroll>
           <!--WIP-->
           </mat-tab>
           </mat-tab-group></mat-card>

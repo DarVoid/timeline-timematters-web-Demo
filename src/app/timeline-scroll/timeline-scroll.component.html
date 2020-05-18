@@ -1,3 +1,5 @@
 
-<div on-mouseover='update()'><p>{{rendering}}</p></div>
+
+<button (click)='update();setRelevance("all")'>All dates</button>
+<button (click)='update();setRelevance("impOnly")'>Important Dates Only</button>
 <div id='my-timeline' style="width: 100%; height: 450px"></div>
