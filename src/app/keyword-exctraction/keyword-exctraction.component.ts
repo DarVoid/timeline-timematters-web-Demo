@@ -126,12 +126,12 @@ export class KeywordExctractionComponent implements OnInit {
 
   }
   selecionarTipoDocumento(event:any){
-    this.documentTypeSelected=event;
+    this.documentTypeSelected = event;
 
   }
   selecionaTamanhoSimbaVectors(event: any){
     console.log(event.target.value);
-    this.simbaValue =event.target.value;
+    this.simbaValue = event.target.value;
   }
   selecionarGranularidade(event: any) {
     console.log('entrou mudar granularidade');
@@ -190,13 +190,22 @@ export class KeywordExctractionComponent implements OnInit {
   }
   public getKeyword(event:any) {
 
-    this.loading = true;
     event.preventDefault();
     // console.log(event.target.docCreatDate.value);
     // {{ dateObj | date:'mm:ss' }}
+    if ( this.conteudoDefault.length == 0){
+      this._snackBar.open('No text to annotate', this.conteudoDefault.length.toString(),{
+        duration: 2000
+      });
+      return;
+
+    }
+
+    this.loading = true;
     this._snackBar.open('Your request is being processed','',{
       duration: 2000
     });
+
     this.optio = {
 
       docCreatTime : this.documentCreationTime,
@@ -213,6 +222,7 @@ export class KeywordExctractionComponent implements OnInit {
     //console.log(this.optio);
     this.timeline.getTextKeyDateFromSingleDoc(this.conteudoDefault, this.optio).subscribe((res) =>
       {
+
         if (res) {
         //console.log('nice');
         this.result = res;
