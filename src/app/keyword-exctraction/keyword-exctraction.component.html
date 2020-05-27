@@ -26,6 +26,15 @@
                 <hr>
                 <app-frame [argumentos]="result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>
                 <hr>
+                <div class="dateScoreColors">
+                  <span><b>Date scores colors organized by relevance:  </b></span>
+                  <span class="preto"> < 0.3 </span>
+                  <span class="verde"> < 0.4 </span>
+                  <span class="azul"> < 0.6  </span>
+                  <span class="amarelo"> < 0.8  </span>
+                  <span class="roxo"> < 1.0  </span>
+                </div>
+                <br>
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
                 <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleKeywords()">{{withKeywordsSentence}}</mat-slide-toggle>
                 <br>

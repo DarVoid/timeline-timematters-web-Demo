@@ -334,3 +334,31 @@ app-frame {
 .afterAnnotated{
   color:black;
 }
+
+.preto, .verde, .azul, .amarelo, .roxo {
+  color: white;
+  width: 3%;
+  padding: 2px;
+  margin-right: 5px;
+}
+
+.preto {
+  background-color: orange;
+}
+
+.verde {
+  background-color: #41692b;
+}
+
+.azul {
+  background-color: #386c7d;
+}
+
+.amarelo {
+  background-color: #99b019;
+}
+
+.roxo {
+  background-color: #915e8b;
+}
+
