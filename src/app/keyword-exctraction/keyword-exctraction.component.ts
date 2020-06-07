@@ -1,3 +1,4 @@
+import { LangdetectService } from './../services/langdetect.service';
 import { Color } from 'ng2-charts';
 import { Component, OnInit } from '@angular/core';
 import { TimelineService } from '../services/timeline.service';
@@ -46,7 +47,7 @@ export class KeywordExctractionComponent implements OnInit {
   public cheating:boolean;
   public showOnlyRel:boolean;
 
-  constructor(private timeline: TimelineService, private _snackBar: MatSnackBar) {
+  constructor(private timeline: TimelineService, private _snackBar: MatSnackBar, private _lang :LangdetectService) {
     /*private timeline: TimelineService*/
     this.ngramSelected = 1;
     this.byDocOrSentece = true;
@@ -188,6 +189,55 @@ export class KeywordExctractionComponent implements OnInit {
     this.requestMade = false;
     this.loading = false;
   }
+  public update(){
+     let c = [];
+        let a = {};
+        let b = {};
+        // tslint:disable-next-line: forin
+        for (let i in Object.keys(this.result.Score)) {
+          // console.log(this.result.Score[Object.keys(this.result.Score)[i]][0]);
+          // handle Dataset
+          if (this.byDocOrSentece) {
+            a = '<p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p>';
+          }else {
+            let valorDeA = '';
+            // tslint:disable-next-line: forin
+            for (let xd in this.result.Score[Object.keys(this.result.Score)[i]]) {
+              valorDeA += '<span title="'+this.result.SentencesNormalized[xd.toString()]+'"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
+            }
+            a = valorDeA;
+          }
+          b = Object.keys(this.result.Score)[i];
+
+          // console.log("a");
+          // console.log(a);
+          // console.log("b");
+          // console.log(b);
+          // console.log("end");
+
+
+            c.push({x:b,y:a});
+            // console.log();
+            // console.log(Object.keys(this.result.Score)[i].split('-').join(''));
+
+            /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join('')) ?'':c.pop();
+
+        }
+        // tslint:disable-next-line: forin
+        for (let data in c){
+          let j = Date.parse(c[data].x.split('-').join(' '));
+          // console.log (j);
+          c[data]['dateparsed']=j;
+        }
+        c = c.sort(( a , b ) => { return a.dateparsed - b.dateparsed; });
+        // console.log("a,b,join");
+        // console.log(a);
+        // console.log(b);
+        // console.log(this.result.Score);
+        // console.log(c);
+        // console.log("end");
+        this.dataset = c;
+  }
   public getKeyword(event:any) {
 
     event.preventDefault();
@@ -219,62 +269,58 @@ export class KeywordExctractionComponent implements OnInit {
       documentType: this.documentTypeSelected,
       N: this.simbaValue
     };
-    //console.log(this.optio);
+    // console.log(this.optio);
+    this._lang.getLanguageFromContent(this.conteudoDefault).subscribe((res)=>{
+      if(res){
+        this._snackBar.open('Language Detected: ', res,{
+          duration: 2000
+        });
+
+      }else{
+        this._snackBar.open('Text Too Short', this.conteudoDefault.length.toString(),{
+          duration: 2000
+        });
+      }
+      switch (res.lang){
+        case "en":
+          this.languagueSelected = "English";
+          break;
+        case "fr":
+          this.languagueSelected = "French";
+          break;
+        case "pt":
+          this.languagueSelected = "Portuguese";
+          break;
+        case "ge":
+          this.languagueSelected = "German";
+          break;
+        case "it":
+          this.languagueSelected = "Italian";
+          break;
+        case "nl":
+          this.languagueSelected = "Dutch";
+          break;
+        case "es":
+          this.languagueSelected = "Spanish";
+          break;
+        default:
+          this._snackBar.open('Language no Supported', res.lang,{
+            duration: 2000
+          });
+          break;
+      }
+
+
+    });
     this.timeline.getTextKeyDateFromSingleDoc(this.conteudoDefault, this.optio).subscribe((res) =>
       {
 
         if (res) {
-        //console.log('nice');
+        // console.log('nice');
         this.result = res;
-        //pedido recebido aqui
-        //console.log(res);
-        let c = [];
-        let a = {};
-        let b = {};
-        // tslint:disable-next-line: forin
-        for (let i in Object.keys(this.result.Score)) {
-          //console.log(this.result.Score[Object.keys(this.result.Score)[i]][0]);
-          // handle Dataset
-          if (this.byDocOrSentece) {
-            a = '<p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p>';
-          }else {
-            let valorDeA = '';
-            // tslint:disable-next-line: forin
-            for (let xd in this.result.Score[Object.keys(this.result.Score)[i]]) {
-              valorDeA += '<span title="'+this.result.SentencesNormalized[xd.toString()]+'"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
-            }
-            a = valorDeA;
-          }
-          b = Object.keys(this.result.Score)[i];
-
-          //console.log("a");
-          //console.log(a);
-          //console.log("b");
-          //console.log(b);
-          //console.log("end");
-
-
-            c.push({x:b,y:a});
-            //console.log();
-            //console.log(Object.keys(this.result.Score)[i].split('-').join(''));
-
-            /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join('')) ?'':c.pop();
-
-        }
-        // tslint:disable-next-line: forin
-        for (let data in c){
-          let j = Date.parse(c[data].x.split('-').join(' '));
-          //console.log (j);
-          c[data]['dateparsed']=j;
-        }
-        c = c.sort(( a , b ) => { return a.dateparsed - b.dateparsed; });
-        //console.log("a,b,join");
-        //console.log(a);
-        //console.log(b);
-        //console.log(this.result.Score);
-        //console.log(c);
-        //console.log("end");
-        this.dataset = c;
+        // pedido recebido aqui
+        // console.log(res);
+       this.update();
         this.requestMade = true;
         this.loading = false;
         return ' ';

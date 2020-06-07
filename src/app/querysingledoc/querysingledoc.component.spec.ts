@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MultiDocComponent } from './multi-doc.component';
+import { QuerysingledocComponent } from './querysingledoc.component';
 
-describe('MultiDocComponent', () => {
-  let component: MultiDocComponent;
-  let fixture: ComponentFixture<MultiDocComponent>;
+describe('QuerysingledocComponent', () => {
+  let component: QuerysingledocComponent;
+  let fixture: ComponentFixture<QuerysingledocComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MultiDocComponent ]
+      declarations: [ QuerysingledocComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MultiDocComponent);
+    fixture = TestBed.createComponent(QuerysingledocComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

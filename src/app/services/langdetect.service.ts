@@ -13,7 +13,7 @@ export class LangdetectService {
   }
   public getLanguageFromContent(search: string): Observable<any> {
     const formData = new FormData();
-    return this.http.post(this.url, formData
+    return this.http.post(this.url, formData,
         ).pipe(map((res, err) => {
       if (res) {
         console.log(res);
