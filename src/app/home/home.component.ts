@@ -14,8 +14,6 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit{
-  public tiles: any;
-  public tiles2: any;
   public page: string;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
