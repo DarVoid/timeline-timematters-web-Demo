@@ -17,14 +17,14 @@ export class TimelineService {
   constructor(private http: HttpClient) {
     this.url = 'https://tm-websuiteapps.ipt.pt/timematters';
    }
-
+/*
    public upload(formData: any) {
 
     return this.http.post<any>(this.url, formData, {
         reportProgress: true,
         observe: 'events'
       });
-  }
+  }*/
 
 
 
