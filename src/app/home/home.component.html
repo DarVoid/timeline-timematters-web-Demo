@@ -1,6 +1,6 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav 
-      #drawer class="sidenav" 
+  <mat-sidenav
+      #drawer class="sidenav"
       [ngClass]="{hidden: (isHandset$ | async) === false}"
       fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
@@ -10,7 +10,7 @@
     <mat-nav-list>
       <a mat-list-item class="mat-list-item" href="#">Home <span class="material-icons">home</span></a>
       <a mat-list-item class="mat-list-item" [matMenuTriggerFor]="menu1">Tag Dates <mat-icon>keyboard_arrow_down</mat-icon></a>
-      <a mat-list-item class="mat-list-item" href="https://tm-websuiteapps.ipt.pt/timematters/apidocs/" target="_blank">API <span class="material-icons">computer</span></a>
+      <a mat-list-item class="mat-list-item" href="http://time-matters.inesctec.pt/api" target="_blank">API <span class="material-icons">computer</span></a>
       <a mat-list-item class="mat-list-item" href="https://github.com/liaad/time-matters" target="_blank">GitHub <i class="fab fa-github material-icons" aria-hidden="true"></i></a>
       <a mat-list-item class="mat-list-item" href="#">Mobile App <span class="material-icons">mobile_screen_share</span></a>
       <a mat-list-item class="mat-list-item" [matMenuTriggerFor]="menu3">Related Projects <mat-icon>keyboard_arrow_down</mat-icon></a>
@@ -41,23 +41,23 @@
         <a><button mat-button [matMenuTriggerFor]="menu2" ngbDropdownToggle><i class="fas fa-chevron-down"></i> About</button></a>
           </mat-toolbar>
     </header>
-    
+
     <mat-menu #menu1="matMenu">
       <button mat-menu-item   (click)='changePage("1")'>Free Text Input <i class="fas fa-square"></i> </button>
       <div class="divider"></div>
       <button mat-menu-item  (click)='changePage("2")'>Specify URL <i class="fas fa-clone"></i> </button>
     </mat-menu>
-    
+
     <mat-menu #menu2="matMenu" ngbDropdownMenu>
       <button mat-menu-item class="mat-menu-item" (click)='changePage("4")' ngbDropdownItem>People <i class="fas fa-user-circle"></i></button>
       <div class="divider"></div>
       <button mat-menu-item class="mat-menu-item" (click)='changePage("5")' ngbDropdownItem>Related Work <i class="fas fa-book-open"></i></button>
     </mat-menu>
-    
+
     <mat-menu #menu3="matMenu">
       <a target="_blank" href="https://hub.docker.com/r/liaad/time-matters"><button mat-menu-item class="mat-menu-item">Dockerized Time-Matters <i class="fab fa-docker"></i> </button></a>
       <div class="divider"></div>
-      <a target="_blank" href=""><button mat-menu-item class="mat-menu-item">Time-Matters Query  <i class="fas fa-search"></i> </button></a>
+     <!--target="_blank"--> <a  href="#"><button mat-menu-item class="mat-menu-item">Time-Matters Query  <i class="fas fa-search"></i> </button></a>
     </mat-menu>
 
     <section class="NavSection">
@@ -103,9 +103,9 @@
               <div *ngIf='page=="5"'>
                 <app-about-related-work></app-about-related-work>
               </div>
-  
+
             </ng-template>
-  
+
           </ng-template>
         </ng-template>
       </ng-template>
