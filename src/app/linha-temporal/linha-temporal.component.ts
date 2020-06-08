@@ -18,38 +18,7 @@ noData(Highcharts);
 })
 
 export class LinhaTemporalComponent implements OnInit {
-  public options: any = {
-    chart: {
-      type: 'scatter',
-      height: 300
-    },
-    title: {
-      text: 'Timeline'
-    },
-    credits: {
-      enabled: false
-    },
-    tooltip: {
-      formatter: function() {
-        return 'Date: ' + Highcharts.dateFormat('%e %b %Y', this.x) +
-          '; Score: ' + this.y.toFixed(3);
-      }
-    },
-    xAxis: {
-      type: 'datetime',
-      labels: {
-        formatter: function() {
-          return Highcharts.dateFormat('%e %b %Y', this.value);
-        }
-      }
-    },
-    series: [
-      { name:'scores',
-        turboThreshold: 500000,
-        data: [[new Date('2018-01-25 18:38:31').getTime(), 2]]
-      }
-    ]
-  }
+
   @Input() argumentosRelevantes: any;
   @Input() argumentosTodos: any;
   public chart1: any;
@@ -58,9 +27,48 @@ export class LinhaTemporalComponent implements OnInit {
   public rendering: string;
   public isSet: boolean;
   public relevant: boolean;
+  public tipo: number;
+  public options: any;
+  public tipos: Array<string>;
+
   constructor() {
     this.rendering = 'rendering...';
     this.isSet = false;
+    this.tipo = 0;
+    this.tipos = ["area", "areaspline", "line", "scatter"];
+    this.options = {
+      chart: {
+        type: this.tipos[this.tipo],
+        height: 300,
+        zoomType: 'xy'
+      },
+      title: {
+        text: 'Timeline'
+      },
+      credits: {
+        enabled: false
+      },
+      tooltip: {
+        formatter: function() {
+          return 'Date: ' + Highcharts.dateFormat('%e %b %Y', this.x) +
+            '; Score: ' + this.y.toFixed(3);
+        }
+      },
+      xAxis: {
+        type: 'datetime',
+        labels: {
+          formatter: function() {
+            return Highcharts.dateFormat('%e %b %Y', this.value);
+          }
+        }
+      },
+      series: [
+        { name:'scores',
+          turboThreshold: 500000,
+          data: [[new Date('2018-01-25 18:38:31').getTime(), 2]]
+        }
+      ]
+    };
   }
 
   ngOnInit() {
@@ -68,6 +76,55 @@ export class LinhaTemporalComponent implements OnInit {
   public update() {
     Highcharts.chart('container', this.options);
     this.rendering = ' ';
+  }
+  toggleTipo() {
+    this.tipo++;
+    if (this.tipo >= this.tipos.length){
+      this.tipo = 0;
+    }
+    this.options = {
+      chart: {
+        type: this.tipos[this.tipo],
+        height: 300
+      },
+      title: {
+        text: 'Timeline'
+      },
+      credits: {
+        enabled: false
+      },
+      tooltip: {
+        formatter: function() {
+          return 'Date: ' + Highcharts.dateFormat('%e %b %Y', this.x) +
+            '; Score: ' + this.y.toFixed(3);
+        }
+      },
+      xAxis: {
+        type: 'datetime',
+        labels: {
+          formatter: function() {
+            return Highcharts.dateFormat('%e %b %Y', this.value);
+          }
+        }
+      },
+      plotOptions: {
+          line: {
+              dataLabels: {
+                  enabled: true
+              },
+              enableMouseTracking: true
+
+          }
+      },
+      series: [
+        { name:'scores',
+          turboThreshold: 500000,
+          data: [[new Date('2018-01-25 18:38:31').getTime(), 2]]
+        }
+      ]
+    };
+    this.setRelevance();
+    this.setRelevance();
   }
   setRelevance() {
     if (!this.isSet) {

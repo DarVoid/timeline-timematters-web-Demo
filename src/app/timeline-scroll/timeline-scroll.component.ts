@@ -47,7 +47,7 @@ export class TimelineScrollComponent implements OnInit {
     } else {
       this.argumentos = this.argumentosTodos;
 
-    }ng
+    }
     this.update();
   }
   update() {
