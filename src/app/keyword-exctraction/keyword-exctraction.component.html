@@ -21,7 +21,7 @@
           <mat-tab-group>
             <mat-tab  label="Anotated Text">
                 <h2 class="afterAnnotated">Anotated text</h2>
-                <p class="afterAnnotated">The top {{result.TempExpressions.length}} Temporal Expressions are annotated in the text.</p>
+                <p class="afterAnnotated">There are X different Temporal Expressions are annotated in the text.</p><!--{{showOnlyRel?differentValues.length:differentRelValues.length}}-->
                 <p class="afterAnnotated">Language: {{languagueSelected}}</p>
                 <hr>
                 <app-frame [argumentos]="result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>

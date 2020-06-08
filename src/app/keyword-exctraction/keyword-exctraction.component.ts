@@ -46,8 +46,11 @@ export class KeywordExctractionComponent implements OnInit {
   public numberOfKeyWords: number;
   public contextWindow: any;
   public simbaValue: number;
-  public cheating:boolean;
-  public showOnlyRel:boolean;
+  public cheating: boolean;
+  public showOnlyRel: boolean;
+  public differentValues: Array<any>;
+  public differentRelValues: Array<any>;
+
 
   constructor(private timeline: TimelineService, private _snackBar: MatSnackBar, private _lang :LangdetectService) {
     /*private timeline: TimelineService*/
@@ -192,6 +195,25 @@ export class KeywordExctractionComponent implements OnInit {
     this.loading = false;
   }
   public update(){
+
+        this.differentValues = this.result.TempExpressions.sort((a,b)=>{return a[0] - b[0]}).filter((element , index, array)=>{
+          if(index==0){
+            return true;
+          }else{
+            return element[0] != array[index-1][0];
+          }
+        });
+        console.log(this.differentValues);
+        this.differentRelValues = this.differentValues.filter(
+          (element, index, array) => {
+            console.log(element);
+            console.log(array);
+            console.log(index);
+            return this.result.Score[element[0]][0] > 0.3;
+          }
+        );
+        console.log(this.differentRelValues);
+
         let c = [];
         let a = {};
         let b = {};
