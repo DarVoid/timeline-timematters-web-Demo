@@ -32,24 +32,28 @@ export class TimelineScrollComponent implements OnInit {
     //setTimeout(()=>{this.update();}, 5);
   }
   setRelevance(rel: string) {
-    if (rel = "impOnly"){
+    console.log("argumentos todos:");
+    console.log(this.argumentosTodos);
+    console.log("argumentos relevantes:");
+    console.log(this.argumentosRelevantes);
+    if (rel != "impOnly"){
       this.relevant = false;
     } else {
       this.relevant = true;
     }
     if (this.relevant) {
       this.argumentos = this.argumentosRelevantes;
-      console.log(this.argumentos);
+
     } else {
       this.argumentos = this.argumentosTodos;
-      console.log(this.argumentos);
+
     }
     this.update();
   }
   update() {
     this.rendering = '';
 
-    console.log(this.argumentos);
+
     let j: any;
 
     let events = [];

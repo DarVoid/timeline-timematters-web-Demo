@@ -28,11 +28,11 @@
                 <hr>
                 <div class="dateScoreColors">
                   <span><b>Date scores colors organized by relevance:  </b></span>
-                  <span class="preto"> < 0.3 </span>
-                  <span class="verde"> < 0.4 </span>
-                  <span class="azul"> < 0.6  </span>
-                  <span class="amarelo"> < 0.8  </span>
-                  <span class="roxo"> < 1.0  </span>
+                  <span class='{{!showOnlyRel?"preto": "nonviewable"}}'>[0; 0.3]</span>
+                  <span class="verde">]0.3; 0.4]</span>
+                  <span class="azul">]0.4; 0.6]</span>
+                  <span class="amarelo">]0.6; 0.8]</span>
+                  <span class="roxo">]0.8; 1.0]</span>
                 </div>
                 <br>
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
@@ -70,7 +70,7 @@
           </mat-tab>
           <mat-tab label="Timeline2">
             <!--WIP-->
-            <app-timeline-scroll [argumentosTodos]="dataset" [argumentosRelevantes]="dataset"></app-timeline-scroll>
+            <app-timeline-scroll [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
           <!--WIP-->
           </mat-tab>
           </mat-tab-group></mat-card>

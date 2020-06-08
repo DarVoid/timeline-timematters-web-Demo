@@ -8,6 +8,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {ThemePalette} from '@angular/material/core';
 import {DatePipe} from '@angular/common';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { isNull } from 'util';
 
 @Component({
   selector: 'app-keyword-exctraction',
@@ -41,6 +42,7 @@ export class KeywordExctractionComponent implements OnInit {
   public listaConteudos: Array<string>;
   public optio: any;
   public dataset: any;
+  public datasetRelOnly: any;
   public numberOfKeyWords: number;
   public contextWindow: any;
   public simbaValue: number;
@@ -190,24 +192,40 @@ export class KeywordExctractionComponent implements OnInit {
     this.loading = false;
   }
   public update(){
-     let c = [];
+        let c = [];
         let a = {};
         let b = {};
+
+        let c2 = [];
+        let a2 = {};
+        let b2 = {};
         // tslint:disable-next-line: forin
         for (let i in Object.keys(this.result.Score)) {
           // console.log(this.result.Score[Object.keys(this.result.Score)[i]][0]);
           // handle Dataset
           if (this.byDocOrSentece) {
             a = '<p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p>';
+            if(this.result.Score[Object.keys(this.result.Score)[i]][0]>0.3){
+            a2 = '<p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p>';
+            }else{
+              a2 = null;
+            }
           }else {
             let valorDeA = '';
+            let valorDeA2 = '';
             // tslint:disable-next-line: forin
             for (let xd in this.result.Score[Object.keys(this.result.Score)[i]]) {
               valorDeA += '<span title="'+this.result.SentencesNormalized[xd.toString()]+'"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
+              if(this.result.Score[Object.keys(this.result.Score)[i]][xd][0] > 0.3){
+                valorDeA2 += '<span title="'+this.result.SentencesNormalized[xd.toString()]+'"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
+              }
+
             }
             a = valorDeA;
+            a2 = valorDeA2;
           }
           b = Object.keys(this.result.Score)[i];
+          b2 = Object.keys(this.result.Score)[i];
 
           // console.log("a");
           // console.log(a);
@@ -215,12 +233,17 @@ export class KeywordExctractionComponent implements OnInit {
           // console.log(b);
           // console.log("end");
 
-
+            c2.push({x:b2, y:a2});
             c.push({x:b,y:a});
             // console.log();
             // console.log(Object.keys(this.result.Score)[i].split('-').join(''));
 
             /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join('')) ?'':c.pop();
+            /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join('')) ?'':c2.pop();
+
+          if(!a2) {
+              c2.pop();
+            }
 
         }
         // tslint:disable-next-line: forin
@@ -229,7 +252,14 @@ export class KeywordExctractionComponent implements OnInit {
           // console.log (j);
           c[data]['dateparsed']=j;
         }
+        // tslint:disable-next-line: forin
+        for (let data in c2){
+          let j = Date.parse(c2[data].x.split('-').join(' '));
+          // console.log (j);
+          c2[data]['dateparsed']=j;
+        }
         c = c.sort(( a , b ) => { return a.dateparsed - b.dateparsed; });
+        c2 = c2.sort(( a , b ) => { return a.dateparsed - b.dateparsed; });
         // console.log("a,b,join");
         // console.log(a);
         // console.log(b);
@@ -237,6 +267,7 @@ export class KeywordExctractionComponent implements OnInit {
         // console.log(c);
         // console.log("end");
         this.dataset = c;
+        this.datasetRelOnly = c2;
   }
   public getKeyword(event:any) {
 
