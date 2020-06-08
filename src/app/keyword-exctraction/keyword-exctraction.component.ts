@@ -196,19 +196,21 @@ export class KeywordExctractionComponent implements OnInit {
   }
   public update(){
 
-        this.differentValues = this.result.TempExpressions.sort((a,b)=>{return a[0] - b[0]}).filter((element , index, array)=>{
-          if(index==0){
+        this.differentValues = this.result.TempExpressions.sort(
+          (a,b)=>{return a[0] - b[0]}
+          ).filter((element , index, array) => {
+          if (index == 0) {
             return true;
-          }else{
-            return element[0] != array[index-1][0];
+          } else {
+            return element[0] != array[index - 1][0];
           }
         });
         console.log(this.differentValues);
         this.differentRelValues = this.differentValues.filter(
           (element, index, array) => {
-            console.log(element);
+            /*console.log(element);
             console.log(array);
-            console.log(index);
+            console.log(index);*/
             return this.result.Score[element[0]][0] > 0.3;
           }
         );
