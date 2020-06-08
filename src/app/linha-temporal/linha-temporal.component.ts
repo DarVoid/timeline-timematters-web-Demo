@@ -35,7 +35,7 @@ export class LinhaTemporalComponent implements OnInit {
     this.rendering = 'rendering...';
     this.isSet = false;
     this.tipo = 0;
-    this.tipos = ["area", "areaspline", "line", "scatter"];
+    this.tipos = ["area", "areaspline", "line"];
     this.options = {
       chart: {
         type: this.tipos[this.tipo],
