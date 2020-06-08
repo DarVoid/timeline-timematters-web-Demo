@@ -60,8 +60,8 @@ export class TimelineScrollComponent implements OnInit {
     // tslint:disable-next-line: forin
     for (let h in this.argumentos) {
 
-      console.log(h);
-      console.log(this.argumentos[h]);
+      // console.log(h);
+      // console.log(this.argumentos[h]);
       if (this.argumentos[h].x.length === 4) {
         events.push({ "start_date":  { "year": this.argumentos[h].x}, "text": { "headline" : this.argumentos[h].y}});
 

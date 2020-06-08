@@ -319,15 +319,15 @@ export class KeywordExctractionComponent implements OnInit {
   public update(){
 
         this.differentValues = this.result.TempExpressions.sort(
-          (a,b)=>{return a[0] - b[0]}
-          ).filter((element , index, array) => {
+          (a,b)=>{return a[0] - b[0]}).filter(
+              (element , index, array) => {
           if (index == 0) {
             return true;
           } else {
             return element[0] != array[index - 1][0];
           }
         });
-        console.log(this.differentValues);
+        // console.log(this.differentValues);
         this.differentRelValues = this.differentValues.filter(
           (element, index, array) => {
             /*console.log(element);
@@ -336,7 +336,7 @@ export class KeywordExctractionComponent implements OnInit {
             return this.result.Score[element[0]][0] > 0.3;
           }
         );
-        console.log(this.differentRelValues);
+        // console.log(this.differentRelValues);
 
         let c = [];
         let a = {};
