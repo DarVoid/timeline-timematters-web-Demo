@@ -1,3 +1,5 @@
-
-<div on-mouseover='update()'><p>{{rendering}}</p></div>
+<br/>
+<mat-slide-toggle (click)='setRelevance()' class="afterAnnotated" color="warn" >{{relevant?"Showing Important dates Only":"Showing All Dates"}}</mat-slide-toggle>
+<hr/>
+<button class='{{!isSet?"viewable": "nonviewable"}}' (click)="setRelevance();setRelevance();">Confirm</button>
 <div id="container"></div>

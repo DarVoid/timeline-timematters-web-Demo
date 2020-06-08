@@ -21,22 +21,22 @@ export class TimelineScrollComponent implements OnInit {
   public events: Array<any>;
   public titulo: string;
   public timeline: any;
-
+  public isSet: boolean;
   constructor() {
-    //console.log(this.TLObj);
+    // console.log(this.TLObj);
     this.rendering = 'rendering';
     this.titulo = 'Timeline';
+    this.isSet = false;
    }
 
   ngOnInit() {
-    //setTimeout(()=>{this.update();}, 5);
+    // setTimeout(()=>{this.update();}, 5);
   }
-  setRelevance(rel: string) {
-    console.log("argumentos todos:");
-    console.log(this.argumentosTodos);
-    console.log("argumentos relevantes:");
-    console.log(this.argumentosRelevantes);
-    if (rel != "impOnly"){
+  setRelevance() {
+    if(!this.isSet){
+      this.isSet = true;
+    }
+    if (this.relevant){
       this.relevant = false;
     } else {
       this.relevant = true;
@@ -47,7 +47,7 @@ export class TimelineScrollComponent implements OnInit {
     } else {
       this.argumentos = this.argumentosTodos;
 
-    }
+    }ng
     this.update();
   }
   update() {

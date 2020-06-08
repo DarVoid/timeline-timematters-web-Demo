@@ -50,32 +50,56 @@ export class LinhaTemporalComponent implements OnInit {
       }
     ]
   }
-  @Input() argumentos: any;
+  @Input() argumentosRelevantes: any;
+  @Input() argumentosTodos: any;
   public chart1: any;
+  public argumentos: any;
   public b: any;
   public rendering: string;
+  public isSet: boolean;
+  public relevant: boolean;
   constructor() {
     this.rendering = 'rendering...';
+    this.isSet = false;
   }
 
   ngOnInit() {
+  }
+  public update(){
+    Highcharts.chart('container', this.options);
+    this.rendering = ' ';
+  }
+  setRelevance() {
+    if(!this.isSet){
+      this.isSet = true;
+    }
+    if (this.relevant){
+      this.relevant = false;
+    } else {
+      this.relevant = true;
+    }
+    if (this.relevant) {
+      this.argumentos = this.argumentosRelevantes;
+
+    } else {
+      this.argumentos = this.argumentosTodos;
+
+    }
+
     let p = [ ];
     //console.log(this.options.series[0]);
 
     // tslint:disable-next-line: forin
     for(let y in this.argumentos){
       //console.log(this.argumentos[y]);
-      let valor = this.argumentos[y].y.substring(27, this.argumentos[y].y.length-4);
+      let valor = this.argumentos[y].y.substring(27, this.argumentos[y].y.length - 4);
       //console.log(valor);
 
-      p.push([new Date(this.argumentos[y].x).getTime(), valor*1]);
+      p.push([new Date(this.argumentos[y].x).getTime(), valor * 1]);
     }
     this.options.series[0].data = p;
     //console.log(this.options.series[0]);
-  }
-  public update(){
-    Highcharts.chart('container', this.options);
-    this.rendering = ' ';
+    this.update();
   }
 
 }
