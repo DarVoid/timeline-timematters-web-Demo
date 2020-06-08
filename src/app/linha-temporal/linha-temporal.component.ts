@@ -31,7 +31,7 @@ export class LinhaTemporalComponent implements OnInit {
     },
     tooltip: {
       formatter: function() {
-        return 'Date: '+ Highcharts.dateFormat('%e %b %Y', this.x) +
+        return 'Date: ' + Highcharts.dateFormat('%e %b %Y', this.x) +
           '; Score: ' + this.y.toFixed(3);
       }
     },
@@ -65,15 +65,15 @@ export class LinhaTemporalComponent implements OnInit {
 
   ngOnInit() {
   }
-  public update(){
+  public update() {
     Highcharts.chart('container', this.options);
     this.rendering = ' ';
   }
   setRelevance() {
-    if(!this.isSet){
+    if (!this.isSet) {
       this.isSet = true;
     }
-    if (this.relevant){
+    if (this.relevant) {
       this.relevant = false;
     } else {
       this.relevant = true;
@@ -87,18 +87,18 @@ export class LinhaTemporalComponent implements OnInit {
     }
 
     let p = [ ];
-    //console.log(this.options.series[0]);
+    // console.log(this.options.series[0]);
 
     // tslint:disable-next-line: forin
-    for(let y in this.argumentos){
-      //console.log(this.argumentos[y]);
+    for (let y in this.argumentos){
+      // console.log(this.argumentos[y]);
       let valor = this.argumentos[y].y.substring(27, this.argumentos[y].y.length - 4);
-      //console.log(valor);
+      // console.log(valor);
 
       p.push([new Date(this.argumentos[y].x).getTime(), valor * 1]);
     }
     this.options.series[0].data = p;
-    //console.log(this.options.series[0]);
+    // console.log(this.options.series[0]);
     this.update();
   }
 

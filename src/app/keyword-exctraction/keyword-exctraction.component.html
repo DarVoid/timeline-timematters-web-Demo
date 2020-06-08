@@ -63,7 +63,8 @@
           </mat-vertical-stepper>
           <!--WIP-->
           </mat-tab>
-          <mat-tab label="Timeline">
+
+          <mat-tab label="Timeline" *ngIf="byDocOrSentece">
             <!--WIP-->
             <app-linha-temporal [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
           <!--WIP-->
