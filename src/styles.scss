@@ -199,13 +199,11 @@ $app-theme: mat-light-theme($app-primary, $app-accent);
     position: sticky;
     top: 0;
     z-index: 9;
-   /* background-color: #c75c42;*/
    background-color: #cc4625;
   }
 
 
  .mat-button:hover {
-  /*background-color: #374457;*/
   background-color: rgba(0,64,107,0.89);
  }
 
@@ -224,14 +222,12 @@ body {
 }
 
 .fundo {
-  /*background-color: #463940;*/
   background-color: #d6d0d0;
   padding-top: 20px;
   padding-bottom: 5%;
 }
 
 .my-col {
-  /*background-color: #374457;*/
    background: linear-gradient(to bottom, rgba(0,64,107,0.5) 0%,rgba(0,64,107,0.89) 100%);
    height:70%;
    width: 100%;
@@ -268,6 +264,7 @@ h2 {
   padding-left:15px;
   padding-top:20px;
   font-size: 32px;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .frase1, .frase2, .frase3 {
@@ -361,4 +358,6 @@ app-frame {
 .roxo {
   background-color: #915e8b;
 }
+
+// QUERYSINGLEDOC page
 

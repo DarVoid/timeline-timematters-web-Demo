@@ -2,6 +2,6 @@
 <br/>
 <mat-slide-toggle (click)='setRelevance()' class="afterAnnotated" color="warn" >{{relevant?"Showing Important dates Only":"Showing All Dates"}}</mat-slide-toggle>
 <hr/>
-<button class='{{!isSet?"viewable": "nonviewable"}}' (click)="setRelevance();setRelevance();">Confirm</button>
+<button class='{{!isSet?"viewable": "nonviewable"}}' class="btn-primary" (click)="setRelevance();setRelevance();">Confirm</button>
 <div id='my-timeline' style="width: 100%; height: 450px"></div>
 
