@@ -57,6 +57,8 @@ export class KeywordExctractionComponent implements OnInit {
     this.ngramSelected = 1;
     this.byDocOrSentece = true;
     this.result = '';
+    this.differentRelValues=[];
+    this.differentValues=[];
     this.requestMade = false;
     this.withKeywords = true;
     this.withKeywordsSentence = 'Keywords Off';
@@ -332,8 +334,12 @@ export class KeywordExctractionComponent implements OnInit {
           (element, index, array) => {
             /*console.log(element);
             console.log(array);
-            console.log(index);*/
-            return this.result.Score[element[0]][0] > 0.3;
+            console.log(index);
+            console.log(this.result.Score);
+            console.log(this.result.Score[element[0].toLowerCase()]);*/
+            let a = element[0].toLowerCase() + "";
+            console.log(a);
+            return this.result.Score[a][0] > 0.3;
           }
         );
         // console.log(this.differentRelValues);
