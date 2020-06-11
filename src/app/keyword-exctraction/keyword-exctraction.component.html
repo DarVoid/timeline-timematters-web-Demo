@@ -22,7 +22,7 @@
             <mat-tab  label="Anotated Text">
                 <h2 class="afterAnnotated">Anotated text</h2>
                 <p class="afterAnnotated">There are {{!showOnlyRel?differentValues.length:differentRelValues.length}} different {{!showOnlyRel?"":"relevant "}}Temporal Expressions are annotated in the text using the {{algoritmoSelected}} algorithm</p>
-                <p  class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>The top {{result.relevantKW.length}} y-gram keywords were  annotated in the text through YAKE! software</p>
+                <p  class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>The top {{numberOfKeyWords}} y-gram keywords were  annotated in the text through YAKE! software</p>
                 <p class="afterAnnotated">Language: {{languagueSelected}}</p>
                 <hr>
                 <app-frame [argumentos]="result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>
