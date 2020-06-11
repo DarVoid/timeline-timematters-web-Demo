@@ -170,12 +170,12 @@ export class FrameComponent implements OnInit, OnChanges {
             }
 
           }
-          console.log(cor);
+          // console.log(cor);
           // cor definida
-          console.log(x.substring(3, x.length - 4));
+          // console.log(x.substring(3, x.length - 4));
           let dispon = this.dateScores[x.substring(3, x.length - 4).toLowerCase()];
-          console.log(dispon);
-          console.log(dispon[fraseIndex.toString()][0]);
+          // console.log(dispon);
+          // console.log(dispon[fraseIndex.toString()][0]);
           let valorSpan = dispon[fraseIndex.toString()][0];
           let textoAEscrever = '';
           for (let lk in this.argumentos.TempExpressions) {

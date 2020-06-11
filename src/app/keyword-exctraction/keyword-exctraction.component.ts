@@ -329,28 +329,40 @@ export class KeywordExctractionComponent implements OnInit {
             return element[0] != array[index - 1][0];
           }
         });
-        // console.log(this.differentValues);
-        this.differentRelValues = this.differentValues.filter(
-          (element, index, array) => {
-            /*console.log(element);
-            console.log(array);
-            console.log(index);
-            console.log(this.result.Score);
-            console.log(this.result.Score[element[0].toLowerCase()]);*/
-            let a = element[0].toLowerCase() + "";
-            console.log(a);
-            return this.result.Score[a][0] > 0.3;
-          }
-        );
-        // console.log(this.differentRelValues);
+        if(this.byDocOrSentece){
+
+          this.differentRelValues = this.differentValues.filter(
+            (element, index, array) => {
+              /*console.log(element);
+              console.log(array);
+              console.log(index);
+              console.log(this.result.Score);
+              console.log(this.result.Score[element[0].toLowerCase()]);*/
+              let a = element[0].toLowerCase() + "";
+              //console.log(a);
+              return this.result.Score[a][0] > 0.3;
+            }
+          );
+
+        }else{
+          this.differentRelValues = this.differentValues.map((a)=>{
+            return this.result.Score[a[0]];
+          });
+
+        }
+        console.log(this.differentRelValues);
+        console.log(this.differentValues);
+
 
         let c = [];
         let a = {};
         let b = {};
+        let d = [];
 
         let c2 = [];
         let a2 = {};
         let b2 = {};
+        let d2 = [];
         // tslint:disable-next-line: forin
         for (let i in Object.keys(this.result.Score)) {
           // console.log(this.result.Score[Object.keys(this.result.Score)[i]][0]);
@@ -367,9 +379,14 @@ export class KeywordExctractionComponent implements OnInit {
             let valorDeA2 = '';
             // tslint:disable-next-line: forin
             for (let xd in this.result.Score[Object.keys(this.result.Score)[i]]) {
+              d.push(this.result.Score[Object.keys(this.result.Score)[i]][xd][0]);
+              console.log(d);
               valorDeA += '<span title="'+this.result.SentencesNormalized[xd.toString()]+'"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
               if(this.result.Score[Object.keys(this.result.Score)[i]][xd][0] > 0.3){
                 valorDeA2 += '<span title="'+this.result.SentencesNormalized[xd.toString()]+'"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
+                d2.push(this.result.Score[Object.keys(this.result.Score)[i]][xd][0]);
+                console.log(d2);
+                // TODO: meter d e d2 nos datasets
               }
 
             }
