@@ -10,9 +10,8 @@
     <br>
     <br>
     <div class="col-md-11 col-sm-8 col-xs-6 my-col2">
-        <span title="não suportado, api não tem a opção "><p class="frase1">Results using {{algoritmoSelected}}:</p></span>
-
-      <div>
+        <span title="não suportado, api não tem a opção "><p class="frase1">Results using {{algoritmoSelected}} algorithm:</p></span>
+        <div>
       <div *ngIf="!result else graficos">
         <h1>No Data</h1>
       </div>
@@ -21,8 +20,8 @@
           <mat-tab-group>
             <mat-tab  label="Anotated Text">
                 <h2 class="afterAnnotated">Anotated text</h2>
-                <p class="afterAnnotated">There are {{!showOnlyRel?differentValues.length:differentRelValues.length}} different {{!showOnlyRel?"":"relevant "}}Temporal Expressions are annotated in the text using the {{algoritmoSelected}} algorithm</p>
-                <p  class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>The top {{numberOfKeyWords}} y-gram keywords were  annotated in the text through YAKE! software</p>
+                <p class="afterAnnotated">There are {{!showOnlyRel?differentValues.length:differentRelValues.length}} different {{!showOnlyRel?"":"relevant "}}Temporal Expressions are annotated in the text</p>
+                <p  class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>The top {{numberOfKeyWords}} {{ngramSelected}}-gram keywords were  annotated in the text through YAKE! software</p>
                 <p class="afterAnnotated">Language: {{languagueSelected}}</p>
                 <hr>
                 <app-frame [argumentos]="result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>
@@ -30,10 +29,10 @@
                 <div class="dateScoreColors">
                   <span><b>Date scores colors organized by relevance:  </b></span>
                   <span class='{{!showOnlyRel?"preto": "nonviewable"}}'>[0; 0.3]</span>
-                  <span class="verde">[0.3; 0.4]</span>
-                  <span class="azul">[0.4; 0.6]</span>
-                  <span class="amarelo">[0.6; 0.8]</span>
-                  <span class="roxo">[0.8; 1.0]</span>
+                  <span class="verde">]0.3; 0.4]</span>
+                  <span class="azul">]0.4; 0.6]</span>
+                  <span class="amarelo">]0.6; 0.8]</span>
+                  <span class="roxo">]0.8; 1.0]</span>
                 </div>
                 <br>
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
