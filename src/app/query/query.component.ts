@@ -28,7 +28,7 @@ export class QueryComponent implements OnChanges {
   }
 
   ngOnChanges() {
-
+    this.update();
   }
   toggleKeywords() {
     this.withKeywords = !this.withKeywords;
@@ -56,7 +56,7 @@ export class QueryComponent implements OnChanges {
   }
   public copyToClipboard(event: any) {
     event.preventDefault();
-    this._snackBar.open('Message copied to Clipboard', 'Length: ' + this.options.result.TextNormalized.length+' characters',{
+    this._snackBar.open('Message copied to Clipboard', 'Length: ' + this.options.result.TextNormalized.length + ' characters',{
       duration: 2000
     });
     let clipboard = document.createElement('input');
@@ -186,10 +186,8 @@ export class QueryComponent implements OnChanges {
         // console.log("end");
         this.dataset = c;
         this.datasetRelOnly = c2;
+        console.log(this.dataset);
+        console.log(this.datasetRelOnly);
   }
-
-  /*ngOnInit(): void {
-
-  }*/
 
 }

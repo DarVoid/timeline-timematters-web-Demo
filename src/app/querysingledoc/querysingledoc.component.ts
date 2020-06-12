@@ -189,6 +189,7 @@ export class QuerysingledocComponent implements OnInit {
             this.update();
             this.requestMade = true;
             this.loading = false;
+
             return ' ';
           }
           else {
