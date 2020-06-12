@@ -123,7 +123,13 @@
 
         <div class="form-group">
           <div class="col-lg12 text-right">
-            <button type="submit" class="btn btn-primary"><i class="fas fa-code" ></i> Tag Dates</button>
+
+            <button class="btn btn-primary" type="submit" [disabled]="loading" >
+              <div class='{{!loading?"viewable": "nonviewable"}}' ><i class="fas fa-code" ></i>
+                {{loading?'Loading...':'Tag Dates'}}</div>
+              <div class='{{loading?"viewable": "nonviewable"}}'><span  class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                {{loading?'Loading...':'Tag Dates'}}</div>
+            </button>
           </div>
         </div>
       </div>
@@ -132,9 +138,9 @@
 </div>
 
   <ng-template #mostra>
-    <app-query [article]="artigo" [options]="" > </app-query>
+    <app-query [article]="artigo" [options]="opcoes" > </app-query>
 
-
+<!--
     <div><h1>Texto:</h1>
     {{artigo.text}}
     <h1>Data de criação:</h1>
@@ -142,7 +148,7 @@
     <h1>Lingua:</h1>
     {{artigo.language}}
 
-    </div>
+    </div>-->
   </ng-template>
 
 

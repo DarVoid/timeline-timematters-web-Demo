@@ -30,7 +30,11 @@ export class QuerysingledocComponent implements OnInit {
   public byDocOrSentece: boolean;
   public hiddenoptionKW: boolean;
   public hiddenoption: boolean;
+  public requestMade: boolean;
+  public loading: boolean;
   public documentCreationTime: string;
+  public opcoes: any;
+  public resultado: any;
 
   constructor(private article: GetarticleService, private timeline: TimelineService, private _snackBar: MatSnackBar) {
     this.url = "https://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/";
@@ -53,6 +57,8 @@ export class QuerysingledocComponent implements OnInit {
     this.byDocOrSentece = true;
     this.hiddenoptionKW = false;
     this.hiddenoption = false;
+    this.loading = false;
+    this.requestMade = false;
   }
 
   ngOnInit(): void {
@@ -69,19 +75,21 @@ export class QuerysingledocComponent implements OnInit {
     });
 
   }
-  showArticle(event: any) {
-    event.preventDefault();
-    this.article.getArticles(this.url).subscribe((res) => {
-      if (res) {
-        console.log(res);
-        this.artigo = res;
+  update() {
 
-        //this.taggedData;
-      } else {
-        console.log("oof");
-      }
-    });
-
+    this.opcoes = {
+      docCreatTime : this.documentCreationTime,
+      dateGranularity : this.dateGranularitySelected,
+      docOrSentence  : this.byDocOrSentece ? 'doc' : 'sentence',
+      algo: this.algoritmoSelected,
+      ngram : this.ngramSelected,
+      language : this.languagueSelected,
+      numberOfKeywords : this.numberOfKeyWords,
+      nContextualWindow: this.contextWindow,
+      documentType: this.documentTypeSelected,
+      N: this.simbaValue,
+      result: this.resultado
+    };
 
   }
   setURL(event: any) {
@@ -135,5 +143,65 @@ export class QuerysingledocComponent implements OnInit {
   toggleOption() {
     this.hiddenoption = !this.hiddenoption;
   }
+  showArticle(event: any) {
+    event.preventDefault();
+    this.loading = true;
+    this.article.getArticles(this.url).subscribe((res) => {
+      if (res) {
+        console.log(res);
+        this.artigo = res;
+        this.documentCreationTime = res.date_creation;
+        switch (res.language){
+          case "en":
+            this.languagueSelected = "English";
+            break;
+          case "fr":
+            this.languagueSelected = "French";
+            break;
+          case "pt":
+            this.languagueSelected = "Portuguese";
+            break;
+          case "ge":
+            this.languagueSelected = "German";
+            break;
+          case "it":
+            this.languagueSelected = "Italian";
+            break;
+          case "nl":
+            this.languagueSelected = "Dutch";
+            break;
+          case "es":
+            this.languagueSelected = "Spanish";
+            break;
+          default:
+            this._snackBar.open('Language no Supported', res.lang, {duration: 2000});
+            break;
+
+          }
+        this.update();
+        this.timeline.getTextKeyDateFromSingleDoc(this.artigo.text, this.opcoes).subscribe((res2) => {
+
+          if (res2) {
+            // console.log('nice');
+            this.resultado = res2;
+            // pedido recebido aqui
+            // console.log(res);
+            this.update();
+            this.requestMade = true;
+            this.loading = false;
+            return ' ';
+          }
+          else {
+            console.log('oof');
+            return ' ';
+          }
+          }
+        );
+      }
+
+
+
+    });
+}
 
 }

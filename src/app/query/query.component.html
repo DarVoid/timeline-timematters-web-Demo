@@ -1,1 +1,79 @@
-<p>query works!</p>
+
+    <br>
+    <br>
+    <div class="col-md-11 col-sm-8 col-xs-6 my-col2">
+        <span title="não suportado, api não tem a opção "><p class="frase1">Results using {{options.algo}} algorithm:</p></span>
+        <div>
+      <div *ngIf="!options else graficos">
+        <h1>No Data</h1>
+      </div>
+        <ng-template #graficos >
+          <mat-card>
+          <mat-tab-group>
+            <mat-tab  label="Anotated Text">
+                <h2 class="afterAnnotated">Anotated text</h2>
+                <!-- {{/*!showOnlyRel?differentValues.length:differentRelValues.length}}--><p class="afterAnnotated">There are x different {{!showOnlyRel?"":"relevant "}}Temporal Expressions are annotated in the text</p>
+                <p class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>The top {{numberOfKeyWords}} {{options.ngram}}-gram keywords were  annotated in the text through YAKE! software</p>
+                <p class="afterAnnotated">Language: {{options.language}}</p>
+                <hr>
+                <app-frame [argumentos]="options.result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"  [docOrSentence]="options.docOrSentence?'doc':'sentence'" class="result"></app-frame>
+                <hr>
+                <div class="dateScoreColors">
+                  <span><b>Date scores colors organized by relevance:  </b></span>
+                  <span class='{{!showOnlyRel?"preto": "nonviewable"}}'>[0; 0.3]</span>
+                  <span class="verde">]0.3; 0.4]</span>
+                  <span class="azul">]0.4; 0.6]</span>
+                  <span class="amarelo">]0.6; 0.8]</span>
+                  <span class="roxo">]0.8; 1.0]</span>
+                </div>
+                <br>
+                <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
+                <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleKeywords()">{{withKeywordsSentence}}</mat-slide-toggle>
+                <br>
+                <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleRel()">{{showOnlyRel?"Showing Important dates Only":"Showing All Dates"}}</mat-slide-toggle>
+                <!--EM CIMA-->
+                <br>
+                <br>
+
+          </mat-tab>
+          <mat-tab *ngIf="options.docOrSentence" class="afterGraphs" label="Plots">
+            <h2>Graphics</h2>
+            <div class="row my-row2 justify-content-center">
+              <div class="score">
+                <app-score [argumentos]="options" ></app-score>
+              </div>
+        </div>
+          </mat-tab>
+          <mat-tab label="Temporal Clustering">
+            <!--WIP-->
+            <mat-vertical-stepper >
+              <div *ngFor="let item of dataset">
+              <mat-step  [completed]="false" label='{{item.x.substring(0,10)}}'  matStepperIcon="phone" >
+                <div (click)="putOnClipboard($event,item.x.substring(0,10))" [innerHTML]="item.y | safe:'html'"></div>
+              </mat-step>
+              </div>
+            </mat-vertical-stepper>
+          <!--WIP-->
+          </mat-tab>
+
+          <mat-tab label="Timeline" *ngIf="options.docOrSentence">
+            <!--WIP-->
+            <app-linha-temporal [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
+          <!--WIP-->
+          </mat-tab>
+          <mat-tab label="Timeline2">
+            <!--WIP-->
+            <app-timeline-scroll [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
+          <!--WIP-->
+          </mat-tab>
+          </mat-tab-group></mat-card>
+          <br>
+          <div class="col-lg-12 text-right">
+            <button type="reset" (click)="goBack()" class="btn btn-link">Go back</button>
+            <button *ngIf="options" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
+          </div>
+        </ng-template>
+      </div>
+
+
+  </div>
