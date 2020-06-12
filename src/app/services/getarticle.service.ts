@@ -10,7 +10,7 @@ export class GetarticleService {
   url: string;
   url2: string;
   constructor(private http: HttpClient) {
-    //this.url2 = 'https://tm-websuiteapps.ipt.pt/url2content/api/v1.0/parse';
+    // this.url2 = 'https://tm-websuiteapps.ipt.pt/url2content/api/v1.0/parse';
     this.url = 'https://langdec-api-heroku.herokuapp.com/getarticle/';
   }
 

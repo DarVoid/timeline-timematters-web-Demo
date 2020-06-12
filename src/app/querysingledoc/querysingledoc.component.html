@@ -11,7 +11,114 @@
               <input matInput placeholder="Please insert article URL" value="{{url}}" name="stuff" matInput (change)="setURL($event)">
               <mat-hint>Copy link to article</mat-hint>
             </mat-form-field>
+            <div class="col-lg-16 text-center">
+              <mat-form-field  *ngIf="algoritmoSelected=='py_heideltime'" (change)="selecionarDataReferencia($event)">
+                <mat-label>Document Creation Date:</mat-label>
+                <input matInput name="docCreatDate" class="date" type="date"/>
+              </mat-form-field>
+
+              <mat-slide-toggle class="example-margin" color="warn" (click)="toggleOption()">Advanced Options</mat-slide-toggle>
+            </div>
           </mat-card>
+          <div class='{{hiddenoption?"viewable ": "nonviewable"}}'>
+          <div class="col-lg-16 text-center everything">
+            <mat-card>
+              <mat-form-field name="valorAlgoritmo">
+                <mat-label class="algorithm">Algorithm </mat-label>
+                <mat-select  class="algorithm" (valueChange)="selecionarAlgoritmo($event)" >
+                  <mat-option class="mat-menu-item2" hidden>py_heideltime</mat-option>
+
+                  <mat-option class="mat-menu-item2" *ngFor="let algo of algoritmosDate" [value]="algo">
+                    {{algo}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            <br>
+            <div class="col-lg-12 space-center">
+              <mat-slide-toggle name="KW" color="warn" (click)="toggleOptionKeywords()">Yake Options</mat-slide-toggle>
+            </div>
+            <div class="col-lg-12 text-center">
+              <mat-slide-toggle  name="docOrSentece" color="warn" (click)="toggleDocOrSentence()">{{byDocOrSentece?'Anotate Dates by Doc':'Anotate Dates by Sentence'}}</mat-slide-toggle>
+            </div>
+
+            <br>
+            <br>
+            <div class='{{hiddenoptionKW?"viewable": "nonviewable"}}'>
+              <h3 class="algorithm">Yake Options:</h3>
+              <mat-form-field (change)="selecionarngram($event)" name="ngrams">
+                <mat-label class="algorithm">ngrams</mat-label>
+                <input class="algorithm" matInput type="number" name="ngram" placeholder="ngrams" min="1" value="1"/>
+              </mat-form-field>
+              <mat-form-field (change)="selecionarNKeywords($event)" name="number_keywords">
+                <mat-label class="algorithm">Number of Keywords</mat-label>
+                <input class="algorithm" matInput type="number" name="nkey" placeholder="number of keywords" min="1" value="10"/>
+              </mat-form-field>
+              <mat-form-field (changeValue)="selecionarContextualWindow($event)" name="windowContext">
+                <mat-label class="algorithm">Contextual Window</mat-label>
+                <input class="algorithm" matInput type="number" name="context" placeholder="Contextual Window" min="1" value="full_sentence"/>
+
+              </mat-form-field>
+              <mat-form-field >
+                <mat-label class="algorithm">Date Granularity </mat-label>
+                <mat-select class="algorithm" (valueChange)="selecionarGranularidade($event)">
+                  <mat-option class="mat-menu-item2" hidden>full</mat-option>
+                  <mat-option class="mat-menu-item2" *ngFor="let granu of dateGranularityOptions" [value]="granu">
+                    {{granu}}
+                  </mat-option>
+                </mat-select>
+
+              </mat-form-field>
+            </div>
+            <br>
+            <div *ngIf="algoritmoSelected=='py_heideltime' else rule_based">
+              <!--OPÇÕES RELATIVAS AO PY_HEIDELTIME-->
+              <h3 class="algorithm">Py Heideltime Options:</h3>
+              <mat-form-field name="lingua">
+                <mat-label class="algorithm">Language </mat-label>
+                <mat-select class="algorithm" (valueChange)="selecionarLanguage($event)" >
+                  <mat-option class="mat-menu-item2" hidden>English</mat-option>
+                  <mat-option class="mat-menu-item2" *ngFor="let lingo of languageOptions" [value]="lingo">
+                    {{lingo}}
+                  </mat-option>
+                </mat-select>
+
+              </mat-form-field>
+              <mat-form-field (changeValue)="selecionarTipoDocumento($event)" name="tipoDoc">
+                <mat-label class="algorithm">Document Type</mat-label>
+                <mat-select class="algorithm" (valueChange)="selecionarTipoDocumento($event)" >
+                  <mat-option class="mat-menu-item2" *ngFor="let typeo of documentTypeOptions" [value]="typeo">
+                    {{typeo}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label class="algorithm">N-size context Vector</mat-label>
+                <input class="algorithm" (change)="selecionaTamanhoSimbaVectors($event)" name="simba" matInput type="number" placeholder="N"/>
+              </mat-form-field>
+              <!--FIM OPÇÕES RELATIVAS AO PY_HEIDELTIME-->
+            </div>
+            <ng-template #rule_based>
+              <!--OPÇÕES RELATIVAS AO RULE_BASED-->
+              <h3>Py Rule Based Options:</h3>
+            <span title="inferior year limit">
+                <mat-form-field name="beginDateControl">
+                  <mat-label>Begin Date</mat-label>
+                  <input matInput type="number" name="dataInicio" placeholder="0" min="0" value="0"/>
+                </mat-form-field>
+            </span>
+              <span title="superior year limit">
+                <mat-form-field name="endDateControl">
+                  <mat-label>End Date</mat-label>
+                  <input matInput type="number" name="dataFim" placeholder="2100" min="0" value="2100"/>
+                </mat-form-field>
+              </span>
+              <!--FIM OPÇÕES RELATIVAS AO RULEBASED-->
+            </ng-template>
+
+          </mat-card>
+
+          </div>
+        </div>
         </div>
 
         <div class="form-group">
@@ -23,7 +130,11 @@
     </div>
   </form>
 </div>
+
   <ng-template #mostra>
+    <app-query [article]="artigo" [options]="" > </app-query>
+
+
     <div><h1>Texto:</h1>
     {{artigo.text}}
     <h1>Data de criação:</h1>

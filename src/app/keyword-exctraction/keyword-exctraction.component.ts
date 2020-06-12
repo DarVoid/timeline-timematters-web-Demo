@@ -57,8 +57,8 @@ export class KeywordExctractionComponent implements OnInit {
     this.ngramSelected = 1;
     this.byDocOrSentece = true;
     this.result = '';
-    this.differentRelValues=[];
-    this.differentValues=[];
+    this.differentRelValues = [];
+    this.differentValues = [];
     this.requestMade = false;
     this.withKeywords = true;
     this.withKeywordsSentence = 'Keywords Off';
