@@ -402,13 +402,13 @@ export class KeywordExctractionComponent implements OnInit {
           // console.log(b);
           // console.log("end");
 
-            c2.push({x:b2, y:a2});
-            c.push({x:b,y:a});
+          c2.push({x:b2, y:a2});
+          c.push({x:b,y:a});
             // console.log();
             // console.log(Object.keys(this.result.Score)[i].split('-').join(''));
 
-            /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join('')) ?'':c.pop();
-            /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join('')) ?'':c2.pop();
+          /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join('')) ?'':c.pop();
+          /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join('')) ?'':c2.pop();
 
           if(!a2) {
               c2.pop();
@@ -456,23 +456,10 @@ export class KeywordExctractionComponent implements OnInit {
       duration: 2000
     });
 
-    this.optio = {
-
-      docCreatTime : this.documentCreationTime,
-      dateGranularity : this.dateGranularitySelected,
-      docOrSentence  : this.byDocOrSentece ? 'doc' : 'sentence',
-      algo: this.algoritmoSelected,
-      ngram : this.ngramSelected,
-      language : this.languagueSelected,
-      numberOfKeywords : this.numberOfKeyWords,
-      nContextualWindow: this.contextWindow,
-      documentType: this.documentTypeSelected,
-      N: this.simbaValue
-    };
     // console.log(this.optio);
     this._lang.getLanguageFromContent(this.conteudoDefault).subscribe((res)=>{
       if(res){
-        this._snackBar.open('Language Detected: ', res,{
+        this._snackBar.open('Language Detected: ', res.lang,{
           duration: 2000
         });
 
@@ -508,11 +495,21 @@ export class KeywordExctractionComponent implements OnInit {
             duration: 2000
           });
           break;
-      }
+        }
+      this.optio = {
+          docCreatTime : this.documentCreationTime,
+          dateGranularity : this.dateGranularitySelected,
+          docOrSentence  : this.byDocOrSentece ? 'doc' : 'sentence',
+          algo: this.algoritmoSelected,
+          ngram : this.ngramSelected,
+          language : this.languagueSelected,
+          numberOfKeywords : this.numberOfKeyWords,
+          nContextualWindow: this.contextWindow,
+          documentType: this.documentTypeSelected,
+          N: this.simbaValue
+        };
 
-
-    });
-    this.timeline.getTextKeyDateFromSingleDoc(this.conteudoDefault, this.optio).subscribe((res) =>
+      this.timeline.getTextKeyDateFromSingleDoc(this.conteudoDefault, this.optio).subscribe((res) =>
       {
 
         if (res) {
@@ -520,7 +517,7 @@ export class KeywordExctractionComponent implements OnInit {
         this.result = res;
         // pedido recebido aqui
         // console.log(res);
-       this.update();
+        this.update();
         this.requestMade = true;
         this.loading = false;
         return ' ';
@@ -532,6 +529,10 @@ export class KeywordExctractionComponent implements OnInit {
 
       }
     );
+
+
+    });
+
 
   }
 }
