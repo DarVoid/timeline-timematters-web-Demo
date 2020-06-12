@@ -9,16 +9,13 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class LangdetectService {
   url: string;
   constructor(private http: HttpClient) {
-    this.url = 'http://pyservices.realm.host/langdetect/'; //'https://tm-websuiteapps.ipt.pt/languageDetection/api/v1.0';
+    this.url = 'https://langdec-api-heroku.herokuapp.com/langdetect/'; //'https://tm-websuiteapps.ipt.pt/languageDetection/api/v1.0';
   }
 
 
   public getLanguageFromContent(search: string): Observable<any> {
     const formData = new FormData();
     formData.append('text', search);
-
-    /*
-    const formData = new FormData();*/
     return this.http.post(this.url, formData,
         ).pipe(map((res, err) => {
       if (res) {

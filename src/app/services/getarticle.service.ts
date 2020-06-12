@@ -11,7 +11,7 @@ export class GetarticleService {
   url2: string;
   constructor(private http: HttpClient) {
     //this.url2 = 'https://tm-websuiteapps.ipt.pt/url2content/api/v1.0/parse';
-    this.url = 'http://pyservices.realm.host/getarticle/';
+    this.url = 'https://langdec-api-heroku.herokuapp.com/getarticle/';
   }
 
     public getArticles(search: string): Observable<any> {

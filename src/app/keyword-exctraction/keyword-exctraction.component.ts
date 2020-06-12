@@ -463,7 +463,7 @@ export class KeywordExctractionComponent implements OnInit {
           duration: 2000
         });
 
-      }else{
+      } else {
         this._snackBar.open('Text Too Short', this.conteudoDefault.length.toString(),{
           duration: 2000
         });
@@ -491,7 +491,7 @@ export class KeywordExctractionComponent implements OnInit {
           this.languagueSelected = "Spanish";
           break;
         default:
-          this._snackBar.open('Language no Supported', res.lang,{
+          this._snackBar.open('Language no Supported', res.lang, {
             duration: 2000
           });
           break;
