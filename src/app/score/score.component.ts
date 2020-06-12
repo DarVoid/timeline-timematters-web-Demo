@@ -100,11 +100,11 @@ export class ScoreComponent implements OnChanges {
         dados4.push(i);
         dados3.push(this.argumentos.RelevantKWs[i]);
         if(this.argumentos.RelevantKWs[i]>0.1){
-          cores3.push('rgba(245, 81, 81, 1)');
-          cores4.push('rgba(245, 81, 81, 1)');
-        }else{
           cores3.push('rgba(103, 172, 219, 1)');
           cores4.push('rgba(103, 172, 219, 1)');
+        }else{
+          cores3.push('rgba(245, 81, 81, 1)');
+          cores4.push('rgba(245, 81, 81, 1)');
         }
       }
       this.chartColors2 = [
