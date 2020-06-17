@@ -54,13 +54,21 @@
           </mat-tab>
           <mat-tab label="Temporal Clustering">
             <!--WIP-->
-            <mat-vertical-stepper >
+            <!--<mat-vertical-stepper >
               <div *ngFor="let item of dataset">
               <mat-step  [completed]="false" label='{{item.x.substring(0,10)}}'  matStepperIcon="phone" >
                 <div (click)="putOnClipboard($event,item.x.substring(0,10))" [innerHTML]="item.y | safe:'html'"></div>
               </mat-step>
               </div>
-            </mat-vertical-stepper>
+            </mat-vertical-stepper>-->
+
+            <table *ngFor="let item of dataset ">
+              <tr (click)="putOnClipboard($event,item.x)">
+                  <p><td><h1>{{item.x}}</h1></td></p><!--meter .substrin(0,10 para so ano)-->
+                  <p><td [innerHTML]="item.y | safe:'html'"></td></p>
+              </tr>
+            </table>
+
           <!--WIP-->
           </mat-tab>
 
