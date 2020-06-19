@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, enableProdMode } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
@@ -70,6 +70,9 @@ export class QueryComponent implements OnChanges {
     document.body.removeChild(clipboard);
 
   }
+  show(a){
+    console.log(a);
+  }
   public update(){
 
         this.differentValues = this.options.result.TempExpressions.sort(
@@ -97,10 +100,10 @@ export class QueryComponent implements OnChanges {
               /*console.log(element);
               console.log(array);
               console.log(index);
-              console.log(this.result.Score);
-              console.log(this.result.Score[element[0].toLowerCase()]);*/
+              console.log(this.options.result.Score);
+              console.log(this.options.result.Score[element[0].toLowerCase()]);*/
               let a = element[0].toLowerCase() + "";
-              console.log(a);
+              // console.log(a);
               return this.options.result.Score[a][0] > 0.35;
             }
           );
@@ -130,12 +133,16 @@ export class QueryComponent implements OnChanges {
           // handle Dataset
           if (this.options.docOrSentence == "doc") {
             a = '<p class="noticeme">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p>';
+            // tslint:disable-next-line: max-line-length
+            // d.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][0], series: 0});
             if (this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] > 0.35) {
             a2 = '<p class="noticeme">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p>';
+            // tslint:disable-next-line: max-line-length
+            // d2.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][0], series: 0});
             }else {
               a2 = null;
             }
-            console.log("esta aqui");
+            //console.log("esta aqui");
           }else {
             let valorDeA = '';
             let valorDeA2 = '';

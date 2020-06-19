@@ -175,7 +175,7 @@ export class LinhaTemporalComponent implements OnInit {
       this.options.series=[];
       for (let tr = 0; tr <= max_series+1; tr++ ) {
         p[tr] = [];
-        let named= "scores sentence "+ tr + ":";
+        let named= "sentence "+ tr + ":";
         this.options.series[tr] = {name: named, turboThreshold: 500000, data: []};
       }
       // console.log("p");

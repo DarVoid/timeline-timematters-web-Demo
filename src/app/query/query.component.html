@@ -66,12 +66,12 @@
 
           <mat-tab label="Timeline"> <!-- *ngIf="options.docOrSentence"-->
             <!--WIP-->
-            <app-linha-temporal [docSen]="options.docOrSentence=='doc'" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
+            <app-linha-temporal [docSen]="options.docOrSentence=='doc'" (click)="show(options.docOrSentence)" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
           <!--WIP-->
           </mat-tab>
           <mat-tab label="Timeline2">
             <!--WIP-->
-            <app-timeline-scroll [docSen]="options.docOrSentence=='doc'" [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
+            <app-timeline-scroll [docSen]="options.docOrSentence=='doc'" (click)="show(options.docOrSentence)" [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
           <!--WIP-->
           </mat-tab>
           </mat-tab-group></mat-card>
