@@ -39,12 +39,12 @@ export class QuerysingledocComponent implements OnInit {
   constructor(private article: GetarticleService, private timeline: TimelineService, private _snackBar: MatSnackBar) {
     this.url = "https://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/";
     this.algoritmosDate = ['py_heideltime' , 'py_rule_based'];
-    this.algoritmoSelected = this.algoritmosDate[1];
+    this.algoritmoSelected = this.algoritmosDate[0];
     this.dateGranularityOptions = ['full', 'year', 'month', 'day'];
     this.dateGranularitySelected = this.dateGranularityOptions[0];
     this.documentTypeOptions = ['news', 'narrative', 'colloquial', 'scientific'];
     this.documentTypeSelected = this.documentTypeOptions[0];
-    this.languageOptions = ['English', 'Portuguese', 'Spanish', 'German', 'Dutch', 'Italian', 'French'];
+    this.languageOptions = ['auto-detect', 'English', 'Portuguese', 'Spanish', 'German', 'Dutch', 'Italian', 'French'];
     this.languagueSelected = this.languageOptions[0];
     this.dateBegin = 0;
     this.dateEnd = 2100;
@@ -88,8 +88,13 @@ export class QuerysingledocComponent implements OnInit {
       nContextualWindow: this.contextWindow,
       documentType: this.documentTypeSelected,
       N: this.simbaValue,
-      result: this.resultado
+      result: this.resultado,
+      dateBegin: this.dateBegin,
+      dateEnd: this.dateEnd
+
     };
+
+
 
   }
   setURL(event: any) {
@@ -136,7 +141,7 @@ export class QuerysingledocComponent implements OnInit {
     //this.documentCreationTime="";
 
   }
-  selecionarDataReferencia(event:any){
+  selecionarDataReferencia(event: any){
     this.documentCreationTime = event.target.value;
     console.log(event.target.value);
   }
@@ -150,42 +155,48 @@ export class QuerysingledocComponent implements OnInit {
       if (res) {
         console.log(res);
         this.artigo = res;
-        this.documentCreationTime = res.date_creation;
-        switch (res.language){
-          case "en":
-            this.languagueSelected = "English";
+        //this.documentCreationTime="";
+        // tslint:disable-next-line: max-line-length
+        this.documentCreationTime = new Date(res.date_creation).getFullYear()+"-"+new Date(res.date_creation).getMonth()+"-"+new Date(res.date_creation).getDate();
+        switch (res.language) {
+          case 'en':
+
+            this.languagueSelected = 'English';
             break;
-          case "fr":
-            this.languagueSelected = "French";
+          case 'fr':
+            this.languagueSelected = 'French';
             break;
-          case "pt":
-            this.languagueSelected = "Portuguese";
+          case 'pt':
+            this.languagueSelected = 'Portuguese';
             break;
-          case "ge":
-            this.languagueSelected = "German";
+          case 'ge':
+            this.languagueSelected = 'German';
             break;
-          case "it":
-            this.languagueSelected = "Italian";
+          case 'it':
+            this.languagueSelected = 'Italian';
             break;
-          case "nl":
-            this.languagueSelected = "Dutch";
+          case 'nl':
+            this.languagueSelected = 'Dutch';
             break;
-          case "es":
-            this.languagueSelected = "Spanish";
+          case 'es':
+            this.languagueSelected = 'Spanish';
             break;
           default:
-            this._snackBar.open('Language no Supported', res.lang, {duration: 2000});
+            console.log(res.language);
+            this._snackBar.open('Language not supported', res.language, {
+              duration: 2000
+            });
             break;
-
           }
-        this.update();
+          this.update();
         this.timeline.getTextKeyDateFromSingleDoc(this.artigo.text, this.opcoes).subscribe((res2) => {
 
           if (res2) {
             // console.log('nice');
             this.resultado = res2;
+
             // pedido recebido aqui
-            // console.log(res);
+            console.log(res2);
             this.update();
             this.requestMade = true;
             this.loading = false;
@@ -198,6 +209,7 @@ export class QuerysingledocComponent implements OnInit {
           }
           }
         );
+
       }
 
 

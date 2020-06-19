@@ -52,7 +52,7 @@ export class KeywordExctractionComponent implements OnInit {
   public differentRelValues: Array<any>;
 
 
-  constructor(private timeline: TimelineService, private _snackBar: MatSnackBar, private _lang :LangdetectService) {
+  constructor(private timeline: TimelineService, private _snackBar: MatSnackBar, private _lang: LangdetectService) {
     /*private timeline: TimelineService*/
     this.ngramSelected = 1;
     this.byDocOrSentece = true;
@@ -65,10 +65,10 @@ export class KeywordExctractionComponent implements OnInit {
     this.hiddenoption = false;
     this.hiddenoptionKW = false;
     this.loading = false;
-    this.listaConteudos=['2011 Haiti Earthquake Anniversary. As of 2010 (see 1500 photos here), the following major earthquakes have been recorded in Haiti. The first great earthquake mentioned in histories of Haiti occurred in 1564 in what was still the Spanish colony. It destroyed Concepción de la Vega. On January 12, 2010, a massive earthquake struck the nation of Haiti, causing catastrophic damage inside and around the capital city of Port-au-Prince. On the first anniversary of the earthquake, 12 January 2011, Haitian Prime Minister Jean-Max Bellerive said the death toll from the quake in 2010 was more than 316,000, raising the figures in 2010 from previous estimates. I immediately flashed back to the afternoon of February 11, 1975 when, on my car radio, I first heard the news. Yesterday...',
+    this.listaConteudos = ['2011 Haiti Earthquake Anniversary. As of 2010 (see 1500 photos here), the following major earthquakes have been recorded in Haiti. The first great earthquake mentioned in histories of Haiti occurred in 1564 in what was still the Spanish colony. It destroyed Concepción de la Vega. On January 12, 2010, a massive earthquake struck the nation of Haiti, causing catastrophic damage inside and around the capital city of Port-au-Prince. On the first anniversary of the earthquake, 12 January 2011, Haitian Prime Minister Jean-Max Bellerive said the death toll from the quake in 2010 was more than 316,000, raising the figures in 2010 from previous estimates. I immediately flashed back to the afternoon of February 11, 1975 when, on my car radio, I first heard the news. Yesterday...',
     `Islam : l'image de la religion se dégrade en France et en Allemagne. La méfiance envers l'Islam, jusque-là uniquement associée à l'extrême droite et d'une partie de la droite, ou plus récemment comme un marqueur "réactionnaire" dans le débat culturel, serait à présent largement et profondément partagée à gauche. Selon un sondage Ifop réalisé du 14 au 18 avril 2016 pour Le Figaro, 52% des électeurs socialistes considèrent que la place de l'islam est "trop importante". En 2010, ils n'étaient que 39%. Une défiance qui monte en puissance et illustre un rejet global de la religion musulmane en France.  En cause, les multiples attaques terroristes dont a été victime l'Hexagone en 2015. A titre de comparaison, un sondage de 1989 révélait que 33% des Français étaient par exemple "favorables" à la construction des mosquées contre seulement 13% aujourd'hui. À l'époque, 31% des sondés étaient opposés au port du voile. En 2016, ils sont 63%.  En Allemagne, ce phénomène de rejet est moins puissant mais la donne a tout de même changé à la suite des événements du 31 décembre de Cologne. "Alors que ces deux pays ont des histoires de l'immigration très différentes, analyse Jerôme Fourquet, le Directeur du Département Opinion de l'Ifop, cette convergence montre que les défis de ces questions majeures sont posés de manière similaire à toute la société occidentale".`,
     `Champions: le possibili avversarie ai Quarti.  Conclusi gli Ottavi di finale, è ora definito il quadro delle otto "grandi d'Europa" che si sfideranno nei Quarti di Champions League 2016/2017. L'appuntamento con l'urna di Nyon è per oggi, venerdì 17 marzo, alle ore 12, con la Juventus che se la vedrà con una tra le tre formazioni spagnole (Atlético Madrid, Barcellona e Real Madrid); i tedeschi di Bayern Monaco e Borussia Dortmund; gli inglesi del Leicester o i transalpini del Monaco. A questo riguardo, andiamo ad analizzare alcune statistiche e curiosità relative ai precedenti tra i Bianconeri e i possibili avversari nei Quarti di finale.`,
-    `A seleção brasileira treinará com apenas 14 jogadores nesta segunda-feira. O técnico Tite comandará nesta segunda-feira o primeiro treinamento da Seleção Brasileira visando as partidas contra o Uruguai e Paraguai, nos próximos dias 23 e 28, válidos pela Eliminatórias Sul-Americanas para a Copa da Rússia em 2018. Para esta primeira atividade, o comandante terá apenas 14 dos 23 convocados à disposição. Os demais jogadores chegarão entre a tarde desta segunda-feira e a manhã da terça-feira.   A atividade, que será realizado às 16h (de Brasília)  no CT do Corinthians, contará com as presenças de Marcelo, Casemiro, Ederson, Weverton, Diego, Diego Souza, Fagner, Dudu, Filipe Luís, Willian, Miranda, Paulinho, Gil e Renato Augusto - os dois últimos já treinaram no CT do São Paulo durante a semana passada.   Na chegada ao hotel onde está concentrada a Seleção Brasileira, o meia Renato Augusto, atualmente no Beijing Guoan, explicou quais serão as maiores dificuldades encontradas no duelo contra os uruguaios, fora de casa. 'Será um clima semelhante ao da Libertadores, jogaremos fora de casa, enfrentaremos uma catimba natural, mas não devemos entrar no jogo deles, temos que ficar com a cabeça no lugar e fazer o nosso jogo para poder vencer', analisou o titular.   Tite só terá todos os seus convocados no treino desta terça-feira, que será realizado no CT do São Paulo. Dos nove atletas que ainda irão se juntar aos outros convocados, seis ainda deverão chegar nesta segunda-feira, são eles Marquinhos, Thiago Silva, Fernandinho, Giuliano, Coutinho e Firmino. A convocação estará completa apenas nesta terça-feira, com a chegadas de Neymar, Daniel Alves e Alisson.   Líder das Eliminatórias Sul-Americanas com 27 pontos, a Seleção Brasileira encara o segundo colocado, Uruguai, com 23 pontos, na próxima quinta-feira, às 20h (de Brasília), no estádio Centenário, em Montevidéu. Já no dia 2 de março, a equipe volta a campo para enfrentar o Paraguai, no Estádio de Itaquera, às 21h45.`,`The Boston Marathon bombing was a terrorist attack, followed by subsequent related shootings, that occurred when two pressure cooker bombs exploded during the Boston Marathon on April 15, 2013. The bombs exploded about 12 seconds and 210 yards (190 m) apart at 2:49 pm EDT, near the marathon's finish line on Boylston Street. The explosion killed 3 civilians and injured an estimated 264 others.
+    `A seleção brasileira treinará com apenas 14 jogadores nesta segunda-feira. O técnico Tite comandará nesta segunda-feira o primeiro treinamento da Seleção Brasileira visando as partidas contra o Uruguai e Paraguai, nos próximos dias 23 e 28, válidos pela Eliminatórias Sul-Americanas para a Copa da Rússia em 2018. Para esta primeira atividade, o comandante terá apenas 14 dos 23 convocados à disposição. Os demais jogadores chegarão entre a tarde desta segunda-feira e a manhã da terça-feira.   A atividade, que será realizado às 16h (de Brasília)  no CT do Corinthians, contará com as presenças de Marcelo, Casemiro, Ederson, Weverton, Diego, Diego Souza, Fagner, Dudu, Filipe Luís, Willian, Miranda, Paulinho, Gil e Renato Augusto - os dois últimos já treinaram no CT do São Paulo durante a semana passada.   Na chegada ao hotel onde está concentrada a Seleção Brasileira, o meia Renato Augusto, atualmente no Beijing Guoan, explicou quais serão as maiores dificuldades encontradas no duelo contra os uruguaios, fora de casa. 'Será um clima semelhante ao da Libertadores, jogaremos fora de casa, enfrentaremos uma catimba natural, mas não devemos entrar no jogo deles, temos que ficar com a cabeça no lugar e fazer o nosso jogo para poder vencer', analisou o titular.   Tite só terá todos os seus convocados no treino desta terça-feira, que será realizado no CT do São Paulo. Dos nove atletas que ainda irão se juntar aos outros convocados, seis ainda deverão chegar nesta segunda-feira, são eles Marquinhos, Thiago Silva, Fernandinho, Giuliano, Coutinho e Firmino. A convocação estará completa apenas nesta terça-feira, com a chegadas de Neymar, Daniel Alves e Alisson.   Líder das Eliminatórias Sul-Americanas com 27 pontos, a Seleção Brasileira encara o segundo colocado, Uruguai, com 23 pontos, na próxima quinta-feira, às 20h (de Brasília), no estádio Centenário, em Montevidéu. Já no dia 2 de março, a equipe volta a campo para enfrentar o Paraguai, no Estádio de Itaquera, às 21h45.`, `The Boston Marathon bombing was a terrorist attack, followed by subsequent related shootings, that occurred when two pressure cooker bombs exploded during the Boston Marathon on April 15, 2013. The bombs exploded about 12 seconds and 210 yards (190 m) apart at 2:49 pm EDT, near the marathon's finish line on Boylston Street. The explosion killed 3 civilians and injured an estimated 264 others.
     The Federal Bureau of Investigation (FBI) took over the investigation and, on April 18, released photographs and a surveillance video of two suspects. The suspects were identified later that day as Chechen brothers Dzhokhar Tsarnaev and Tamerlan Tsarnaev. Shortly after the FBI released identifying images publicly, the suspects killed an MIT policeman, carjacked a civilian SUV, and initiated an exchange of gunfire with the police in nearby Watertown. During the firefight, a Massachusetts Bay Transportation Authority Police officer was injured but survived with severe blood loss. A Boston Police Department officer was also injured and died from his wounds nearly a year later. Tamerlan Tsarnaev was shot several times in the firefight and his brother subsequently ran him over with the stolen SUV in his escape. Tamerlan died shortly after arriving at Boston's Beth Israel Hospital.
     An unprecedented manhunt for Dzhokhar Tsarnaev ensued on April 19, with thousands of law enforcement officers searching a 20-block area of Watertown. During the manhunt, authorities asked residents of Watertown and surrounding areas, including Boston, to stay indoors. The public transportation system and most businesses and public institutions were shut down, creating a deserted urban environment of historic size and duration. Around 6:00 p.m., shortly after the "shelter-in-place" advisory was rescinded, a Watertown resident discovered Dzhokhar hiding in a boat in his back yard. Reports conflict as to whether or not he was armed. Located within the boat by thermal imaging, he was shot while in the boat, arrested, and then taken to a hospital shortly thereafter.
     During an initial interrogation in the hospital, Dzhokhar alleged that Tamerlan was the mastermind. He said they were motivated by extremist Islamist beliefs and the wars in Iraq and Afghanistan, and that they were self-radicalized and unconnected to any outside terrorist groups. According to him, they learned to build explosive devices from an online magazine of the al-Qaeda affiliate in Yemen. He said that he and his brother had decided after the Boston bombing to travel to New York City to bomb Times Square. Dzhokhar was indicted on April 22, while still in the hospital, on 30 charges relating to homegrown terrorism, including use of a weapon of mass destruction and malicious destruction of property resulting in death. He was found guilty on all charges on April 8, 2015, and the following month was sentenced to death.
@@ -199,12 +199,13 @@ export class KeywordExctractionComponent implements OnInit {
     this.dateGranularitySelected = this.dateGranularityOptions[0];
     this.documentTypeOptions = ['news', 'narrative', 'colloquial', 'scientific'];
     this.documentTypeSelected = this.documentTypeOptions[0];
-    this.languageOptions = ['English', 'Portuguese', 'Spanish', 'German', 'Dutch', 'Italian', 'French'];
+    this.languageOptions = ['auto-detect', 'English', 'Portuguese', 'Spanish', 'German', 'Dutch', 'Italian', 'French'];
     this.languagueSelected = this.languageOptions[0];
+
     this.dateBegin = 0;
     this.dateEnd = 2100;
     this.numberOfKeyWords = 10;
-    this.contextWindow = "full_sentence";
+    this.contextWindow = 'full_sentence';
     this.simbaValue = 10;
     this.cheating = false;
     this.showOnlyRel = false;
@@ -213,7 +214,7 @@ export class KeywordExctractionComponent implements OnInit {
     this.hiddenoptionKW = !this.hiddenoptionKW;
   }
 
-  toggleRel(){
+  toggleRel() {
     this.showOnlyRel = !this.showOnlyRel;
 
   }
@@ -225,41 +226,41 @@ export class KeywordExctractionComponent implements OnInit {
       this.withKeywordsSentence = 'Keywords On';
     }
   }
-  toggleDocOrSentence(){
+  toggleDocOrSentence() {
     this.byDocOrSentece = !this.byDocOrSentece;
   }
   toggleOption() {
     this.hiddenoption = !this.hiddenoption;
   }
-  deleteContent(event : any){
-    this.conteudoDefault = "";
+  deleteContent(event: any) {
+    this.conteudoDefault = '';
   }
 
   ngOnInit() {
-    //singleDoc
+    // singleDoc
 
 
   }
-  selecionarngram(event:any){
+  selecionarngram(event: any) {
 
     this.ngramSelected = event.target.value;
     console.log(event.target.value);
   }
-  selecionarDataReferencia(event:any){
+  selecionarDataReferencia(event: any) {
     this.documentCreationTime = event.target.value;
     console.log(event.target.value);
 
   }
-  selecionarNKeywords(event: any){
+  selecionarNKeywords(event: any) {
     this.numberOfKeyWords = event.target.value;
     console.log(event.target.value);
 
   }
-  selecionarTipoDocumento(event:any){
+  selecionarTipoDocumento(event: any) {
     this.documentTypeSelected = event;
 
   }
-  selecionaTamanhoSimbaVectors(event: any){
+  selecionaTamanhoSimbaVectors(event: any) {
     console.log(event.target.value);
     this.simbaValue = event.target.value;
   }
@@ -268,31 +269,31 @@ export class KeywordExctractionComponent implements OnInit {
     this.dateGranularitySelected = event;
     console.log(event);
   }
-  selecionarAlgoritmo(event: any){
+  selecionarAlgoritmo(event: any) {
     this.algoritmoSelected = event;
-    this.documentCreationTime='';
+    this.documentCreationTime = '';
 
   }
-  selecionarContextualWindow(event:any){
+  selecionarContextualWindow(event: any) {
     this.contextWindow = event;
   }
-  selecionarLanguage(event:any){
+  selecionarLanguage(event: any) {
     this.languagueSelected = event;
   }
-  setDefaultText(num:number, language:string){
+  setDefaultText(num: number, language: string) {
 
     this.selecionarLanguage(language);
     console.log();
     this.conteudoDefault = this.listaConteudos[num];
   }
-  setDefaultTexto(texto: any){
+  setDefaultTexto(texto: any) {
     console.log(texto.value);
     this.conteudoDefault = texto.value;
   }
 
-  public putOnClipboard(event : any, cena:string){
+  public putOnClipboard(event: any, cena: string) {
     event.preventDefault();
-    let clipboard = document.createElement('input');
+    const clipboard = document.createElement('input');
     console.log(cena);
     clipboard.setAttribute('value', cena);
     document.body.appendChild(clipboard);
@@ -302,10 +303,10 @@ export class KeywordExctractionComponent implements OnInit {
   }
   public copyToClipboard(event: any) {
     event.preventDefault();
-    this._snackBar.open('Message copied to Clipboard', 'Length: '+this.result.TextNormalized.length+' characters',{
+    this._snackBar.open('Message copied to Clipboard', 'Length: ' + this.result.TextNormalized.length + ' characters', {
       duration: 2000
     });
-    let clipboard = document.createElement('input');
+    const clipboard = document.createElement('input');
     clipboard.setAttribute('value', this.result.TextNormalized);
     document.body.appendChild(clipboard);
     clipboard.select();
@@ -313,15 +314,15 @@ export class KeywordExctractionComponent implements OnInit {
     document.body.removeChild(clipboard);
 
   }
-  goBack(){
-    this.result=false;
+  goBack() {
+    this.result = false;
     this.requestMade = false;
     this.loading = false;
   }
-  public update(){
+  public update() {
 
         this.differentValues = this.result.TempExpressions.sort(
-          (a,b)=>{return a[0] - b[0]}).filter(
+          (a, b) => a[0] - b[0]).filter(
               (element , index, array) => {
           if (index == 0) {
             return true;
@@ -329,7 +330,7 @@ export class KeywordExctractionComponent implements OnInit {
             return element[0] != array[index - 1][0];
           }
         });
-        if(this.byDocOrSentece){
+        if (this.byDocOrSentece) {
 
           this.differentRelValues = this.differentValues.filter(
             (element, index, array) => {
@@ -338,14 +339,14 @@ export class KeywordExctractionComponent implements OnInit {
               console.log(index);
               console.log(this.result.Score);
               console.log(this.result.Score[element[0].toLowerCase()]);*/
-              let a = element[0].toLowerCase() + "";
-              //console.log(a);
+              const a = element[0].toLowerCase() + '';
+              // console.log(a);
               return this.result.Score[a][0] > 0.35;
             }
           );
 
-        }else{
-          this.differentRelValues = this.differentValues.map((a)=>{
+        } else {
+          this.differentRelValues = this.differentValues.map((a) => {
             return this.result.Score[a[0]];
           });
 
@@ -358,41 +359,41 @@ export class KeywordExctractionComponent implements OnInit {
         let c = [];
         let a = {};
         let b = {};
-        let d = [];
+        const d = [];
 
         let c2 = [];
         let a2 = {};
         let b2 = {};
-        let d2 = [];
+        const d2 = [];
         // tslint:disable-next-line: forin
-        for (let i in Object.keys(this.result.Score)) {
+        for (const i in Object.keys(this.result.Score)) {
           // console.log(this.result.Score[Object.keys(this.result.Score)[i]][0]);
           // handle Dataset
           if (this.byDocOrSentece) {
             a = '<p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p>';
-            if(this.result.Score[Object.keys(this.result.Score)[i]][0]>0.35){
+            if (this.result.Score[Object.keys(this.result.Score)[i]][0] > 0.35) {
             a2 = '<p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p>';
-            }else{
+            } else {
               a2 = null;
             }
-          }else {
+          } else {
             let valorDeA = '';
             let valorDeA2 = '';
             // tslint:disable-next-line: forin
-            for (let xd in this.result.Score[Object.keys(this.result.Score)[i]]) {
-              //if()
+            for (const xd in this.result.Score[Object.keys(this.result.Score)[i]]) {
+              // if()
 
-              d.push({x:Object.keys(this.result.Score)[i], y:this.result.Score[Object.keys(this.result.Score)[i]][xd][0], series: xd});
-              //console.log(d);
+              d.push({x: Object.keys(this.result.Score)[i], y: this.result.Score[Object.keys(this.result.Score)[i]][xd][0], series: xd});
+              // console.log(d);
               // tslint:disable-next-line: whitespace
               // tslint:disable-next-line: max-line-length
               valorDeA += '<span title="' + this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'') + '"><p class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
-              if(this.result.Score[Object.keys(this.result.Score)[i]][xd][0] > 0.35) {
+              if (this.result.Score[Object.keys(this.result.Score)[i]][xd][0] > 0.35) {
                 // tslint:disable-next-line: whitespace
                 // tslint:disable-next-line: max-line-length
                 valorDeA2 += '<span title="' + this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'') + '"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
                 d2.push({x: Object.keys(this.result.Score)[i], y: this.result.Score[Object.keys(this.result.Score)[i]][xd][0], series: xd});
-                //console.log(d2);
+                // console.log(d2);
                 // TODO: meter d e d2 nos datasets
               }
 
@@ -409,33 +410,33 @@ export class KeywordExctractionComponent implements OnInit {
           // console.log(b);
           // console.log("end");
 
-          c2.push({x:b2, y:a2, z:d2});
-          c.push({x:b, y:a, z:d});
+          c2.push({x: b2, y: a2, z: d2});
+          c.push({x: b, y: a, z: d});
             // console.log();
             // console.log(Object.keys(this.result.Score)[i].split('-').join(''));
 
-          /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join('')) ?'':c.pop();
-          /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join('')) ?'':c2.pop();
+          /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join('')) ? '' : c.pop();
+          /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join('')) ? '' : c2.pop();
 
-          if(!a2) {
+          if (!a2) {
               c2.pop();
             }
 
         }
         // tslint:disable-next-line: forin
-        for (let data in c){
-          let j = Date.parse(c[data].x.split('-').join(' '));
+        for (const data in c) {
+          const j = Date.parse(c[data].x.split('-').join(' '));
           // console.log (j);
-          c[data]['dateparsed']=j;
+          c[data].dateparsed= j;
         }
         // tslint:disable-next-line: forin
-        for (let data in c2){
-          let j = Date.parse(c2[data].x.split('-').join(' '));
+        for (const data in c2) {
+          const j = Date.parse(c2[data].x.split('-').join(' '));
           // console.log (j);
-          c2[data]['dateparsed']=j;
+          c2[data].dateparsed= j;
         }
-        c = c.sort(( a , b ) => { return a.dateparsed - b.dateparsed; });
-        c2 = c2.sort(( a , b ) => { return a.dateparsed - b.dateparsed; });
+        c = c.sort(( a , b ) => a.dateparsed - b.dateparsed);
+        c2 = c2.sort(( a , b ) => a.dateparsed - b.dateparsed);
         // console.log("a,b,join");
         // console.log(a);
         // console.log(b);
@@ -447,13 +448,13 @@ export class KeywordExctractionComponent implements OnInit {
         console.log(this.dataset);
         console.log(this.datasetRelOnly);
   }
-  public getKeyword(event:any) {
+  public getKeyword(event: any) {
 
     event.preventDefault();
     // console.log(event.target.docCreatDate.value);
     // {{ dateObj | date:'mm:ss' }}
-    if ( this.conteudoDefault.length == 0){
-      this._snackBar.open('No text to annotate', this.conteudoDefault.length.toString(),{
+    if ( this.conteudoDefault.length == 0) {
+      this._snackBar.open('No text to annotate', this.conteudoDefault.length.toString(), {
         duration: 2000
       });
       return;
@@ -461,87 +462,119 @@ export class KeywordExctractionComponent implements OnInit {
     }
 
     this.loading = true;
-    this._snackBar.open('Your request is being processed','true',{
+    this._snackBar.open('Your request is being processed', 'true', {
       duration: 2000
     });
-
-    // console.log(this.optio);
-    this._lang.getLanguageFromContent(this.conteudoDefault).subscribe((res)=>{
-      if(res){
-        this._snackBar.open('Language Detected: ', res.lang,{
-          duration: 2000
-        });
-
-      } else {
-        this._snackBar.open('Text Too Short', this.conteudoDefault.length.toString(),{
-          duration: 2000
-        });
-      }
-      switch (res.lang){
-        case "en":
-          this.languagueSelected = "English";
-          break;
-        case "fr":
-          this.languagueSelected = "French";
-          break;
-        case "pt":
-          this.languagueSelected = "Portuguese";
-          break;
-        case "ge":
-          this.languagueSelected = "German";
-          break;
-        case "it":
-          this.languagueSelected = "Italian";
-          break;
-        case "nl":
-          this.languagueSelected = "Dutch";
-          break;
-        case "es":
-          this.languagueSelected = "Spanish";
-          break;
-        default:
-          this._snackBar.open('Language no Supported', res.lang, {
+    if (this.languagueSelected =='auto-detect') {
+      this._lang.getLanguageFromContent(this.conteudoDefault).subscribe((res) => {
+        if (res) {
+          this._snackBar.open('Language Detected: ', res.lang, {
             duration: 2000
           });
-          break;
-        }
-      this.optio = {
-          docCreatTime : this.documentCreationTime,
-          dateGranularity : this.dateGranularitySelected,
-          docOrSentence  : this.byDocOrSentece ? 'doc' : 'sentence',
-          algo: this.algoritmoSelected,
-          ngram : this.ngramSelected,
-          language : this.languagueSelected,
-          numberOfKeywords : this.numberOfKeyWords,
-          nContextualWindow: this.contextWindow,
-          documentType: this.documentTypeSelected,
-          N: this.simbaValue
-        };
 
-      this.timeline.getTextKeyDateFromSingleDoc(this.conteudoDefault, this.optio).subscribe((res) =>
-      {
-
-        if (res) {
-        // console.log('nice');
-        this.result = res;
-        // pedido recebido aqui
-        // console.log(res);
-        this.update();
-        this.requestMade = true;
-        this.loading = false;
-        return ' ';
+        } else {
+          this._snackBar.open('Text Too Short', this.conteudoDefault.length.toString(), {
+            duration: 2000
+          });
         }
-        else {
-          console.log('oof');
+        switch (res.lang) {
+          case 'en':
+            this.languagueSelected = 'English';
+            break;
+          case 'fr':
+            this.languagueSelected = 'French';
+            break;
+          case 'pt':
+            this.languagueSelected = 'Portuguese';
+            break;
+          case 'ge':
+            this.languagueSelected = 'German';
+            break;
+          case 'it':
+            this.languagueSelected = 'Italian';
+            break;
+          case 'nl':
+            this.languagueSelected = 'Dutch';
+            break;
+          case 'es':
+            this.languagueSelected = 'Spanish';
+            break;
+          default:
+            this._snackBar.open('Language no Supported', res.lang, {
+              duration: 2000
+            });
+            break;
+          }
+        this.optio = {
+            docCreatTime : this.documentCreationTime,
+            dateGranularity : this.dateGranularitySelected,
+            docOrSentence  : this.byDocOrSentece ? 'doc' : 'sentence',
+            algo: this.algoritmoSelected,
+            ngram : this.ngramSelected,
+            language : this.languagueSelected,
+            numberOfKeywords : this.numberOfKeyWords,
+            nContextualWindow: this.contextWindow,
+            documentType: this.documentTypeSelected,
+            N: this.simbaValue
+          };
+
+        this.timeline.getTextKeyDateFromSingleDoc(this.conteudoDefault, this.optio).subscribe((res) => {
+
+          if (res) {
+          // console.log('nice');
+          this.result = res;
+          // pedido recebido aqui
+          // console.log(res);
+          this.update();
+          this.requestMade = true;
+          this.loading = false;
           return ' ';
+          } else {
+            console.log('oof');
+            return ' ';
+          }
+
         }
+      );
 
+
+      });
+
+
+    } else {
+      this.optio = {
+        docCreatTime : this.documentCreationTime,
+        dateGranularity : this.dateGranularitySelected,
+        docOrSentence  : this.byDocOrSentece ? 'doc' : 'sentence',
+        algo: this.algoritmoSelected,
+        ngram : this.ngramSelected,
+        language : this.languagueSelected,
+        numberOfKeywords : this.numberOfKeyWords,
+        nContextualWindow: this.contextWindow,
+        documentType: this.documentTypeSelected,
+        N: this.simbaValue
+      };
+
+      this.timeline.getTextKeyDateFromSingleDoc(this.conteudoDefault, this.optio).subscribe((res) => {
+
+      if (res) {
+      // console.log('nice');
+      this.result = res;
+      // pedido recebido aqui
+      // console.log(res);
+      this.update();
+      this.requestMade = true;
+      this.loading = false;
+      return ' ';
+      } else {
+        console.log('oof');
+        return ' ';
       }
-    );
 
+    }
+  );
 
-    });
-
+    }
 
   }
 }

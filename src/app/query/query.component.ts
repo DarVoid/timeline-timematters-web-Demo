@@ -21,7 +21,7 @@ export class QueryComponent implements OnChanges {
 
   constructor(private _snackBar: MatSnackBar) {
     this.showOnlyRel = false;
-    this.withKeywords = false;
+    this.withKeywords = true;
     this.withKeywordsSentence = "Keywords Off";
     this.showOnlyRel = false;
     this.differentValues = [];
@@ -30,7 +30,9 @@ export class QueryComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    this.update();
+    if(this.article){
+      this.update();
+    }
   }
   toggleKeywords() {
     this.withKeywords = !this.withKeywords;

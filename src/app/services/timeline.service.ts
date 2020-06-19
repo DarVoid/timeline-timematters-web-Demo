@@ -30,6 +30,10 @@ export class TimelineService {
 
   public getTextKeyDateFromSingleDoc(search: string, options: any): Observable<any> {
       const formData = new FormData();
+      console.log("search");
+      console.log(search);
+      console.log("options");
+      console.log(options);
       let realURL = this.url + '/SingleDoc';
       if (options.algo === 'py_heideltime') {
         realURL += '/Heideltime/api/v1.0';
@@ -70,12 +74,17 @@ export class TimelineService {
         formData.append('ngram', options.ngram);
       }
       if (options.dateBegin) {
+
         formData.append('begin_date', options.dateBegin);
+
       }
       if (options.dateEnd) {
-        formData.append('end_date', options.dateEnd);
-      }
 
+        formData.append('end_date', options.dateEnd);
+
+      }
+      if (options.result) {
+      }
       return this.http.post(realURL, formData
           ).pipe(map((res, err) => {
         if (res) {
