@@ -26,6 +26,7 @@ export class QueryComponent implements OnChanges {
     this.showOnlyRel = false;
     this.differentValues = [];
 
+
   }
 
   ngOnChanges() {
@@ -79,7 +80,7 @@ export class QueryComponent implements OnChanges {
             return element[0] != array[index - 1][0];
           }
         });
-        if(this.options.docOrSentence){
+        if(this.options.docOrSentence == "doc"){
 
           this.differentRelValues = this.differentValues.filter(
             (element, index, array) => {
@@ -89,7 +90,7 @@ export class QueryComponent implements OnChanges {
               console.log(this.result.Score);
               console.log(this.result.Score[element[0].toLowerCase()]);*/
               let a = element[0].toLowerCase() + "";
-              //console.log(a);
+              console.log(a);
               return this.options.result.Score[a][0] > 0.35;
             }
           );
@@ -119,22 +120,29 @@ export class QueryComponent implements OnChanges {
           // handle Dataset
           if (this.options.docOrSentence) {
             a = '<p class="noticeme">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p>';
-            if(this.options.result.Score[Object.keys(this.options.result.Score)[i]][0]>0.35){
+            if (this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] > 0.35) {
             a2 = '<p class="noticeme">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p>';
-            }else{
+            }else {
               a2 = null;
             }
+            console.log("esta aqui");
           }else {
             let valorDeA = '';
             let valorDeA2 = '';
             // tslint:disable-next-line: forin
             for (let xd in this.options.result.Score[Object.keys(this.options.result.Score)[i]]) {
-              d.push(this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0]);
+
+              // tslint:disable-next-line: max-line-length
+              d.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0], series: xd});
               console.log(d);
-              valorDeA += '<span title="'+this.options.result.SentencesNormalized[xd.toString()]+'"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] + '</p></span>';
-              if(this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] > 0.35){
-                valorDeA2 += '<span title="'+this.options.result.SentencesNormalized[xd.toString()]+'"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] + '</p></span>';
-                d2.push(this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0]);
+              // tslint:disable-next-line: max-line-length
+              valorDeA += '<span title="' + this.options.result.SentencesNormalized[xd.toString()] + '"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] + '</p></span>';
+              if(this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] > 0.35) {
+                // tslint:disable-next-line: max-line-length
+                valorDeA2 += '<span title="' + this.options.result.SentencesNormalized[xd.toString()] + '"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] + '</p></span>';
+
+                // tslint:disable-next-line: max-line-length
+                d2.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0], series: xd});
                 console.log(d2);
                 // TODO: meter d e d2 nos datasets
               }
@@ -152,8 +160,8 @@ export class QueryComponent implements OnChanges {
           // console.log(b);
           // console.log("end");
 
-          c2.push({x:b2, y:a2});
-          c.push({x:b,y:a});
+          c2.push({x:b2, y:a2, z:d2});
+          c.push({x:b, y:a, z:d});
             // console.log();
             // console.log(Object.keys(this.result.Score)[i].split('-').join(''));
 

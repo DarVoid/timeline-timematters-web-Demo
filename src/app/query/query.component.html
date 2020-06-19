@@ -16,7 +16,7 @@
                 <p class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>The top {{numberOfKeyWords}} {{options.ngram}}-gram keywords were  annotated in the text through YAKE! software</p>
                 <p class="afterAnnotated">Language: {{options.language}}</p>
                 <hr>
-                <app-frame [argumentos]="options.result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"  [docOrSentence]="options.docOrSentence?'doc':'sentence'" class="result"></app-frame>
+                <app-frame [docOrSentence]="options.docOrSentence" [argumentos]="options.result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"   class="result"></app-frame>
                 <hr>
                 <div class="dateScoreColors">
                   <span><b>Date scores colors organized by relevance:  </b></span>
@@ -66,7 +66,7 @@
 
           <mat-tab label="Timeline"> <!-- *ngIf="options.docOrSentence"-->
             <!--WIP-->
-            <app-linha-temporal [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
+            <app-linha-temporal [docSen]="options.docOrSentence" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
           <!--WIP-->
           </mat-tab>
           <mat-tab label="Timeline2">
