@@ -340,7 +340,7 @@ export class KeywordExctractionComponent implements OnInit {
               console.log(this.result.Score[element[0].toLowerCase()]);*/
               let a = element[0].toLowerCase() + "";
               //console.log(a);
-              return this.result.Score[a][0] > 0.3;
+              return this.result.Score[a][0] > 0.35;
             }
           );
 
@@ -369,7 +369,7 @@ export class KeywordExctractionComponent implements OnInit {
           // handle Dataset
           if (this.byDocOrSentece) {
             a = '<p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p>';
-            if(this.result.Score[Object.keys(this.result.Score)[i]][0]>0.3){
+            if(this.result.Score[Object.keys(this.result.Score)[i]][0]>0.35){
             a2 = '<p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p>';
             }else{
               a2 = null;
@@ -382,7 +382,7 @@ export class KeywordExctractionComponent implements OnInit {
               d.push(this.result.Score[Object.keys(this.result.Score)[i]][xd][0]);
               console.log(d);
               valorDeA += '<span title="'+this.result.SentencesNormalized[xd.toString()]+'"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
-              if(this.result.Score[Object.keys(this.result.Score)[i]][xd][0] > 0.3){
+              if(this.result.Score[Object.keys(this.result.Score)[i]][xd][0] > 0.35){
                 valorDeA2 += '<span title="'+this.result.SentencesNormalized[xd.toString()]+'"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
                 d2.push(this.result.Score[Object.keys(this.result.Score)[i]][xd][0]);
                 console.log(d2);
@@ -452,7 +452,7 @@ export class KeywordExctractionComponent implements OnInit {
     }
 
     this.loading = true;
-    this._snackBar.open('Your request is being processed','',{
+    this._snackBar.open('Your request is being processed','true',{
       duration: 2000
     });
 

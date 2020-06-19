@@ -49,7 +49,7 @@ export class ScoreComponent implements OnChanges {
   ngOnChanges() {
 
     if (this.argumentos) {
-
+      console.log(this.argumentos);
 
       let dados1 = [];
       let cores1 = [];
@@ -60,7 +60,7 @@ export class ScoreComponent implements OnChanges {
       for (let i in this.argumentos.Score) {
         dados2.push(i);
         dados1.push(this.argumentos.Score[i][0]);
-        if(this.argumentos.Score[i][0] < 0.3){
+        if(this.argumentos.Score[i][0] < 0.35){
           cores1.push('rgba(245, 81, 81, 1)');
           cores2.push('rgba(245, 81, 81, 1)');
         }else{

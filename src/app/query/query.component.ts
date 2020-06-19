@@ -17,6 +17,7 @@ export class QueryComponent implements OnChanges {
   public withKeywordsSentence: string;
   public differentValues: Array<any>;
   public differentRelValues: Array<any>;
+  public docOrSentence: boolean;
 
   constructor(private _snackBar: MatSnackBar) {
     this.showOnlyRel = false;
@@ -89,7 +90,7 @@ export class QueryComponent implements OnChanges {
               console.log(this.result.Score[element[0].toLowerCase()]);*/
               let a = element[0].toLowerCase() + "";
               //console.log(a);
-              return this.options.result.Score[a][0] > 0.3;
+              return this.options.result.Score[a][0] > 0.35;
             }
           );
 
@@ -118,7 +119,7 @@ export class QueryComponent implements OnChanges {
           // handle Dataset
           if (this.options.docOrSentence) {
             a = '<p class="noticeme">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p>';
-            if(this.options.result.Score[Object.keys(this.options.result.Score)[i]][0]>0.3){
+            if(this.options.result.Score[Object.keys(this.options.result.Score)[i]][0]>0.35){
             a2 = '<p class="noticeme">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p>';
             }else{
               a2 = null;
@@ -131,7 +132,7 @@ export class QueryComponent implements OnChanges {
               d.push(this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0]);
               console.log(d);
               valorDeA += '<span title="'+this.options.result.SentencesNormalized[xd.toString()]+'"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] + '</p></span>';
-              if(this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] > 0.3){
+              if(this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] > 0.35){
                 valorDeA2 += '<span title="'+this.options.result.SentencesNormalized[xd.toString()]+'"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] + '</p></span>';
                 d2.push(this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0]);
                 console.log(d2);

@@ -28,8 +28,8 @@
                 <hr>
                 <div class="dateScoreColors">
                   <span><b>Date scores colors organized by relevance:  </b></span>
-                  <span class='{{!showOnlyRel?"preto": "nonviewable"}}'>[0; 0.3]</span>
-                  <span class="verde">]0.3; 0.4]</span>
+                  <span class='{{!showOnlyRel?"preto": "nonviewable"}}'>[0; 0.35]</span>
+                  <span class="verde">]0.35; 0.4]</span>
                   <span class="azul">]0.4; 0.6]</span>
                   <span class="amarelo">]0.6; 0.8]</span>
                   <span class="roxo">]0.8; 1.0]</span>
@@ -72,14 +72,14 @@
           <!--WIP-->
           </mat-tab>
 
-          <mat-tab label="Timeline" *ngIf="byDocOrSentece">
+          <mat-tab label="Timeline" ><!--*ngIf="byDocOrSentece"-->
             <!--WIP-->
-            <app-linha-temporal [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
+            <app-linha-temporal [docSen]="byDocOrSentece" [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
           <!--WIP-->
           </mat-tab>
           <mat-tab label="Timeline2">
             <!--WIP-->
-            <app-timeline-scroll [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
+            <app-timeline-scroll [docSen]="byDocOrSentece" [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
           <!--WIP-->
           </mat-tab>
           </mat-tab-group></mat-card>

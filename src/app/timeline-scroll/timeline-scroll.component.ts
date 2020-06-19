@@ -12,6 +12,7 @@ declare  var $: any;
 })
 export class TimelineScrollComponent implements OnInit {
   @Input() argumentosTodos: any;
+  @Input() docSen: any;
   @Input() argumentosRelevantes: any;
   public relevant: boolean;
   public argumentos: any;
@@ -52,7 +53,10 @@ export class TimelineScrollComponent implements OnInit {
   }
   update() {
     this.rendering = '';
-
+    console.log("argumentosTodos");
+    console.log(this.argumentosTodos);
+    console.log("argumentosRel");
+    console.log(this.argumentosRelevantes);
 
     let j: any;
 

@@ -21,6 +21,7 @@ export class LinhaTemporalComponent implements OnInit {
 
   @Input() argumentosRelevantes: any;
   @Input() argumentosTodos: any;
+  @Input() docSen: boolean;
   public chart1: any;
   public argumentos: any;
   public b: any;
@@ -142,20 +143,41 @@ export class LinhaTemporalComponent implements OnInit {
       this.argumentos = this.argumentosTodos;
 
     }
+    if(this.docSen){
+      console.log(this.argumentos);
+      let p = [ ];
+      // console.log(this.options.series[0]);
 
-    let p = [ ];
-    // console.log(this.options.series[0]);
+      // tslint:disable-next-line: forin
+      for (let y in this.argumentos){
+        // console.log(this.argumentos[y]);
+        let valor = this.argumentos[y].y.substring(27, this.argumentos[y].y.length - 4);
+        // console.log(valor);
 
-    // tslint:disable-next-line: forin
-    for (let y in this.argumentos){
-      // console.log(this.argumentos[y]);
-      let valor = this.argumentos[y].y.substring(27, this.argumentos[y].y.length - 4);
-      // console.log(valor);
+        p.push([new Date(this.argumentos[y].x).getTime(), valor * 1]);
+      }
+      this.options.series[0].data = p;
+      // console.log(this.options.series[0]);
 
-      p.push([new Date(this.argumentos[y].x).getTime(), valor * 1]);
+    }else{
+      console.log(this.argumentos);
+      /*// tslint:disable-next-line: forin
+      for (let h in this.argumentos) {
+        let p = [ ];
+        // console.log(this.options.series[0]);
+
+        // tslint:disable-next-line: forin
+        for (let y in this.argumentos[h]){
+          // console.log(this.argumentos[y]);
+          let valor = this.argumentos[h][y].y.substring(27, this.argumentos[h][y].y.length - 4);
+          // console.log(valor);
+
+          p.push([new Date(this.argumentos[h][y].x).getTime(), valor * 1]);
+        }
+        this.options.series[h].data = p;
+        // console.log(this.options.series[0]);
+      }*/
     }
-    this.options.series[0].data = p;
-    // console.log(this.options.series[0]);
     this.update();
   }
 

@@ -49,7 +49,7 @@ export class FrameComponent implements OnInit, OnChanges {
             titulo = 'ta a falhar';
           }
 
-          if (titulo < 0.3) {
+          if (titulo < 0.35) {
             cor = 'black';
           } else {
             cor = 'red';
