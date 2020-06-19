@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-//import TL from '../../assets/TL1.js';
+// import TL from '../../assets/TL1.js';
 declare  var TL: any;
 declare  var $: any;
 
@@ -23,6 +23,7 @@ export class TimelineScrollComponent implements OnInit {
   public titulo: string;
   public timeline: any;
   public isSet: boolean;
+  public jsonText: string;
   constructor() {
     // console.log(this.TLObj);
     this.rendering = 'rendering';
@@ -34,10 +35,10 @@ export class TimelineScrollComponent implements OnInit {
     // setTimeout(()=>{this.update();}, 5);
   }
   setRelevance() {
-    if(!this.isSet){
+    if (!this.isSet) {
       this.isSet = true;
     }
-    if (this.relevant){
+    if (this.relevant) {
       this.relevant = false;
     } else {
       this.relevant = true;
@@ -53,38 +54,40 @@ export class TimelineScrollComponent implements OnInit {
   }
   update() {
     this.rendering = '';
-    console.log("argumentosTodos");
+    console.log('argumentosTodos');
     console.log(this.argumentosTodos);
-    console.log("argumentosRel");
+    console.log('argumentosRel');
     console.log(this.argumentosRelevantes);
 
     let j: any;
 
-    let events = [];
+    const events = [];
     // tslint:disable-next-line: forin
-    for (let h in this.argumentos) {
+    for (const h in this.argumentos) {
 
       // console.log(h);
       // console.log(this.argumentos[h]);
       if (this.argumentos[h].x.length === 4) {
-        events.push({ "start_date":  { "year": this.argumentos[h].x}, "text": { "headline" : this.argumentos[h].y}});
+        events.push({ start_date:  { year: this.argumentos[h].x}, text: { headline : this.argumentos[h].y}});
 
       } else if (this.argumentos[h].x.split('-').length === 2) {
-        events.push({"start_date":  {"year": this.argumentos[h].x.split('-')[0],"month":this.argumentos[h].x.split('-')[1] }, "text": {"headline": this.argumentos[h].y}});
+        // tslint:disable-next-line: max-line-length
+        events.push({start_date:  {year: this.argumentos[h].x.split('-')[0],month: this.argumentos[h].x.split('-')[1] }, text: {headline: this.argumentos[h].y}});
       } else {
-        events.push({"start_date":  {"year": this.argumentos[h].x.split('-')[0],"month":this.argumentos[h].x.split('-')[1], "day":this.argumentos[h].x.split('-')[2] }, "text": {"headline": this.argumentos[h].y}});
+        // tslint:disable-next-line: max-line-length
+        events.push({start_date:  {year: this.argumentos[h].x.split('-')[0],month: this.argumentos[h].x.split('-')[1], day: this.argumentos[h].x.split('-')[2] }, text: {headline: this.argumentos[h].y}});
       }
     }
-    j = {"events": events,
-    "title": {"text": {"headline":"Timeline","text":"Here are the date scores presented in a timeline fashion"}}
+    j = {events: events,
+    title: {text: {headline: 'Timeline', text: 'Here are the date scores presented in a timeline fashion'}}
 
     };
-
+    this.jsonText = j;
     console.log(j);
-    let additionalOptions = {
+    const additionalOptions = {
       start_at_end: false,
-      default_bg_color: {r:255, g:255, b:255}
-    }
+      default_bg_color: {r: 255, g: 255, b: 255}
+    };
     // tslint:disable-next-line: no-unused-expression
     new TL.Timeline('my-timeline', j, additionalOptions);
 

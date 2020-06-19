@@ -2,9 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import * as Highcharts from 'highcharts';
 
 declare var require: any;
-let Boost = require('highcharts/modules/boost');
-let noData = require('highcharts/modules/no-data-to-display');
-let More = require('highcharts/highcharts-more');
+const Boost = require('highcharts/modules/boost');
+const noData = require('highcharts/modules/no-data-to-display');
+const More = require('highcharts/highcharts-more');
 
 Boost(Highcharts);
 noData(Highcharts);
@@ -37,7 +37,7 @@ export class LinhaTemporalComponent implements OnInit {
     this.rendering = 'rendering...';
     this.isSet = false;
     this.tipo = 0;
-    this.tipos = ["area", "areaspline", "line"];
+    this.tipos = ['area', 'areaspline', 'line'];
     this.relevant = false;
     this.options = {
       chart: {
@@ -52,7 +52,7 @@ export class LinhaTemporalComponent implements OnInit {
         enabled: false
       },
       tooltip: {
-        formatter: function() {
+        formatter() {
           return 'Date: ' + Highcharts.dateFormat('%e %b %Y', this.x) +
             '; Score: ' + this.y.toFixed(3);
         }
@@ -60,13 +60,13 @@ export class LinhaTemporalComponent implements OnInit {
       xAxis: {
         type: 'datetime',
         labels: {
-          formatter: function() {
+          formatter() {
             return Highcharts.dateFormat('%e %b %Y', this.value);
           }
         }
       },
       series: [
-        { name:'scores',
+        { name: 'scores',
           turboThreshold: 500000,
           data: [[new Date('2018-01-25 18:38:31').getTime(), 2]]
         }
@@ -82,7 +82,7 @@ export class LinhaTemporalComponent implements OnInit {
   }
   toggleTipo() {
     this.tipo++;
-    if (this.tipo >= this.tipos.length){
+    if (this.tipo >= this.tipos.length) {
       this.tipo = 0;
     }
     this.options = {
@@ -97,7 +97,7 @@ export class LinhaTemporalComponent implements OnInit {
         enabled: false
       },
       tooltip: {
-        formatter: function() {
+        formatter() {
           return 'Date: ' + Highcharts.dateFormat('%e %b %Y', this.x) +
             '; Score: ' + this.y.toFixed(3);
         }
@@ -105,7 +105,7 @@ export class LinhaTemporalComponent implements OnInit {
       xAxis: {
         type: 'datetime',
         labels: {
-          formatter: function() {
+          formatter() {
             return Highcharts.dateFormat('%e %b %Y', this.value);
           }
         }
@@ -120,7 +120,7 @@ export class LinhaTemporalComponent implements OnInit {
           }
       },
       series: [
-        { name:'scores',
+        { name: 'scores',
           turboThreshold: 500000,
           data: [[new Date('2018-01-25 18:38:31').getTime(), 2]]
         }
@@ -140,9 +140,9 @@ export class LinhaTemporalComponent implements OnInit {
     this.setRelevance();
   }
   setRelevance() {
-    console.log("this.argumentosRelevantes");
+    console.log('this.argumentosRelevantes');
     console.log(this.argumentosRelevantes);
-    console.log("this.argumentosTodos");
+    console.log('this.argumentosTodos');
     console.log(this.argumentosTodos);
     if (!this.isSet) {
       this.isSet = true;
@@ -158,24 +158,24 @@ export class LinhaTemporalComponent implements OnInit {
     } else {
       this.argumentos = this.argumentosTodos;
 
-    } let p = [ ];
-    if(this.docSen){
+    } const p = [ ];
+    if (this.docSen) {
        console.log(this.argumentos);
 
       // console.log(this.options.series[0]);
 
       // tslint:disable-next-line: forin
-      for (let y in this.argumentos){
+       for (const y in this.argumentos) {
         // console.log(this.argumentos[y]);
-        let valor = this.argumentos[y].y.substring(27, this.argumentos[y].y.length - 4);
+        const valor = this.argumentos[y].y.substring(27, this.argumentos[y].y.length - 4);
         // console.log(valor);
 
         p.push([new Date(this.argumentos[y].x).getTime(), valor * 1]);
       }
-      this.options.series[0].data = p;
+       this.options.series[0].data = p;
       // console.log(this.options.series[0]);
 
-    }else {
+    } else {
       let max_series = this.numSen;
       // console.log("numsen");
       // console.log(max_series);
@@ -186,20 +186,20 @@ export class LinhaTemporalComponent implements OnInit {
           data: [[new Date('2018-01-25 18:38:31').getTime(), 2]]
         }
       ]*/
-      console.log("argumentos");
+      console.log('argumentos');
       console.log(this.argumentos);
-      this.options.series=[];
-      for (let tr = 0; tr <= max_series+1; tr++ ) {
+      this.options.series = [];
+      for (let tr = 0; tr <= max_series + 1; tr++ ) {
         p[tr] = [];
-        let named= "sentence "+ tr + ":";
+        const named = 'sentence '+ tr + ':';
         this.options.series[tr] = {name: named, turboThreshold: 500000, data: []};
       }
       // console.log("p");
       // console.log(p);
-      this.argumentos[0].z.map((a)=>{
-        console.log("cada serie");
+      this.argumentos[0].z.map((a) => {
+        console.log('cada serie');
         console.log(a);
-        if(/^\d+$/.test(a.x.toString().split('-').join(''))){
+        if (/^\d+$/.test(a.x.toString().split('-').join(''))) {
          p[a.series * 1].push({x: a.x, y: a.y});
          console.log(p[a.series * 1]);
         }
@@ -210,14 +210,15 @@ export class LinhaTemporalComponent implements OnInit {
       // console.log(p);
       // tslint:disable-next-line: forin
       for (const h in p) {
-        let lk=[];
+        const lk = [];
+        // tslint:disable-next-line: forin
         for (const ju in p[h]) {
           lk.push([new Date(p[h][ju].x).getTime(), p[h][ju].y * 1]);
         }
         this.options.series[h].data = lk;
         // console.log("lk");
         // console.log(lk);
-        this.tipos = ["scatter", "column", "line"];
+        this.tipos = ['scatter', 'column', 'line'];
 
       }
     }

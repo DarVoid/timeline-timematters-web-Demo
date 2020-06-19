@@ -73,13 +73,13 @@
           </mat-tab>
           <mat-tab label="Timeline">
             <!--WIP-->
-            <app-timeline-scroll [docSen]="options.docOrSentence=='doc'" (click)="show(options.docOrSentence)" [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
+            <app-timeline-scroll [docSen]="options.docOrSentence=='doc'"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
           <!--WIP-->
           </mat-tab>
           </mat-tab-group></mat-card>
           <br>
           <div class="col-lg-12 text-right">
-            <button type="reset" (click)="goBack()" class="btn btn-link">Go back</button>
+            <a href="/"><button type="reset" class="btn btn-link">Go back</button></a>
             <button *ngIf="options" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
           </div>
         </ng-template>
