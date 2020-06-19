@@ -352,6 +352,7 @@ export class KeywordExctractionComponent implements OnInit {
         }
         console.log(this.differentRelValues);
         console.log(this.differentValues);
+        console.log(this.result.Score);
 
 
         let c = [];
@@ -379,13 +380,19 @@ export class KeywordExctractionComponent implements OnInit {
             let valorDeA2 = '';
             // tslint:disable-next-line: forin
             for (let xd in this.result.Score[Object.keys(this.result.Score)[i]]) {
-              d.push(this.result.Score[Object.keys(this.result.Score)[i]][xd][0]);
-              console.log(d);
-              valorDeA += '<span title="'+this.result.SentencesNormalized[xd.toString()]+'"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
-              if(this.result.Score[Object.keys(this.result.Score)[i]][xd][0] > 0.35){
-                valorDeA2 += '<span title="'+this.result.SentencesNormalized[xd.toString()]+'"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
-                d2.push(this.result.Score[Object.keys(this.result.Score)[i]][xd][0]);
-                console.log(d2);
+              //if()
+
+              d.push({x:Object.keys(this.result.Score)[i], y:this.result.Score[Object.keys(this.result.Score)[i]][xd][0], series: xd});
+              //console.log(d);
+              // tslint:disable-next-line: whitespace
+              // tslint:disable-next-line: max-line-length
+              valorDeA += '<span title="' + this.result.SentencesNormalized[xd.toString()] + '"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
+              if(this.result.Score[Object.keys(this.result.Score)[i]][xd][0] > 0.35) {
+                // tslint:disable-next-line: whitespace
+                // tslint:disable-next-line: max-line-length
+                valorDeA2 += '<span title="' + this.result.SentencesNormalized[xd.toString()] + '"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
+                d2.push({x:Object.keys(this.result.Score)[i], y: this.result.Score[Object.keys(this.result.Score)[i]][xd][0], series: xd});
+                //console.log(d2);
                 // TODO: meter d e d2 nos datasets
               }
 
@@ -402,8 +409,8 @@ export class KeywordExctractionComponent implements OnInit {
           // console.log(b);
           // console.log("end");
 
-          c2.push({x:b2, y:a2});
-          c.push({x:b,y:a});
+          c2.push({x:b2, y:a2, z:d2});
+          c.push({x:b, y:a, z:d});
             // console.log();
             // console.log(Object.keys(this.result.Score)[i].split('-').join(''));
 
@@ -437,6 +444,8 @@ export class KeywordExctractionComponent implements OnInit {
         // console.log("end");
         this.dataset = c;
         this.datasetRelOnly = c2;
+        console.log(this.dataset);
+        console.log(this.datasetRelOnly);
   }
   public getKeyword(event:any) {
 

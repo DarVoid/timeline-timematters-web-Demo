@@ -142,10 +142,10 @@ export class LinhaTemporalComponent implements OnInit {
     } else {
       this.argumentos = this.argumentosTodos;
 
-    }
+    } let p = [ ];
     if(this.docSen){
       console.log(this.argumentos);
-      let p = [ ];
+
       // console.log(this.options.series[0]);
 
       // tslint:disable-next-line: forin
@@ -160,7 +160,8 @@ export class LinhaTemporalComponent implements OnInit {
       // console.log(this.options.series[0]);
 
     }else{
-      console.log(this.argumentos);
+      console.log(this.argumentos)
+
       /*// tslint:disable-next-line: forin
       for (let h in this.argumentos) {
         let p = [ ];

@@ -128,13 +128,13 @@ export class FrameComponent implements OnInit, OnChanges {
       this.dateScores = this.argumentos.Score;
       // console.log(this.dateScores);
       this.texto = '';
-      let frases = [];
-      // tslint:disable-next-line: forin
+      let frases = this.argumentos.SentencesNormalized;
+      /*// tslint:disable-next-line: forin
       for (let i in this.argumentos.SentencesTokens) {
         frases.push(this.argumentos.SentencesTokens[i.toString()].join(' '));
         // console.log('frase ' + i);
         // console.log(frases[i]);
-      }
+      }*/
       // tslint:disable-next-line: whitespace
       // tslint:disable-next-line: forin
       for (let fraseIndex in frases) {
