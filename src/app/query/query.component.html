@@ -64,19 +64,14 @@
           <!--WIP-->
           </mat-tab>
 
-          <mat-tab label="Timeline" *ngIf="options.result"> <!-- *ngIf="options.docOrSentence"-->
+          <mat-tab label="Plot Score/Date" *ngIf="options.result"> <!-- *ngIf="options.docOrSentence"-->
             <!--WIP-->
-            <div *ngIf="options.docOrSentence=='doc' else sentecne">
-              <app-linha-temporal [docSen]="options.docOrSentence=='doc'" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
-            </div>
-            <ng-template #sentecne>
-              <app-linha-temporal [docSen]="options.docOrSentence=='doc'" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
-            </ng-template>
+            <app-linha-temporal [docSen]="options.docOrSentence=='doc'" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
 
 
           <!--WIP-->
           </mat-tab>
-          <mat-tab label="Timeline2">
+          <mat-tab label="Timeline">
             <!--WIP-->
             <app-timeline-scroll [docSen]="options.docOrSentence=='doc'" (click)="show(options.docOrSentence)" [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
           <!--WIP-->

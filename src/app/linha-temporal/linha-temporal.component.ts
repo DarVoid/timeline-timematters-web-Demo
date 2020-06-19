@@ -136,6 +136,8 @@ export class LinhaTemporalComponent implements OnInit {
       this.argumentos = this.argumentosTodos;
 
     }
+    this.setRelevance();
+    this.setRelevance();
   }
   setRelevance() {
     console.log("this.argumentosRelevantes");
