@@ -129,7 +129,6 @@ export class ScoreComponent implements OnChanges {
 
   }
 
-
   public chartClicked(e: any): void { }
   public chartHovered(e: any): void { }
 

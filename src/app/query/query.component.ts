@@ -18,8 +18,7 @@ export class QueryComponent implements OnChanges {
   public differentValues: Array<any>;
   public differentRelValues: Array<any>;
   public docOrSentence: boolean;
-  public rawRel: Array<any>;
-  public rawAll: Array<any>;
+  public page: number;
 
   constructor(private _snackBar: MatSnackBar) {
     this.showOnlyRel = false;
@@ -27,6 +26,7 @@ export class QueryComponent implements OnChanges {
     this.withKeywordsSentence = 'Keywords Off';
     this.showOnlyRel = false;
     this.differentValues = [];
+    this.page=0;
 
 
   }
@@ -34,6 +34,9 @@ export class QueryComponent implements OnChanges {
   ngOnChanges() {
     this.update();
 
+  }
+  setpage(event){
+    this.page=event;
   }
   toggleKeywords() {
     this.withKeywords = !this.withKeywords;
@@ -61,6 +64,7 @@ export class QueryComponent implements OnChanges {
   }
   public copyToClipboard(event: any) {
     event.preventDefault();
+    console.log(this.page);
     this._snackBar.open('Message copied to Clipboard', 'Length: ' + this.options.result.TextNormalized.length + ' characters', {
       duration: 2000
     });

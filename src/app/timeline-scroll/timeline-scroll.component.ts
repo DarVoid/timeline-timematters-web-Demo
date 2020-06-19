@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import {MatSnackBar} from '@angular/material/snack-bar';
 // import TL from '../../assets/TL1.js';
 declare  var TL: any;
 declare  var $: any;
@@ -24,7 +25,7 @@ export class TimelineScrollComponent implements OnInit {
   public timeline: any;
   public isSet: boolean;
   public jsonText: string;
-  constructor() {
+  constructor(private _snackBar: MatSnackBar) {
     // console.log(this.TLObj);
     this.rendering = 'rendering';
     this.titulo = 'Timeline';
@@ -52,6 +53,21 @@ export class TimelineScrollComponent implements OnInit {
     }
     this.update();
   }
+  public copyToClipboard(event: any) {
+    event.preventDefault();
+    this._snackBar.open('JSON copied to Clipboard', 'Length: ' + JSON.stringify(this.jsonText).length + ' characters', {
+      duration: 2000
+    });
+    const clipboard = document.createElement('input');
+
+    clipboard.setAttribute('value', JSON.stringify(this.jsonText));
+    document.body.appendChild(clipboard);
+    clipboard.select();
+    document.execCommand('copy');
+    document.body.removeChild(clipboard);
+
+  }
+
   update() {
     this.rendering = '';
     console.log('argumentosTodos');
