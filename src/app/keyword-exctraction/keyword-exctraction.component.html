@@ -64,7 +64,7 @@
 
             <table *ngFor="let item of dataset ">
               <tr (click)="putOnClipboard($event,item.x)">
-                  <p><td><h1>{{item.x}}</h1></td></p><!--meter .substrin(0,10 para so ano)-->
+                  <p><td><h1>{{item.x.substring(0,10)}}</h1></td></p><!--meter .substrin(0,10 para so ano)-->
                   <p><td [innerHTML]="item.y | safe:'html'"></td></p>
               </tr>
             </table>

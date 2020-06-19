@@ -118,7 +118,7 @@ export class QueryComponent implements OnChanges {
         for (let i in Object.keys(this.options.result.Score)) {
           // console.log(this.result.Score[Object.keys(this.result.Score)[i]][0]);
           // handle Dataset
-          if (this.options.docOrSentence) {
+          if (this.options.docOrSentence=="doc") {
             a = '<p class="noticeme">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p>';
             if (this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] > 0.35) {
             a2 = '<p class="noticeme">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p>';

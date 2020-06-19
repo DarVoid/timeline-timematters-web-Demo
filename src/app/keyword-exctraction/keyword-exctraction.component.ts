@@ -386,12 +386,12 @@ export class KeywordExctractionComponent implements OnInit {
               //console.log(d);
               // tslint:disable-next-line: whitespace
               // tslint:disable-next-line: max-line-length
-              valorDeA += '<span title="' + this.result.SentencesNormalized[xd.toString()] + '"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
+              valorDeA += '<span title="' + this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'') + '"><p class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
               if(this.result.Score[Object.keys(this.result.Score)[i]][xd][0] > 0.35) {
                 // tslint:disable-next-line: whitespace
                 // tslint:disable-next-line: max-line-length
                 valorDeA2 += '<span title="' + this.result.SentencesNormalized[xd.toString()] + '"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
-                d2.push({x:Object.keys(this.result.Score)[i], y: this.result.Score[Object.keys(this.result.Score)[i]][xd][0], series: xd});
+                d2.push({x: Object.keys(this.result.Score)[i], y: this.result.Score[Object.keys(this.result.Score)[i]][xd][0], series: xd});
                 //console.log(d2);
                 // TODO: meter d e d2 nos datasets
               }

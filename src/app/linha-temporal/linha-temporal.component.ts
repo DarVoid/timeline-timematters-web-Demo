@@ -145,7 +145,7 @@ export class LinhaTemporalComponent implements OnInit {
 
     } let p = [ ];
     if(this.docSen){
-      console.log(this.argumentos);
+      // console.log(this.argumentos);
 
       // console.log(this.options.series[0]);
 
@@ -162,8 +162,8 @@ export class LinhaTemporalComponent implements OnInit {
 
     }else {
       let max_series = this.numSen;
-      console.log("numsen");
-      console.log(max_series);
+      // console.log("numsen");
+      // console.log(max_series);
 
       /*series: [
         { name:'scores',
@@ -171,23 +171,23 @@ export class LinhaTemporalComponent implements OnInit {
           data: [[new Date('2018-01-25 18:38:31').getTime(), 2]]
         }
       ]*/
-      console.log(this.argumentos[0].z);
+      // console.log(this.argumentos[0].z);
       this.options.series=[];
       for (let tr = 0; tr <= max_series+1; tr++ ) {
         p[tr] = [];
         let named= "scores sentence "+ tr + ":";
         this.options.series[tr] = {name: named, turboThreshold: 500000, data: []};
       }
-      console.log("p");
-      console.log(p);
+      // console.log("p");
+      // console.log(p);
       this.argumentos[0].z.map((a)=>{
         if(a.x){
          p[a.series * 1].push({x: a.x, y: a.y});
         }
-        console.log(a);
+        // console.log(a);
       });
-      console.log("p");
-      console.log(p);
+      // console.log("p");
+      // console.log(p);
       // tslint:disable-next-line: forin
       for (const h in p) {
         let lk=[];
@@ -195,8 +195,8 @@ export class LinhaTemporalComponent implements OnInit {
           lk.push([new Date(p[h][ju].x).getTime(), p[h][ju].y * 1]);
         }
         this.options.series[h].data = lk;
-        console.log("lk");
-        console.log(lk);
+        // console.log("lk");
+        // console.log(lk);
         this.tipos = ["scatter", "column", "line"];
 
       }
