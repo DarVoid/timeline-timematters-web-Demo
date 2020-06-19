@@ -30,9 +30,8 @@ export class QueryComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    if(this.article){
-      this.update();
-    }
+    this.update();
+
   }
   toggleKeywords() {
     this.withKeywords = !this.withKeywords;
@@ -76,10 +75,19 @@ export class QueryComponent implements OnChanges {
         this.differentValues = this.options.result.TempExpressions.sort(
           (a,b)=>{return a[0] - b[0]}).filter(
               (element , index, array) => {
+
           if (index == 0) {
-            return true;
+            // console.log("element");
+            // console.log(element[0].toString().split('-').join(''));
+            // console.log("Element is Viable");
+            // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
+            return /^\d+$/.test(element[0].toString().split('-').join(''));
           } else {
-            return element[0] != array[index - 1][0];
+            // console.log("element");
+            // console.log(element[0].toString().split('-').join(''));
+            // console.log("Element is Viable");
+            // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
+            return element[0] != array[index - 1][0] && /^\d+$/.test(element[0].toString().split('-').join(''));
           }
         });
         if(this.options.docOrSentence == "doc"){
@@ -120,7 +128,7 @@ export class QueryComponent implements OnChanges {
         for (let i in Object.keys(this.options.result.Score)) {
           // console.log(this.result.Score[Object.keys(this.result.Score)[i]][0]);
           // handle Dataset
-          if (this.options.docOrSentence=="doc") {
+          if (this.options.docOrSentence == "doc") {
             a = '<p class="noticeme">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p>';
             if (this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] > 0.35) {
             a2 = '<p class="noticeme">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p>';

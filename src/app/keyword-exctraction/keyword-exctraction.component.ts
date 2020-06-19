@@ -237,9 +237,6 @@ export class KeywordExctractionComponent implements OnInit {
   }
 
   ngOnInit() {
-    // singleDoc
-
-
   }
   selecionarngram(event: any) {
 
@@ -427,13 +424,13 @@ export class KeywordExctractionComponent implements OnInit {
         for (const data in c) {
           const j = Date.parse(c[data].x.split('-').join(' '));
           // console.log (j);
-          c[data].dateparsed= j;
+          c[data].dateparsed = j;
         }
         // tslint:disable-next-line: forin
         for (const data in c2) {
           const j = Date.parse(c2[data].x.split('-').join(' '));
           // console.log (j);
-          c2[data].dateparsed= j;
+          c2[data].dateparsed = j;
         }
         c = c.sort(( a , b ) => a.dateparsed - b.dateparsed);
         c2 = c2.sort(( a , b ) => a.dateparsed - b.dateparsed);
@@ -465,7 +462,7 @@ export class KeywordExctractionComponent implements OnInit {
     this._snackBar.open('Your request is being processed', 'true', {
       duration: 2000
     });
-    if (this.languagueSelected =='auto-detect') {
+    if (this.languagueSelected == 'auto-detect') {
       this._lang.getLanguageFromContent(this.conteudoDefault).subscribe((res) => {
         if (res) {
           this._snackBar.open('Language Detected: ', res.lang, {
