@@ -66,7 +66,14 @@
 
           <mat-tab label="Timeline" *ngIf="options.result"> <!-- *ngIf="options.docOrSentence"-->
             <!--WIP-->
-            <app-linha-temporal [docSen]="options.docOrSentence=='doc'" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="rawAll" [argumentosRelevantes]="rawRel" ></app-linha-temporal>
+            <div *ngIf="options.docOrSentence=='doc' else sentecne">
+              <app-linha-temporal [docSen]="options.docOrSentence=='doc'" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
+            </div>
+            <ng-template #sentecne>
+              <app-linha-temporal [docSen]="options.docOrSentence=='doc'" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
+            </ng-template>
+
+
           <!--WIP-->
           </mat-tab>
           <mat-tab label="Timeline2">

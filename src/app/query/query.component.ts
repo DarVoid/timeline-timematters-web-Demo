@@ -171,7 +171,6 @@ export class QueryComponent implements OnChanges {
             a2 = valorDeA2;
           }
           b = Object.keys(this.options.result.Score)[i];
-          b2 = Object.keys(this.options.result.Score)[i];
 
           // console.log("a");
           // console.log(a);
@@ -179,17 +178,20 @@ export class QueryComponent implements OnChanges {
           // console.log(b);
           // console.log("end");
 
-          c2.push({x:b2, y:a2, z:d2});
-          c.push({x:b, y:a, z:d});
+          c2.push({x: b, y: a2, z: d2});
+          c.push({x: b, y: a, z: d});
             // console.log();
             // console.log(Object.keys(this.result.Score)[i].split('-').join(''));
 
           /^\d+$/.test(Object.keys(this.options.result.Score)[i].split('-').join('')) ?'':c.pop();
           /^\d+$/.test(Object.keys(this.options.result.Score)[i].split('-').join('')) ?'':c2.pop();
-
-          if(!a2) {
-              c2.pop();
+          c2=c2.filter((y)=>{
+            if(y.y){
+              return true;
+            }else{
+              return false;
             }
+          });
 
         }
         // tslint:disable-next-line: forin
@@ -218,8 +220,6 @@ export class QueryComponent implements OnChanges {
         console.log(this.dataset);
         console.log("this.datasetRelOnly");
         console.log(this.datasetRelOnly);
-        this.rawRel = d2;
-        this.rawAll = d;
   }
 
 }

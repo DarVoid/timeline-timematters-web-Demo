@@ -158,7 +158,7 @@ export class LinhaTemporalComponent implements OnInit {
 
     } let p = [ ];
     if(this.docSen){
-      // console.log(this.argumentos);
+       console.log(this.argumentos);
 
       // console.log(this.options.series[0]);
 
@@ -194,8 +194,8 @@ export class LinhaTemporalComponent implements OnInit {
       }
       // console.log("p");
       // console.log(p);
-      this.argumentos.map((a)=>{
-        console.log("a");
+      this.argumentos[0].z.map((a)=>{
+        console.log("cada serie");
         console.log(a);
         if(/^\d+$/.test(a.x.toString().split('-').join(''))){
          p[a.series * 1].push({x: a.x, y: a.y});
