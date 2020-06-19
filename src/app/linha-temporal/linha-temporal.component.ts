@@ -22,6 +22,7 @@ export class LinhaTemporalComponent implements OnInit {
   @Input() argumentosRelevantes: any;
   @Input() argumentosTodos: any;
   @Input() docSen: boolean;
+  @Input() numSen: number;
   public chart1: any;
   public argumentos: any;
   public b: any;
@@ -159,25 +160,46 @@ export class LinhaTemporalComponent implements OnInit {
       this.options.series[0].data = p;
       // console.log(this.options.series[0]);
 
-    }else{
-      console.log(this.argumentos)
+    }else {
+      let max_series = this.numSen;
+      console.log("numsen");
+      console.log(max_series);
 
-      /*// tslint:disable-next-line: forin
-      for (let h in this.argumentos) {
-        let p = [ ];
-        // console.log(this.options.series[0]);
-
-        // tslint:disable-next-line: forin
-        for (let y in this.argumentos[h]){
-          // console.log(this.argumentos[y]);
-          let valor = this.argumentos[h][y].y.substring(27, this.argumentos[h][y].y.length - 4);
-          // console.log(valor);
-
-          p.push([new Date(this.argumentos[h][y].x).getTime(), valor * 1]);
+      /*series: [
+        { name:'scores',
+          turboThreshold: 500000,
+          data: [[new Date('2018-01-25 18:38:31').getTime(), 2]]
         }
-        this.options.series[h].data = p;
-        // console.log(this.options.series[0]);
-      }*/
+      ]*/
+      console.log(this.argumentos[0].z);
+      this.options.series=[];
+      for (let tr = 0; tr <= max_series+1; tr++ ) {
+        p[tr] = [];
+        let named= "scores sentence "+ tr + ":";
+        this.options.series[tr] = {name: named, turboThreshold: 500000, data: []};
+      }
+      console.log("p");
+      console.log(p);
+      this.argumentos[0].z.map((a)=>{
+        if(a.x){
+         p[a.series * 1].push({x: a.x, y: a.y});
+        }
+        console.log(a);
+      });
+      console.log("p");
+      console.log(p);
+      // tslint:disable-next-line: forin
+      for (const h in p) {
+        let lk=[];
+        for (const ju in p[h]) {
+          lk.push([new Date(p[h][ju].x).getTime(), p[h][ju].y * 1]);
+        }
+        this.options.series[h].data = lk;
+        console.log("lk");
+        console.log(lk);
+        this.tipos = ["scatter", "column", "line"];
+
+      }
     }
     this.update();
   }

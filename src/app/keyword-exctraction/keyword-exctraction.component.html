@@ -74,7 +74,7 @@
 
           <mat-tab label="Timeline" ><!--*ngIf="byDocOrSentece"-->
             <!--WIP-->
-            <app-linha-temporal [docSen]="byDocOrSentece" [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
+            <app-linha-temporal [docSen]="byDocOrSentece" [numSen]="result.SentencesNormalized.length" [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
           <!--WIP-->
           </mat-tab>
           <mat-tab label="Timeline2">
