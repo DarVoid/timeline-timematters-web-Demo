@@ -18,6 +18,8 @@ export class QueryComponent implements OnChanges {
   public differentValues: Array<any>;
   public differentRelValues: Array<any>;
   public docOrSentence: boolean;
+  public rawRel: Array<any>;
+  public rawAll: Array<any>;
 
   constructor(private _snackBar: MatSnackBar) {
     this.showOnlyRel = false;
@@ -212,8 +214,12 @@ export class QueryComponent implements OnChanges {
         // console.log("end");
         this.dataset = c;
         this.datasetRelOnly = c2;
+        console.log("this.dataset");
         console.log(this.dataset);
+        console.log("this.datasetRelOnly");
         console.log(this.datasetRelOnly);
+        this.rawRel = d2;
+        this.rawAll = d;
   }
 
 }

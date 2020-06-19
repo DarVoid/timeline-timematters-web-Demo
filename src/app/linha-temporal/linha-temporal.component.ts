@@ -38,6 +38,7 @@ export class LinhaTemporalComponent implements OnInit {
     this.isSet = false;
     this.tipo = 0;
     this.tipos = ["area", "areaspline", "line"];
+    this.relevant = false;
     this.options = {
       chart: {
         type: this.tipos[this.tipo],
@@ -125,10 +126,22 @@ export class LinhaTemporalComponent implements OnInit {
         }
       ]
     };
-    this.setRelevance();
-    this.setRelevance();
+    if (!this.isSet) {
+      this.isSet = true;
+    }
+    if (this.relevant) {
+      this.argumentos = this.argumentosRelevantes;
+
+    } else {
+      this.argumentos = this.argumentosTodos;
+
+    }
   }
   setRelevance() {
+    console.log("this.argumentosRelevantes");
+    console.log(this.argumentosRelevantes);
+    console.log("this.argumentosTodos");
+    console.log(this.argumentosTodos);
     if (!this.isSet) {
       this.isSet = true;
     }
@@ -171,7 +184,8 @@ export class LinhaTemporalComponent implements OnInit {
           data: [[new Date('2018-01-25 18:38:31').getTime(), 2]]
         }
       ]*/
-      // console.log(this.argumentos[0].z);
+      console.log("argumentos");
+      console.log(this.argumentos);
       this.options.series=[];
       for (let tr = 0; tr <= max_series+1; tr++ ) {
         p[tr] = [];
@@ -180,11 +194,15 @@ export class LinhaTemporalComponent implements OnInit {
       }
       // console.log("p");
       // console.log(p);
-      this.argumentos[0].z.map((a)=>{
-        if(a.x){
+      this.argumentos.map((a)=>{
+        console.log("a");
+        console.log(a);
+        if(/^\d+$/.test(a.x.toString().split('-').join(''))){
          p[a.series * 1].push({x: a.x, y: a.y});
+         console.log(p[a.series * 1]);
         }
         // console.log(a);
+
       });
       // console.log("p");
       // console.log(p);

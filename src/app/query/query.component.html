@@ -64,9 +64,9 @@
           <!--WIP-->
           </mat-tab>
 
-          <mat-tab label="Timeline"> <!-- *ngIf="options.docOrSentence"-->
+          <mat-tab label="Timeline" *ngIf="options.result"> <!-- *ngIf="options.docOrSentence"-->
             <!--WIP-->
-            <app-linha-temporal [docSen]="options.docOrSentence=='doc'" (click)="show(options.docOrSentence)" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
+            <app-linha-temporal [docSen]="options.docOrSentence=='doc'" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="rawAll" [argumentosRelevantes]="rawRel" ></app-linha-temporal>
           <!--WIP-->
           </mat-tab>
           <mat-tab label="Timeline2">
