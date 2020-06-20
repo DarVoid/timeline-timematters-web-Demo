@@ -5,8 +5,9 @@
 <ng-template #allDados>
 
   <div *ngFor="let item of dados.response_items">
-    <h1>{{item.title}}</h1>
-    <a target="_blank" href="{{item.linkToArchive}}">{{item.linkToArchive}}</a>
+    <h1>Title: {{item.title}}</h1>
+    <p><a target="_blank" href="{{item.linkToArchive}}">Link: {{item.linkToArchive}}</a></p>
+    <p><a target="_blank" href="{{item.linkToArchive}}">No-Frame Link: {{item.linkToNoFrame}}</a></p>
     <div [innerHTML]="item.snippet">
     </div>
     <button (click)="setQuery(item)"> Get Relevant dates from this article</button>
