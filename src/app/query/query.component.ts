@@ -26,7 +26,7 @@ export class QueryComponent implements OnChanges {
     this.withKeywordsSentence = 'Keywords Off';
     this.showOnlyRel = false;
     this.differentValues = [];
-    this.page=0;
+    this.page = 0;
 
 
   }
@@ -35,8 +35,8 @@ export class QueryComponent implements OnChanges {
     this.update();
 
   }
-  setpage(event){
-    this.page=event;
+  setpage(event) {
+    this.page = event;
   }
   toggleKeywords() {
     this.withKeywords = !this.withKeywords;
@@ -79,7 +79,7 @@ export class QueryComponent implements OnChanges {
   public update() {
 
         this.differentValues = this.options.result.TempExpressions.sort(
-          (a, b) =>a[0] - b[0]).filter(
+          (a, b) => a[0] - b[0]).filter(
               (element , index, array) => {
 
           if (index == 0) {

@@ -46,6 +46,8 @@
       <button mat-menu-item   (click)='changePage("1")'>Free Text Input <i class="fas fa-square"></i> </button>
       <div class="divider"></div>
       <button mat-menu-item  (click)='changePage("2")'>Specify URL <i class="fas fa-clone"></i> </button>
+      <div class="divider"></div>
+      <button mat-menu-item  (click)='changePage("6")'>Search Arquivo.pt <i class="fas fa-clone"></i> </button>
     </mat-menu>
 
     <mat-menu #menu2="matMenu" ngbDropdownMenu>
@@ -100,9 +102,14 @@
              <app-about-people></app-about-people>
             </div>
             <ng-template #pagina5>
-              <div *ngIf='page=="5"'>
+              <div *ngIf='page=="5" else pagina6'>
                 <app-about-related-work></app-about-related-work>
               </div>
+              <ng-template #pagina6>
+                <div *ngIf='page=="6"'>
+                  <app-arquivo></app-arquivo>
+                </div>
+              </ng-template>
 
             </ng-template>
 

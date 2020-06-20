@@ -1,0 +1,23 @@
+<div *ngIf="resultado else query">
+  <app-tratar-arquivo [dados]="resultado"></app-tratar-arquivo>
+  <div class="col-lg-12 text-right">
+    <br>
+    <button type="reset" (click)="goBack()" class="btn btn-link">Go back</button>
+    <button *ngIf="resultado" color="primary"  type="submit" (click)="copyToClipboard(resultado)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy Response to Clipboard</button>
+  </div>
+</div>
+<ng-template #query>
+  <form class="example-form" (submit)="submitQuery($event)">
+    <mat-form-field class="example-full-width">
+      <mat-label>Query:</mat-label>
+      <input matInput (change)="setQuery($event)" placeholder="Elon Musk" value="Elon Musk">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Site Search:</mat-label>
+      <input matInput (change)="setSiteSearch($event)" placeholder="...insert site where you want to search" value="http://www.publico.pt">
+    </mat-form-field>
+
+    <button type="submit">Let's do it!</button>
+  </form>
+</ng-template>

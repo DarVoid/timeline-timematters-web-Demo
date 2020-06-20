@@ -34,6 +34,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { LinhaTemporalComponent } from './linha-temporal/linha-temporal.component';
 import { TimelineScrollComponent } from './timeline-scroll/timeline-scroll.component';
 import { QuerysingledocComponent } from './querysingledoc/querysingledoc.component';
+import { ArquivoComponent } from './arquivo/arquivo.component';
+import { TratarArquivoComponent } from './tratar-arquivo/tratar-arquivo.component';
 
 
 @NgModule({
@@ -50,7 +52,9 @@ import { QuerysingledocComponent } from './querysingledoc/querysingledoc.compone
     QueryComponent,
     LinhaTemporalComponent,
     TimelineScrollComponent,
-    QuerysingledocComponent
+    QuerysingledocComponent,
+    ArquivoComponent,
+    TratarArquivoComponent
   ],
   imports: [
     BrowserModule,

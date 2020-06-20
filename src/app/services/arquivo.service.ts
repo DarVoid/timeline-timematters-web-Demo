@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -41,9 +41,10 @@ export class ArquivoService {
     }
     if (options.fields) {
       realURL += '&fields=' + options.fields[0];
+      // tslint:disable-next-line: forin
       for (const k in options.fields) {
         console.log(k);
-        if (k.toString() != "0") {
+        if (k.toString() != '0') {
 
           realURL += ',' + options.fields[k];
         }

@@ -1,5 +1,5 @@
 import { GetarticleService } from './../services/getarticle.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { TimelineService } from '../services/timeline.service';
 
@@ -35,6 +35,7 @@ export class QuerysingledocComponent implements OnInit {
   public documentCreationTime: string;
   public opcoes: any;
   public resultado: any;
+  @Input() inpu: any;
 
   constructor(private article: GetarticleService, private timeline: TimelineService, private _snackBar: MatSnackBar) {
     this.url = "https://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/";
@@ -62,6 +63,9 @@ export class QuerysingledocComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.inpu) {
+      this.url = this.inpu;
+    }
   }
   doThings(event: any){
     event.preventDefault();
