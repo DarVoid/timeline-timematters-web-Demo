@@ -38,7 +38,7 @@ export class QuerysingledocComponent implements OnInit {
   @Input() inpu: any;
 
   constructor(private article: GetarticleService, private timeline: TimelineService, private _snackBar: MatSnackBar) {
-    this.url = "https://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/";
+    this.url = 'https://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/';
     this.algoritmosDate = ['py_heideltime' , 'py_rule_based'];
     this.algoritmoSelected = this.algoritmosDate[0];
     this.dateGranularityOptions = ['full', 'year', 'month', 'day'];
@@ -50,7 +50,7 @@ export class QuerysingledocComponent implements OnInit {
     this.dateBegin = 0;
     this.dateEnd = 2100;
     this.numberOfKeyWords = 10;
-    this.contextWindow = "full_sentence";
+    this.contextWindow = 'full_sentence';
     this.simbaValue = 10;
     this.cheating = false;
     this.showOnlyRel = false;
@@ -68,14 +68,14 @@ export class QuerysingledocComponent implements OnInit {
     }
     this.update();
   }
-  doThings(event: any){
+  doThings(event: any) {
     event.preventDefault();
     console.log(event.target.value);
 
-    this.article.getArticles(event.target.value).subscribe((res) =>
-    {
+    this.article.getArticles(event.target.value).subscribe((res) => {
       console.log(res);
-      return "" ;
+      this.artigo = res;
+      return '' ;
 
     });
 
@@ -126,27 +126,27 @@ export class QuerysingledocComponent implements OnInit {
   selecionarContextualWindow(event: any) {
     this.contextWindow = event;
   }
-  selecionarNKeywords(event: any){
+  selecionarNKeywords(event: any) {
     this.numberOfKeyWords = event.target.value;
     console.log(event.target.value);
   }
-  selecionarngram(event: any){
+  selecionarngram(event: any) {
 
     this.ngramSelected = event.target.value;
     console.log(event.target.value);
   }
-  toggleDocOrSentence(){
+  toggleDocOrSentence() {
     this.byDocOrSentece = !this.byDocOrSentece;
   }
   toggleOptionKeywords() {
     this.hiddenoptionKW = !this.hiddenoptionKW;
   }
-  selecionarAlgoritmo(event: any){
+  selecionarAlgoritmo(event: any) {
     this.algoritmoSelected = event;
-    //this.documentCreationTime="";
+    // this.documentCreationTime="";
 
   }
-  selecionarDataReferencia(event: any){
+  selecionarDataReferencia(event: any) {
     this.documentCreationTime = event.target.value;
     console.log(event.target.value);
   }
@@ -160,9 +160,13 @@ export class QuerysingledocComponent implements OnInit {
       if (res) {
         console.log(res);
         this.artigo = res;
-        //this.documentCreationTime="";
+        // this.documentCreationTime="";
         // tslint:disable-next-line: max-line-length
-        this.documentCreationTime = new Date(res.date_creation).getFullYear()+"-"+new Date(res.date_creation).getMonth()+"-"+new Date(res.date_creation).getDate();
+        if (res.date_creation) {
+          // tslint:disable-next-line: max-line-length
+          this.documentCreationTime = new Date(res.date_creation).getFullYear() + '-'+ new Date(res.date_creation).getMonth() +'-'+ new Date(res.date_creation).getDate();
+          console.log(this.documentCreationTime);
+        }
         switch (res.language) {
           case 'en':
 
@@ -193,8 +197,9 @@ export class QuerysingledocComponent implements OnInit {
             });
             break;
           }
-          this.update();
-        this.timeline.getTextKeyDateFromSingleDoc(this.artigo.text, this.opcoes).subscribe((res2) => {
+        this.update();
+
+        this.timeline.getTextKeyDateFromSingleDoc(this.artigo.text.split('\"').join('´´'), this.opcoes).subscribe((res2) => {
 
           if (res2) {
             // console.log('nice');
@@ -203,20 +208,28 @@ export class QuerysingledocComponent implements OnInit {
             // pedido recebido aqui
             console.log(res2);
             if (res2.message) {
-              this._snackBar.open('This URL has no data we can use', ":(", {
+              this._snackBar.open('This URL has no data we can use', ':(', {
                 duration: 2000
               });
               this.requestMade = false;
               this.loading = false;
               return ' ';
             }
+            if (res2.length == 0) {
+              this._snackBar.open('This URL has no data we can use', ':(', {
+                duration: 2000
+              });
+              this.requestMade = false;
+              this.loading = false;
+              return ' ';
+
+            }
             this.update();
             this.requestMade = true;
             this.loading = false;
 
             return ' ';
-          }
-          else {
+          } else {
             console.log('oof');
             return ' ';
           }

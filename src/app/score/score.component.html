@@ -4,7 +4,7 @@
 </div>
 <ng-template #graficos >
   <mat-tab-group>
-    <mat-tab label="Dates">
+    <mat-tab label="Dates" *ngIf="chartDatasets[0].data.length>0">
       <div *ngIf="argumentos" class='chart-wrapper' >
         <canvas baseChart
             [chartType]="chartType"
@@ -19,7 +19,7 @@
         </canvas>
       </div>
   </mat-tab>
-    <mat-tab label="Keywords">
+    <mat-tab label="Keywords" *ngIf="chartDatasetsKeyword[0].data.length>0">
 
       <div *ngIf="argumentos" class='chart-wrapper' >
         <canvas baseChart

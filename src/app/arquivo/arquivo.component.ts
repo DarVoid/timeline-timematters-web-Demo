@@ -29,6 +29,8 @@ export class ArquivoComponent implements OnInit {
     this.siteSearch = 'http://www.publico.pt';
     this.from = 0;
     this.prettyPrint = true;
+    this.offset = 0;
+    this.maxItems = 50;
   }
 
   ngOnInit(): void {
@@ -43,6 +45,18 @@ export class ArquivoComponent implements OnInit {
         console.log('error');
       }
     }) ;
+  }
+  next(){
+    this.offset = this.offset + this.maxItems;
+    this.update();
+    this.arquivo.getLinkFromOptions(this.query, this.options).subscribe((res) => {
+      if (res) {
+        this.resultado = res;
+      } else {
+        console.log('error');
+      }
+    }) ;
+
   }
   goBack() {
     this.resultado = false;

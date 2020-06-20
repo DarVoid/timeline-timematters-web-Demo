@@ -1,5 +1,6 @@
 <div *ngIf="querySelected else allDados">
 <app-querysingledoc [inpu]="querySelected.linkToNoFrame"></app-querysingledoc>
+
 </div>
 <ng-template #allDados>
 
@@ -10,5 +11,4 @@
     </div>
     <button (click)="setQuery(item)"> Get Relevant dates from this article</button>
   </div>
-
 </ng-template>

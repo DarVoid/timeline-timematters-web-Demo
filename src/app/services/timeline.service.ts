@@ -17,23 +17,13 @@ export class TimelineService {
   constructor(private http: HttpClient) {
     this.url = 'https://tm-websuiteapps.ipt.pt/timematters';
    }
-/*
-   public upload(formData: any) {
-
-    return this.http.post<any>(this.url, formData, {
-        reportProgress: true,
-        observe: 'events'
-      });
-  }*/
-
-
 
   public getTextKeyDateFromSingleDoc(search: string, options: any): Observable<any> {
       const formData = new FormData();
-      /*console.log("search");
-      console.log(search);
       console.log("options");
-      console.log(options);*/
+      console.log(options);
+      /*console.log("search");
+      console.log(search);*/
       let realURL = this.url + '/SingleDoc';
       if (options.algo === 'py_heideltime') {
         realURL += '/Heideltime/api/v1.0';
@@ -88,7 +78,7 @@ export class TimelineService {
       return this.http.post(realURL, formData
           ).pipe(map((res, err) => {
         if (res) {
-          // console.log(res);
+          console.log(res);
           return res;
         } else {
           console.log(err);
