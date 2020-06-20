@@ -41,7 +41,7 @@
                 </div>
 
           </mat-tab>
-          <mat-tab class="afterGraphs" (click)="setpage(1)" label="Plots">
+          <mat-tab class="afterGraphs" (click)="setpage(1)" label="Plots" >
             <h2>Graphics</h2>
             <div class="row my-row2 justify-content-center">
               <div class="score">
@@ -49,7 +49,7 @@
               </div>
         </div>
           </mat-tab>
-          <mat-tab label="Temporal Clustering">
+          <mat-tab label="Temporal Clustering"  *ngIf="dataset.length>0">
             <!--WIP-->
             <table *ngFor="let item of dataset ">
               <tr (click)="putOnClipboard($event,item.x)">
@@ -76,14 +76,14 @@
           <!--WIP-->
           </mat-tab>
 
-          <mat-tab label="Plot Score/Date" *ngIf="options.result"> <!-- *ngIf="options.docOrSentence"-->
+          <mat-tab label="Plot Score/Date" *ngIf="options.result && dataset.length>0"  > <!-- *ngIf="options.docOrSentence"-->
             <!--WIP-->
             <app-linha-temporal [docSen]="options.docOrSentence=='doc'" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
 
 
           <!--WIP-->
           </mat-tab>
-          <mat-tab label="Timeline" >
+          <mat-tab label="Timeline"  *ngIf="dataset.length>0">
             <!--WIP-->
             <app-timeline-scroll [docSen]="options.docOrSentence=='doc'"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
           <!--WIP-->

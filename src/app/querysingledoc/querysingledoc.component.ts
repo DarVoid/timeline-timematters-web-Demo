@@ -63,10 +63,7 @@ export class QuerysingledocComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.inpu) {
-      this.url = this.inpu;
-    }
-    this.update();
+
   }
   doThings(event: any) {
     event.preventDefault();
@@ -156,10 +153,16 @@ export class QuerysingledocComponent implements OnInit {
   showArticle(event: any) {
     event.preventDefault();
     this.loading = true;
+    if (this.inpu) {
+      this.url = this.inpu;
+    }
+    this.update();
     this.article.getArticles(this.url).subscribe((res) => {
       if (res) {
         console.log(res);
         this.artigo = res;
+        console.log("texto artigo");
+        console.log(this.artigo.text);
         // this.documentCreationTime="";
         // tslint:disable-next-line: max-line-length
         if (res.date_creation) {
@@ -199,7 +202,7 @@ export class QuerysingledocComponent implements OnInit {
           }
         this.update();
 
-        this.timeline.getTextKeyDateFromSingleDoc(this.artigo.text.split('\"').join('´´'), this.opcoes).subscribe((res2) => {
+        this.timeline.getTextKeyDateFromSingleDoc(this.artigo.text, this.opcoes).subscribe((res2) => {
 
           if (res2) {
             // console.log('nice');

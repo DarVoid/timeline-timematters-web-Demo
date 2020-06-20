@@ -20,6 +20,7 @@ export class QueryComponent implements OnChanges {
   public docOrSentence: boolean;
   public page: number;
 
+  // tslint:disable-next-line: variable-name
   constructor(private _snackBar: MatSnackBar) {
     this.showOnlyRel = false;
     this.withKeywords = true;

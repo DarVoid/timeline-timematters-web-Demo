@@ -1,8 +1,8 @@
 <br/>
-<mat-slide-toggle (click)='setRelevance()' class="afterAnnotated" color="warn" >{{relevant?"Showing Important dates Only":"Showing All Dates"}}</mat-slide-toggle>
+<mat-slide-toggle *ngIf="argumentosRelevantes.length>0" (click)='setRelevance()' class="afterAnnotated" color="warn" >{{relevant?"Showing Important dates Only":"Showing All Dates"}}</mat-slide-toggle>
 <hr/>
 
-    <button class='{{!isSet?"viewable": "nonviewable"}}' class="btn-primary" (click)="setRelevance();setRelevance();">Confirm</button>
+    <button  class='{{!isSet?"viewable": "nonviewable"}}' class="btn-primary" (click)="setRelevance();setRelevance();">Confirm</button>
     <br/>
     <div id="container"></div>
-    <button (click)="toggleTipo()" class="btn-primary" >Toggle Chart Type</button>
+    <button  (click)="toggleTipo()" class="btn-primary" >Toggle Chart Type</button>

@@ -37,13 +37,18 @@ export class TimelineService {
       }
       formData.append('text', search);
       if (options.docCreatTime) {
-        formData.append('document_creation_time', options.docCreatTime);
+        if (options.algo == "py_heideltime"){
+          formData.append('document_creation_time', options.docCreatTime);
+
+        }
       }
       if (options.dateGranularity) {
         formData.append('date_granularity', options.dateGranularity);
       }
       if (options.language) {
-        formData.append('language', options.language);
+        if(options.algo == "py_heideltime"){
+          formData.append('language', options.language);
+        }
       }
       if (options.documentType) {
         formData.append('document_type', options.documentType);
@@ -52,7 +57,10 @@ export class TimelineService {
         formData.append('TH', options.TH);
       }
       if (options.N) {
-        formData.append('N', options.N);
+        if(options.algo == "py_heideltime"){
+          formData.append('N', options.N);
+
+        }
       }
       if (options.nContextualWindow) {
         formData.append('n_contextualWindow', options.nContextualWindow);
@@ -64,23 +72,28 @@ export class TimelineService {
         formData.append('ngram', options.ngram);
       }
       if (options.dateBegin) {
+        if(options.algo != "py_heideltime"){
+          formData.append('begin_date', options.dateBegin);
 
-        formData.append('begin_date', options.dateBegin);
-
+        }
       }
       if (options.dateEnd) {
+        if(options.algo != "py_heideltime"){
+          formData.append('end_date', options.dateEnd);
 
-        formData.append('end_date', options.dateEnd);
-
+        }
       }
       if (options.result) {
       }
       return this.http.post(realURL, formData
           ).pipe(map((res, err) => {
         if (res) {
+          console.log("bem")
           console.log(res);
           return res;
         } else {
+          console.log("erro")
+          console.log(realURL);
           console.log(err);
           return err;
         }
