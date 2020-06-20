@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-tratar-arquivo',
@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TratarArquivoComponent implements OnInit {
   @Input() dados: any;
+  @Output() selected = new EventEmitter();
   public querySelected: any;
   constructor() { }
 
@@ -17,6 +18,7 @@ export class TratarArquivoComponent implements OnInit {
   }
   setQuery(query) {
     this.querySelected = query;
+    this.selected.emit(true);
     console.log(query);
   }
 

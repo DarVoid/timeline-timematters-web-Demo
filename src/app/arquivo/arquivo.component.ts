@@ -23,6 +23,7 @@ export class ArquivoComponent implements OnInit {
   public prettyPrint: boolean;
   public resultado: any;
   public loading: boolean;
+  public selected: boolean;
 
   constructor(private arquivo: ArquivoService, private _snackBar: MatSnackBar) {
     this.query = 'Elon Musk';
@@ -46,7 +47,10 @@ export class ArquivoComponent implements OnInit {
       }
     }) ;
   }
-  next(){
+  setSelected(event: any) {
+    this.selected = event;
+  }
+  next() {
     this.offset = this.offset + this.maxItems;
     this.update();
     this.arquivo.getLinkFromOptions(this.query, this.options).subscribe((res) => {
@@ -61,6 +65,7 @@ export class ArquivoComponent implements OnInit {
   goBack() {
     this.resultado = false;
     this.loading = false;
+    this.selected = false;
   }
   public copyToClipboard(someJsonString) {
 

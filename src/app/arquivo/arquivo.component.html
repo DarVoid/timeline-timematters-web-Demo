@@ -1,7 +1,7 @@
 <div *ngIf="resultado else query">
-  <button (click)="next()">next {{maxItems}}</button>
-  <app-tratar-arquivo [dados]="resultado"></app-tratar-arquivo>
-  <button (click)="next()">next {{maxItems}}</button>
+  <button *ngIf="!selected" (click)="next()">next {{maxItems}}</button>
+  <app-tratar-arquivo (selected)='setSelected($event)' [dados]="resultado"></app-tratar-arquivo>
+  <button *ngIf="!selected" (click)="next()">next {{maxItems}}</button>
   <div class="col-lg-12 text-right">
     <br>
     <button type="reset" (click)="goBack()" class="btn btn-link">Go back</button>
