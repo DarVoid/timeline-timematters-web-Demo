@@ -24,6 +24,8 @@ export class ArquivoComponent implements OnInit {
   public resultado: any;
   public loading: boolean;
   public selected: boolean;
+  public requestParams: any;
+  public totalResults: any;
 
   constructor(private arquivo: ArquivoService, private _snackBar: MatSnackBar) {
     this.query = 'Elon Musk';
@@ -41,7 +43,9 @@ export class ArquivoComponent implements OnInit {
     this.update();
     this.arquivo.getLinkFromOptions(this.query, this.options).subscribe((res) => {
       if (res) {
-        this.resultado = res;
+        this.resultado = res.response_items;
+        this.requestParams = res.request_parameters;
+        this.totalResults = res.estimated_nr_results;
       } else {
         console.log('error');
       }
@@ -55,7 +59,13 @@ export class ArquivoComponent implements OnInit {
     this.update();
     this.arquivo.getLinkFromOptions(this.query, this.options).subscribe((res) => {
       if (res) {
-        this.resultado = res;
+        this.resultado = res.response_items;
+        this.requestParams = res.request_parameters;
+        this.totalResults = res.estimated_nr_results;
+        // tslint:disable-next-line: forin
+        for (const elemento in res.response_items) {
+          console.log(res.response_items[elemento]);
+        }
       } else {
         console.log('error');
       }

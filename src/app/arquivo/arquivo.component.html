@@ -5,7 +5,7 @@
   <div class="col-lg-12 text-right">
     <br>
     <button type="reset" (click)="goBack()" class="btn btn-link">Go back</button>
-    <button *ngIf="resultado" color="primary"  type="submit" (click)="copyToClipboard(resultado)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy Response to Clipboard</button>
+    <button *ngIf="resultado && !selected" color="primary"  type="submit" (click)="copyToClipboard(resultado)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy JSON Object to Clipboard</button>
   </div>
 </div>
 <ng-template #query>
