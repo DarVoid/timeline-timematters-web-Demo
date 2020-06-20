@@ -77,8 +77,7 @@ export class QueryComponent implements OnChanges {
 
   }
   public update() {
-
-        this.differentValues = this.options.result.TempExpressions.sort(
+    this.differentValues = this.options.result.TempExpressions.sort(
           (a, b) => a[0] - b[0]).filter(
               (element , index, array) => {
 
@@ -96,7 +95,7 @@ export class QueryComponent implements OnChanges {
             return element[0] != array[index - 1][0] && /^\d+$/.test(element[0].toString().split('-').join(''));
           }
         });
-        if (this.options.docOrSentence == 'doc') {
+    if (this.options.docOrSentence == 'doc') {
 
           this.differentRelValues = this.differentValues.filter(
             (element, index, array) => {
@@ -119,21 +118,21 @@ export class QueryComponent implements OnChanges {
           });
 
         }
-        console.log(this.differentRelValues);
-        console.log(this.differentValues);
+    console.log(this.differentRelValues);
+    console.log(this.differentValues);
 
 
-        let c = [];
-        let a = {};
-        let b = {};
-        const d = [];
+    let c = [];
+    let a = {};
+    let b = {};
+    const d = [];
 
-        let c2 = [];
-        let a2 = {};
-        const b2 = {};
-        const d2 = [];
+    let c2 = [];
+    let a2 = {};
+    const b2 = {};
+    const d2 = [];
         // tslint:disable-next-line: forin
-        for (const i in Object.keys(this.options.result.Score)) {
+    for (const i in Object.keys(this.options.result.Score)) {
           // console.log(this.result.Score[Object.keys(this.result.Score)[i]][0]);
           // handle Dataset
           if (this.options.docOrSentence == 'doc') {
@@ -198,33 +197,33 @@ export class QueryComponent implements OnChanges {
 
         }
         // tslint:disable-next-line: forin
-        for (const data in c) {
+    for (const data in c) {
           const j = Date.parse(c[data].x.split('-').join(' '));
           // console.log (j);
           c[data].dateparsed = j;
         }
         // tslint:disable-next-line: forin
-        for (const data in c2) {
+    for (const data in c2) {
           const j = Date.parse(c2[data].x.split('-').join(' '));
           // console.log (j);
           c2[data].dateparsed = j;
         }
         // tslint:disable-next-line: no-shadowed-variable
-        c = c.sort(( a , b ) => a.dateparsed - b.dateparsed);
+    c = c.sort(( a , b ) => a.dateparsed - b.dateparsed);
         // tslint:disable-next-line: no-shadowed-variable
-        c2 = c2.sort(( a , b ) => a.dateparsed - b.dateparsed);
+    c2 = c2.sort(( a , b ) => a.dateparsed - b.dateparsed);
         // console.log("a,b,join");
         // console.log(a);
         // console.log(b);
         // console.log(this.result.Score);
         // console.log(c);
         // console.log("end");
-        this.dataset = c;
-        this.datasetRelOnly = c2;
-        console.log('this.dataset');
-        console.log(this.dataset);
-        console.log('this.datasetRelOnly');
-        console.log(this.datasetRelOnly);
+    this.dataset = c;
+    this.datasetRelOnly = c2;
+    console.log('this.dataset');
+    console.log(this.dataset);
+    console.log('this.datasetRelOnly');
+    console.log(this.datasetRelOnly);
   }
 
 }

@@ -66,6 +66,7 @@ export class QuerysingledocComponent implements OnInit {
     if (this.inpu) {
       this.url = this.inpu;
     }
+    this.update();
   }
   doThings(event: any){
     event.preventDefault();
@@ -201,6 +202,14 @@ export class QuerysingledocComponent implements OnInit {
 
             // pedido recebido aqui
             console.log(res2);
+            if (res2.message) {
+              this._snackBar.open('This URL has no data we can use', ":(", {
+                duration: 2000
+              });
+              this.requestMade = false;
+              this.loading = false;
+              return ' ';
+            }
             this.update();
             this.requestMade = true;
             this.loading = false;
