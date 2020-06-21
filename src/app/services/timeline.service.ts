@@ -22,8 +22,6 @@ export class TimelineService {
       const formData = new FormData();
       console.log('options');
       console.log(options);
-      /*console.log("search");
-      console.log(search);*/
       let realURL = this.url + '/SingleDoc';
       if (options.algo === 'py_heideltime') {
         realURL += '/Heideltime/api/v1.0';
@@ -36,119 +34,119 @@ export class TimelineService {
         realURL += '/ScoreBySentence?';
       }
       formData.append('text', search);
-      let caracterfinal = realURL.charAt(realURL.length);
+      let caracterfinal = realURL.charAt(realURL.length - 1);
+
       if (options.docCreatTime) {
         if (options.algo == 'py_heideltime') {
-          // formData.append('document_creation_time', options.docCreatTime);
-          if(caracterfinal == "?"){
+
+          if (caracterfinal == '?') {
             realURL += 'document_creation_time=' + options.docCreatTime;
-          }else{
+          } else {
             realURL += '&document_creation_time=' + options.docCreatTime;
           }
-          caracterfinal = realURL.charAt(realURL.length);
+          caracterfinal = realURL.charAt(realURL.length - 1);
         }
       }
       if (options.dateGranularity) {
-        // formData.append('date_granularity', options.dateGranularity);
-        if(caracterfinal == "?"){
+
+        if (caracterfinal == '?') {
           realURL += 'date_granularity=' + options.dateGranularity;
-        }else{
+        } else {
           realURL += '&date_granularity=' + options.dateGranularity;
         }
-        caracterfinal = realURL.charAt(realURL.length);
+        caracterfinal = realURL.charAt(realURL.length - 1);
 
       }
       if (options.language) {
         if (options.algo == 'py_heideltime') {
-          // formData.append('language', options.language);
 
-          if(caracterfinal == "?"){
+          if (caracterfinal == '?') {
             realURL += 'language=' + options.language;
-          }else{
+          } else {
             realURL += '&language=' + options.language;
           }
-          caracterfinal = realURL.charAt(realURL.length);
+          caracterfinal = realURL.charAt(realURL.length - 1);
         }
       }
       if (options.documentType) {
-        // formData.append('document_type', options.documentType);
-        if(caracterfinal == "?"){
+
+        if (caracterfinal == '?') {
           realURL += 'document_type=' + options.documentType;
-        }else{
+        } else {
           realURL += '&document_type=' + options.documentType;
         }
-        caracterfinal = realURL.charAt(realURL.length);
+        caracterfinal = realURL.charAt(realURL.length - 1);
       }
       if (options.TH) {
-        // formData.append('TH', options.TH);
-        if(caracterfinal == "?"){
+
+        if (caracterfinal == '?') {
           realURL += 'TH=' + options.TH;
-        }else{
+        } else {
           realURL += '&TH=' + options.TH;
         }
-        caracterfinal = realURL.charAt(realURL.length);
+        caracterfinal = realURL.charAt(realURL.length - 1);
       }
       if (options.N) {
         if (options.algo == 'py_heideltime') {
-          // formData.append('N', options.N);
-          if(caracterfinal == "?"){
+
+          if (caracterfinal == '?') {
             realURL += 'N=' + options.N;
-          }else{
+          } else {
             realURL += '&N=' + options.N;
           }
-          caracterfinal = realURL.charAt(realURL.length);
+          caracterfinal = realURL.charAt(realURL.length - 1);
 
 
         }
       }
       if (options.nContextualWindow) {
-        // formData.append('n_contextual_window', options.nContextualWindow);
-        if(caracterfinal == "?"){
+
+        if (caracterfinal == '?') {
           realURL += 'n_contextual_window=' + options.nContextualWindow;
-        }else{
+        } else {
           realURL += '&n_contextual_window=' + options.nContextualWindow;
         }
-        caracterfinal = realURL.charAt(realURL.length);
+        caracterfinal = realURL.charAt(realURL.length - 1);
       }
       if (options.number_of_keywords) {
-        // formData.append('number_of_keywords', options.numberOfKeywords);
-        if(caracterfinal == "?"){
+
+        if (caracterfinal == '?') {
           realURL += 'number_of_keywords=' + options.numberOfKeywords;
-        }else{
+        } else {
           realURL += '&number_of_keywords=' + options.numberOfKeywords;
         }
-        caracterfinal = realURL.charAt(realURL.length);
+        caracterfinal = realURL.charAt(realURL.length - 1);
       }
       if (options.ngram) {
-        // formData.append('ngram', options.ngram);
-        if(caracterfinal == "?"){
+
+        if (caracterfinal == '?') {
           realURL += 'ngram=' + options.ngram;
-        }else{
+        } else {
           realURL += '&ngram=' + options.ngram;
         }
-        caracterfinal = realURL.charAt(realURL.length);
+        caracterfinal = realURL.charAt(realURL.length - 1);
       }
       if (options.dateBegin) {
         if (options.algo != 'py_heideltime') {
-          // formData.append('begin_date', options.dateBegin);
-          if(caracterfinal == "?"){
+
+          if (caracterfinal == '?') {
             realURL += 'begin_date=' + options.dateBegin;
-          }else{
+          } else {
             realURL += '&begin_date=' + options.dateBegin;
           }
-          caracterfinal = realURL.charAt(realURL.length);
+          caracterfinal = realURL.charAt(realURL.length - 1);
 
         }
       }
       if (options.dateEnd) {
         if (options.algo != 'py_heideltime') {
-          // formData.append('end_date', options.dateEnd);
-          if(caracterfinal = "?"){
+
+          if (caracterfinal = '?') {
             realURL += 'end_date=' + options.dateEnd;
-          }else{
+          } else {
             realURL += '&end_date=' + options.dateEnd;
           }
-          caracterfinal = realURL.charAt(realURL.length);
+          caracterfinal = realURL.charAt(realURL.length - 1);
 
         }
       }
