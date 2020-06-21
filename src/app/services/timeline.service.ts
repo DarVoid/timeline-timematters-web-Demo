@@ -40,7 +40,7 @@ export class TimelineService {
       if (options.docCreatTime) {
         if (options.algo == 'py_heideltime') {
           // formData.append('document_creation_time', options.docCreatTime);
-          if(caracterfinal = "?"){
+          if(caracterfinal == "?"){
             realURL += 'document_creation_time=' + options.docCreatTime;
           }else{
             realURL += '&document_creation_time=' + options.docCreatTime;
@@ -50,7 +50,7 @@ export class TimelineService {
       }
       if (options.dateGranularity) {
         // formData.append('date_granularity', options.dateGranularity);
-        if(caracterfinal = "?"){
+        if(caracterfinal == "?"){
           realURL += 'date_granularity=' + options.dateGranularity;
         }else{
           realURL += '&date_granularity=' + options.dateGranularity;
@@ -62,7 +62,7 @@ export class TimelineService {
         if (options.algo == 'py_heideltime') {
           // formData.append('language', options.language);
 
-          if(caracterfinal = "?"){
+          if(caracterfinal == "?"){
             realURL += 'language=' + options.language;
           }else{
             realURL += '&language=' + options.language;
@@ -72,7 +72,7 @@ export class TimelineService {
       }
       if (options.documentType) {
         // formData.append('document_type', options.documentType);
-        if(caracterfinal = "?"){
+        if(caracterfinal == "?"){
           realURL += 'document_type=' + options.documentType;
         }else{
           realURL += '&document_type=' + options.documentType;
@@ -81,7 +81,7 @@ export class TimelineService {
       }
       if (options.TH) {
         // formData.append('TH', options.TH);
-        if(caracterfinal = "?"){
+        if(caracterfinal == "?"){
           realURL += 'TH=' + options.TH;
         }else{
           realURL += '&TH=' + options.TH;
@@ -91,7 +91,7 @@ export class TimelineService {
       if (options.N) {
         if (options.algo == 'py_heideltime') {
           // formData.append('N', options.N);
-          if(caracterfinal = "?"){
+          if(caracterfinal == "?"){
             realURL += 'N=' + options.N;
           }else{
             realURL += '&N=' + options.N;
@@ -103,7 +103,7 @@ export class TimelineService {
       }
       if (options.nContextualWindow) {
         // formData.append('n_contextual_window', options.nContextualWindow);
-        if(caracterfinal = "?"){
+        if(caracterfinal == "?"){
           realURL += 'n_contextual_window=' + options.nContextualWindow;
         }else{
           realURL += '&n_contextual_window=' + options.nContextualWindow;
@@ -112,7 +112,7 @@ export class TimelineService {
       }
       if (options.number_of_keywords) {
         // formData.append('number_of_keywords', options.numberOfKeywords);
-        if(caracterfinal = "?"){
+        if(caracterfinal == "?"){
           realURL += 'number_of_keywords=' + options.numberOfKeywords;
         }else{
           realURL += '&number_of_keywords=' + options.numberOfKeywords;
@@ -121,7 +121,7 @@ export class TimelineService {
       }
       if (options.ngram) {
         // formData.append('ngram', options.ngram);
-        if(caracterfinal = "?"){
+        if(caracterfinal == "?"){
           realURL += 'ngram=' + options.ngram;
         }else{
           realURL += '&ngram=' + options.ngram;
@@ -131,7 +131,7 @@ export class TimelineService {
       if (options.dateBegin) {
         if (options.algo != 'py_heideltime') {
           // formData.append('begin_date', options.dateBegin);
-          if(caracterfinal = "?"){
+          if(caracterfinal == "?"){
             realURL += 'begin_date=' + options.dateBegin;
           }else{
             realURL += '&begin_date=' + options.dateBegin;
