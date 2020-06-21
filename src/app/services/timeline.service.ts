@@ -141,7 +141,7 @@ export class TimelineService {
       if (options.dateEnd) {
         if (options.algo != 'py_heideltime') {
 
-          if (caracterfinal = '?') {
+          if (caracterfinal == '?') {
             realURL += 'end_date=' + options.dateEnd;
           } else {
             realURL += '&end_date=' + options.dateEnd;
