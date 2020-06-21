@@ -78,24 +78,44 @@ export class QuerysingledocComponent implements OnInit {
 
   }
   update() {
+    if (this.requestMade) {
+      this.opcoes = {
+        docCreatTime : this.documentCreationTime,
+        dateGranularity : this.dateGranularitySelected,
+        docOrSentence  : this.byDocOrSentece ? 'doc' : 'sentence',
+        algo: this.algoritmoSelected,
+        ngram : this.ngramSelected,
+        language : this.languagueSelected,
+        numberOfKeywords : this.numberOfKeyWords,
+        nContextualWindow: this.contextWindow,
+        documentType: this.documentTypeSelected,
+        N: this.simbaValue,
+        result: this.resultado,
+        dateBegin: this.dateBegin,
+        dateEnd: this.dateEnd
 
-    this.opcoes = {
-      docCreatTime : this.documentCreationTime,
-      dateGranularity : this.dateGranularitySelected,
-      docOrSentence  : this.byDocOrSentece ? 'doc' : 'sentence',
-      algo: this.algoritmoSelected,
-      ngram : this.ngramSelected,
-      language : this.languagueSelected,
-      numberOfKeywords : this.numberOfKeyWords,
-      nContextualWindow: this.contextWindow,
-      documentType: this.documentTypeSelected,
-      N: this.simbaValue,
-      result: this.resultado,
-      dateBegin: this.dateBegin,
-      dateEnd: this.dateEnd
+      };
 
-    };
 
+    } else {
+      this.opcoes = {
+        docCreatTime : this.documentCreationTime,
+        dateGranularity : this.dateGranularitySelected,
+        docOrSentence  : this.byDocOrSentece ? 'doc' : 'sentence',
+        algo: this.algoritmoSelected,
+        ngram : this.ngramSelected,
+        language : this.languagueSelected,
+        numberOfKeywords : this.numberOfKeyWords,
+        nContextualWindow: this.contextWindow,
+        documentType: this.documentTypeSelected,
+        N: this.simbaValue,
+        dateBegin: this.dateBegin,
+        dateEnd: this.dateEnd
+
+      };
+
+
+    }
 
 
   }
@@ -161,13 +181,13 @@ export class QuerysingledocComponent implements OnInit {
       if (res) {
         console.log(res);
         this.artigo = res;
-        console.log("texto artigo");
+        console.log('texto artigo');
         console.log(this.artigo.text);
         // this.documentCreationTime="";
         // tslint:disable-next-line: max-line-length
         if (res.date_creation) {
           // tslint:disable-next-line: max-line-length
-          this.documentCreationTime = new Date(res.date_creation).getFullYear() + '-'+ new Date(res.date_creation).getMonth() +'-'+ new Date(res.date_creation).getDate();
+          this.documentCreationTime = new Date(res.date_creation).getFullYear() + '-' + new Date(res.date_creation).getMonth() + '-' + new Date(res.date_creation).getDate();
           console.log(this.documentCreationTime);
         }
         switch (res.language) {
@@ -201,7 +221,8 @@ export class QuerysingledocComponent implements OnInit {
             break;
           }
         this.update();
-
+        console.log('artigo');
+        console.log(this.artigo.text);
         this.timeline.getTextKeyDateFromSingleDoc(this.artigo.text, this.opcoes).subscribe((res2) => {
 
           if (res2) {
@@ -209,6 +230,7 @@ export class QuerysingledocComponent implements OnInit {
             this.resultado = res2;
 
             // pedido recebido aqui
+
             console.log(res2);
             if (res2.message) {
               this._snackBar.open('This URL has no data we can use', ':(', {
@@ -227,8 +249,8 @@ export class QuerysingledocComponent implements OnInit {
               return ' ';
 
             }
-            this.update();
             this.requestMade = true;
+            this.update();
             this.loading = false;
 
             return ' ';
