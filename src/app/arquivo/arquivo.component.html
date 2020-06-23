@@ -10,16 +10,39 @@
 </div>
 <ng-template #query>
   <form class="example-form" (submit)="submitQuery($event)">
-    <mat-form-field class="example-full-width">
-      <mat-label>Query:</mat-label>
-      <input matInput (change)="setQuery($event)" placeholder="Elon Musk" value="Elon Musk">
-    </mat-form-field>
+    <div class="col-md-11 col-sm-8 col-xs-6 my-col">
+      <h2>Search on Arquivo.pt</h2>
+      <div class="col-lg-12">
+        <div class="form-group">
+          <mat-card>
+            <mat-form-field class="example-full-width">
+              <div *ngIf="loading">
+                <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+              </div>
+              <mat-label>Query:</mat-label>
+              <input matInput (change)="setQuery($event)" placeholder="Elon Musk" value="Elon Musk">
+            </mat-form-field>
+        
+            <mat-form-field class="example-full-width">
+              <mat-label>Site Search:</mat-label>
+              <input matInput (change)="setSiteSearch($event)" placeholder="...insert site where you want to search" value="http://www.publico.pt">
+            </mat-form-field>
+        
+            
+          </mat-card>
+        </div>
 
-    <mat-form-field class="example-full-width">
-      <mat-label>Site Search:</mat-label>
-      <input matInput (change)="setSiteSearch($event)" placeholder="...insert site where you want to search" value="http://www.publico.pt">
-    </mat-form-field>
-
-    <button type="submit">Let's do it!</button>
+        <div class="form-group">
+          <div class="col-lg12 text-right">
+            <button class="btn btn-primary" type="submit" [disabled]="loading" >
+              <div class='{{!loading?"viewable": "nonviewable"}}' ><i class="fas fa-code" ></i>
+                {{loading?'Loading...':'Lets do it!'}}</div>
+              <div class='{{loading?"viewable": "nonviewable"}}'><span  class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                {{loading?'Loading...':'Lets do it!'}}</div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </form>
 </ng-template>

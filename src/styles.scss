@@ -248,6 +248,17 @@ body {
   padding-bottom:10px;
 }
 
+.my-col3 {
+  background: linear-gradient(to bottom, rgba(39, 127, 186, 0.5) 0%,rgba(81, 164, 219,0.89) 100%);
+  height:70%;
+  width: 100%;
+  border-radius: 3px;
+  margin: auto;
+  margin-top:10px;
+  padding-bottom:10px;
+  text-align: justify;
+}
+
 .example-flex-container {
   display: flex;
   justify-content: space-between;

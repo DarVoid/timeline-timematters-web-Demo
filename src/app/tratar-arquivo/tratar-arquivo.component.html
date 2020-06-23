@@ -1,15 +1,25 @@
 <div *ngIf="querySelected else allDados">
-<app-querysingledoc [inpu]="querySelected.linkToNoFrame"></app-querysingledoc>
-
+  <app-querysingledoc [inpu]="querySelected.linkToNoFrame"></app-querysingledoc>
 </div>
-<ng-template #allDados>
 
-  <div *ngFor="let item of dados">
-    <h1>Title: {{item.title}}</h1>
-    <p><a target="_blank" href="{{item.linkToArchive}}">Link: {{item.linkToArchive}}</a></p>
-    <p><a target="_blank" href="{{item.linkToArchive}}">No-Frame Link: {{item.linkToNoFrame}}</a></p>
-    <div [innerHTML]="item.snippet">
+<ng-template #allDados>
+  
+    <div *ngFor="let item of dados">
+      <div class="col-md-10 col-sm-8 col-xs-6 my-col3">
+        <br>
+        <h1><b>{{item.title}}</b></h1>
+        <hr>
+        <p><a target="_blank" href="{{item.linkToArchive}}">Link: {{item.linkToArchive}}</a></p>
+        <p><a target="_blank" href="{{item.linkToArchive}}">No-Frame Link: {{item.linkToNoFrame}}</a></p>
+      
+        <div class="textThumb" [innerHTML]="item.snippet"></div>
+        <div class="form-group">
+          <div class="col-lg12 text-right">
+            <button class="btn btn-primary" (click)="setQuery(item)"> Get Relevant dates from this article</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <button (click)="setQuery(item)"> Get Relevant dates from this article</button>
-  </div>
+    
+  
 </ng-template>
