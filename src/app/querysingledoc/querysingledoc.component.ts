@@ -22,8 +22,10 @@ export class QuerysingledocComponent implements OnInit {
   public dateBegin: number;
   public dateEnd: number;
   public numberOfKeyWords: number;
-  public contextWindow: any;
+  public contextWindow: number;
+  public contextFullSentence: boolean;
   public simbaValue: number;
+  public simbaValueMax: boolean;
   public cheating: boolean;
   public showOnlyRel: boolean;
   public ngramSelected: number;
@@ -50,8 +52,10 @@ export class QuerysingledocComponent implements OnInit {
     this.dateBegin = 0;
     this.dateEnd = 2100;
     this.numberOfKeyWords = 10;
-    this.contextWindow = 'full_sentence';
-    this.simbaValue = 10;
+    this.contextWindow = 1;
+    this.contextFullSentence = true;
+    this.simbaValueMax = true;
+    this.simbaValue = 1;
     this.cheating = false;
     this.showOnlyRel = false;
     this.ngramSelected = 1;
@@ -77,6 +81,11 @@ export class QuerysingledocComponent implements OnInit {
     });
 
   }
+  fullSentence(event: any) {
+    console.log("full_sentence?");
+    console.log(event);
+    this.contextFullSentence = event.checked;
+  }
   update() {
     if (this.requestMade) {
       this.opcoes = {
@@ -98,6 +107,17 @@ export class QuerysingledocComponent implements OnInit {
 
 
     } else {
+      let a, b;
+      if (this.contextFullSentence){
+        a = "full_sentence";
+      }else{
+        a = this.contextWindow;
+      }
+      if(this.simbaValueMax){
+        b = "max";
+      }else{
+        b= this.simbaValue;
+      }
       this.opcoes = {
         docCreatTime : this.documentCreationTime,
         dateGranularity : this.dateGranularitySelected,
@@ -106,9 +126,9 @@ export class QuerysingledocComponent implements OnInit {
         ngram : this.ngramSelected,
         language : this.languagueSelected,
         numberOfKeywords : this.numberOfKeyWords,
-        nContextualWindow: this.contextWindow,
+        nContextualWindow: a,
         documentType: this.documentTypeSelected,
-        N: this.simbaValue,
+        N: b,
         dateBegin: this.dateBegin,
         dateEnd: this.dateEnd
 
@@ -123,6 +143,11 @@ export class QuerysingledocComponent implements OnInit {
     event.preventDefault();
     console.log(event.target.value);
     this.url = event.target.value;
+  }
+  maxSimba(event: any){
+    console.log("simba");
+    console.log(event.checked);
+    this.simbaValueMax = event.checked;
   }
 
   selecionaTamanhoSimbaVectors(event: any) {

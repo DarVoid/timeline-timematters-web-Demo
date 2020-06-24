@@ -36,6 +36,7 @@ import { TimelineScrollComponent } from './timeline-scroll/timeline-scroll.compo
 import { QuerysingledocComponent } from './querysingledoc/querysingledoc.component';
 import { ArquivoComponent } from './arquivo/arquivo.component';
 import { TratarArquivoComponent } from './tratar-arquivo/tratar-arquivo.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { TratarArquivoComponent } from './tratar-arquivo/tratar-arquivo.componen
     MatSelectModule,
     MatInputModule,
     MatStepperModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

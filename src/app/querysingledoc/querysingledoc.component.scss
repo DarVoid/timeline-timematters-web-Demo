@@ -4,13 +4,12 @@ h2 {
 }
 
 input {
-    display: block;
-    padding: 10px 10px;
-    font-size: 15px;
-    color: #2b3e50;
-    background-color: white;
-    font-family: 'Work Sans', sans-serif;
-    border-radius:2px;
+  display: block;
+  font-size: 15px;
+  color: #2b3e50;
+  background-color: white;
+  font-family: 'Work Sans', sans-serif;
+  border-radius:2px;
 }
 
 .btn-primary {
@@ -23,4 +22,8 @@ input {
     background-color: #993d26;
     border-color: transparent;
     box-shadow: 0 0 0 0.2rem rgba(153,61,38,.5);
+}
+
+.algorithm {
+  font-family: 'Work Sans', sans-serif;
 }
