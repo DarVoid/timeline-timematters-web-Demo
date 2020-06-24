@@ -3,23 +3,23 @@
 </div>
 
 <ng-template #allDados>
-  
+
     <div *ngFor="let item of dados">
       <div class="col-md-10 col-sm-8 col-xs-6 my-col3">
         <br>
         <h1><b>{{item.title}}</b></h1>
         <hr>
-        <p><a target="_blank" href="{{item.linkToArchive}}">Link: {{item.linkToArchive}}</a></p>
-        <p><a target="_blank" href="{{item.linkToArchive}}">No-Frame Link: {{item.linkToNoFrame}}</a></p>
-      
-        <div class="textThumb" [innerHTML]="item.snippet"></div>
+        <p>Link: <button mat-button class="btn btn-link white" (click)="copyToCliboard(item.linkToArchive)"> <i class="fas fa-link"></i> Copy link to Arquivo.pt platform <i class="fas fa-link"></i></button>No-Frame Link: <button mat-button class="btn btn-link white" (click)="copyToCliboard(item.linkToNoFrame)"> <i class="fas fa-link"></i> Copy link to arquived source <i class="fas fa-link"></i></button></p>
+
+
+        <div class="textThumb" [innerHTML]="item.snippet"></div><hr>
         <div class="form-group">
           <div class="col-lg12 text-right">
-            <button class="btn btn-primary" (click)="setQuery(item)"> Get Relevant dates from this article</button>
+            <button class="btn btn-primary" (click)="setQuery(item)"><i class="fas fa-code" ></i> Get Relevant dates from this article</button>
           </div>
         </div>
       </div>
     </div>
-    
-  
+
+
 </ng-template>

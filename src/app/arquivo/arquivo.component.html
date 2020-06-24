@@ -4,7 +4,9 @@
               [pageIndex]="pagina"
               [pageSizeOptions]="[5, 10, 25, 50, 100, 500, 1000, 2000]">
 </mat-paginator>
+<div class='{{loading?"viewable": "nonviewable"}}'><mat-progress-bar mode="indeterminate"></mat-progress-bar></div>
   <app-tratar-arquivo (selected)='setSelected($event)' [dados]="resultado"></app-tratar-arquivo><br>
+  <div class='{{loading?"viewable": "nonviewable"}}'><mat-progress-bar mode="indeterminate"></mat-progress-bar></div>
   <mat-paginator  *ngIf="!selected" [length]="totalResults" (page)="paginatorOptions($event)"
               [pageSize]="maxItems"
               [pageIndex]="pagina"

@@ -62,6 +62,7 @@ export class ArquivoComponent implements OnInit {
         this.resultado = res.response_items;
         this.requestParams = res.request_parameters;
         this.totalResults = res.estimated_nr_results;
+        this.loading = false;
       } else {
         console.log('error');
       }
@@ -72,11 +73,13 @@ export class ArquivoComponent implements OnInit {
   }
   next() {
     this.update();
+    this.loading = true;
     this.arquivo.getLinkFromOptions(this.query, this.options).pipe(take(1)).subscribe((res) => {
       if (res) {
         this.resultado = res.response_items;
         this.requestParams = res.request_parameters;
         this.totalResults = res.estimated_nr_results;
+        this.loading = false;
         // tslint:disable-next-line: forin
         for (const elemento in res.response_items) {
           console.log(res.response_items[elemento]);
