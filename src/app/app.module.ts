@@ -37,6 +37,7 @@ import { QuerysingledocComponent } from './querysingledoc/querysingledoc.compone
 import { ArquivoComponent } from './arquivo/arquivo.component';
 import { TratarArquivoComponent } from './tratar-arquivo/tratar-arquivo.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatInputModule,
     MatStepperModule,
     MatSnackBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
