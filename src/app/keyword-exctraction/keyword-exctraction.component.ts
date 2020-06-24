@@ -50,6 +50,8 @@ export class KeywordExctractionComponent implements OnInit {
   public showOnlyRel: boolean;
   public differentValues: Array<any>;
   public differentRelValues: Array<any>;
+  public contextFullSentence: boolean;
+  public simbaValueMax: boolean;
 
 
   constructor(private timeline: TimelineService, private _snackBar: MatSnackBar, private _lang: LangdetectService) {
@@ -65,6 +67,8 @@ export class KeywordExctractionComponent implements OnInit {
     this.hiddenoption = false;
     this.hiddenoptionKW = false;
     this.loading = false;
+    this.contextFullSentence = true;
+    this.simbaValueMax = true;
     // tslint:disable-next-line: max-line-length
     this.listaConteudos = ['2011 Haiti Earthquake Anniversary. As of 2010 (see 1500 photos here), the following major earthquakes have been recorded in Haiti. The first great earthquake mentioned in histories of Haiti occurred in 1564 in what was still the Spanish colony. It destroyed Concepción de la Vega. On January 12, 2010, a massive earthquake struck the nation of Haiti, causing catastrophic damage inside and around the capital city of Port-au-Prince. On the first anniversary of the earthquake, 12 January 2011, Haitian Prime Minister Jean-Max Bellerive said the death toll from the quake in 2010 was more than 316,000, raising the figures in 2010 from previous estimates. I immediately flashed back to the afternoon of February 11, 1975 when, on my car radio, I first heard the news. Yesterday...',
     `Islam : l'image de la religion se dégrade en France et en Allemagne. La méfiance envers l'Islam, jusque-là uniquement associée à l'extrême droite et d'une partie de la droite, ou plus récemment comme un marqueur "réactionnaire" dans le débat culturel, serait à présent largement et profondément partagée à gauche. Selon un sondage Ifop réalisé du 14 au 18 avril 2016 pour Le Figaro, 52% des électeurs socialistes considèrent que la place de l'islam est "trop importante". En 2010, ils n'étaient que 39%. Une défiance qui monte en puissance et illustre un rejet global de la religion musulmane en France.  En cause, les multiples attaques terroristes dont a été victime l'Hexagone en 2015. A titre de comparaison, un sondage de 1989 révélait que 33% des Français étaient par exemple "favorables" à la construction des mosquées contre seulement 13% aujourd'hui. À l'époque, 31% des sondés étaient opposés au port du voile. En 2016, ils sont 63%.  En Allemagne, ce phénomène de rejet est moins puissant mais la donne a tout de même changé à la suite des événements du 31 décembre de Cologne. "Alors que ces deux pays ont des histoires de l'immigration très différentes, analyse Jerôme Fourquet, le Directeur du Département Opinion de l'Ifop, cette convergence montre que les défis de ces questions majeures sont posés de manière similaire à toute la société occidentale".`,
@@ -249,6 +253,11 @@ export class KeywordExctractionComponent implements OnInit {
     console.log(event.target.value);
 
   }
+  maxSimba(event: any) {
+    console.log('simba');
+    console.log(event.checked);
+    this.simbaValueMax = event.checked;
+  }
   selecionarNKeywords(event: any) {
     this.numberOfKeyWords = event.target.value;
     console.log(event.target.value);
@@ -271,6 +280,11 @@ export class KeywordExctractionComponent implements OnInit {
     this.algoritmoSelected = event;
     this.documentCreationTime = '';
 
+  }
+  fullSentence(event: any) {
+    console.log('full_sentence?');
+    console.log(event);
+    this.contextFullSentence = event.checked;
   }
   selecionarContextualWindow(event: any) {
     this.contextWindow = event;
@@ -504,6 +518,18 @@ export class KeywordExctractionComponent implements OnInit {
             });
             break;
           }
+
+      let j, k;
+        if (this.contextFullSentence) {
+        j = 'full_sentence';
+      } else {
+        j = this.contextWindow;
+      }
+        if (this.simbaValueMax) {
+        k = 'max';
+      } else {
+        k = this.simbaValue;
+      }
         this.optio = {
             docCreatTime : this.documentCreationTime,
             dateGranularity : this.dateGranularitySelected,
@@ -512,9 +538,9 @@ export class KeywordExctractionComponent implements OnInit {
             ngram : this.ngramSelected,
             language : this.languagueSelected,
             numberOfKeywords : this.numberOfKeyWords,
-            nContextualWindow: this.contextWindow,
+            nContextualWindow: j,
             documentType: this.documentTypeSelected,
-            N: this.simbaValue
+            N: k
           };
 
         this.timeline.getTextKeyDateFromSingleDoc(this.conteudoDefault, this.optio).subscribe((res2) => {
