@@ -22,21 +22,21 @@
               <mat-label>Query:</mat-label>
               <input matInput (change)="setQuery($event)" placeholder="Elon Musk" value="Elon Musk">
             </mat-form-field>
-        
+
             <mat-form-field class="example-full-width">
               <mat-label>Site Search:</mat-label>
               <input matInput (change)="setSiteSearch($event)" placeholder="...insert site where you want to search" value="http://www.publico.pt">
             </mat-form-field>
-        
-            
+
+
           </mat-card>
         </div>
 
         <div class="form-group">
           <div class="col-lg12 text-right">
             <button class="btn btn-primary" type="submit" [disabled]="loading" >
-              <div class='{{!loading?"viewable": "nonviewable"}}' ><i class="fas fa-code" ></i>
-                {{loading?'Loading...':'Lets do it!'}}</div>
+              <div class='{{!loading?"viewable": "nonviewable"}}' ><i class="fas fa-search" ></i>
+                {{loading?'Loading...':'Search Arquivo.pt'}}</div>
               <div class='{{loading?"viewable": "nonviewable"}}'><span  class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                 {{loading?'Loading...':'Lets do it!'}}</div>
             </button>
