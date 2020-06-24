@@ -26,10 +26,11 @@
       <div class="col-lg-12">
         <div class="form-group">
           <mat-card>
+            <div *ngIf="loading">
+              <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+            </div>
+
             <mat-form-field class="example-full-width">
-              <div *ngIf="loading">
-                <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
-              </div>
               <mat-label>Query:</mat-label>
               <input matInput (change)="setQuery($event)" placeholder="Elon Musk" value="Elon Musk">
             </mat-form-field>
