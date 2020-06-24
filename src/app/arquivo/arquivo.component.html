@@ -27,24 +27,29 @@
               <mat-label>Site Search:</mat-label>
               <input matInput (change)="setSiteSearch($event)" placeholder="...insert site where you want to search" value="http://www.publico.pt">
             </mat-form-field>
+            <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleAdvanced()">Advanced Options</mat-slide-toggle>
+                <br>
+                <br>
+            <div class='{{viewAdvanced?"viewable": "nonviewable"}}'>
+              <mat-form-field class="example-half-width">
+                <mat-label>From:</mat-label>
+                <input matInput type="date" placeholder="...insert site where you want to search" [value]="startDate" />
+              </mat-form-field>
+              <mat-form-field class="example-half-width">
+                <mat-label>From:</mat-label>
+                <input type="date" matInput (change)="setTo($event)" placeholder="...insert site where you want to search" [value]="toDate"/>
+              </mat-form-field>
+              <mat-form-field class="example-half-width">
+                <mat-label>Offset:</mat-label>
+                <input matInput [value]="offset" type="number" (change)="setOffset($event)" placeholder="...insert site where you want to search" value="http://www.publico.pt">
+              </mat-form-field>
+              <mat-form-field class="example-half-width">
+                <mat-label>Items per Query (max 2000):</mat-label>
+                <input matInput [value]="maxItems" type="number" (change)="setMaxItems($event)" placeholder="...insert site where you want to search" value="http://www.publico.pt">
+              </mat-form-field>
+              <br>
 
-            <mat-form-field class="example-half-width">
-              <mat-label>From:</mat-label>
-              <input matInput type="date" placeholder="...insert site where you want to search" [value]="startDate" />
-            </mat-form-field>
-            <mat-form-field class="example-half-width">
-              <mat-label>From:</mat-label>
-              <input type="date" matInput (change)="setTo($event)" placeholder="...insert site where you want to search" [value]="toDate"/>
-            </mat-form-field>
-            <mat-form-field class="example-half-width">
-              <mat-label>Offset:</mat-label>
-              <input matInput [value]="offset" type="number" (change)="setOffset($event)" placeholder="...insert site where you want to search" value="http://www.publico.pt">
-            </mat-form-field>
-            <mat-form-field class="example-half-width">
-              <mat-label>Items per Query (max 2000):</mat-label>
-              <input matInput [value]="maxItems" type="number" (change)="setMaxItems($event)" placeholder="...insert site where you want to search" value="http://www.publico.pt">
-            </mat-form-field>
-
+            </div>
 
           </mat-card>
         </div>

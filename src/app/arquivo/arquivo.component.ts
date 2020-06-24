@@ -29,6 +29,7 @@ export class ArquivoComponent implements OnInit {
   public requestParams: any;
   public totalResults: any;
   public startDate: Date;
+  public viewAdvanced: boolean;
 
   constructor(private arquivo: ArquivoService, private _snackBar: MatSnackBar) {
     this.query = 'Elon Musk';
@@ -44,6 +45,7 @@ export class ArquivoComponent implements OnInit {
     this.offset = 0;
     this.maxItems = 50;
     this.startDate = new Date(1996);
+    this.viewAdvanced = false;
   }
 
   ngOnInit(): void {
@@ -81,6 +83,9 @@ export class ArquivoComponent implements OnInit {
       }
     }) ;
 
+  }
+  toggleAdvanced() {
+    this.viewAdvanced = !this.viewAdvanced;
   }
   goBack() {
     this.resultado = false;
