@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArquivoService } from '../services/arquivo.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-arquivo',
@@ -54,8 +55,9 @@ export class ArquivoComponent implements OnInit {
   }
   submitQuery(event: any) {
     event.preventDefault();
+    this.loading = true;
     this.update();
-    this.arquivo.getLinkFromOptions(this.query, this.options).subscribe((res) => {
+    this.arquivo.getLinkFromOptions(this.query, this.options).pipe(take(1)).subscribe((res) => {
       if (res) {
         this.resultado = res.response_items;
         this.requestParams = res.request_parameters;
@@ -70,7 +72,7 @@ export class ArquivoComponent implements OnInit {
   }
   next() {
     this.update();
-    this.arquivo.getLinkFromOptions(this.query, this.options).subscribe((res) => {
+    this.arquivo.getLinkFromOptions(this.query, this.options).pipe(take(1)).subscribe((res) => {
       if (res) {
         this.resultado = res.response_items;
         this.requestParams = res.request_parameters;

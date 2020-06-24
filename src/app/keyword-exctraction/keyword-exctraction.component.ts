@@ -479,7 +479,7 @@ export class KeywordExctractionComponent implements OnInit {
       duration: 2000
     });
     if (this.languagueSelected == 'auto-detect') {
-      this._lang.getLanguageFromContent(this.conteudoDefault).subscribe((res) => {
+      this._lang.getLanguageFromContent(this.conteudoDefault).pipe(take(1)).subscribe((res) => {
         if (res) {
           this._snackBar.open('Language Detected: ', res.lang, {
             duration: 2000
@@ -543,7 +543,7 @@ export class KeywordExctractionComponent implements OnInit {
             N: k
           };
 
-        this.timeline.getTextKeyDateFromSingleDoc(this.conteudoDefault, this.optio).subscribe((res2) => {
+        this.timeline.getTextKeyDateFromSingleDoc(this.conteudoDefault, this.optio).pipe(take(1)).subscribe((res2) => {
 
           if (res2) {
           // console.log('nice');

@@ -2,6 +2,7 @@ import { GetarticleService } from './../services/getarticle.service';
 import { Component, OnInit, Input } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { TimelineService } from '../services/timeline.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-querysingledoc',
@@ -73,7 +74,7 @@ export class QuerysingledocComponent implements OnInit {
     event.preventDefault();
     console.log(event.target.value);
 
-    this.article.getArticles(event.target.value).subscribe((res) => {
+    this.article.getArticles(event.target.value).pipe(take(1)).subscribe((res) => {
       console.log(res);
       this.artigo = res;
       return '' ;
@@ -202,7 +203,7 @@ export class QuerysingledocComponent implements OnInit {
       this.url = this.inpu;
     }
     this.update();
-    this.article.getArticles(this.url).subscribe((res) => {
+    this.article.getArticles(this.url).pipe(take(1)).subscribe((res) => {
       if (res) {
         console.log(res);
         this.artigo = res;
@@ -248,7 +249,7 @@ export class QuerysingledocComponent implements OnInit {
         this.update();
         console.log('artigo');
         console.log(this.artigo.text);
-        this.timeline.getTextKeyDateFromSingleDoc(this.artigo.text, this.opcoes).subscribe((res2) => {
+        this.timeline.getTextKeyDateFromSingleDoc(this.artigo.text, this.opcoes).pipe(take(1)).subscribe((res2) => {
 
           if (res2) {
             // console.log('nice');
