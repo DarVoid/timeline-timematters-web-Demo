@@ -54,14 +54,14 @@ export class ArquivoService {
       realURL += '&callback=' + options.callback;
     }
     if (options.prettyPrint) {
-      realURL += '&prettyPrint	=' + options.prettyPrint;
+      realURL += '&prettyPrint=' + options.prettyPrint;
     }
 
-
+    // console.log(realURL);
     return this.http.post(realURL, formData
         ).pipe(map((res, err) => {
       if (res) {
-        // console.log(res);
+        console.log(res);
         return res;
       } else {
         console.log(err);

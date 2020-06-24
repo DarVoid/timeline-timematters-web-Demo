@@ -30,6 +30,7 @@ export class ArquivoComponent implements OnInit {
   public totalResults: any;
   public startDate: Date;
   public viewAdvanced: boolean;
+  public pagina: number;
 
   constructor(private arquivo: ArquivoService, private _snackBar: MatSnackBar) {
     this.query = 'Elon Musk';
@@ -46,6 +47,7 @@ export class ArquivoComponent implements OnInit {
     this.maxItems = 50;
     this.startDate = new Date(1996);
     this.viewAdvanced = false;
+    this.pagina = 0;
   }
 
   ngOnInit(): void {
@@ -67,7 +69,6 @@ export class ArquivoComponent implements OnInit {
     this.selected = event;
   }
   next() {
-    this.offset = this.offset + this.maxItems;
     this.update();
     this.arquivo.getLinkFromOptions(this.query, this.options).subscribe((res) => {
       if (res) {
@@ -84,13 +85,25 @@ export class ArquivoComponent implements OnInit {
     }) ;
 
   }
+  paginatorOptions(event: any){
+    console.log(event);
+    this.maxItems = event.pageSize;
+    this.offset = this.maxItems * event.pageIndex;
+      this.next();
+  }
   toggleAdvanced() {
     this.viewAdvanced = !this.viewAdvanced;
+  }
+  togglePretty(event: any){
+    console.log(event.checked);
+    this.prettyPrint = event.checked;
   }
   goBack() {
     this.resultado = false;
     this.loading = false;
     this.selected = false;
+    this.offset = 0;
+    this.update();
   }
   public copyToClipboard(someJsonString) {
 
@@ -108,6 +121,7 @@ export class ArquivoComponent implements OnInit {
   }
 
   update() {
+    this.pagina = Math.floor(this.offset / this.maxItems);
     this.options = {
 
       siteSearch: this.siteSearch,

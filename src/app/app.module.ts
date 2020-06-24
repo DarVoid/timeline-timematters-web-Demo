@@ -38,6 +38,7 @@ import { ArquivoComponent } from './arquivo/arquivo.component';
 import { TratarArquivoComponent } from './tratar-arquivo/tratar-arquivo.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -82,7 +83,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatStepperModule,
     MatSnackBarModule,
     MatCheckboxModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
