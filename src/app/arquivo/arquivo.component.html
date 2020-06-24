@@ -4,7 +4,7 @@
               [pageIndex]="pagina"
               [pageSizeOptions]="[5, 10, 25, 50, 100, 500, 1000, 2000]">
 </mat-paginator>
-  <app-tratar-arquivo (selected)='setSelected($event)' [dados]="resultado"></app-tratar-arquivo>
+  <app-tratar-arquivo (selected)='setSelected($event)' [dados]="resultado"></app-tratar-arquivo><br>
   <mat-paginator  *ngIf="!selected" [length]="totalResults" (page)="paginatorOptions($event)"
               [pageSize]="maxItems"
               [pageIndex]="pagina"
@@ -41,10 +41,10 @@
             <div class='{{viewAdvanced?"viewable": "nonviewable"}}'>
               <mat-form-field class="example-half-width">
                 <mat-label>From:</mat-label>
-                <input matInput type="date" placeholder="...insert site where you want to search" [value]="startDate" />
+                <input matInput type="date" (change)="setFrom($event)" placeholder="...insert site where you want to search" [value]="startDate" />
               </mat-form-field>
               <mat-form-field class="example-half-width">
-                <mat-label>From:</mat-label>
+                <mat-label>To:</mat-label>
                 <input type="date" matInput (change)="setTo($event)" placeholder="...insert site where you want to search" [value]="toDate"/>
               </mat-form-field>
               <mat-form-field class="example-half-width">
@@ -76,3 +76,4 @@
     </div>
   </form>
 </ng-template>
+<br>

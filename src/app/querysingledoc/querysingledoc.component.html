@@ -28,7 +28,7 @@
             <mat-card>
               <mat-form-field name="valorAlgoritmo">
                 <mat-label class="algorithm">Algorithm </mat-label>
-                <mat-select  class="algorithm" (valueChange)="selecionarAlgoritmo($event)" >
+                <mat-select  class="algorithm" (valueChange)="selecionarAlgoritmo($event)" [value]="algoritmoSelected">
                   <mat-option class="mat-menu-item2" hidden>py_heideltime</mat-option>
 
                   <mat-option class="mat-menu-item2" *ngFor="let algo of algoritmosDate" [value]="algo">
