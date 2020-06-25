@@ -7,11 +7,11 @@
         <div class="form-group">
           <mat-card>
             <mat-form-field class="example-full-width">
-              <mat-label>URL</mat-label>
               <div *ngIf="loading">
                 <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
                 <br>
               </div>
+              <mat-label>URL</mat-label>
               <input matInput placeholder="Please insert article URL" value="{{url}}" name="stuff" matInput (change)="setURL($event)">
               <mat-hint>Copy link to article</mat-hint>
             </mat-form-field>

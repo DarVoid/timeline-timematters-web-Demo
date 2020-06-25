@@ -51,11 +51,19 @@
           </mat-tab>
           <mat-tab label="Temporal Clustering"  *ngIf="dataset.length>0">
             <!--WIP-->
-            <table *ngFor="let item of dataset ">
-              <tr (click)="putOnClipboard($event,item.x)">
-                  <p><td><h1>{{item.x.substring(0,10)}}</h1></td></p><!--meter .substrin(0,10 para so ano)-->
-                  <p><td [innerHTML]="item.y | safe:'html'"></td></p>
+            <table class="table table-bordered" *ngFor="let item of dataset ">
+              <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr (click)="putOnClipboard($event,item.x)">
+                  <td><h3>{{item.x.substring(0,10)}}</h3></td><!--meter .substrin(0,10 para so ano)-->
+                  <td [innerHTML]="item.y | safe:'html'"></td>
               </tr>
+              </tbody>
             </table>
             <!--
             <table *ngFor="let item of dataset ">
