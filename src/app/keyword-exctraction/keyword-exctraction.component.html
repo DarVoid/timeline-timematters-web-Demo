@@ -62,14 +62,14 @@
               </div>
             </mat-vertical-stepper>-->
 
-            <table class="table table-bordered"*ngFor="let item of dataset">
+            <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th scope="col">Date</th>
-                  <th scope="col">Score</th>
+                  <th scope="col"><b>Date</b></th>
+                  <th scope="col"><b>Score</b></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody *ngFor="let item of dataset">
                 <tr (click)="putOnClipboard($event,item.x)">
                   <td><h3>{{item.x.substring(0,10)}}</h3></td><!--meter .substrin(0,10 para so ano)-->
                   <td [innerHTML]="item.y | safe:'html'"></td>
