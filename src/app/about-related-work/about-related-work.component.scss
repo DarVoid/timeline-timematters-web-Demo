@@ -14,14 +14,22 @@
   .text {
     color: #ffffff;
     font-size: 30px;
-    padding-top:-25px;
   }
 
-  p {
+  .p1 {
       color: #ffffff;
       font-size: 15px;
       text-align: justify;
       padding-top: 15px;
+      padding-left: 14px;
+  }
+
+  .p2 {
+    color: #ffffff;
+    font-size: 15px;
+    text-align: justify;
+    padding-top: 15px;
+    padding-left: 30px;
   }
   
   hr {

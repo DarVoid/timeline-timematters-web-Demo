@@ -19,13 +19,13 @@ export class AboutPeopleComponent implements OnInit {
         photoSrc: 'assets/fotoJorge.png',
         profession: 'Web Developer',
         links:[
+          { tipo: 'LinkedIn',
+          link: 'https://www.linkedin.com/in/djorge7/',
+          icon: '<i class="fab fa-linkedin"></i>'
+          },
           { tipo: 'GitHub',
             link: 'https://github.com/DarVoid/',
             icon: '<i class="fab fa-github"></i>'
-          },
-          { tipo: 'LinkedIn',
-            link: 'https://www.linkedin.com/in/djorge7/',
-            icon: '<i class="fab fa-linkedin"></i>'
           },
           { tipo: 'Email',
             link: 'mailto://jorgeraposoduque@gmail.com',
@@ -39,18 +39,18 @@ export class AboutPeopleComponent implements OnInit {
       photoSrc: 'assets/tiago.png',
       profession: 'Web Developer',
       links:[
+        { tipo: 'LinkedIn',
+        link: 'https://www.linkedin.com/in/tiago-c%C3%A2ndido-4590951a8/',
+        icon: '<i class="fab fa-linkedin"></i>'
+        },
         { tipo: 'GitHub',
           link: 'https://github.com/tiagorafael982',
           icon: '<i class="fab fa-github"></i>'
         },
-        { tipo: 'LinkedIn',
-        link: 'https://www.linkedin.com/in/tiago-c%C3%A2ndido-4590951a8/',
-        icon: '<i class="fab fa-linkedin"></i>'
-      },
-      { tipo: 'Email',
-        link: 'mailto://tiago-rafael_98@hotmail.com',
-        icon: '<i class="far fa-envelope"></i>'
-      }
+        { tipo: 'Email',
+          link: 'mailto://tiago-rafael_98@hotmail.com',
+          icon: '<i class="far fa-envelope"></i>'
+        }
       ]
       }
     ]
