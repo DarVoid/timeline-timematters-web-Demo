@@ -39,6 +39,7 @@ import { TratarArquivoComponent } from './tratar-arquivo/tratar-arquivo.componen
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { AboutAcknowledgementsComponent } from './about-acknowledgements/about-acknowledgements.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     TimelineScrollComponent,
     QuerysingledocComponent,
     ArquivoComponent,
-    TratarArquivoComponent
+    TratarArquivoComponent,
+    AboutAcknowledgementsComponent
   ],
   imports: [
     BrowserModule,

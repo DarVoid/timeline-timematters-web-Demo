@@ -56,6 +56,8 @@
       <button mat-menu-item class="mat-menu-item" (click)='changePage("4")' ngbDropdownItem>People <i class="fas fa-user-circle"></i></button>
       <div class="divider"></div>
       <button mat-menu-item class="mat-menu-item" (click)='changePage("5")' ngbDropdownItem>Related Work <i class="fas fa-book-open"></i></button>
+      <div class="divider"></div>
+      <button mat-menu-item class="mat-menu-item" (click)='changePage("7")' ngbDropdownItem>Acknowledgements <i class="fa fa-book" aria-hidden="true"></i></button>
     </mat-menu>
 
     <mat-menu #menu3="matMenu">
@@ -113,9 +115,16 @@
                 <app-about-related-work></app-about-related-work>
               </div>
               <ng-template #pagina6>
-                <div *ngIf='page=="6"'>
+                <div *ngIf='page=="6" else pagina7'>
                   <app-arquivo></app-arquivo>
                 </div>
+
+                <ng-template #pagina7>
+                  <div *ngIf='page=="7"'>
+                    <app-about-acknowledgements></app-about-acknowledgements>
+                  </div>
+                </ng-template>
+
               </ng-template>
 
             </ng-template>
