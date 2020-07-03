@@ -57,7 +57,7 @@ export class AboutPeopleComponent implements OnInit {
     this.people1 = [
       {
         name: 'Ricardo Campos',
-        photoSrc: 'assets/ricardo.png',
+        photoSrc: 'assets/RCampos.jpg',
         profession: 'Professor and Researcher',
         links:[
           { tipo: 'LinkedIn',
@@ -69,7 +69,7 @@ export class AboutPeopleComponent implements OnInit {
           icon: '<i class="fas fa-globe-americas"></i>'
           },
           { tipo: 'Email',
-            link: 'ricardo.campos@ipt.pt',
+            link: 'mailto://ricardo.campos@ipt.pt',
             icon: '<i class="far fa-envelope"></i>'
           }]
       }];
@@ -88,7 +88,7 @@ export class AboutPeopleComponent implements OnInit {
             icon: '<i class="fas fa-globe-americas"></i>'
             },
             { tipo: 'Email',
-            link: 'gael.dias@unicaen.fr ',
+            link: 'mailto://gael.dias@unicaen.fr ',
             icon: '<i class="far fa-envelope"></i>'
             }]
         }
@@ -97,7 +97,7 @@ export class AboutPeopleComponent implements OnInit {
       this.people3 = [
         {
           name: 'Alípio Jorge',
-          photoSrc: 'assets/AJ.jpg',
+          photoSrc: 'assets/Alipio.jpg',
           profession: 'Professor and Researcher',
           links:[
             { tipo: 'LinkedIn',
@@ -109,7 +109,7 @@ export class AboutPeopleComponent implements OnInit {
             icon: '<i class="fas fa-globe-americas"></i>'
             },
             { tipo: 'Email',
-            link: 'amjorge@fc.up.pt',
+            link: 'mailto://amjorge@fc.up.pt',
             icon: '<i class="far fa-envelope"></i>'
             }]
         }
@@ -130,7 +130,7 @@ export class AboutPeopleComponent implements OnInit {
             icon: '<i class="fas fa-globe-americas"></i>'
             },
             { tipo: 'Email',
-            link: 'celian@ubi.pt',
+            link: 'mailto://celian@ubi.pt',
             icon: '<i class="far fa-envelope"></i>'
             }]
         }
@@ -151,7 +151,7 @@ export class AboutPeopleComponent implements OnInit {
             icon: '<i class="fab fa-github"></i>'
             },
             { tipo: 'Email',
-            link: 'mendesjorge49@gmail.com',
+            link: 'mailto://mendesjorge49@gmail.com',
             icon: '<i class="far fa-envelope"></i>'
             }]
         }

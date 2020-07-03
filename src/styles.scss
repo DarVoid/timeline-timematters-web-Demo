@@ -165,8 +165,8 @@ a:active {
 }
 
 section.NavSection {
- /* background-color: #c75c42;*/
-  background-color: #cc4625;
+ /* background-color: #cc4625;*/
+  background-color: #d10019;
   padding-bottom: 10px;
 }
 
@@ -199,7 +199,8 @@ $app-theme: mat-light-theme($app-primary, $app-accent);
     position: sticky;
     top: 0;
     z-index: 9;
-   background-color: #cc4625;
+  /* background-color: #cc4625; */
+    background-color: #d10019;
   }
 
 
@@ -218,12 +219,14 @@ body {
 }
 
 .mat-drawer-container {
-  background-color: #d6d0d0;
+  background-color: #e8e3e3;
+ /* background-color: #d6d0d0; */
   display:inline;
 }
 
 .fundo {
-  background-color: #d6d0d0;
+  background-color: #e8e3e3;
+ /* background-color: #d6d0d0; */
   padding-top: 20px;
   padding-bottom: 5%;
 }

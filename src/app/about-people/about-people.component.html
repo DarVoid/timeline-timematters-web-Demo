@@ -3,7 +3,7 @@
 
     <div class="jumbotron">
      <div class="knowTeam" mat-subheader>Know the team:</div> <br>
-     <p class="text">This project was developed by researchers affiliated to the Polytechnic Institute of Tomar, Ci2 Smart Cities Research Center, LIAAD INESC TEC, University of Porto, University of Beira Interior and University of Caen.</p>
+     <p class="text">This project was developed by researchers affiliated to the Polytechnic Institute of Tomar, Ci2 Smart Cities Research Center, LIAAD INESC TEC, University of Caen, University of Porto, University of Beira Interior and Centre of Mathematics and Applications (CMA UBI).</p>
      <mat-divider></mat-divider>
       <div class="subtitles" mat-subheader>Authors</div>
       <mat-list class="linha">
@@ -61,22 +61,9 @@
             </p>
         </mat-list-item>
       </mat-list>
-      <p class="text">Time-Matters python package has been developed by Jorge Mendes under the supervision of Ricardo Campos in the scope of the Final Project of the Computer Science degree of the Polytechnic Institute of Tomar, Portugal.</p>
-      <mat-list class="linha">
-        <mat-list-item *ngFor="let person of people5">
-            <img matListAvatar [src]="person.photoSrc"/>
-            <h3 class="nome" matLine> <b>{{person.name}}</b></h3>
-            <h1 class="nome" matLine>{{person.profession}}</h1>
-            <p *ngFor="let cont of person.links">
-              <a target="_blank" href={{cont.link}}>{{cont.tipo}}
-                <span [innerHTML]="cont.icon | safe:'html'">
-                </span>
-              </a>
-            </p>
-        </mat-list-item>
-      </mat-list>
         <mat-divider></mat-divider>
         <div class="subtitles" mat-subheader>Web Developers</div>
+        <p class="text">Time-Matters demo web page has been developed in 2020 by Jorge Duque and Tiago Cândido under the supervision of Ricardo Campos in the scope of the Final Project of the Computer Science degree of the Polytechnic Institute of Tomar, Portugal.</p>
         <mat-list class="developer">
           <mat-list-item *ngFor="let person of developer1">
               <img matListAvatar [src]="person.photoSrc"/>
@@ -103,9 +90,22 @@
               </p>
           </mat-list-item>
         </mat-list>
+        <mat-divider></mat-divider>
+        <div class="subtitles" mat-subheader>Software Developer</div>
+        <p class="text">Time-Matters python package has been developed in 2019 by Jorge Mendes under the supervision of Ricardo Campos in the scope of the Final Project of the Computer Science degree of the Polytechnic Institute of Tomar, Portugal.</p>
+        <mat-list class="linha">
+          <mat-list-item *ngFor="let person of people5">
+              <img matListAvatar [src]="person.photoSrc"/>
+              <h3 class="nome" matLine> <b>{{person.name}}</b></h3>
+              <h1 class="nome" matLine>{{person.profession}}</h1>
+              <p *ngFor="let cont of person.links">
+                <a target="_blank" href={{cont.link}}>{{cont.tipo}}
+                  <span [innerHTML]="cont.icon | safe:'html'">
+                  </span>
+                </a>
+              </p>
+          </mat-list-item>
+        </mat-list>
     </div>
   </div>
-
-
-
 </div>
