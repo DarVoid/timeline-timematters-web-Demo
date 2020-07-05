@@ -39,7 +39,10 @@ export class FrameComponent implements OnInit, OnChanges {
           // console.log(valor);
           // console.log('score do valor')
           // console.log(this.dateScores[valor]);
+
           let titulo = this.dateScores[valor.toLowerCase()];
+          console.log(titulo);
+          console.log(this.dateScores[valor]);
           let cor = '';
           if (titulo) {
             // console.log('titulo');
@@ -53,7 +56,7 @@ export class FrameComponent implements OnInit, OnChanges {
             cor = 'black';
           } else {
             cor = 'red';
-            if (titulo < 0.4) {
+            if (titulo < 0.5) {
               cor = 'green';
             } else if (titulo > 0.5) {
               cor = 'blue';

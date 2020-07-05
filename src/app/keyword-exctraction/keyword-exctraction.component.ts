@@ -333,16 +333,24 @@ export class KeywordExctractionComponent implements OnInit {
     this.loading = false;
   }
   public update() {
-
-        this.differentValues = this.result.TempExpressions.sort(
-          (a, b) => a[0] - b[0]).filter(
-              (element , index, array) => {
-          if (index == 0) {
-            return true;
-          } else {
-            return element[0] != array[index - 1][0];
-          }
-        });
+          this.differentValues = this.result.TempExpressions.sort(
+            (a, b) => a[0] - b[0]).filter(
+                (element , index, array) => {
+  
+            if (index == 0) {
+              // console.log("element");
+              // console.log(element[0].toString().split('-').join(''));
+              // console.log("Element is Viable");
+              // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
+              return /^\d+$/.test(element[0].toString().split('-').join(''));
+            } else {
+              // console.log("element");
+              // console.log(element[0].toString().split('-').join(''));
+              // console.log("Element is Viable");
+              // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
+              return element[0].toString().split('-').join('') != array[index - 1][0].toString().split('-').join('') && /^\d+$/.test(element[0].toString().split('-').join(''));
+            }
+          });
         if (this.byDocOrSentece) {
 
           this.differentRelValues = this.differentValues.filter(
