@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { Router } from '@angular/router';
 //import {MatGridListModule} from '@angular/material/grid-list';
 
 
@@ -21,14 +22,21 @@ export class HomeComponent implements OnInit{
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {
+  constructor(private breakpointObserver: BreakpointObserver,private router:Router) {
     this.page = "1";
   }
 
   ngOnInit() {
 
   }
+  refresh(){
+    
+  }
   changePage(pagina: string){
+   if(pagina == "0"){
+    this.router.navigate(['']);
+   }
+   console.log(pagina);
     this.page = pagina;
   }
 

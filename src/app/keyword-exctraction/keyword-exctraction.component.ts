@@ -199,7 +199,7 @@ export class KeywordExctractionComponent implements OnInit {
 
     this.conteudoDefault = this.listaConteudos[0];
     this.algoritmosDate = ['py_heideltime' , 'py_rule_based'];
-    this.algoritmoSelected = this.algoritmosDate[1];
+    this.algoritmoSelected = this.algoritmosDate[0];
     this.dateGranularityOptions = ['full', 'year', 'month', 'day'];
     this.dateGranularitySelected = this.dateGranularityOptions[0];
     this.documentTypeOptions = ['news', 'narrative', 'colloquial', 'scientific'];
@@ -207,7 +207,7 @@ export class KeywordExctractionComponent implements OnInit {
     this.languageOptions = ['auto-detect', 'English', 'Portuguese', 'Spanish', 'German', 'Dutch', 'Italian', 'French'];
     this.languagueSelected = this.languageOptions[0];
 
-    this.dateBegin = 0;
+    this.dateBegin = new Date().getFullYear();
     this.dateEnd = 2100;
     this.numberOfKeyWords = 10;
     this.contextWindow = 'full_sentence';

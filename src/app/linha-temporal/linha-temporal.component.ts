@@ -120,6 +120,9 @@ export class LinhaTemporalComponent implements OnInit {
           }
         }
       },
+      yAxis: {
+        max: 1
+      },
       plotOptions: {
           line: {
               dataLabels: {
@@ -168,7 +171,7 @@ export class LinhaTemporalComponent implements OnInit {
     } else {
       this.argumentos = this.argumentosTodos;
 
-    } const p = [ ];
+    } let p = [ ];
     if (this.docSen) {
        console.log(this.argumentos);
 
@@ -182,6 +185,35 @@ export class LinhaTemporalComponent implements OnInit {
 
         p.push([new Date(this.argumentos[y].x.substring(0,10)).getTime(), valor * 1]);
       }
+       //p= p.reduce()AQUI É PARA REDUZIR A DIFERENTES VALORES
+       p = p.sort((a, b)=>{
+          let r = a[0].toString().substring(0,10).split('-').join('');
+          let m = b[0].toString().substring(0,10).split('-').join('');
+          for(let jk = r.length;jk<8;jk++){
+            r += "0"
+          }for(let jk = m.length;jk<8;jk++){
+            m += "0"
+          }
+          return r*1 - m*1;
+        }).filter(
+            (element , index, array) => {
+
+        if (index == 0) {
+          // console.log("element");
+          // console.log(element[0].toString().split('-').join(''));
+          // console.log("Element is Viable");
+          // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
+          return true;
+        } else {
+          // console.log("element");
+          // console.log(element[0].toString().split('-').join(''));
+          // console.log("Element is Viable");
+          // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
+          return element[0] != array[index - 1][0];
+        }
+      });
+      console.log("please show me ")
+      console.log(p);
        this.options.series[0].data = p;
       // console.log(this.options.series[0]);
 
@@ -210,7 +242,7 @@ export class LinhaTemporalComponent implements OnInit {
         console.log('cada serie');
         console.log(a);
         if (/^\d+$/.test(a.x.toString().substring(0,10).split('-').join(''))) {
-         p[a.series * 1].push({x: a.x, y: a.y});
+         p[a.series * 1].push({x: a.x.substring(0,10), y: a.y});
          console.log(p[a.series * 1]);
         }
         // console.log(a);
@@ -223,7 +255,8 @@ export class LinhaTemporalComponent implements OnInit {
         const lk = [];
         // tslint:disable-next-line: forin
         for (const ju in p[h]) {
-          lk.push([new Date(p[h][ju].x).getTime(), p[h][ju].y * 1]);
+          console.log([new Date(p[h][ju].x.substring(0,10)).getTime()]);
+          lk.push([new Date(p[h][ju].x.substring(0,10)).getTime(), p[h][ju].y * 1]);
         }
         this.options.series[h].data = lk;
         // console.log("lk");

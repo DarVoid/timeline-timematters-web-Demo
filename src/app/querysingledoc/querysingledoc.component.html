@@ -16,10 +16,7 @@
               <mat-hint>Copy link to article</mat-hint>
             </mat-form-field>
             <div class="col-lg-16 text-center">
-              <mat-form-field  *ngIf="algoritmoSelected=='py_heideltime'" (change)="selecionarDataReferencia($event)">
-                <mat-label>Document Creation Date:</mat-label>
-                <input matInput name="docCreatDate" class="date" type="date" />
-              </mat-form-field>
+              
 
               <mat-slide-toggle class="example-margin" color="warn" (click)="toggleOption()">Advanced Options</mat-slide-toggle>
             </div>
@@ -27,8 +24,29 @@
           <div class='{{hiddenoption?"viewable ": "nonviewable"}}'>
           <div class="col-lg-16 text-center everything">
             <mat-card>
+              <div class="col-lg-12 text-center">
+                <mat-slide-toggle  name="docOrSentece" color="warn" (click)="toggleDocOrSentence()">{{byDocOrSentece?'Anotate Dates by Doc':'Anotate Dates by Sentence'}}</mat-slide-toggle>
+              </div>
+              <div class="col-lg-12 space-center">
+                <mat-slide-toggle name="KW" color="warn" (click)="toggleOptionKeywords()">Yake Options</mat-slide-toggle>
+              </div>
+
+              <!--time matters stuff-->
+              <mat-form-field>
+                <mat-label class="algorithm">N-size context Vector</mat-label>
+                <input class="algorithm" matInput (change)="selecionaTamanhoSimbaVectors($event)" [disabled]="simbaValueMax"  [value]="simbaValue" name="simba"  type="number" placeholder="N"/>
+              </mat-form-field>
+              <mat-checkbox class="example-margin" (change)="maxSimba($event)" [checked]="simbaValueMax">InfoSimba max value</mat-checkbox>
+              <br>
+              <mat-form-field (changeValue)="selecionarContextualWindow($event)" name="windowContext" >
+                <mat-label class="algorithm">n-contextual window</mat-label>
+                <input class="algorithm" matInput type="number" name="context" [disabled]="contextFullSentence" [value]="contextWindow" placeholder="Contextual Window" min="1" value="full_sentence"/>
+
+              </mat-form-field>
+              <mat-checkbox class="example-margin" (change)="fullSentence($event)" [checked]="contextFullSentence">full sentence </mat-checkbox>
+              <br>
               <mat-form-field name="valorAlgoritmo">
-                <mat-label class="algorithm">Algorithm </mat-label>
+                <mat-label class="algorithm">temporal annotation method</mat-label>
                 <mat-select  class="algorithm" (valueChange)="selecionarAlgoritmo($event)" [value]="algoritmoSelected">
                   <mat-option class="mat-menu-item2" hidden>py_heideltime</mat-option>
 
@@ -38,12 +56,6 @@
                 </mat-select>
               </mat-form-field>
             <br>
-            <div class="col-lg-12 space-center">
-              <mat-slide-toggle name="KW" color="warn" (click)="toggleOptionKeywords()">Yake Options</mat-slide-toggle>
-            </div>
-            <div class="col-lg-12 text-center">
-              <mat-slide-toggle  name="docOrSentece" color="warn" (click)="toggleDocOrSentence()">{{byDocOrSentece?'Anotate Dates by Doc':'Anotate Dates by Sentence'}}</mat-slide-toggle>
-            </div>
 
             <br>
             <br>
@@ -58,27 +70,16 @@
                 <input class="algorithm" matInput type="number" name="nkey" placeholder="number of keywords" min="1" value="10"/>
               </mat-form-field>
 
-              <mat-form-field >
-                <mat-label class="algorithm">Date Granularity </mat-label>
-                <mat-select class="algorithm" (valueChange)="selecionarGranularidade($event)" [value]="dateGranularitySelected">
-                  <mat-option class="mat-menu-item2" hidden>full</mat-option>
-                  <mat-option class="mat-menu-item2" *ngFor="let granu of dateGranularityOptions" [value]="granu">
-                    {{granu}}
-                  </mat-option>
-                </mat-select>
-
-              </mat-form-field>
-              <mat-form-field (changeValue)="selecionarContextualWindow($event)" name="windowContext" >
-                <mat-label class="algorithm">Contextual Window</mat-label>
-                <input class="algorithm" matInput type="number" name="context" [disabled]="contextFullSentence" [value]="contextWindow" placeholder="Contextual Window" min="1" value="full_sentence"/>
-
-              </mat-form-field>
-              <mat-checkbox class="example-margin" (change)="fullSentence($event)" [checked]="contextFullSentence">full sentence </mat-checkbox>
+              
+              
             </div>
             <br>
             <div *ngIf="algoritmoSelected=='py_heideltime' else rule_based">
               <!--OPÇÕES RELATIVAS AO PY_HEIDELTIME-->
-              <h3 class="algorithm">Py Heideltime Options:</h3>
+              <h3 class="algorithm">Py Heideltime Options:</h3><mat-form-field  *ngIf="algoritmoSelected=='py_heideltime'" (change)="selecionarDataReferencia($event)">
+                <mat-label>Document Creation Date:</mat-label>
+                <input matInput name="docCreatDate" class="date" type="date" />
+              </mat-form-field>
               <mat-form-field name="lingua">
                 <mat-label class="algorithm">Language </mat-label>
                 <mat-select class="algorithm" (valueChange)="selecionarLanguage($event)" [value]="languagueSelected" >
@@ -96,12 +97,18 @@
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-              <mat-form-field>
-                <mat-label class="algorithm">N-size context Vector</mat-label>
-                <input class="algorithm" matInput (change)="selecionaTamanhoSimbaVectors($event)" [disabled]="simbaValueMax"  [value]="simbaValue" name="simba"  type="number" placeholder="N"/>
+              
+              <mat-form-field >
+                <mat-label class="algorithm">Date Granularity </mat-label>
+                <mat-select class="algorithm" (valueChange)="selecionarGranularidade($event)" [value]="dateGranularitySelected">
+                  <mat-option class="mat-menu-item2" hidden>full</mat-option>
+                  <mat-option class="mat-menu-item2" *ngFor="let granu of dateGranularityOptions" [value]="granu">
+                    {{granu}}
+                  </mat-option>
+                </mat-select>
+
               </mat-form-field>
-              <mat-checkbox class="example-margin" (change)="maxSimba($event)" [checked]="simbaValueMax">Simba Max Value</mat-checkbox>
-              <!--FIM OPÇÕES RELATIVAS AO PY_HEIDELTIME-->
+             <!--FIM OPÇÕES RELATIVAS AO PY_HEIDELTIME-->
             </div>
             <ng-template #rule_based>
               <!--OPÇÕES RELATIVAS AO RULE_BASED-->
@@ -118,6 +125,19 @@
                   <input matInput type="number" name="dataFim" placeholder="2100" min="0" value="2100"/>
                 </mat-form-field>
               </span>
+              <span>
+                <mat-form-field >
+                  <mat-label class="algorithm">Date Granularity </mat-label>
+                  <mat-select class="algorithm" (valueChange)="selecionarGranularidade($event)" [value]="dateGranularitySelected">
+                    <mat-option class="mat-menu-item2" hidden>full</mat-option>
+                    <mat-option class="mat-menu-item2" *ngFor="let granu of dateGranularityOptions" [value]="granu">
+                      {{granu}}
+                    </mat-option>
+                  </mat-select>
+  
+                </mat-form-field>
+              </span>
+
               <!--FIM OPÇÕES RELATIVAS AO RULEBASED-->
             </ng-template>
 
