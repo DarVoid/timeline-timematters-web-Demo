@@ -186,20 +186,12 @@ export class LinhaTemporalComponent implements OnInit {
         p.push([new Date(this.argumentos[y].x.substring(0,10)).getTime(), valor * 1]);
       }
        //p= p.reduce()AQUI É PARA REDUZIR A DIFERENTES VALORES
-       p = p.sort((a, b)=>{
-          let r = a[0].toString().substring(0,10).split('-').join('');
-          let m = b[0].toString().substring(0,10).split('-').join('');
-          for(let jk = r.length;jk<8;jk++){
-            r += "0"
-          }for(let jk = m.length;jk<8;jk++){
-            m += "0"
-          }
-          return r*1 - m*1;
+       p = p.sort((a, b)=>{return a-b;
         }).filter(
             (element , index, array) => {
 
         if (index == 0) {
-          // console.log("element");
+           console.log("element");
           // console.log(element[0].toString().split('-').join(''));
           // console.log("Element is Viable");
           // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
@@ -215,12 +207,12 @@ export class LinhaTemporalComponent implements OnInit {
       console.log("please show me ")
       console.log(p);
        this.options.series[0].data = p;
-      // console.log(this.options.series[0]);
+       console.log(this.options.series[0]);
 
     } else {
       let max_series = this.numSen;
-      // console.log("numsen");
-      // console.log(max_series);
+       console.log("numsen");
+       console.log(max_series);
 
       /*series: [
         { name:'scores',

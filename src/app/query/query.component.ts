@@ -215,13 +215,13 @@ export class QueryComponent implements OnChanges {
         }
         // tslint:disable-next-line: forin
     for (const data in c) {
-          const j = Date.parse(c[data].x.split('-').join(' '));
+          const j = Date.parse(c[data].x.substring(0,10).split('-').join(' '));
           // console.log (j);
           c[data].dateparsed = j;
         }
         // tslint:disable-next-line: forin
     for (const data in c2) {
-          const j = Date.parse(c2[data].x.split('-').join(' '));
+          const j = Date.parse(c2[data].x.substring(0,10).split('-').join(' '));
           // console.log (j);
           c2[data].dateparsed = j;
         }
