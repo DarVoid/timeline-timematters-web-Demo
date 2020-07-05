@@ -64,17 +64,33 @@ export class QueryComponent implements OnChanges {
     document.body.removeChild(clipboard);
   }
   public copyToClipboard(event: any) {
-    event.preventDefault();
-    console.log(this.page);
-    this._snackBar.open('Message copied to Clipboard', 'Length: ' + this.options.result.TextNormalized.length + ' characters', {
-      duration: 2000
-    });
-    const clipboard = document.createElement('input');
-    clipboard.setAttribute('value', this.options.result.TextNormalized);
-    document.body.appendChild(clipboard);
-    clipboard.select();
-    document.execCommand('copy');
-    document.body.removeChild(clipboard);
+    if(!this.withKeywords){
+      event.preventDefault();
+      console.log(this.page);
+      this._snackBar.open('Message copied to Clipboard', 'Length: ' + this.options.result.TextNormalized.length + ' characters', {
+        duration: 2000
+      });
+      const clipboard = document.createElement('input');
+      clipboard.setAttribute('value', this.options.result.TextNormalized);
+      document.body.appendChild(clipboard);
+      clipboard.select();
+      document.execCommand('copy');
+      document.body.removeChild(clipboard);
+    }
+    else{
+      event.preventDefault();
+      console.log(this.page);
+      this._snackBar.open('Message copied to Clipboard', 'Length: ' + this.options.result.TextNormalized.split("<d>").join("").split("</d>").join("").split("<kw>").join("").split("</kw>").join("").length + ' characters', {
+        duration: 2000
+      });
+      const clipboard = document.createElement('input');
+      clipboard.setAttribute('value', this.options.result.TextNormalized.split("<d>").join("").split("</d>").join("").split("<kw>").join("").split("</kw>").join(""));
+      document.body.appendChild(clipboard);
+      clipboard.select();
+      document.execCommand('copy');
+      document.body.removeChild(clipboard);
+
+    }
 
   }
   public update() {
