@@ -18,16 +18,17 @@
         <ng-template #graficos >
           <mat-card>
           <mat-tab-group>
-            <mat-tab  label="Anotated Text">
-                <h2 class="afterAnnotated">Anotated text</h2>
+            <mat-tab  label="Annotated text">
+                <h2 class="afterAnnotated">Annotated text</h2>
                 <p class="afterAnnotated">There {{(!showOnlyRel?differentValues.length:differentRelValues.length)==1?"is":"are"}} {{!showOnlyRel?differentValues.length:differentRelValues.length}} different {{!showOnlyRel?"":"relevant "}} Temporal Expressions annotated in the text</p>
-                <p class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>The top {{numberOfKeyWords}} {{ngramSelected}}-gram keywords were  annotated in the text through YAKE! software</p>
+                <p class="afterAnnotated">Mouse over them to see their relevance scores. Scores are determined by Time-Matters and vary between 0 (not relevant) and 1 (extremely relevant)</p>
+                <p class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>The top-{{numberOfKeyWords}} {{ngramSelected}}-gram keywords were  annotated in the text through YAKE! software</p>
                 <p class="afterAnnotated">Language: {{languagueSelected}}</p>
                 <hr>
                 <app-frame [argumentos]="result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>
                 <hr>
                 <div class="dateScoreColors">
-                  <span><b>Date scores colors organized by relevance:  </b></span>
+                  <span><b>5-color likert relevance scale:   </b></span>
                   <span class='{{!showOnlyRel?"preto": "nonviewable"}}'>[0; 0.35]</span>
                   <span class="verde">]0.35; 0.4]</span>
                   <span class="azul">]0.4; 0.6]</span>
@@ -141,7 +142,7 @@
                 </div>
                 <div class='{{loading?"viewable": "nonviewable"}}'><mat-progress-bar mode="indeterminate"></mat-progress-bar></div>
                 <mat-form-field class="example-full-width" >
-                  <mat-label>Content</mat-label>
+                  
                   <textarea matInput #texto class="text-area" (change)='setDefaultTexto(texto)' style="width:100%;" type="text" value="{{conteudoDefault}}" min_rows="4" rows="7" name="texto"></textarea>
                 </mat-form-field>
 

@@ -467,7 +467,7 @@ export class KeywordExctractionComponent implements OnInit {
     // console.log(event.target.docCreatDate.value);
     // {{ dateObj | date:'mm:ss' }}
     if ( this.conteudoDefault.length == 0) {
-      this._snackBar.open('No text to annotate', this.conteudoDefault.length.toString(), {
+      this._snackBar.open('No text to annotate', "", {
         duration: 2000
       });
       return;
@@ -475,7 +475,7 @@ export class KeywordExctractionComponent implements OnInit {
     }
 
     this.loading = true;
-    this._snackBar.open('Your request is being processed', 'true', {
+    this._snackBar.open('Your request is being processed', '', {
       duration: 2000
     });
     if (this.languagueSelected == 'auto-detect') {
