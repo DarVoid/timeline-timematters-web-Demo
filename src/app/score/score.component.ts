@@ -22,13 +22,23 @@ export class ScoreComponent implements OnChanges {
   public chartDatasets: Array<any>;
   public chartDatasetsKeyword: Array<any>;
   public chartLabelsKeyword: Array<any>;
+  
   constructor() {
 
     this.chartType = 'bar';
 
 
     this.chartOptions = {
-      responsive: true
+      responsive: true,
+      scales:{
+        
+        yAxes: [{
+          ticks: {
+              min: 0,
+              max: 1
+          }
+        }]
+      }
     };
     this.chartColors = [
       {

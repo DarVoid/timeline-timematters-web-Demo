@@ -55,12 +55,12 @@ export class FrameComponent implements OnInit, OnChanges {
             cor = 'red';
             if (titulo < 0.4) {
               cor = 'green';
-            } else if (titulo > 0.4) {
+            } else if (titulo > 0.5) {
               cor = 'blue';
-              if (titulo > 0.6) {
+              if (titulo > 0.7) {
                 cor = 'yellow';
               }
-              if (titulo > 0.8) {
+              if (titulo > 0.9) {
                 cor = 'purple';
               }
 
