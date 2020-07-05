@@ -101,7 +101,7 @@ export class TimelineScrollComponent implements OnInit {
         events.push({start_date:  {year: this.argumentos[h].x.split('-')[0],month: this.argumentos[h].x.split('-')[1] }, text: {headline: this.argumentos[h].y}});
       } else {
         // tslint:disable-next-line: max-line-length
-        events.push({start_date:  {year: this.argumentos[h].x.split('-')[0],month: this.argumentos[h].x.split('-')[1], day: this.argumentos[h].x.split('-')[2] }, text: {headline: this.argumentos[h].y}});
+        events.push({start_date:  {year: this.argumentos[h].x.substring(0,10).split('-')[0],month: this.argumentos[h].x.substring(0,10).split('-')[1], day: this.argumentos[h].x.substring(0,10).split('-')[2] }, text: {headline: this.argumentos[h].y}});
       }
     }
     j = {events: events,

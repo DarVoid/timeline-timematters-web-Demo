@@ -436,8 +436,8 @@ export class KeywordExctractionComponent implements OnInit {
             // console.log();
             // console.log(Object.keys(this.result.Score)[i].split('-').join(''));
 
-          /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join('')) ? '' : c.pop();
-          /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join('')) ? '' : c2.pop();
+          /^\d+$/.test(Object.keys(this.result.Score)[i].substring(0,10).split('-').join('')) ? '' : c.pop();
+          /^\d+$/.test(Object.keys(this.result.Score)[i].substring(0,10).split('-').join('')) ? '' : c2.pop();
           c2 = c2.filter((y) => {
             if (y.y) {
               return true;

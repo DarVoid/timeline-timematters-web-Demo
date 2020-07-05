@@ -180,7 +180,7 @@ export class LinhaTemporalComponent implements OnInit {
         const valor = this.argumentos[y].y.substring(27, this.argumentos[y].y.length - 4);
         // console.log(valor);
 
-        p.push([new Date(this.argumentos[y].x).getTime(), valor * 1]);
+        p.push([new Date(this.argumentos[y].x.substring(0,10)).getTime(), valor * 1]);
       }
        this.options.series[0].data = p;
       // console.log(this.options.series[0]);
@@ -209,7 +209,7 @@ export class LinhaTemporalComponent implements OnInit {
       this.argumentos[0].z.map((a) => {
         console.log('cada serie');
         console.log(a);
-        if (/^\d+$/.test(a.x.toString().split('-').join(''))) {
+        if (/^\d+$/.test(a.x.toString().substring(0,10).split('-').join(''))) {
          p[a.series * 1].push({x: a.x, y: a.y});
          console.log(p[a.series * 1]);
         }
