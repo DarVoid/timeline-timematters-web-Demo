@@ -3,9 +3,9 @@
   <h1>No Data</h1>
 </div>
 <ng-template #graficos >
-  <mat-tab-group>
+  <mat-tab-group >
     
-    <mat-tab label="Dates" *ngIf="chartDatasets[0].data.length>0">
+    <mat-tab label="Dates" aria-selected="true" *ngIf="chartDatasets[0].data.length>0">
       <div *ngIf="argumentos" class='chart-wrapper' >
         <br>
         <canvas baseChart

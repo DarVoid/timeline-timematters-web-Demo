@@ -46,14 +46,7 @@
                 <br>
 
           </mat-tab>
-          <mat-tab *ngIf="byDocOrSentece" class="afterGraphs" label="Plots">
-            <h2>Graphics</h2>
-            <div class="row my-row2 justify-content-center">
-              <div class="score">
-                <app-score [argumentos]="result" ></app-score>
-              </div>
-        </div>
-          </mat-tab>
+          
           <mat-tab label="Temporal Clustering" *ngIf="dataset.length>0">
             <!--WIP-->
             <!--<mat-vertical-stepper >
@@ -113,6 +106,14 @@
             <!--WIP-->
             <app-timeline-scroll [docSen]="byDocOrSentece" [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
           <!--WIP-->
+          </mat-tab>
+          <mat-tab *ngIf="byDocOrSentece" class="afterGraphs" label="Scores">
+            <h2>Graphics</h2>
+            <div class="row my-row2 justify-content-center">
+              <div class="score">
+                <app-score [argumentos]="result" ></app-score>
+              </div>
+        </div>
           </mat-tab>
           </mat-tab-group></mat-card>
           <br>

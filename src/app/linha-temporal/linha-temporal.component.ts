@@ -48,7 +48,7 @@ export class LinhaTemporalComponent implements OnInit {
         zoomType: 'xy'
       },
       title: {
-        text: 'Timeline'
+        text: '   '
       },
       credits: {
         enabled: false
@@ -101,7 +101,7 @@ export class LinhaTemporalComponent implements OnInit {
         height: 300
       },
       title: {
-        text: 'Timeline'
+        text: ' '
       },
       credits: {
         enabled: false
