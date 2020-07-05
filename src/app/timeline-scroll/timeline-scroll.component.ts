@@ -25,15 +25,25 @@ export class TimelineScrollComponent implements OnInit {
   public timeline: any;
   public isSet: boolean;
   public jsonText: string;
+  public isnotset:boolean;
   constructor(private _snackBar: MatSnackBar) {
     // console.log(this.TLObj);
     this.rendering = 'rendering';
     this.titulo = 'Timeline';
     this.isSet = false;
+    this.isnotset = true;
    }
 
   ngOnInit() {
     // setTimeout(()=>{this.update();}, 5);
+  }
+  ngAfterViewChecked(){
+    
+    if(document.getElementById("my-timeline") && this.isnotset){
+      this.isnotset = false;
+      this.setRelevance()
+    }
+
   }
   setRelevance() {
     if (!this.isSet) {

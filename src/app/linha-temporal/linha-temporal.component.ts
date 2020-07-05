@@ -32,8 +32,10 @@ export class LinhaTemporalComponent implements OnInit {
   public tipo: number;
   public options: any;
   public tipos: Array<string>;
+  public isnotset: boolean;
 
   constructor() {
+    this.isnotset = true;
     this.rendering = 'rendering...';
     this.isSet = false;
     this.tipo = 0;
@@ -75,6 +77,14 @@ export class LinhaTemporalComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+  ngAfterViewChecked(){
+    
+    if(document.getElementById("container") && this.isnotset){
+      this.isnotset = false;
+      this.toggleTipo();
+    }
+
   }
   public update() {
     Highcharts.chart('container', this.options);
