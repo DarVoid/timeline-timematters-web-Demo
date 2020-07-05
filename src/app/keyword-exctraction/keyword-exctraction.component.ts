@@ -331,6 +331,8 @@ export class KeywordExctractionComponent implements OnInit {
     this.result = false;
     this.requestMade = false;
     this.loading = false;
+    this.withKeywords = true;
+    this.withKeywordsSentence = 'Keywords Off';
   }
   public update() {
           this.differentValues = this.result.TempExpressions.sort(
