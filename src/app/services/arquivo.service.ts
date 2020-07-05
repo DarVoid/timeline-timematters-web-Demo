@@ -58,7 +58,7 @@ export class ArquivoService {
     }
 
     // console.log(realURL);
-    return this.http.post(realURL, formData
+    return this.http.get(realURL
         ).pipe(map((res, err) => {
       if (res) {
         console.log(res);
