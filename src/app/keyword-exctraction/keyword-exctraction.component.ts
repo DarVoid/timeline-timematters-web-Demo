@@ -438,10 +438,17 @@ export class KeywordExctractionComponent implements OnInit {
 
           /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join('')) ? '' : c.pop();
           /^\d+$/.test(Object.keys(this.result.Score)[i].split('-').join('')) ? '' : c2.pop();
-
+          c2 = c2.filter((y) => {
+            if (y.y) {
+              return true;
+            } else {
+              return false;
+            }
+          });
+          /*
           if (!a2) {
               c2.pop();
-            }
+            }*/
 
         }
         // tslint:disable-next-line: forin

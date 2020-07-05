@@ -41,8 +41,8 @@ export class FrameComponent implements OnInit, OnChanges {
           // console.log(this.dateScores[valor]);
 
           let titulo = this.dateScores[valor.toLowerCase()];
-          console.log(titulo);
-          console.log(this.dateScores[valor]);
+          // console.log(titulo);
+          // console.log(this.dateScores[valor]);
           let cor = '';
           if (titulo) {
             // console.log('titulo');

@@ -76,10 +76,10 @@ export class ScoreComponent implements OnChanges {
       //this.argumentos.Score
       // tslint:disable-next-line: forin
       for (let i in this.argumentos.Score) {
-          console.log("passa?");
-          console.log(/^\d+$/.test(i.toString().split('-').join('')));
-          console.log("valor");
-          console.log(i);
+          // console.log("passa?");
+          // console.log(/^\d+$/.test(i.toString().split('-').join('')));
+          // console.log("valor");
+          // console.log(i);
           if(/^\d+$/.test(i.toString().split('-').join(''))){
             dados2.push(i);
             dados1.push(this.argumentos.Score[i][0]);
@@ -107,9 +107,9 @@ export class ScoreComponent implements OnChanges {
       let cores6 = [];
       for (let chave in sorted0Scores) {
         if(sorted0Scores[chave].value!=0){
-          console.log("nao é zero");  
-          console.log(sorted0Scores[chave].key);
-          console.log(sorted0Scores[chave].value);
+          // console.log("nao é zero");  
+          // console.log(sorted0Scores[chave].key);
+          // console.log(sorted0Scores[chave].value);
           dados6.push(sorted0Scores[chave].key);
           dados5.push(sorted0Scores[chave].value);
           if(sorted0Scores[chave].value < 0.35){
@@ -121,9 +121,9 @@ export class ScoreComponent implements OnChanges {
           }
           
         }else{
-          console.log("é zero");
-          console.log(sorted0Scores[chave].key);
-          console.log(sorted0Scores[chave].value);
+          // console.log("é zero");
+          // console.log(sorted0Scores[chave].key);
+          // console.log(sorted0Scores[chave].value);
         }
       }
 
