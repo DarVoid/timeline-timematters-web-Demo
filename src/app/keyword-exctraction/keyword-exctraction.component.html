@@ -62,21 +62,43 @@
               </mat-step>
               </div>
             </mat-vertical-stepper>-->
-
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th scope="col"><b>Date</b></th>
-                  <th scope="col"><b>Score</b></th>
+            <br>
+            <mat-slide-toggle (click)='toggleRel()' class="afterAnnotated" color="warn" >{{showOnlyRel?"Showing Relevant dates only":"Showing All Dates"}}</mat-slide-toggle>
+            <br><br>
+            <div *ngIf="showOnlyRel else onlyRel">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col"><b>Date</b></th>
+                    <th scope="col"><b>Score</b></th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let item of dataset">
+                  <tr (click)="putOnClipboard($event,item.x)">
+                    <td><h3>{{item.x.substring(0,10)}}</h3></td><!--meter .substrin(0,10 para so ano)-->
+                    <td [innerHTML]="item.y | safe:'html'"></td>
                 </tr>
-              </thead>
-              <tbody *ngFor="let item of dataset">
-                <tr (click)="putOnClipboard($event,item.x)">
-                  <td><h3>{{item.x.substring(0,10)}}</h3></td><!--meter .substrin(0,10 para so ano)-->
-                  <td [innerHTML]="item.y | safe:'html'"></td>
-              </tr>
-              </tbody>
-            </table>
+                </tbody>
+              </table>
+
+            </div>
+            <ng-template #onlyRel>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col"><b>Date</b></th>
+                    <th scope="col"><b>Score</b></th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let item of datasetRelOnly">
+                  <tr (click)="putOnClipboard($event,item.x)">
+                    <td><h3>{{item.x.substring(0,10)}}</h3></td><!--meter .substrin(0,10 para so ano)-->
+                    <td [innerHTML]="item.y | safe:'html'"></td>
+                </tr>
+                </tbody>
+              </table>
+
+            </ng-template>
 
           <!--WIP-->
           </mat-tab>
