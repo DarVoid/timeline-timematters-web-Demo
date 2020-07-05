@@ -23,6 +23,7 @@
                 <p class="afterAnnotated">{{!showOnlyRel?differentValues.length:differentRelValues.length}} {{!showOnlyRel?"":"relevant "}} Temporal Expressions were annotated in the text by Time-Matters and the {{algoritmoSelected}} temporal tagger</p>
                 <p class="afterAnnotated">Mouse over them to see their relevance scores. Scores are determined by Time-Matters and vary between 0 (not relevant) and 1 (extremely relevant)</p>
                 <p class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>The top-{{numberOfKeyWords}} {{ngramSelected}}-gram keywords were  annotated in the text through YAKE! software</p>
+                <p class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>Mouse over them to see their relevance scores, the lower the better</p>
                 <p class="afterAnnotated">Language: {{languagueSelected}}</p>
                 <hr>
                 <app-frame [argumentos]="result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>
