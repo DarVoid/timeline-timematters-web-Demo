@@ -14,7 +14,7 @@ export class YakeService {
 
   public getKeywords(search: string, options: any): Observable<any> {
     const formData = new FormData();
-    let realURL = this.url + '?qcontent=' + search+'&max_ngram_size=3&number_of_keywords=20&highlight=true';
+    let realURL = this.url + '?content=' + search+'&max_ngram_size=3&number_of_keywords=20&highlight=true';
 
     // console.log(realURL);
     return this.http.get(realURL
