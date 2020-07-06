@@ -9,6 +9,7 @@ import {ThemePalette} from '@angular/material/core';
 import {DatePipe} from '@angular/common';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { isNull } from 'util';
+import { YakeService } from '../services/yake.service';
 
 @Component({
   selector: 'app-keyword-exctraction',
@@ -54,7 +55,7 @@ export class KeywordExctractionComponent implements OnInit {
   public simbaValueMax: boolean;
 
 
-  constructor(private timeline: TimelineService, private _snackBar: MatSnackBar, private _lang: LangdetectService) {
+  constructor(private yake: YakeService,private timeline: TimelineService, private _snackBar: MatSnackBar, private _lang: LangdetectService) {
     /*private timeline: TimelineService*/
     this.ngramSelected = 1;
     this.byDocOrSentece = true;
@@ -423,13 +424,17 @@ export class KeywordExctractionComponent implements OnInit {
 
               d.push({x: Object.keys(this.result.Score)[i], y: this.result.Score[Object.keys(this.result.Score)[i]][xd][0], series: xd});
               // console.log(d);
+              let a = this.yake.getKeywords(this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'')).pipe(take(1)).subscribe((res) =>{
+              return res;
+              });
+              console.log(a);
               // tslint:disable-next-line: whitespace
               // tslint:disable-next-line: max-line-length
-              valorDeA += '<span title="' + this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'') + '"><p class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
+              valorDeA += '<span title="' + this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'') + '"><p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'')+'</p></span>';
               if (this.result.Score[Object.keys(this.result.Score)[i]][xd][0] > 0.35) {
                 // tslint:disable-next-line: whitespace
                 // tslint:disable-next-line: max-line-length
-                valorDeA2 += '<span title="' + this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'') + '"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p></span>';
+                valorDeA2 += '<span title="' + this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'') + '"><p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'')+'</p></span>';
                 d2.push({x: Object.keys(this.result.Score)[i], y: this.result.Score[Object.keys(this.result.Score)[i]][xd][0], series: xd});
                 // console.log(d2);
                 // TODO: meter d e d2 nos datasets
@@ -470,8 +475,8 @@ export class KeywordExctractionComponent implements OnInit {
         }
         // tslint:disable-next-line: forin
         for (const data in c) {
-          console.log(c[data].x);
-          console.log(c[data].x.substring(0,10));
+          // console.log(c[data].x);
+          // console.log(c[data].x.substring(0,10));
 
           const j = Date.parse(c[data].x.substring(0,10).split('-').join(' '));
           // console.log (j);

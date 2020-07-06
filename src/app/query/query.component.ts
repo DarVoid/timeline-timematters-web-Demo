@@ -174,10 +174,10 @@ export class QueryComponent implements OnChanges {
               d.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0], series: xd});
               console.log(d);
               // tslint:disable-next-line: max-line-length
-              valorDeA += '<span title="' + this.options.result.SentencesNormalized[xd.toString()] + '"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] + '</p></span>';
+              valorDeA += '<span title="' + this.options.result.SentencesNormalized[xd.toString()] + '"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] + '</p><p>'+this.options.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'')+'</p></span>';
               if (this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] > 0.35) {
                 // tslint:disable-next-line: max-line-length
-                valorDeA2 += '<span title="' + this.options.result.SentencesNormalized[xd.toString()] + '"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] + '</p></span>';
+                valorDeA2 += '<span title="' + this.options.result.SentencesNormalized[xd.toString()] + '"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] + '</p><p>'+this.options.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'')+'</p></span>';
 
                 // tslint:disable-next-line: max-line-length
                 d2.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0], series: xd});

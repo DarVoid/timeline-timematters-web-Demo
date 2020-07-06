@@ -9,12 +9,13 @@ import { map } from 'rxjs/operators';
 export class YakeService {
   url: string;
   constructor(private http: HttpClient) { 
-    this.url = 'https://arquivo.pt/textsearch';
+    this.url = 'http://yake.inesctec.pt/yake/v2/extract_keywords';
   }
 
-  public getKeywords(search: string, options: any): Observable<any> {
+  public getKeywords(search: string): Observable<any> {
     const formData = new FormData();
-    let realURL = this.url + '?content=' + search+'&max_ngram_size=3&number_of_keywords=20&highlight=true';
+    console.log(search.split("<kw>").join("").split("</kw>").join("").split("<d>").join("").split("</d>").join(""));
+    let realURL = this.url + '?content=' + search.split("<kw>").join("").split("</kw>").join("").split("<d>").join("").split("</d>").join("")+'&max_ngram_size=3&number_of_keywords=20&highlight=true';
 
     // console.log(realURL);
     return this.http.get(realURL
