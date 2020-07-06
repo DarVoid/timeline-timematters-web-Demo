@@ -104,10 +104,7 @@ export class TimelineScrollComponent implements OnInit {
         events.push({start_date:  {year: this.argumentos[h].x.substring(0,10).split('-')[0],month: this.argumentos[h].x.substring(0,10).split('-')[1], day: this.argumentos[h].x.substring(0,10).split('-')[2] }, text: {headline: this.argumentos[h].y}});
       }
     }
-    j = {events: events,
-    title: {text: {headline: 'Timeline', text: 'Here are the date scores presented in a timeline fashion'}}
-
-    };
+    j = {events: events};
     this.jsonText = j;
     console.log(j);
     const additionalOptions = {
