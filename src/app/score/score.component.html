@@ -19,26 +19,29 @@
             (chartClick)="chartClicked($event)">
 
         </canvas>
-        <br>
+        
+        <div *ngIf="!weirdVazio">
+          <br>
         <p>non-sortable time refferences</p>
         <hr>
         <br>
-        <div></div>
-        <canvas baseChart
-            [chartType]="chartType"
-            [datasets]="chartDatasetsWeird"
-            [labels]="chartLabelsWeird"
-            [colors]="chartColors3"
-            [options]="chartOptions"
-            [legend]="false"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)">
+          <canvas baseChart
+              [chartType]="chartType"
+              [datasets]="chartDatasetsWeird"
+              [labels]="chartLabelsWeird"
+              [colors]="chartColors3"
+              [options]="chartOptions"
+              [legend]="false"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+  
+          </canvas>
+          <br>
+          <p>Zero valued non-sortable time refferences:</p>
+          <hr>
+          <br>
 
-        </canvas>
-        <br>
-        <p>Zero valued non-sortable time refferences:</p>
-        <hr>
-        <br>
+        </div>
         
       </div>
   </mat-tab>

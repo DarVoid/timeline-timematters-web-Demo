@@ -26,7 +26,8 @@ export class ScoreComponent implements OnChanges {
   public chartDatasetWeird: Array<any>;
   public chartDatasetsWeird: Array<any>;
   public chartLabelsWeird: Array<any>;
-  
+  public weirdVazio:boolean;
+  public weirdZeroVazio:boolean;
   constructor() {
 
     this.chartType = 'bar';
@@ -191,6 +192,7 @@ export class ScoreComponent implements OnChanges {
       this.chartDatasetsWeird = [
         { data: dados5, label: 'score' }
       ];
+      this.weirdVazio= dados5.length==0;
       this.chartLabels = dados2;
 
       this.chartDatasetsKeyword = [
