@@ -33,6 +33,11 @@
 
               <!--time matters stuff-->
               <mat-form-field>
+                <mat-label class="algorithm">th threshold value</mat-label>
+                <mat-slider min="0" max="{{maxValTH}}" (change)="changeTH($event)" step="0.0001" value="{{TH}}"></mat-slider>
+              </mat-form-field>
+
+              <mat-form-field>
                 <mat-label class="algorithm">N-size context Vector</mat-label>
                 <input class="algorithm" matInput (change)="selecionaTamanhoSimbaVectors($event)" [disabled]="simbaValueMax"  [value]="simbaValue" name="simba"  type="number" placeholder="N"/>
               </mat-form-field>

@@ -40,6 +40,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { AboutAcknowledgementsComponent } from './about-acknowledgements/about-acknowledgements.component';
+import {MatSliderModule} from '@angular/material/slider';
 
 
 @NgModule({
@@ -86,7 +87,8 @@ import { AboutAcknowledgementsComponent } from './about-acknowledgements/about-a
     MatSnackBarModule,
     MatCheckboxModule,
     MatDatepickerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

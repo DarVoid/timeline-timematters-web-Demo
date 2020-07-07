@@ -23,6 +23,7 @@ export class KeywordExctractionComponent implements OnInit {
   public withKeywords: boolean;
   public withKeywordsSentence: string;
   public picker: any;
+  public maxValTH:number;
   public hiddenoption: boolean;
   public conteudoDefault: string;
   public loading: boolean;
@@ -53,6 +54,7 @@ export class KeywordExctractionComponent implements OnInit {
   public differentRelValues: Array<any>;
   public contextFullSentence: boolean;
   public simbaValueMax: boolean;
+  public TH:number;
 
 
   constructor(private yake: YakeService,private timeline: TimelineService, private _snackBar: MatSnackBar, private _lang: LangdetectService) {
@@ -207,7 +209,7 @@ export class KeywordExctractionComponent implements OnInit {
     this.documentTypeSelected = this.documentTypeOptions[0];
     this.languageOptions = ['auto-detect', 'English', 'Portuguese', 'Spanish', 'German', 'Dutch', 'Italian', 'French'];
     this.languagueSelected = this.languageOptions[0];
-
+    this.maxValTH = 100;
     this.dateBegin = new Date().getFullYear();
     this.dateEnd = 2100;
     this.numberOfKeyWords = 10;
@@ -215,6 +217,7 @@ export class KeywordExctractionComponent implements OnInit {
     this.simbaValue = 10;
     this.cheating = false;
     this.showOnlyRel = false;
+    this.TH = 0.05;
   }
   toggleOptionKeywords() {
     this.hiddenoptionKW = !this.hiddenoptionKW;
@@ -223,6 +226,27 @@ export class KeywordExctractionComponent implements OnInit {
   toggleRel() {
     this.showOnlyRel = !this.showOnlyRel;
 
+  }
+  changeTH(event:any){
+    
+    if(event.preventDefault){
+      event.preventDefault();
+    }
+    console.log(event);
+    if(event.source){
+      this.TH=event.value;
+    }
+    else{
+      if(event.target.value){
+        if(event.target.value>this.maxValTH){
+          this.maxValTH=event.value
+        }
+        event.preventDefault();
+        this.TH=event.target.value;
+      }else{
+        this.TH=0;
+      }
+    }
   }
   toggleKeywords() {
     this.withKeywords = !this.withKeywords;

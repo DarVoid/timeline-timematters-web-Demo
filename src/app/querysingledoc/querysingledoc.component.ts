@@ -21,6 +21,7 @@ export class QuerysingledocComponent implements OnInit {
   public languageOptions: Array<string>;
   public languagueSelected: string;
   public dateBegin: number;
+  public maxValTH:number;
   public dateEnd: number;
   public numberOfKeyWords: number;
   public contextWindow: number;
@@ -38,6 +39,7 @@ export class QuerysingledocComponent implements OnInit {
   public documentCreationTime: string;
   public opcoes: any;
   public resultado: any;
+  public TH: number;
   @Input() inpu: any;
 
   constructor(private article: GetarticleService, private timeline: TimelineService, private _snackBar: MatSnackBar) {
@@ -52,6 +54,7 @@ export class QuerysingledocComponent implements OnInit {
     this.languagueSelected = this.languageOptions[0];
     this.dateBegin = 0;
     this.dateEnd = 2100;
+    this.maxValTH = 100;
     this.numberOfKeyWords = 10;
     this.contextWindow = 1;
     this.contextFullSentence = true;
@@ -65,10 +68,32 @@ export class QuerysingledocComponent implements OnInit {
     this.hiddenoption = false;
     this.loading = false;
     this.requestMade = false;
+    this.TH=0.05;
   }
 
   ngOnInit(): void {
 
+  }
+  changeTH(event:any){
+    
+    if(event.preventDefault){
+      event.preventDefault();
+    }
+    console.log(event);
+    if(event.source){
+      this.TH=event.value;
+    }
+    else{
+      if(event.target.value){
+        if(event.target.value>this.maxValTH){
+          this.maxValTH=event.value
+        }
+        event.preventDefault();
+        this.TH=event.target.value;
+      }else{
+        this.TH=0;
+      }
+    }
   }
   doThings(event: any) {
     event.preventDefault();

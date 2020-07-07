@@ -193,7 +193,14 @@
                     <div class="col-lg-12 space-center">
                       <mat-slide-toggle name="KW" color="warn" (click)="toggleOptionKeywords()">Yake Options</mat-slide-toggle>
                     </div>
-                    <!--TIMEMATTERS OPTIONS--><mat-form-field>
+                    <!--TIMEMATTERS OPTIONS-->
+                    th threshold value:
+                      <mat-slider min="0" (change)="changeTH($event)" max="{{maxValTH}}" step="0.01" value="{{TH}}"></mat-slider>  .
+                      <input min="0" step="0.0001" type="number" novalidate="true" (change)="changeTH($event)" value="{{TH}}"/>
+                      
+                    <br>
+                    
+                    <mat-form-field>
                         <mat-label class="algorithm">N-size context Vector</mat-label>
                         <input class="algorithm" (change)="selecionaTamanhoSimbaVectors($event)" [disabled]="simbaValueMax" name="simba" matInput type="number" placeholder="N"/>
                       </mat-form-field>
