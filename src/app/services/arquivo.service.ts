@@ -35,11 +35,12 @@ export class ArquivoService {
     }
     if (options.maxItems) {
       realURL += '&maxItems=' + options.maxItems;
-    }
+    }/*
     if (options.itemsPerSite) {
-      realURL += '&itemsPerSite=' + options.itemsPerSite;
-    }
-    if (options.fields) {
+      realURL += '&dedupField=site&dedupValue=0';
+    }*/
+    realURL += '&dedupField=site&dedupValue=0';
+    /*if (options.fields) {
       realURL += '&fields=' + options.fields[0];
       // tslint:disable-next-line: forin
       for (const k in options.fields) {
@@ -49,7 +50,7 @@ export class ArquivoService {
           realURL += ',' + options.fields[k];
         }
       }
-    }
+    }*/
     if (options.callback) {
       realURL += '&callback=' + options.callback;
     }
@@ -57,7 +58,7 @@ export class ArquivoService {
       realURL += '&prettyPrint=' + options.prettyPrint;
     }
 
-    // console.log(realURL);
+     console.log(realURL);
     return this.http.get(realURL
         ).pipe(map((res, err) => {
       if (res) {
