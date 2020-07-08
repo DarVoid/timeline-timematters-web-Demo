@@ -81,7 +81,7 @@ export class ScoreComponent implements OnChanges {
           // console.log(/^\d+$/.test(i.toString().split('-').join('')));
           // console.log("valor");
           // console.log(i);
-          if(/^\d+$/.test(i.toString().split('-').join(''))){
+          if(/^\d+$/.test(i.substring(0,10).toString().split('-').join(''))){
             dados2.push(i);
             dados1.push(this.argumentos.Score[i][0]);
     
