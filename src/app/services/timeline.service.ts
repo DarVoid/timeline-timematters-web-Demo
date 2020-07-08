@@ -37,7 +37,6 @@ export class TimelineService {
       let caracterfinal = realURL.charAt(realURL.length - 1);
 
       if (options.docCreatTime) {
-        if (options.algo == 'py_heideltime') {
 
           if (caracterfinal == '?') {
             realURL += 'document_creation_time=' + options.docCreatTime;
@@ -45,7 +44,7 @@ export class TimelineService {
             realURL += '&document_creation_time=' + options.docCreatTime;
           }
           caracterfinal = realURL.charAt(realURL.length - 1);
-        }
+        
       }
       if (options.dateGranularity) {
 
@@ -58,7 +57,6 @@ export class TimelineService {
 
       }
       if (options.language) {
-        if (options.algo == 'py_heideltime') {
 
           if (caracterfinal == '?') {
             realURL += 'language=' + options.language;
@@ -66,7 +64,6 @@ export class TimelineService {
             realURL += '&language=' + options.language;
           }
           caracterfinal = realURL.charAt(realURL.length - 1);
-        }
       }
       if (options.documentType) {
 
@@ -77,22 +74,22 @@ export class TimelineService {
         }
         caracterfinal = realURL.charAt(realURL.length - 1);
       }
-      if (options.TH) {
+      if (options.tH) {
 
         if (caracterfinal == '?') {
-          realURL += 'TH=' + options.TH;
+          realURL += 'TH=' + options.tH;
         } else {
-          realURL += '&TH=' + options.TH;
+          realURL += '&TH=' + options.tH;
         }
         caracterfinal = realURL.charAt(realURL.length - 1);
       }
-      if (options.N) {
+      if (options.n) {
         if (options.algo == 'py_heideltime') {
 
           if (caracterfinal == '?') {
-            realURL += 'N=' + options.N;
+            realURL += 'N=' + options.n;
           } else {
-            realURL += '&N=' + options.N;
+            realURL += '&N=' + options.n;
           }
           caracterfinal = realURL.charAt(realURL.length - 1);
 
@@ -127,7 +124,6 @@ export class TimelineService {
         caracterfinal = realURL.charAt(realURL.length - 1);
       }
       if (options.dateBegin) {
-        if (options.algo != 'py_heideltime') {
 
           if (caracterfinal == '?') {
             realURL += 'begin_date=' + options.dateBegin;
@@ -136,10 +132,9 @@ export class TimelineService {
           }
           caracterfinal = realURL.charAt(realURL.length - 1);
 
-        }
+        
       }
       if (options.dateEnd) {
-        if (options.algo != 'py_heideltime') {
 
           if (caracterfinal == '?') {
             realURL += 'end_date=' + options.dateEnd;
@@ -148,7 +143,7 @@ export class TimelineService {
           }
           caracterfinal = realURL.charAt(realURL.length - 1);
 
-        }
+        
       }
       if (options.result) {
       }

@@ -194,9 +194,12 @@
                       <mat-slide-toggle name="KW" color="warn" (click)="toggleOptionKeywords()">Yake Options</mat-slide-toggle>
                     </div>
                     <!--TIMEMATTERS OPTIONS-->
-                    th threshold value:
-                      <mat-slider min="0" (change)="changeTH($event)" max="{{maxValTH}}" step="0.01" value="{{TH}}"></mat-slider>  .
-                      <input min="0" step="0.0001" type="number" novalidate="true" (change)="changeTH($event)" value="{{TH}}"/>
+                    <table>
+                      <tr>
+                        <td>th threshold value:</td><td><input min="0" step="0.01" type="number" novalidate="true" (change)="changeTH($event)" value="{{TH}}"/></td><td><mat-slider min="0" (change)="changeTH($event)" max="{{maxValTH}}" step="0.01" value="{{TH}}"></mat-slider></td>
+                      </tr>
+                    </table>
+                    
                       
                     <br>
                     

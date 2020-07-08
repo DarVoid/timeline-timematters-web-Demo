@@ -247,6 +247,7 @@ export class KeywordExctractionComponent implements OnInit {
         this.TH=0;
       }
     }
+    this.update();
   }
   toggleKeywords() {
     this.withKeywords = !this.withKeywords;
@@ -604,7 +605,8 @@ export class KeywordExctractionComponent implements OnInit {
             numberOfKeywords : this.numberOfKeyWords,
             nContextualWindow: j,
             documentType: this.documentTypeSelected,
-            N: k
+            n: k,
+            tH: this.TH
           };
 
         this.timeline.getTextKeyDateFromSingleDoc(this.conteudoDefault, this.optio).pipe(take(1)).subscribe((res2) => {

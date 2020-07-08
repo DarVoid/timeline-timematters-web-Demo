@@ -16,8 +16,6 @@
               <mat-hint>Copy link to article</mat-hint>
             </mat-form-field>
             <div class="col-lg-16 text-center">
-              
-
               <mat-slide-toggle class="example-margin" color="warn" (click)="toggleOption()">Advanced Options</mat-slide-toggle>
             </div>
           </mat-card>
@@ -29,13 +27,19 @@
               </div>
               <div class="col-lg-12 space-center">
                 <mat-slide-toggle name="KW" color="warn" (click)="toggleOptionKeywords()">Yake Options</mat-slide-toggle>
+                
               </div>
 
+                <table>
+                  <tr>
+                    <td>th threshold value:</td>
+                    <td><input min="0" step="0.01" type="number" novalidate="true" (change)="changeTH($event)" value="{{TH}}"/></td>
+                    <td><mat-slider min="0" (change)="changeTH($event)" max="{{maxValTH}}" step="0.01" value="{{TH}}"></mat-slider></td>
+                  </tr>
+                </table>
               <!--time matters stuff-->
-              <mat-form-field>
-                <mat-label class="algorithm">th threshold value</mat-label>
-                <mat-slider min="0" max="{{maxValTH}}" (change)="changeTH($event)" step="0.0001" value="{{TH}}"></mat-slider>
-              </mat-form-field>
+              
+            <br>
 
               <mat-form-field>
                 <mat-label class="algorithm">N-size context Vector</mat-label>

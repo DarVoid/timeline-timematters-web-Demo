@@ -94,6 +94,7 @@ export class QuerysingledocComponent implements OnInit {
         this.TH=0;
       }
     }
+    this.update();
   }
   doThings(event: any) {
     event.preventDefault();
@@ -124,10 +125,11 @@ export class QuerysingledocComponent implements OnInit {
         numberOfKeywords : this.numberOfKeyWords,
         nContextualWindow: this.contextWindow,
         documentType: this.documentTypeSelected,
-        N: this.simbaValue,
+        n: this.simbaValue,
         result: this.resultado,
         dateBegin: this.dateBegin,
-        dateEnd: this.dateEnd
+        dateEnd: this.dateEnd,
+        tH: this.TH
 
       };
 
@@ -154,9 +156,10 @@ export class QuerysingledocComponent implements OnInit {
         numberOfKeywords : this.numberOfKeyWords,
         nContextualWindow: a,
         documentType: this.documentTypeSelected,
-        N: b,
+        n: b,
         dateBegin: this.dateBegin,
-        dateEnd: this.dateEnd
+        dateEnd: this.dateEnd,
+        tH: this.TH
 
       };
 
