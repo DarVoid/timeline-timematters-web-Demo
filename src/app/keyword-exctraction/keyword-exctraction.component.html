@@ -20,11 +20,11 @@
           <mat-tab-group>
             <mat-tab  label="Annotated text">
                 <br>
-                <p class="afterAnnotated"><i>{{!showOnlyRel?differentValues.length:differentRelValues.length}} {{!showOnlyRel?"":"relevant "}}</i> temporal expressions were annotated in the text by Time-Matters and the <i>{{algoritmoSelected}}</i> temporal tagger.Mouse over them to see their relevance scores. Scores are determined by Time-Matters and vary between 0 (not relevant) and 1 (extremely relevant).</p>
+                <p class="afterAnnotated"><i>{{!showOnlyRel?differentValues.length:differentRelValues.length}} {{!showOnlyRel?"":"relevant "}}</i> temporal expressions were annotated in the text by Time-Matters and the <i>{{algoritmoSelected}}</i> temporal tagger. Mouse over them to see their relevance scores. Scores are determined by Time-Matters and vary between 0 (not relevant) and 1 (extremely relevant).</p>
                 <div class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>
-                  <br>
-                  <p >The top-<i>{{numberOfKeyWords}} {{ngramSelected}}</i>-gram keywords were  annotated in the text through YAKE! software. Mouse over them to see their relevance scores, the lower the better.</p>
-                  <br>
+                  
+                  <p>The top-<i>{{numberOfKeyWords}} {{ngramSelected}}</i>-gram keywords were  annotated in the text through YAKE! software. Mouse over them to see their relevance scores, the lower the better.</p>
+                  
                 </div>
                 <p class="afterAnnotated">Language: <i>{{languagueSelected}}</i></p>
                 <hr>
