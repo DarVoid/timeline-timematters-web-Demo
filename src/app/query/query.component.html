@@ -11,17 +11,20 @@
           <mat-card>
           <mat-tab-group>
             <mat-tab label="Annotated text">
-                <h2 class="afterAnnotated">Annotated text</h2>
-                <p class="afterAnnotated">{{!showOnlyRel?differentValues.length:differentRelValues.length}} {{!showOnlyRel?"":"relevant "}}Temporal Expressions were annotated in the text</p>
-                <p class="afterAnnotated">Mouse over them to see their relevance scores. Scores are determined by Time-Matters and vary between 0 (not relevant) and 1 (extremely relevant)</p>
-                <p class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>The top-{{numberOfKeyWords}} {{options.ngram}}-gram keywords were  annotated in the text through YAKE! software</p>
-                <p class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>Mouse over them to see their relevance scores, the lower the better</p>
-                <p class="afterAnnotated">Language: {{options.language}}</p>
+                <br>
+                <p class="afterAnnotated"><i>{{!showOnlyRel?differentValues.length:differentRelValues.length}} {{!showOnlyRel?"":"relevant "}}</i> temporal expressions were annotated in the text. Mouse over them to see their relevance scores. Scores are determined by Time-Matters and vary between 0 (not relevant) and 1 (extremely relevant)</p>
+               
+                <div class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>
+                  <br>
+                  <p class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>The top-<i>{{numberOfKeyWords}} {{options.ngram}}</i>-gram keywords were  annotated in the text through YAKE! software. Mouse over them to see their relevance scores, the lower the better.</p>
+                  <br>
+                </div>
+                <p class="afterAnnotated">Language: <i>{{options.language}}</i></p>
                 <hr>
                 <app-frame [docOrSentence]="options.docOrSentence" [argumentos]="options.result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"   class="result"></app-frame>
                 <hr>
                 <div class="dateScoreColors">
-                  <span><b>{{!showOnlyRel?"5": "4"}}-color likert relevance scale:   </b></span>
+                  <span><b><i>{{!showOnlyRel?"5": "4"}}</i>-color likert relevance scale:   </b></span>
                   <span class='{{!showOnlyRel?"preto": "nonviewable"}}'>[0; 0.35]</span>
                   <span class="verde">]0.35; 0.5]</span>
                   <span class="azul">]0.5; 0.7]</span>

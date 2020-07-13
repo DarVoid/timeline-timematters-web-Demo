@@ -29,7 +29,6 @@ export class QueryComponent implements OnChanges {
     this.differentValues = [];
     this.page = 0;
 
-
   }
 
   ngOnChanges() {
@@ -94,6 +93,7 @@ export class QueryComponent implements OnChanges {
 
   }
   public update() {
+    this.numberOfKeyWords = this.options.numberOfKeywords;
     this.differentValues = this.options.result.TempExpressions.sort(
           (a, b) => a[0] - b[0]).filter(
               (element , index, array) => {

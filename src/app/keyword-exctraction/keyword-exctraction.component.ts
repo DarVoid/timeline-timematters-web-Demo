@@ -578,7 +578,7 @@ export class KeywordExctractionComponent implements OnInit {
             this.languagueSelected = 'Spanish';
             break;
           default:
-            this._snackBar.open('Language no Supported', res.lang, {
+            this._snackBar.open('Language not Supported', res.lang, {
               duration: 2000
             });
             break;

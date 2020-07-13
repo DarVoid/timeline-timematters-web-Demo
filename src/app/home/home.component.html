@@ -31,7 +31,7 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
         <p class="tituloProjeto">
-          <img class="ceninha" src="..\assets\TimeMatters.png" /> Time-Matters Demo  </p>
+          <img class="ceninha" src="..\assets\TimeMatters.png" /> ime-Matters Demo  </p>
         <div class="spacer"></div><div [ngClass]="{hidden: (isHandset$ | async) === true}">
         <a href="/"><button mat-button   ><i class="fas fa-home"></i> Home</button></a>
         <a><button mat-button [matMenuTriggerFor]="menu1" ngbDropdownToggle><i class="fas fa-chevron-down"></i> Tag Dates</button></a>
@@ -47,7 +47,7 @@
     <mat-menu #menu1="matMenu">
       <button mat-menu-item   (click)='changePage("1")'>Free Text Input <i class="fas fa-square"></i> </button>
       <div class="divider"></div>
-      <button mat-menu-item  (click)='changePage("2")'>Specify URL <i class="fas fa-link"></i> </button>
+      <button mat-menu-item  (click)='changePage("2")'>Specify URL <i class="fas fa-globe"></i> </button>
       <div class="divider"></div>
       <button mat-menu-item  (click)='changePage("6")'>Search Arquivo.pt <i class="fas fa-search"></i> </button>
     </mat-menu>

@@ -109,6 +109,7 @@ export class TimelineScrollComponent implements OnInit {
     console.log(j);
     const additionalOptions = {
       start_at_end: false,
+      timenav_height: 10,
       default_bg_color: {r: 255, g: 255, b: 255}
     };
     // tslint:disable-next-line: no-unused-expression

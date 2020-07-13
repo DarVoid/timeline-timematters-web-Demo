@@ -19,12 +19,14 @@
           <mat-card>
           <mat-tab-group>
             <mat-tab  label="Annotated text">
-                <h2 class="afterAnnotated">Annotated text</h2>
-                <p class="afterAnnotated">{{!showOnlyRel?differentValues.length:differentRelValues.length}} {{!showOnlyRel?"":"relevant "}} Temporal Expressions were annotated in the text by Time-Matters and the {{algoritmoSelected}} temporal tagger</p>
-                <p class="afterAnnotated">Mouse over them to see their relevance scores. Scores are determined by Time-Matters and vary between 0 (not relevant) and 1 (extremely relevant)</p>
-                <p class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>The top-{{numberOfKeyWords}} {{ngramSelected}}-gram keywords were  annotated in the text through YAKE! software</p>
-                <p class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>Mouse over them to see their relevance scores, the lower the better</p>
-                <p class="afterAnnotated">Language: {{languagueSelected}}</p>
+                <br>
+                <p class="afterAnnotated"><i>{{!showOnlyRel?differentValues.length:differentRelValues.length}} {{!showOnlyRel?"":"relevant "}}</i> temporal expressions were annotated in the text by Time-Matters and the <i>{{algoritmoSelected}}</i> temporal tagger.Mouse over them to see their relevance scores. Scores are determined by Time-Matters and vary between 0 (not relevant) and 1 (extremely relevant).</p>
+                <div class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>
+                  <br>
+                  <p >The top-<i>{{numberOfKeyWords}} {{ngramSelected}}</i>-gram keywords were  annotated in the text through YAKE! software. Mouse over them to see their relevance scores, the lower the better.</p>
+                  <br>
+                </div>
+                <p class="afterAnnotated">Language: <i>{{languagueSelected}}</i></p>
                 <hr>
                 <app-frame [argumentos]="result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>
                 <hr>
@@ -40,7 +42,7 @@
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
                 <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleKeywords()">{{withKeywordsSentence}}</mat-slide-toggle>
                 <br>
-                <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleRel()">{{showOnlyRel?"Showing Important dates Only":"Showing All Dates"}}</mat-slide-toggle>
+                <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleRel()">{{showOnlyRel?"Showing relevant dates only":"Showing all dates"}}</mat-slide-toggle>
                 <!--EM CIMA-->
                 <br>
                 <br>
@@ -108,7 +110,7 @@
           </mat-tab-group></mat-card>
           <br>
           <div class="col-lg-12 text-right">
-            <button type="reset" (click)="goBack()" class="btn btn-link">Go back</button>
+            <button type="reset" style="color:#FFffFF" (click)="goBack()" class="btn btn-link">Go back</button>
             <button *ngIf="result" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
           </div>
         </ng-template>
@@ -200,7 +202,7 @@
                       <mat-checkbox class="example-margin" (change)="maxSimba($event)" [checked]="simbaValueMax">InfoSimba max value</mat-checkbox>
                       <br>
                     <mat-form-field (changeValue)="selecionarContextualWindow($event)" name="windowContext">
-                      <mat-label class="algorithm">Contextual Window</mat-label>
+                      <mat-label class="algorithm">n-contextual window</mat-label>
                       <input class="algorithm" matInput type="number" name="context" placeholder="Contextual Window" min="1" [disabled]="contextFullSentence" [value]="contextWindow"/>
 
                     </mat-form-field>
