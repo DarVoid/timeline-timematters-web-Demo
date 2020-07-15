@@ -9,7 +9,7 @@
         <br>
         <h1><b>{{item.title}}</b></h1>
         <hr>
-        <p>Link: <button mat-button class="btn btn-link" (click)="copyToCliboard(item.linkToArchive)"> <i class="fas fa-link"></i> Copy link to Arquivo.pt platform <i class="fas fa-link"></i></button>No-Frame Link: <button mat-button class="btn btn-link" (click)="copyToCliboard(item.linkToNoFrame)"> <i class="fas fa-link"></i> Copy link to arquived source <i class="fas fa-link"></i></button></p>
+        <p>Link: <button mat-button class="btn btn-link" (click)="copyToCliboard(item.linkToArchive)"> <i class="fas fa-link"></i> Copy URL source <i class="fas fa-link"></i></button>No-Frame Link: <button mat-button class="btn btn-link" (click)="copyToCliboard(item.linkToNoFrame)"> <i class="fas fa-link"></i> Copy link to arquived source <i class="fas fa-link"></i></button></p>
 
 
         <div class="textThumb" [innerHTML]="item.snippet"></div><hr>

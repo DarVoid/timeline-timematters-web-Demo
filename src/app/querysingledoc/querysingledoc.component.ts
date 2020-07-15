@@ -43,7 +43,8 @@ export class QuerysingledocComponent implements OnInit {
   @Input() inpu: any;
 
   constructor(private article: GetarticleService, private timeline: TimelineService, private _snackBar: MatSnackBar) {
-    this.url = 'https://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/';
+    
+    //
     this.algoritmosDate = ['py_heideltime' , 'py_rule_based'];
     this.algoritmoSelected = this.algoritmosDate[0];
     this.dateGranularityOptions = ['full', 'year', 'month', 'day'];
@@ -72,7 +73,11 @@ export class QuerysingledocComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.inpu){
 
+    }else{
+      this.url = 'https://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/';
+    }
   }
   changeTH(event:any){
     

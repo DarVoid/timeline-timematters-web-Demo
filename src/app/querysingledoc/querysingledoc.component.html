@@ -12,7 +12,7 @@
                 <br>
               </div>
               <mat-label>URL</mat-label>
-              <input matInput placeholder="Please insert article URL" value="{{url}}" name="stuff" matInput (change)="setURL($event)">
+              <input matInput placeholder="Please insert article URL" value="{{inpu?inpu:url}}" name="stuff" matInput (change)="setURL($event)">
               <mat-hint>Copy link to article</mat-hint>
             </mat-form-field>
             <div class="col-lg-16 text-center">
