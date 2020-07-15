@@ -49,6 +49,15 @@
 
           </mat-tab>
           
+          <mat-tab label="Storyline" *ngIf="dataset.length>0">
+            <app-timeline-scroll [docSen]="byDocOrSentece" [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
+          
+          </mat-tab>
+
+          <mat-tab label="Timeline" *ngIf="dataset.length>0"><!--*ngIf="byDocOrSentece"-->
+            <app-linha-temporal [docSen]="byDocOrSentece" [numSen]="result.SentencesNormalized.length" [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"  ></app-linha-temporal>
+          </mat-tab>
+
           <mat-tab label="Temporal Clustering" *ngIf="dataset.length>0">
             
             <br>
@@ -66,13 +75,7 @@
 
             </div>
             <ng-template #onlyRel>
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th scope="col"><b>Date</b></th>
-                    <th scope="col"><b>Score</b></th>
-                  </tr>
-                </thead>
+              <table class="table table-borderless">
                 <tbody *ngFor="let item of datasetRelOnly">
                   <tr (click)="putOnClipboard($event,item.x)">
                     <td><h3>{{item.x}}</h3></td><!--meter .substrin(0,10 para so ano)-->
@@ -86,13 +89,8 @@
           <!--WIP-->
           </mat-tab>
 
-          <mat-tab label="Timeline" *ngIf="dataset.length>0"><!--*ngIf="byDocOrSentece"-->
-            <app-linha-temporal [docSen]="byDocOrSentece" [numSen]="result.SentencesNormalized.length" [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"  ></app-linha-temporal>
-          </mat-tab>
-          <mat-tab label="Storyline" *ngIf="dataset.length>0">
-            <app-timeline-scroll [docSen]="byDocOrSentece" [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
-          
-          </mat-tab>
+
+
           <mat-tab *ngIf="byDocOrSentece" class="afterGraphs" label="Scores">
             <h2>Graphics</h2>
             <div class="row my-row2 justify-content-center">
