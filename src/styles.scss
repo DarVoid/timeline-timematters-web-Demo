@@ -79,6 +79,7 @@ a:active {
 }
 .ceninha{
   height: 50px;
+  padding-left: 50px;
 }
 
 // HOME COMPONENTE SCSS
@@ -173,9 +174,8 @@ section.NavSection {
 .tituloProjeto {
   color: white;
   font-family: 'Work Sans';
-  font-size: 35px;
-  padding-left: 50px;
-  padding-top:15px;
+  font-size: 35px; 
+  padding-top:27px;
   line-height:1.125;
   font-weight: 600;
 }
