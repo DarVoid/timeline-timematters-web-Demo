@@ -15,32 +15,32 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 
 @include angular-material-theme($candy-app-theme);
 
-b.purple{
-  background-color:#915e8b !important;
+.purple{
+  background-color:#21961b !important;
 
 }
-.black{
-  background-color:orange !important;
+.orange{
+  background-color:#b50b0b !important;
 }
-b.blue{
+.blue{
   background-color:#386c7d !important;
 
 }
-b.green{
-  background-color:#41692b !important;
+.green{
+  background-color:#d13030 !important;
 
 }
-b.red{
+.red{
   background-color:#a33a14 !important;
 
 }
-b.yellow{
+.yellow{
   background-color:#99b019 !important;
 
 }
 p.noticeme{
   color:black !important;
-  font-size: 25px;
+  font-size: 20px;
 }
 .viewable{
   display: block;
@@ -214,7 +214,7 @@ $app-theme: mat-light-theme($app-primary, $app-accent);
 
 // KEYWORD EXTRACTION COMPONENTE SCSS
 body {
-  background-color: #d6d0d0;
+  background-color: #e8e3e3;
   zoom: 90%;
 }
 
@@ -357,32 +357,14 @@ app-frame {
   color:black;
 }
 
-.preto, .verde, .azul, .amarelo, .roxo {
+.orange, .green, .blue, .yellow, .purple {
   color: white;
   width: 3%;
   padding: 2px;
   margin-right: 5px;
 }
 
-.preto {
-  background-color: orange;
-}
 
-.verde {
-  background-color: #41692b;
-}
-
-.azul {
-  background-color: #386c7d;
-}
-
-.amarelo {
-  background-color: #99b019;
-}
-
-.roxo {
-  background-color: #915e8b;
-}
 
 // QUERYSINGLEDOC page
 

@@ -30,7 +30,7 @@ textarea {
     font-family: 'Work Sans', sans-serif;
 }
 
-.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active {
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:disabled {
     background-color: #a80519;
  /*  background-color: #993d26; */
     border-color: transparent;
@@ -80,7 +80,6 @@ button:focus {
 table, h3 {
     font-family: 'Work Sans', sans-serif;
     border: 0 px;
+    font-size: 20px;
 }
-thead {
-    font-size: 25px;
-}
+

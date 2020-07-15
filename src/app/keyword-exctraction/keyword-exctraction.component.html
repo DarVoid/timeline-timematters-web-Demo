@@ -32,11 +32,11 @@
                 <hr>
                 <div class="dateScoreColors">
                   <span><b>{{!showOnlyRel?"5": "4"}}-color likert relevance scale:   </b></span>
-                  <span class='{{!showOnlyRel?"preto": "nonviewable"}}'>[0; 0.35]</span>
-                  <span class="verde">]0.35; 0.5]</span>
-                  <span class="azul">]0.5; 0.7]</span>
-                  <span class="amarelo">]0.7; 0.9]</span>
-                  <span class="roxo">]0.9; 1.0]</span>
+                  <span class='{{!showOnlyRel?"orange": "nonviewable"}}'>[0; 0.35]</span>
+                  <span class="green">]0.35; 0.5]</span>
+                  <span class="blue">]0.5; 0.7]</span>
+                  <span class="yellow">]0.7; 0.9]</span>
+                  <span class="purple">]0.9; 1.0]</span>
                 </div>
                 <br>
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
@@ -55,13 +55,7 @@
             <mat-slide-toggle (click)='toggleRel()' class="afterAnnotated" color="warn" >{{showOnlyRel?"Showing Relevant dates only":"Showing All Dates"}}</mat-slide-toggle>
             <br><br>
             <div *ngIf="!showOnlyRel else onlyRel">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th scope="col"><b>Date</b></th>
-                    <th scope="col"><b>Score</b></th>
-                  </tr>
-                </thead>
+              <table class="table table-borderless">
                 <tbody *ngFor="let item of dataset">
                   <tr (click)="putOnClipboard($event,item.x)">
                     <td><h3>{{item.x}}</h3></td><!--meter .substrin(0,10 para so ano)-->
