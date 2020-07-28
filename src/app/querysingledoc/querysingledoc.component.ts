@@ -40,6 +40,7 @@ export class QuerysingledocComponent implements OnInit {
   public opcoes: any;
   public resultado: any;
   public TH: number;
+  public hiddenoptionTM: boolean;
   @Input() inpu: any;
 
   constructor(private article: GetarticleService, private timeline: TimelineService, private _snackBar: MatSnackBar) {
@@ -69,6 +70,7 @@ export class QuerysingledocComponent implements OnInit {
     this.hiddenoption = false;
     this.loading = false;
     this.requestMade = false;
+    this.hiddenoptionTM = false;
     this.TH=0.05;
   }
 
@@ -221,6 +223,9 @@ export class QuerysingledocComponent implements OnInit {
     this.algoritmoSelected = event;
     // this.documentCreationTime="";
 
+  }
+  toggleTimeMattersOptions() {
+    this.hiddenoptionTM = !this.hiddenoptionTM;
   }
   selecionarDataReferencia(event: any) {
     this.documentCreationTime = event.target.value;
