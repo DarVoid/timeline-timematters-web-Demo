@@ -40,7 +40,6 @@ export class KeywordExctractionComponent implements OnInit {
   public dateEnd: number;
   public byDocOrSentece: boolean;
   public hiddenoptionKW: boolean;
-  public hiddenoptionTM: boolean;
   public ngramSelected: number;
   public listaConteudos: Array<string>;
   public optio: any;
@@ -70,7 +69,6 @@ export class KeywordExctractionComponent implements OnInit {
     this.withKeywordsSentence = 'Keywords Off';
     this.hiddenoption = false;
     this.hiddenoptionKW = false;
-    this.hiddenoptionTM = false;
     this.loading = false;
     this.contextFullSentence = true;
     this.simbaValueMax = true;
@@ -223,10 +221,6 @@ export class KeywordExctractionComponent implements OnInit {
   }
   toggleOptionKeywords() {
     this.hiddenoptionKW = !this.hiddenoptionKW;
-  }
-
-  toggleTimeMattersOptions() {
-    this.hiddenoptionTM = !this.hiddenoptionTM;
   }
 
   toggleRel() {
