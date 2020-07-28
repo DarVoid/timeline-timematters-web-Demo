@@ -97,12 +97,12 @@
               <div class="score">
                 <app-score [argumentos]="result" ></app-score>
               </div>
-        </div>
+            </div>
           </mat-tab>
           </mat-tab-group></mat-card>
           <br>
           <div class="col-lg-12 text-right">
-            <button type="reset" style="color:#FFffFF" (click)="goBack()" class="btn btn-link">Go back</button>
+            <button type="reset" (click)="goBack()" class="btn btn-link">Go back</button>
             <button *ngIf="result" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
           </div>
         </ng-template>

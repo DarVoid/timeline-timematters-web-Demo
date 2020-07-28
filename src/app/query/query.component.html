@@ -39,12 +39,10 @@
                 <!--EM CIMA-->
                 <br>
                 <br>
-                <div class="col-lg-12 text-right">
-                  <a *ngIf="options" color="primary" href="/"><button type="reset" class="btn btn-link">Go Home</button></a>
-                  <button *ngIf="options" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
-                </div>
+
 
           </mat-tab>
+
           
           <mat-tab label="Temporal Clustering"  *ngIf="dataset.length>0">
             <!--WIP-->
@@ -110,5 +108,8 @@
         </ng-template>
       </div>
 
-
+      <div class="col-lg-12 text-right">
+        <a *ngIf="options" color="primary" href="/"><button type="reset" class="btn btn-link">Go Home</button></a>
+        <button *ngIf="options" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
+      </div>
   </div>
