@@ -20,14 +20,14 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 
 }
 .orange{
-  background-color:#b50b0b !important;
+  background-color:rgb(181, 11, 11) !important;
 }
 .blue{
   background-color:#386c7d !important;
 
 }
 .green{
-  background-color:#d13030 !important;
+  background-color:rgba(181, 11, 11, 0.6) !important;
 
 }
 .red{
@@ -35,7 +35,7 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 
 }
 .yellow{
-  background-color:#99b019 !important;
+  background-color:rgba(33, 150, 27, 0.6) !important;
 
 }
 p.noticeme{
@@ -78,7 +78,7 @@ a:active {
   width: 100% !important;
 }
 .ceninha{
-  height: 70px;
+  height: 64px;
   padding-left: 50px;
 }
 
