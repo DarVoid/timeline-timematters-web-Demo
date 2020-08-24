@@ -56,8 +56,9 @@ export class KeywordExctractionComponent implements OnInit {
   public contextFullSentence: boolean;
   public simbaValueMax: boolean;
   public TH:number;
-
-
+  public exe_time_total:string;
+  public exe_time_YAKE:string;
+  public exe_time_algo:string;
   constructor(private yake: YakeService,private timeline: TimelineService, private _snackBar: MatSnackBar, private _lang: LangdetectService) {
     /*private timeline: TimelineService*/
     this.ngramSelected = 1;
@@ -382,6 +383,13 @@ export class KeywordExctractionComponent implements OnInit {
     this.withKeywordsSentence = 'Keywords Off';
   }
   public update() {
+    this.exe_time_total = this.result.ExecutionTime.TotalTime;
+    this.exe_time_YAKE = this.result.ExecutionTime.YAKE;
+    if(this.result.ExecutionTime.heideltime_processing){
+      this.exe_time_algo = this.result.ExecutionTime.heideltime_processing;
+    }else{
+      this.exe_time_algo = this.result.ExecutionTime.rule_based_processing;
+    }
           this.differentValues = this.result.TempExpressions.sort(
             (a, b) => a[0] - b[0]).filter(
                 (element , index, array) => {
@@ -625,6 +633,7 @@ export class KeywordExctractionComponent implements OnInit {
           this.update();
           this.requestMade = true;
           this.loading = false;
+          
           return ' ';
           } else {
             console.log('oof');

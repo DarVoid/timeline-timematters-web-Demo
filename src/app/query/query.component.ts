@@ -19,6 +19,9 @@ export class QueryComponent implements OnChanges {
   public differentRelValues: Array<any>;
   public docOrSentence: boolean;
   public page: number;
+  public exe_time_total:string;
+  public exe_time_YAKE:string;
+  public exe_time_algo:string;
 
   // tslint:disable-next-line: variable-name
   constructor(private _snackBar: MatSnackBar) {
@@ -94,6 +97,13 @@ export class QueryComponent implements OnChanges {
   }
   public update() {
     this.numberOfKeyWords = this.options.numberOfKeywords;
+    this.exe_time_total = this.options.result.ExecutionTime.TotalTime;
+    this.exe_time_YAKE = this.options.result.ExecutionTime.YAKE;
+    if(this.options.result.ExecutionTime.heideltime_processing){
+      this.exe_time_algo = this.options.result.ExecutionTime.heideltime_processing;
+    }else{
+      this.exe_time_algo = this.options.result.ExecutionTime.rule_based_processing;
+    }
     this.differentValues = this.options.result.TempExpressions.sort(
           (a, b) => a[0] - b[0]).filter(
               (element , index, array) => {

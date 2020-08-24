@@ -2,8 +2,10 @@
     <br>
     <br>
     <div class="col-md-11 col-sm-8 col-xs-6 my-col2">
-        <span title="não suportado, api não tem a opção "><p class="frase1"></p></span><!--Results using {{options.algo}} algorithm:-->
-        <div>
+      <span title="não suportado, api não tem a opção "><p class="frase1">Results using {{options.algo}} algorithm took {{exe_time_total}} seconds:
+      </p><p class="frase1">YAKE: {{exe_time_YAKE}} seconds</p>
+      <p class="frase1">Temporal tagger algorithm: {{exe_time_algo}} seconds</p>
+    </span><div>
       <div *ngIf="!options else graficos">
         <h1>No Data</h1>
       </div>
