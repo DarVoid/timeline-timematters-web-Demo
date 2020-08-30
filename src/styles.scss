@@ -19,7 +19,7 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
   background-color:#21961b !important;
 
 }
-.orange{
+.black{
   background-color:rgb(181, 11, 11) !important;
 }
 .blue{
@@ -357,7 +357,7 @@ app-frame {
   color:black;
 }
 
-.orange, .green, .blue, .yellow, .purple {
+.black, .green, .blue, .yellow, .purple {
   color: white;
   width: 3%;
   padding: 2px;

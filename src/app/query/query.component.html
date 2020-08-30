@@ -24,13 +24,13 @@
                 <hr>
                 <app-frame [docOrSentence]="options.docOrSentence" [argumentos]="options.result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"   class="result"></app-frame>
                 <hr>
-                <div class="dateScoreColors">
+                <div class="dateScoreColors"> 
                   <span><b><i>{{!showOnlyRel?"5": "4"}}</i>-color likert relevance scale:   </b></span>
-                  <span class='{{!showOnlyRel?"preto": "nonviewable"}}'>[0; 0.35]</span>
-                  <span class="verde">]0.35; 0.5]</span>
-                  <span class="azul">]0.5; 0.7]</span>
-                  <span class="amarelo">]0.7; 0.9]</span>
-                  <span class="roxo">]0.9; 1.0]</span>
+                  <span class='{{!showOnlyRel?"black": "nonviewable"}}'>[0; 0.35]</span>
+                  <span class="green">]0.35; 0.5]</span>
+                  <span class="blue">]0.5; 0.7]</span>
+                  <span class="yellow">]0.7; 0.9]</span>
+                  <span class="purple">]0.9; 1.0]</span>
                 </div>
                 <br>
 
