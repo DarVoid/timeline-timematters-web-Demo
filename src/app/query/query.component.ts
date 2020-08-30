@@ -22,6 +22,9 @@ export class QueryComponent implements OnChanges {
   public exe_time_total:string;
   public exe_time_YAKE:string;
   public exe_time_algo:string;
+  public loading: boolean;
+  public requestMade: boolean;
+  public result: any;
 
   // tslint:disable-next-line: variable-name
   constructor(private _snackBar: MatSnackBar) {
@@ -31,6 +34,9 @@ export class QueryComponent implements OnChanges {
     this.showOnlyRel = false;
     this.differentValues = [];
     this.page = 0;
+    this.loading = false;
+    this.requestMade = false;
+    this.result = '';
 
   }
 
@@ -53,7 +59,11 @@ export class QueryComponent implements OnChanges {
     this.showOnlyRel = !this.showOnlyRel;
   }
   goBack() {
-    // redirect
+    this.result = false;
+    this.requestMade = false;
+    this.loading = false;
+    this.withKeywords = true;
+    this.withKeywordsSentence = 'Keywords Off';
   }
   public putOnClipboard(event: any, cena: string) {
     event.preventDefault();
