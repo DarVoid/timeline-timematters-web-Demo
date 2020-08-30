@@ -9,13 +9,19 @@
         <br>
         <h1><b>{{item.title}}</b></h1>
         <hr>
-        <p>Link: <button mat-button class="btn btn-link" (click)="copyToCliboard(item.linkToArchive)"> <i class="fas fa-link"></i> Copy URL source <i class="fas fa-link"></i></button>No-Frame Link: <button mat-button class="btn btn-link" (click)="copyToCliboard(item.linkToNoFrame)"> <i class="fas fa-link"></i> Copy link to arquived source <i class="fas fa-link"></i></button></p>
+        <p>Link: <button mat-button class="btn btn-link" (click)="copyToCliboard(item.linkToArchive)"> <i class="fas fa-link"></i> Copy URL source from Arquivo.pt <i class="fas fa-link"></i></button>No-Frame Link: <button mat-button class="btn btn-link" (click)="copyToCliboard(item.linkToNoFrame)"> <i class="fas fa-link"></i> Copy URL source (No-Frame) from Arquivo.pt <i class="fas fa-link"></i></button></p>
 
+        
+        <div class="textThumb" [innerHTML]="item.snippet"></div>
+          <button type="reset" (click)="goBack()" class="btn btn-link">See More</button>  
+        <hr>
 
-        <div class="textThumb" [innerHTML]="item.snippet"></div><hr>
         <div class="form-group">
           <div class="col-lg-12 text-right">
-            <button class="btn btn-primary" (click)="setQuery(item)"><i class="fas fa-code" ></i> Get Relevant dates from this article</button>
+            <button type="reset" (click)="goBack()" class="btn btn-link">Go back</button>
+            <button class="btn btn-primary" (click)="setQuery(item)"><i class="fas fa-code" ></i> Get relevant dates directly from this article</button>
+
+            <button class="btn btn-primary" (click)="setQuery(item)"><i class="fas fa-code" ></i> Get relevant dates using Time-Matters</button>
           </div>
         </div>
       </div>

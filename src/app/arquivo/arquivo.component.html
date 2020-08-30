@@ -41,28 +41,28 @@
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-              <mat-label>Limit your search to a single Url:</mat-label>
-              <input matInput (change)="setSiteSearch($event)" placeholder="...insert site where you want to search" value="http://www.publico.pt">
+              <mat-label>Limit your search to a single URL:</mat-label>
+              <input matInput (change)="setSiteSearch($event)" placeholder="Insert site where you want to search." value="http://www.publico.pt">
             </mat-form-field>
-            <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleAdvanced()">Advanced Options</mat-slide-toggle>
+            <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleAdvanced()">Arquivo.pt Advanced Options</mat-slide-toggle>
                 <br>
                 <br>
             <div class='{{viewAdvanced?"viewable": "nonviewable"}}'>
               <mat-form-field class="example-half-width" color="warn">
                 <mat-label>From:</mat-label>
-                <input matInput type="date" (change)="setFrom($event)" placeholder="...insert site where you want to search" [value]="startDate" />
+                <input matInput type="date" (change)="setFrom($event)" placeholder="Insert site where you want to search." [value]="startDate" />
               </mat-form-field>
               <mat-form-field class="example-half-width" color="warn">
                 <mat-label>To:</mat-label>
-                <input type="date" matInput (change)="setTo($event)" placeholder="...insert site where you want to search" [value]="toDate"/>
+                <input type="date" matInput (change)="setTo($event)" placeholder="Insert site where you want to search." [value]="toDate"/>
               </mat-form-field>
               <mat-form-field class="example-half-width" color="warn">
                 <mat-label>Offset:</mat-label>
-                <input matInput [value]="offset" type="number" (change)="setOffset($event)" placeholder="...insert site where you want to search" value="http://www.publico.pt">
+                <input matInput [value]="offset" type="number" (change)="setOffset($event)" placeholder="Insert site where you want to search." value="http://www.publico.pt">
               </mat-form-field>
               <mat-form-field class="example-half-width" color="warn">
                 <mat-label>Items per Query (max 2000):</mat-label>
-                <input matInput [value]="maxItems" type="number" (change)="setMaxItems($event)" placeholder="...insert site where you want to search" value="http://www.publico.pt">
+                <input matInput [value]="maxItems" type="number" (change)="setMaxItems($event)" placeholder="Insert site where you want to search." value="http://www.publico.pt">
               </mat-form-field>
               <br>
               <mat-checkbox class="example-margin"  color="warn" (change)="togglePretty($event)" [checked]="prettyPrint">Pretty print</mat-checkbox>

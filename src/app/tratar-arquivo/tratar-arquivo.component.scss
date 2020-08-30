@@ -14,18 +14,16 @@ h1 {
     font-family: 'Work Sans', sans-serif;
     font-size: 16px;
     text-align: justify;
-    //font-weight: bold;
 }
 
 .btn-primary {
     background-color: #d10019;
-   /* background-color: #cc4625; */
     border-color: transparent;
     font-family: 'Work Sans', sans-serif;
+    margin-left: 5px;
 }
 .btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active {
     background-color: #a80519;
- /*  background-color: #993d26; */
     border-color: transparent;
     box-shadow: 0 0 0 0.2rem rgba(168, 5, 25,.5);
 }
@@ -35,4 +33,8 @@ h1 {
     border-color: transparent;
     font-family: 'Work Sans', sans-serif;
     text-decoration: none;
+}
+
+.button {
+    padding-top: -20px;
 }
