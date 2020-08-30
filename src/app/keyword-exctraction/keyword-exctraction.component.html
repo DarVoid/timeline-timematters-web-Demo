@@ -73,7 +73,7 @@
                 <tbody *ngFor="let item of dataset">
                   <tr (click)="putOnClipboard($event,item.x)">
                     <td><h3>{{item.x}}</h3></td><!--meter .substrin(0,10 para so ano)-->
-                    <td [innerHTML]="item.y | safe:'html'"></td>
+                    <td class="TabelaTexto" [innerHTML]="item.y | safe:'html'"></td>
                   </tr>
                 </tbody>
               </table>

@@ -12,6 +12,8 @@
         <ng-template #graficos >
           <mat-card>
           <mat-tab-group>
+
+            <!-- ANNOTATED TEXT-->
             <mat-tab label="Annotated text">
                 <br>
                 <p class="afterAnnotated"><i>{{!showOnlyRel?differentValues.length:differentRelValues.length}} {{!showOnlyRel?"":"relevant "}}</i> temporal expressions were annotated in the text. Mouse over them to see their relevance scores. Scores are determined by Time-Matters and vary between 0 (not relevant) and 1 (extremely relevant)</p>
@@ -41,12 +43,20 @@
                 <!--EM CIMA-->
                 <br>
                 <br>
-
-
           </mat-tab>
 
+          <!-- STORYLINE -->
+          <mat-tab label="Storyline"  *ngIf="dataset.length>0">
+            <app-timeline-scroll [docSen]="options.docOrSentence=='doc'"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
+          </mat-tab>
+
+          <!-- TIMELINE -->
+          <mat-tab label="Timeline" *ngIf="options.result && dataset.length>0"  > <!-- *ngIf="options.docOrSentence"--> 
+            <app-linha-temporal [docSen]="options.docOrSentence=='doc'" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
+          </mat-tab>
+
+          <!-- TEMPORAL CLUSTERING -->
           <mat-tab label="Temporal Clustering" *ngIf="dataset.length>0">
-            
             <br>
             <mat-slide-toggle (click)='toggleRel()' class="afterAnnotated" color="warn" >{{showOnlyRel?"Showing Relevant dates only":"Showing All Dates"}}</mat-slide-toggle>
             <br><br>
@@ -55,7 +65,7 @@
                 <tbody *ngFor="let item of dataset">
                   <tr (click)="putOnClipboard($event,item.x)">
                     <td><h3>{{item.x}}</h3></td><!--meter .substrin(0,10 para so ano)-->
-                    <td [innerHTML]="item.y | safe:'html'"></td>
+                    <td class="TabelaTexto" [innerHTML]="item.y | safe:'html'"></td>
                   </tr>
                 </tbody>
               </table>
@@ -73,27 +83,18 @@
             </ng-template>
           </mat-tab>
 
-          <mat-tab label="Plot Score/Date" *ngIf="options.result && dataset.length>0"  > <!-- *ngIf="options.docOrSentence"-->
-            <!--WIP-->
-            <app-linha-temporal [docSen]="options.docOrSentence=='doc'" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
-
-
-          <!--WIP-->
-          </mat-tab>
-          <mat-tab label="Storyline"  *ngIf="dataset.length>0">
-            <!--WIP-->
-            <app-timeline-scroll [docSen]="options.docOrSentence=='doc'"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
-          <!--WIP-->
-          </mat-tab>
+          <!-- SCORES -->
           <mat-tab class="afterGraphs" sele (click)="setpage(1)" label="Scores" >
             <h2>Graphics</h2>
             <div class="row my-row2 justify-content-center">
               <div class="score">
                 <app-score [argumentos]="options.result" ></app-score>
               </div>
-        </div>
+            </div>
           </mat-tab>
-          </mat-tab-group></mat-card>
+
+          </mat-tab-group>
+        </mat-card>
           <br>
           <!--<div class="col-lg-12 text-right">
             <a *ngIf="options" color="primary" href="/"><button type="reset" class="btn btn-link">Go back</button></a>
