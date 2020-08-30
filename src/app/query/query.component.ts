@@ -22,9 +22,6 @@ export class QueryComponent implements OnChanges {
   public exe_time_total:string;
   public exe_time_YAKE:string;
   public exe_time_algo:string;
-  public loading: boolean;
-  public requestMade: boolean;
-  public result: any;
 
   // tslint:disable-next-line: variable-name
   constructor(private _snackBar: MatSnackBar) {
@@ -34,10 +31,6 @@ export class QueryComponent implements OnChanges {
     this.showOnlyRel = false;
     this.differentValues = [];
     this.page = 0;
-    this.loading = false;
-    this.requestMade = false;
-    this.result = '';
-
   }
 
   ngOnChanges() {
@@ -59,11 +52,7 @@ export class QueryComponent implements OnChanges {
     this.showOnlyRel = !this.showOnlyRel;
   }
   goBack() {
-    this.result = false;
-    this.requestMade = false;
-    this.loading = false;
-    this.withKeywords = true;
-    this.withKeywordsSentence = 'Keywords Off';
+    // falta fazer
   }
   public putOnClipboard(event: any, cena: string) {
     event.preventDefault();
@@ -173,11 +162,22 @@ export class QueryComponent implements OnChanges {
           // console.log(this.result.Score[Object.keys(this.result.Score)[i]][0]);
           // handle Dataset
           if (this.options.docOrSentence == 'doc') {
-            a = '<p class="noticeme">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p>';
+            // descobrir se este é sentence ou doc
+            console.log("resultado");
+            console.log(Object.keys(this.options.result.Score)[i]);
+            let sentence_to_write= this.options.result.SentencesNormalized.map((a)=>{
+              console.log(a);
+              console.log(a.toString().search(Object.keys(this.options.result.Score)[i]))
+              if(a.toLowerCase().toString().search(Object.keys(this.options.result.Score)[i])!=-1)
+              return a;
+            });
+            sentence_to_write = sentence_to_write.join("(...) \n");
+            console.log(sentence_to_write);
+            a = '<p class="noticeme">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p><p>' + sentence_to_write + '</p>';
             // tslint:disable-next-line: max-line-length
             // d.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][0], series: 0});
             if (this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] > 0.35) {
-            a2 = '<p class="noticeme">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p>';
+            a2 = '<p class="noticeme">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p><p>' + sentence_to_write + '</p>';
             // tslint:disable-next-line: max-line-length
             // d2.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][0], series: 0});
             } else {

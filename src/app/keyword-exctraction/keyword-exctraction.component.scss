@@ -19,29 +19,23 @@ textarea {
 }
 .btn-link{
     color: #ffffff;
-   /* color: #cc4625; */
     font-family: 'Work Sans', sans-serif;
 }
 
 .btn-primary {
     background-color: #d10019;
-   /* background-color: #cc4625; */
     border-color: transparent;
     font-family: 'Work Sans', sans-serif;
 }
 
 .btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:disabled {
     background-color: #a80519;
- /*  background-color: #993d26; */
     border-color: transparent;
     box-shadow: 0 0 0 0.2rem rgba(168, 5, 25,.5);
 }
 
 .btn-link:hover, .btn-link:active, .btn-link:focus {
     color: #a80519;
-  /*  color: #993d26; */@mixin name {
-      
-  }
 }
 
 hr {
@@ -57,7 +51,6 @@ hr {
     color: white;
     text-align: center;
     background-color: #d10019;
-   /* background-color: #cc4625; */
     font-family: 'Work Sans', sans-serif;
 }
 
@@ -80,8 +73,9 @@ button:focus {
 table, h3 {
     font-family: 'Work Sans', sans-serif;
     border: 0 px;
-    font-size: 20px;
+    font-size: 19px;
 }
+
 
 .thresholdValue {
     margin: auto;
