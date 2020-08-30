@@ -423,7 +423,7 @@ export class KeywordExctractionComponent implements OnInit {
             }
           );
 
-        } else {
+        }/**else docOrSentence */ else {
           this.differentRelValues = this.differentValues.map((a) => {
             return this.result.Score[a[0]];
           });
@@ -448,9 +448,20 @@ export class KeywordExctractionComponent implements OnInit {
           // console.log(this.result.Score[Object.keys(this.result.Score)[i]][0]);
           // handle Dataset
           if (this.byDocOrSentece) {
-            a = '<p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p>';
+            //descobrir se este é sentence ou doc
+            console.log("resultado");
+            console.log(Object.keys(this.result.Score)[i]);
+            let sentence_to_write= this.result.SentencesNormalized.map((a)=>{
+              console.log(a);
+              console.log(a.toString().search(Object.keys(this.result.Score)[i]))
+              if(a.toLowerCase().toString().search(Object.keys(this.result.Score)[i])!=-1)
+              return a;
+            });
+            sentence_to_write = sentence_to_write.join("(...) \n");
+            console.log(sentence_to_write);
+            a = '<p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p><p>'+sentence_to_write+'</p>';
             if (this.result.Score[Object.keys(this.result.Score)[i]][0] > 0.35) {
-            a2 = '<p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p>';
+            a2 = '<p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p><p>'+sentence_to_write+'</p>';
             } else {
               a2 = null;
             }
