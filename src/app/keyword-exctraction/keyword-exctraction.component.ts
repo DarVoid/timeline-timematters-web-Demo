@@ -232,8 +232,8 @@ export class KeywordExctractionComponent implements OnInit {
 
   toggleRel() {
     this.showOnlyRel = !this.showOnlyRel;
-
   }
+  
   changeTH(event:any){
     
     if(event.preventDefault){
