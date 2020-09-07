@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { YakeService } from '../services/yake.service';
+import { ArquivoService } from '../services/arquivo.service';
+import { take } from 'rxjs/operators';
 // import TL from '../../assets/TL1.js';
 declare  var TL: any;
 declare  var $: any;
@@ -26,7 +29,7 @@ export class TimelineScrollComponent implements OnInit {
   public isSet: boolean;
   public jsonText: string;
   public isnotset:boolean;
-  constructor(private _snackBar: MatSnackBar) {
+  constructor(private _snackBar: MatSnackBar, private yake:YakeService, private arquivo:ArquivoService) {
     // console.log(this.TLObj);
     this.rendering = 'rendering';
     this.titulo = 'Timeline';
@@ -89,32 +92,52 @@ export class TimelineScrollComponent implements OnInit {
 
     const events = [];
     // tslint:disable-next-line: forin
-    for (const h in this.argumentos) {
+    for (let h=0; h<this.argumentos.length; h++) {
+      console.log("conteudo");
+      console.log(this.argumentos[h].y.split("</p>")[1].split("(...)").join("").split("<kw>").join("").split("</kw>").join("").split("<d>").join("").split("</d>").join(""));
+      let captio;
+      this.yake.getKeywords(this.argumentos[h].y.split("</p>")[1].split("(...)").join("").split("<kw>").join("").split("</kw>").join("").split("<d>").join("").split("</d>").join("")).pipe(take(1)).subscribe((res)=>{
+        if (res) {
+          console.log(res);
+          captio=res.keywords[0].ngram;
+          this.arquivo.getImgURL(captio).pipe(take(1)).subscribe((res2:any)=>{
+            if(res2){
+              console.log(res2);
+              let url2=res2.responseItems[0].imgLinkToArchive;
+                  // console.log(this.argumentos[h]);
+              if (this.argumentos[h].x.length === 4) {
+                events.push({ start_date:  { year: this.argumentos[h].x},background:{url:url2}, text: { headline : this.argumentos[h].y}}); //
+        
+              } else if (this.argumentos[h].x.split('-').length === 2) {
+                // tslint:disable-next-line: max-line-length
+                events.push({start_date:  {year: this.argumentos[h].x.split('-')[0],month: this.argumentos[h].x.split('-')[1] },background:{url:url2}, text: {headline: this.argumentos[h].y}});
+              } else {
+                //,media:{url:url2, caption:captio}
+                // tslint:disable-next-line: max-line-length
+                events.push({start_date:  {year: this.argumentos[h].x.substring(0,10).split('-')[0],month: this.argumentos[h].x.substring(0,10).split('-')[1], day: this.argumentos[h].x.substring(0,10).split('-')[2] },background:{url:url2}, text: {headline: this.argumentos[h].y}}); 
+              }
+              if(h == this.argumentos.length-1){
+                j = {events: events, scale:"human"};
+                this.jsonText = j;
+                console.log(j);
+                const additionalOptions = {
+                  start_at_end: false,
+                  timenav_height: 10,
+                  default_bg_color: {r: 255, g: 255, b: 255}
+                };
+                // tslint:disable-next-line: no-unused-expression
+                new TL.Timeline('my-timeline', j, additionalOptions);
 
-      // console.log(h);
-      // console.log(this.argumentos[h]);
-      if (this.argumentos[h].x.length === 4) {
-        events.push({ start_date:  { year: this.argumentos[h].x}, text: { headline : this.argumentos[h].y}});
+              }
 
-      } else if (this.argumentos[h].x.split('-').length === 2) {
-        // tslint:disable-next-line: max-line-length
-        events.push({start_date:  {year: this.argumentos[h].x.split('-')[0],month: this.argumentos[h].x.split('-')[1] }, text: {headline: this.argumentos[h].y}});
-      } else {
-        // tslint:disable-next-line: max-line-length
-        events.push({start_date:  {year: this.argumentos[h].x.substring(0,10).split('-')[0],month: this.argumentos[h].x.substring(0,10).split('-')[1], day: this.argumentos[h].x.substring(0,10).split('-')[2] }, text: {headline: this.argumentos[h].y}});
-      }
-    }
-    j = {events: events};
-    this.jsonText = j;
-    console.log(j);
-    const additionalOptions = {
-      start_at_end: false,
-      timenav_height: 10,
-      default_bg_color: {r: 255, g: 255, b: 255}
-    };
-    // tslint:disable-next-line: no-unused-expression
-    new TL.Timeline('my-timeline', j, additionalOptions);
+
+            }
+          });
+          
+        }
+      }); 
 
   }
 
+  }
 }

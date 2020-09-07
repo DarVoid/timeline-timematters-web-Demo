@@ -429,9 +429,9 @@ export class KeywordExctractionComponent implements OnInit {
           });
 
         }
-        console.log(this.differentRelValues);
-        console.log(this.differentValues);
-        console.log(this.result.Score);
+        //console.log(this.differentRelValues);
+        //console.log(this.differentValues);
+        //console.log(this.result.Score);
 
 
         let c = [];
@@ -452,13 +452,13 @@ export class KeywordExctractionComponent implements OnInit {
             console.log("resultado");
             console.log(Object.keys(this.result.Score)[i]);
             let sentence_to_write= this.result.SentencesNormalized.map((a)=>{
-              console.log(a);
-              console.log(a.toString().search(Object.keys(this.result.Score)[i]))
+              //console.log(a);
+              //console.log(a.toString().search(Object.keys(this.result.Score)[i]))
               if(a.toLowerCase().toString().search(Object.keys(this.result.Score)[i])!=-1)
               return a;
             });
             sentence_to_write = sentence_to_write.join("(...) \n");
-            console.log(sentence_to_write);
+            //console.log(sentence_to_write);
             a = '<p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p><p>'+sentence_to_write+'</p>';
             if (this.result.Score[Object.keys(this.result.Score)[i]][0] > 0.35) {
             a2 = '<p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p><p>'+sentence_to_write+'</p>';

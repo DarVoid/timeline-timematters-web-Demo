@@ -8,8 +8,10 @@ import { map } from 'rxjs/operators';
 })
 export class ArquivoService {
   url: string;
+  urlIMG: string;
   constructor(private http: HttpClient) {
     this.url = 'https://arquivo.pt/textsearch';
+     this.urlIMG = 'https://arquivo.pt/imagesearch';
   }
 
   public getLinkFromOptions(search: string, options: any): Observable<any> {
@@ -70,4 +72,19 @@ export class ArquivoService {
       }
     }));
 }
+  public getImgURL(search: string){
+    const formData = new FormData();
+    let realURL = this.urlIMG + '?q=' + search+"&size=md";
+    return this.http.get(realURL
+        ).pipe(map((res, err) => {
+      if (res) {
+        console.log(res);
+        return res;
+      } else {
+        console.log(err);
+        return err;
+      }
+    }));
+
+  }
 }
