@@ -73,28 +73,33 @@ export class ScoreComponent implements OnChanges {
       let dados2 = [];
       let cores2 = [];
       let sorted0Scores = [];
-      console.log(sorted0Scores);
+
+      console.log("AAAAAAAAAAA");
+      //console.log(Object.keys(this.argumentos.Score));
+      let sortables = Object.keys(this.argumentos.Score).filter((i)=>{return /^\d+$/.test(i.substring(0,5).toString().split('-').join(''))});
+      let nonsortables = Object.keys(this.argumentos.Score).filter((i)=>{return !/^\d+$/.test(i.substring(0,5).toString().split('-').join(''))});
+      console.log(sortables);
+      console.log(nonsortables);
+      //sorted0Scores.push({key: i, value: this.argumentos.Score[i][0]})
+      sortables = sortables.sort((a, b)=>{
+        console.log("a: "+a.substring(0,4)+"\nb:"+b.substring(0,4)+ "\n");
+        return parseInt(a.substring(0,4).toString().split('-').join('')) - parseInt(b.substring(0,4).toString().split('-').join(''));
+      });
+      
       //this.argumentos.Score
       // tslint:disable-next-line: forin
-      for (let i in this.argumentos.Score) {
-          // console.log("passa?");
-          // console.log(/^\d+$/.test(i.toString().split('-').join('')));
-          // console.log("valor");
-          // console.log(i);
-          if(/^\d+$/.test(i.substring(0,10).toString().split('-').join(''))){
-            dados2.push(i);
-            dados1.push(this.argumentos.Score[i][0]);
+      for (let i in sortables) {
+        console.log(this.argumentos.Score[i])
+            //dados2.push(i);
+            //dados1.push(this.argumentos.Score[i][0]);
     
-            if(this.argumentos.Score[i][0] < 0.35){
+            if(this.argumentos.Score[i] < 0.35){
               cores1.push('rgba(245, 81, 81, 1)');
               cores2.push('rgba(245, 81, 81, 1)');
             }else{
               cores1.push('rgba(103, 172, 219, 1)');
               cores2.push('rgba(103, 172, 219, 1)');
             }
-          }else{
-            sorted0Scores.push({key: i, value: this.argumentos.Score[i][0]});
-          }
 
           /* if(this.argumentos.Score[i][0]===0){
             sorted0Scores.push({key: i, value: this.argumentos.Score[i][0] });
@@ -102,18 +107,19 @@ export class ScoreComponent implements OnChanges {
 
           }*/
       }
+      
       let dados5 = [];
       let dados6 = [];
       let cores5 = [];
       let cores6 = [];
-      for (let chave in sorted0Scores) {
-        if(sorted0Scores[chave].value!=0){
+      for (let chave in nonsortables) {
+        if(true){ //sorted0Scores[chave].value!=0
           // console.log("nao é zero");  
           // console.log(sorted0Scores[chave].key);
           // console.log(sorted0Scores[chave].value);
-          dados6.push(sorted0Scores[chave].key);
-          dados5.push(sorted0Scores[chave].value);
-          if(sorted0Scores[chave].value < 0.35){
+          dados6.push(this.argumentos.Score[chave].key);
+          dados5.push(this.argumentos.Score[chave].value);
+          if(this.argumentos.Score[chave].value < 0.35){
             cores5.push('rgba(245, 81, 81, 1)');
             cores6.push('rgba(245, 81, 81, 1)');
           }else{
