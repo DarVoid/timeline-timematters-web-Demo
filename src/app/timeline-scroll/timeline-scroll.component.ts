@@ -117,13 +117,14 @@ export class TimelineScrollComponent implements OnInit {
                 events.push({start_date:  {year: this.argumentos[h].x.substring(0,10).split('-')[0],month: this.argumentos[h].x.substring(0,10).split('-')[1], day: this.argumentos[h].x.substring(0,10).split('-')[2] },background:{url:url2}, text: {headline: this.argumentos[h].y}}); 
               }
               if(h == this.argumentos.length-1){
-                j = {events: events, scale:"human"};
+                j = {events: events};
                 this.jsonText = j;
                 console.log(j);
                 const additionalOptions = {
                   start_at_end: false,
                   timenav_height: 10,
-                  default_bg_color: {r: 255, g: 255, b: 255}
+                  default_bg_color: {r: 255, g: 255, b: 255},
+                  trackResize: "false"
                 };
                 // tslint:disable-next-line: no-unused-expression
                 new TL.Timeline('my-timeline', j, additionalOptions);
