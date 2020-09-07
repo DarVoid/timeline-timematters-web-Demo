@@ -82,59 +82,56 @@ export class ScoreComponent implements OnChanges {
       console.log(nonsortables);
       //sorted0Scores.push({key: i, value: this.argumentos.Score[i][0]})
       sortables = sortables.sort((a, b)=>{
-        console.log("a: "+a.substring(0,4)+"\nb:"+b.substring(0,4)+ "\n");
-        return parseInt(a.substring(0,4).toString().split('-').join('')) - parseInt(b.substring(0,4).toString().split('-').join(''));
+        a= a.substring(0,10).replace(/[^\d]/g, '');
+        b= b.substring(0,10).replace(/[^\d]/g, '');
+        if(a.length==4){
+          a = a + "0100"
+        }
+        if(b.length==4){
+          b = b + "0100"
+        }if(a.length==6){
+          a = a + "00"
+        }
+        if(b.length==6){
+          b = b + "00"
+        }
+        console.log("a: "+a+"\nb:"+b+ "\n");
+        return parseInt(a) - parseInt(b);
       });
       
       //this.argumentos.Score
       // tslint:disable-next-line: forin
       for (let i in sortables) {
-        console.log(this.argumentos.Score[i])
-            //dados2.push(i);
-            //dados1.push(this.argumentos.Score[i][0]);
+            console.log(sortables[i]);
+            dados2.push(sortables[i]);
+            dados1.push(this.argumentos.Score[sortables[i]][0]);
     
-            if(this.argumentos.Score[i] < 0.35){
+            if(this.argumentos.Score[sortables[i]][0] < 0.35){
               cores1.push('rgba(245, 81, 81, 1)');
               cores2.push('rgba(245, 81, 81, 1)');
             }else{
               cores1.push('rgba(103, 172, 219, 1)');
               cores2.push('rgba(103, 172, 219, 1)');
             }
-
-          /* if(this.argumentos.Score[i][0]===0){
-            sorted0Scores.push({key: i, value: this.argumentos.Score[i][0] });
-          }else{
-
-          }*/
       }
+      console.log(dados1)
+      console.log(dados2)
       
       let dados5 = [];
       let dados6 = [];
       let cores5 = [];
       let cores6 = [];
       for (let chave in nonsortables) {
-        if(true){ //sorted0Scores[chave].value!=0
-          // console.log("nao é zero");  
-          // console.log(sorted0Scores[chave].key);
-          // console.log(sorted0Scores[chave].value);
-          dados6.push(this.argumentos.Score[chave].key);
-          dados5.push(this.argumentos.Score[chave].value);
-          if(this.argumentos.Score[chave].value < 0.35){
+          dados6.push(nonsortables[chave]);
+          dados5.push(this.argumentos.Score[nonsortables[chave]][0]);
+          if(this.argumentos.Score[nonsortables[chave]].value < 0.35){
             cores5.push('rgba(245, 81, 81, 1)');
             cores6.push('rgba(245, 81, 81, 1)');
           }else{
             cores5.push('rgba(103, 172, 219, 1)');
             cores6.push('rgba(103, 172, 219, 1)');
           }
-          
-        }else{
-          // console.log("é zero");
-          // console.log(sorted0Scores[chave].key);
-          // console.log(sorted0Scores[chave].value);
-        }
       }
-
-      console.log(sorted0Scores);
 
       // tslint:disable-next-line: forin
       /* for (let i in sortedScores) {
