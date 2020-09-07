@@ -474,9 +474,7 @@ export class KeywordExctractionComponent implements OnInit {
 
               d.push({x: Object.keys(this.result.Score)[i], y: this.result.Score[Object.keys(this.result.Score)[i]][xd][0], series: xd});
               // console.log(d);
-              let a = this.yake.getKeywords(this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'')).pipe(take(1)).subscribe((res) =>{
-              return res;
-              });
+              
               console.log(a);
               // tslint:disable-next-line: whitespace
               // tslint:disable-next-line: max-line-length
