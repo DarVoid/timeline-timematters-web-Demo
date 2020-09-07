@@ -26,7 +26,6 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatStepperModule} from '@angular/material/stepper';
-import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AboutPeopleComponent } from './about-people/about-people.component';
 import { AboutRelatedWorkComponent } from './about-related-work/about-related-work.component';
 import { QueryComponent } from './query/query.component';
@@ -51,7 +50,6 @@ import {MatSliderModule} from '@angular/material/slider';
     FrameComponent,
     ScoreComponent,
     SafePipe,
-    LandingPageComponent,
     AboutPeopleComponent,
     AboutRelatedWorkComponent,
     QueryComponent,
