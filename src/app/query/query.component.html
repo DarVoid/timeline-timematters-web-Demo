@@ -58,7 +58,7 @@
           <!-- TEMPORAL CLUSTERING -->
           <mat-tab label="Temporal Clustering" *ngIf="dataset.length>0">
             <br>
-            <mat-slide-toggle (click)='toggleRel()' class="afterAnnotated" color="warn" >{{showOnlyRel?"Showing Relevant dates only":"Showing All Dates"}}</mat-slide-toggle>
+            <mat-slide-toggle (click)='toggleRel()' class="afterAnnotated" color="warn" >{{showOnlyRel?"Showing relevant dates only":"Showing all dates"}}</mat-slide-toggle>
             <br><br>
             <div *ngIf="!showOnlyRel else onlyRel">
               <table class="table table-borderless">

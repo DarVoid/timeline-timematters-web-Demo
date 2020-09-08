@@ -66,7 +66,7 @@
           <mat-tab label="Temporal Clustering" *ngIf="dataset.length>0">
             
             <br>
-            <mat-slide-toggle (click)='toggleRel()' class="afterAnnotated" color="warn" >{{showOnlyRel?"Showing Relevant dates only":"Showing All Dates"}}</mat-slide-toggle>
+            <mat-slide-toggle (click)='toggleRel()' class="afterAnnotated" color="warn" >{{showOnlyRel?"Showing relevant dates only":"Showing all dates"}}</mat-slide-toggle>
             <br><br>
             <div *ngIf="!showOnlyRel else onlyRel">
               <table class="table table-borderless">
@@ -107,7 +107,7 @@
           <br>
           <div class="col-lg-12 text-right">
             <button type="reset" (click)="goBack()" class="btn btn-link">Go back</button>
-            <button *ngIf="result" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
+            <button *ngIf="result" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to clipboard</button>
           </div>
         </ng-template>
       </div>

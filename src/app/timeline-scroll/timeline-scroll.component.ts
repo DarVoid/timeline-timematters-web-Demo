@@ -106,15 +106,15 @@ export class TimelineScrollComponent implements OnInit {
               let url2=res2.responseItems[0].imgLinkToArchive;
                   // console.log(this.argumentos[h]);
               if (this.argumentos[h].x.length === 4) {
-                events.push({ start_date:  { year: this.argumentos[h].x},background:{url:url2}, text: { headline : this.argumentos[h].y}}); //
+                events.push({ start_date:  { year: this.argumentos[h].x},media:{url:url2, caption:captio}, text: { headline : "<p>"+captio+"</p>", text: this.argumentos[h].y}}); //
         
               } else if (this.argumentos[h].x.split('-').length === 2) {
                 // tslint:disable-next-line: max-line-length
-                events.push({start_date:  {year: this.argumentos[h].x.split('-')[0],month: this.argumentos[h].x.split('-')[1] },background:{url:url2}, text: {headline: this.argumentos[h].y}});
+                events.push({start_date:  {year: this.argumentos[h].x.split('-')[0],month: this.argumentos[h].x.split('-')[1] },media:{url:url2, caption:captio}, text: { headline : "<p>"+captio+"</p>", text: this.argumentos[h].y}});
               } else {
                 //,media:{url:url2, caption:captio}
                 // tslint:disable-next-line: max-line-length
-                events.push({start_date:  {year: this.argumentos[h].x.substring(0,10).split('-')[0],month: this.argumentos[h].x.substring(0,10).split('-')[1], day: this.argumentos[h].x.substring(0,10).split('-')[2] },background:{url:url2}, text: {headline: this.argumentos[h].y}}); 
+                events.push({start_date:  {year: this.argumentos[h].x.substring(0,10).split('-')[0],month: this.argumentos[h].x.substring(0,10).split('-')[1], day: this.argumentos[h].x.substring(0,10).split('-')[2] },media:{url:url2, caption:captio}, text: { headline : "<p>"+captio+"</p>", text: this.argumentos[h].y}}); 
               }
               if(h == this.argumentos.length-1){
                 j = {events: events};
