@@ -59,6 +59,7 @@ export class KeywordExctractionComponent implements OnInit {
   public exe_time_total:string;
   public exe_time_YAKE:string;
   public exe_time_algo:string;
+  public exe_time_GTE:string;
   constructor(private yake: YakeService,private timeline: TimelineService, private _snackBar: MatSnackBar, private _lang: LangdetectService) {
     /*private timeline: TimelineService*/
     this.ngramSelected = 1;
@@ -383,12 +384,13 @@ export class KeywordExctractionComponent implements OnInit {
     this.withKeywordsSentence = 'Keywords Off';
   }
   public update() {
-    this.exe_time_total = this.result.ExecutionTime.TotalTime;
-    this.exe_time_YAKE = this.result.ExecutionTime.YAKE;
+    this.exe_time_total = this.result.ExecutionTime.TotalTime.toFixed(3);
+    this.exe_time_YAKE = this.result.ExecutionTime.YAKE.toFixed(3);
+    this.exe_time_GTE = this.result.ExecutionTime.GTE.toFixed(3);
     if(this.result.ExecutionTime.heideltime_processing){
-      this.exe_time_algo = this.result.ExecutionTime.heideltime_processing;
+      this.exe_time_algo = this.result.ExecutionTime.heideltime_processing.toFixed(3);
     }else{
-      this.exe_time_algo = this.result.ExecutionTime.rule_based_processing;
+      this.exe_time_algo = this.result.ExecutionTime.rule_based_processing.toFixed(3);
     }
           this.differentValues = this.result.TempExpressions.sort(
             (a, b) => a[0] - b[0]).filter(

@@ -11,9 +11,7 @@
     <br>
     <div class="col-md-11 col-sm-8 col-xs-6 my-col2">
       <!--FRASE DOS TEMPOS DE EXECUÇÃO-->
-        <span title="não suportado, api não tem a opção "><p class="frase1">Results using {{algoritmoSelected}} algorithm took {{exe_time_total}} seconds.
-        </p><p class="frase2">YAKE: {{exe_time_YAKE}} seconds.</p>
-        <p class="frase3">Temporal tagger algorithm: {{exe_time_algo}} seconds.</p>
+        <span title="não suportado, api não tem a opção "><p class="frase1"></p>
       </span>
       <!--FRASE DOS TEMPOS DE EXECUÇÃO-->
         <div>
@@ -25,6 +23,8 @@
           <mat-tab-group>
             <mat-tab  label="Annotated text">
                 <br>
+                <span title=" "><p class="">Time-Matters algorithm took {{exe_time_total}} Sec. (of which {{exe_time_algo}} Sec. were spent for <i>{{algoritmoSelected}}</i> processing;  {{exe_time_YAKE}} Sec. for YAKE!; and {{exe_time_GTE}} Sec. for GTE)
+
                 <p class="afterAnnotated"><i>{{!showOnlyRel?differentValues.length:differentRelValues.length}} {{!showOnlyRel?"":"relevant "}}</i> temporal expressions were annotated in the text by Time-Matters and the <i>{{algoritmoSelected}}</i> temporal tagger. Mouse over them to see their relevance scores. Scores are determined by Time-Matters and vary between 0 (not relevant) and 1 (extremely relevant).</p>
                 <div class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>
                   
@@ -32,6 +32,8 @@
                   
                 </div>
                 <p class="afterAnnotated">Language: <i>{{languagueSelected}}</i></p>
+                
+              </span>
                 <hr>
                 <app-frame [argumentos]="result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>
                 <hr>
