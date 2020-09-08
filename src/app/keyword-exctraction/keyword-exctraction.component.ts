@@ -459,7 +459,8 @@ export class KeywordExctractionComponent implements OnInit {
               if(a.toLowerCase().toString().search(Object.keys(this.result.Score)[i])!=-1)
               return a;
             });
-            sentence_to_write = sentence_to_write.join("(...) \n");
+            sentence_to_write = sentence_to_write.join("__,");
+            sentence_to_write = sentence_to_write.split("__,").filter((aasd)=>{return aasd.length!=0})[0];
             //console.log(sentence_to_write);
             a = '<p class="noticeme">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p><p>'+sentence_to_write+'</p>';
             if (this.result.Score[Object.keys(this.result.Score)[i]][0] > 0.35) {

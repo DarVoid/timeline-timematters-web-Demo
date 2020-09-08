@@ -2,10 +2,11 @@
     <br>
     <br>
     <div class="col-md-11 col-sm-8 col-xs-6 my-col2">
-      <span title="não suportado, api não tem a opção "><p class="frase1">Results using {{options.algo}} algorithm took {{exe_time_total}} seconds.
-      </p><p class="frase2">YAKE: {{exe_time_YAKE}} seconds.</p>
-      <p class="frase3">Temporal tagger algorithm: {{exe_time_algo}} seconds.</p>
-    </span><div>
+      <!--FRASE DOS TEMPOS DE EXECUÇÃO-->
+      <span title="não suportado, api não tem a opção "><p class="frase1"></p>
+      </span>
+      <!--FRASE DOS TEMPOS DE EXECUÇÃO-->
+      <div>
       <div *ngIf="!options else graficos">
         <h1>No Data</h1>
       </div>
@@ -16,6 +17,8 @@
             <!-- ANNOTATED TEXT-->
             <mat-tab label="Annotated text">
                 <br>
+                <span title=" "><p class="">Time-Matters algorithm took {{exe_time_total}} Sec. (of which {{exe_time_algo}} Sec. were spent for <i>{{options.algo}}</i> processing;  {{exe_time_YAKE}} Sec. for YAKE!; and {{exe_time_GTE}} Sec. for GTE)</p></span>
+
                 <p class="afterAnnotated"><i>{{!showOnlyRel?differentValues.length:differentRelValues.length}} {{!showOnlyRel?"":"relevant "}}</i> temporal expressions were annotated in the text. Mouse over them to see their relevance scores. Scores are determined by Time-Matters and vary between 0 (not relevant) and 1 (extremely relevant)</p>
                
                 <div class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>
