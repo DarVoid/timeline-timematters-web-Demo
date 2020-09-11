@@ -106,7 +106,7 @@ export class TimelineScrollComponent implements OnInit {
               let url2=res2.responseItems[0].imgLinkToArchive;
                   // console.log(this.argumentos[h]);
               if (this.argumentos[h].x.length === 4) {
-                events.push({ start_date:  { year: this.argumentos[h].x},media:{thumbnail: url2, url:url2,link: url2, credit: '<a class="preto" target="_blank" href="https://www.arquivo.pt"><p>powered by Arquivo.pt</p></a>'}, text: { headline : "<p>"+captio+"</p>", text: this.argumentos[h].y}}); //
+                events.push({ start_date:  { year: this.argumentos[h].x},media:{thumbnail: url2, url:url2,link: url2, credit: '<a class="preto" target="_blank" href="https://www.arquivo.pt"><p>powered by Arquivo.pt</p></a>'}, text: { headline : '<p class="changeCaptio">'+captio+'</p>', text: this.argumentos[h].y}}); //
         
               } else if (this.argumentos[h].x.split('-').length === 2) {
                 // tslint:disable-next-line: max-line-length
