@@ -40,8 +40,12 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 }
 p.noticeme{
   color:black !important;
-  font-size: 20px;
 }
+
+.noticeme2 {
+  padding-top: 30px;
+}
+
 .viewable{
   display: block;
 }
