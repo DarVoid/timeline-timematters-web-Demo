@@ -185,7 +185,7 @@ export class LinhaTemporalComponent implements OnInit {
         const valor = valor_y.substring(27,valor_y.length);
         // console.log(valor);
 
-        p.push([new Date(this.argumentos[y].x.substring(0,10)).getTime(), valor * 1]);
+        p.push([new Date(this.argumentos[y].x.substring(0,10)).getTime(), valor*1]);
       }
        //p= p.reduce()AQUI É PARA REDUZIR A DIFERENTES VALORES
        p = p.sort((a, b)=>{return a-b;
