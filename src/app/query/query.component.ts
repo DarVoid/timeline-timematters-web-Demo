@@ -175,11 +175,11 @@ export class QueryComponent implements OnChanges {
             });
             sentence_to_write = sentence_to_write.join("__,");
             sentence_to_write = sentence_to_write.split("__,").filter((aasd)=>{return aasd.length!=0})[0];
-            a = '<p class="noticeme">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p><p>' + sentence_to_write + '</p>';
+            a = '<p class="noticem3">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p><p>' + sentence_to_write + '</p>';
             // tslint:disable-next-line: max-line-length
             // d.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][0], series: 0});
             if (this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] > 0.35) {
-            a2 = '<p class="noticeme">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p><p>' + sentence_to_write + '</p>';
+            a2 = '<p class="noticem3">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p><p>' + sentence_to_write + '</p>';
             // tslint:disable-next-line: max-line-length
             // d2.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][0], series: 0});
             } else {

@@ -7,8 +7,10 @@
 
 
 <div class='{{loading?"viewable": "nonviewable"}}'><mat-progress-bar mode="indeterminate"></mat-progress-bar></div>
+<button type="button" (click)="goBack()" class="btn btn-link">Go back</button>
   <app-tratar-arquivo (selected)='setSelected($event)' [dados]="resultado"></app-tratar-arquivo><br>
   <div class='{{loading?"viewable": "nonviewable"}}'><mat-progress-bar mode="indeterminate"></mat-progress-bar></div>
+  
   <!--<div class="col-md-10 col-sm-8 col-xs-6 my-col4">
     <div class="col-lg-12 text-right">
       <button type="reset" (click)="goBack()" class="btn btn-link">Go back</button>
