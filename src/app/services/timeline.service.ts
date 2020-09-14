@@ -95,9 +95,9 @@ export class TimelineService {
         if (options.algo == 'py_heideltime') {
 
           if (caracterfinal == '?') {
-            realURL += 'N=' + options.n;
+            realURL += 'N=' + options.n*1;
           } else {
-            realURL += '&N=' + options.n;
+            realURL += '&N=' + options.n*1;
           }
           caracterfinal = realURL.charAt(realURL.length - 1);
 

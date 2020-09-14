@@ -223,7 +223,7 @@ export class KeywordExctractionComponent implements OnInit {
     this.documentTypeSelected = this.documentTypeOptions[0];
     this.languageOptions = ['auto-detect', 'English', 'Portuguese', 'Spanish', 'German', 'Dutch', 'Italian', 'French'];
     this.languagueSelected = this.languageOptions[0];
-    this.maxValTH = 100;
+    this.maxValTH = 1;
     this.dateBegin = new Date().getFullYear();
     this.dateEnd = 2100;
     this.numberOfKeyWords = 10;
@@ -253,16 +253,19 @@ export class KeywordExctractionComponent implements OnInit {
     console.log(event);
     if(event.source){
       this.TH=event.value;
+      return;
     }
     else{
       if(event.target.value){
         if(event.target.value>this.maxValTH){
-          this.maxValTH=event.value
+          this.TH = 1
+          return;
         }
         event.preventDefault();
         this.TH=event.target.value;
       }else{
         this.TH=0;
+        return;
       }
     }
     this.update();
@@ -294,6 +297,7 @@ export class KeywordExctractionComponent implements OnInit {
   }
   selecionarDataReferencia(event: any) {
     this.documentCreationTime = event.target.value;
+    console.log("DATA!")
     console.log(event.target.value);
 
   }

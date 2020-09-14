@@ -56,7 +56,7 @@ export class QuerysingledocComponent implements OnInit {
     this.languagueSelected = this.languageOptions[0];
     this.dateBegin = 0;
     this.dateEnd = 2100;
-    this.maxValTH = 100;
+    this.maxValTH = 1;
     this.numberOfKeyWords = 10;
     this.contextWindow = 1;
     this.contextFullSentence = true;
@@ -89,16 +89,19 @@ export class QuerysingledocComponent implements OnInit {
     console.log(event);
     if(event.source){
       this.TH=event.value;
+      return;
     }
     else{
       if(event.target.value){
         if(event.target.value>this.maxValTH){
-          this.maxValTH=event.value
+          this.TH=1;
+          return;
         }
         event.preventDefault();
         this.TH=event.target.value;
       }else{
         this.TH=0;
+        return;
       }
     }
     this.update();

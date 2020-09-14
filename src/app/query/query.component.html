@@ -53,11 +53,6 @@
             <app-timeline-scroll [docSen]="options.docOrSentence=='doc'"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
           </mat-tab>
 
-          <!-- TIMELINE -->
-          <mat-tab label="Timeline" *ngIf="options.result && dataset.length>0"  > <!-- *ngIf="options.docOrSentence"--> 
-            <app-linha-temporal [docSen]="options.docOrSentence=='doc'" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
-          </mat-tab>
-
           <!-- TEMPORAL CLUSTERING -->
           <mat-tab label="Temporal Clustering" *ngIf="dataset.length>0">
             <br>
@@ -85,6 +80,13 @@
               </table>
             </ng-template>
           </mat-tab>
+          
+          <!-- TIMELINE -->
+          <mat-tab label="Timeline" *ngIf="options.result && dataset.length>0"  > <!-- *ngIf="options.docOrSentence"--> 
+            <app-linha-temporal [docSen]="options.docOrSentence=='doc'" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
+          </mat-tab>
+
+          
 
           <!-- SCORES -->
           <mat-tab class="afterGraphs" sele (click)="setpage(1)" label="Scores" >

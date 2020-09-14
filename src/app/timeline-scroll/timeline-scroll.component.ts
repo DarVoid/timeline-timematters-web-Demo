@@ -29,12 +29,14 @@ export class TimelineScrollComponent implements OnInit {
   public isSet: boolean;
   public jsonText: string;
   public isnotset:boolean;
+  public loading:boolean;
   constructor(private _snackBar: MatSnackBar, private yake:YakeService, private arquivo:ArquivoService) {
     // console.log(this.TLObj);
     this.rendering = 'rendering';
     this.titulo = 'Timeline';
     this.isSet = false;
     this.isnotset = true;
+    this.loading = false;
    }
 
   ngOnInit() {
@@ -64,6 +66,7 @@ export class TimelineScrollComponent implements OnInit {
       this.argumentos = this.argumentosTodos;
 
     }
+    this.loading= true;
     this.update();
   }
   public copyToClipboard(event: any) {
@@ -128,7 +131,7 @@ export class TimelineScrollComponent implements OnInit {
                 };
                 // tslint:disable-next-line: no-unused-expression
                 new TL.Timeline('my-timeline', j, additionalOptions);
-
+                this.loading  = false;
               }
 
 
