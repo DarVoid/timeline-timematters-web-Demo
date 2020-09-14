@@ -77,9 +77,17 @@ export class TimelineService {
       if (options.tH) {
 
         if (caracterfinal == '?') {
-          realURL += 'TH=' + options.tH;
+          if (options.tH>1){
+            realURL += 'TH=' + "1";
+          }else{
+            realURL += 'TH=' + options.tH;
+          }
         } else {
-          realURL += '&TH=' + options.tH;
+          if (options.tH>1){
+            realURL += '&TH=' + "1";
+          }else{
+            realURL += '&TH=' + options.tH;
+          }
         }
         caracterfinal = realURL.charAt(realURL.length - 1);
       }
@@ -147,7 +155,8 @@ export class TimelineService {
       }
       if (options.result) {
       }
-
+      console.log("pedido FINAL");
+      console.log(realURL);
       return this.http.post(realURL, formData
           ).pipe(map((res, err) => {
         if (res) {

@@ -138,7 +138,7 @@
                   </button>
                   <div class="divider"></div>
                   <button (click)="setDefaultText(1,'French')"  mat-menu-item >
-                    <span>FR - Religion</span>
+                    <span>FR - Politics</span>
                   </button>
                   <div class="divider"></div>
                   <button (click)="setDefaultText(2,'Italian')" mat-menu-item>
@@ -146,7 +146,7 @@
                   </button>
                   <div class="divider"></div>
                   <button (click)="setDefaultText(3,'Portuguese')" mat-menu-item>
-                    <span>PT - Sports </span>
+                    <span>PT - Politics </span>
                   </button>
                   <div class="divider"></div>
                   <button (click)="setDefaultText(4,'English')" mat-menu-item>
@@ -178,7 +178,7 @@
                       
                     <br> 
                     <div class="col-lg-12 text-center algorithm">
-                      <mat-slide-toggle class="algorithm" name="docOrSentece" color="warn" (click)="toggleDocOrSentence()">{{byDocOrSentece?'Annotate Dates by Doc':'Anotate Dates by Sentence'}}</mat-slide-toggle>
+                      <mat-slide-toggle class="algorithm" name="docOrSentece" color="warn" (click)="toggleDocOrSentence()">{{byDocOrSentece?'Annotate Dates by Doc':'Annotate Dates by Sentence'}}</mat-slide-toggle>
                     </div>
                     <div class="col-lg-12 space-center algorithm">
                       <mat-slide-toggle name="KW" color="warn" (click)="toggleOptionKeywords()">YAKE Options</mat-slide-toggle>
@@ -208,7 +208,7 @@
                       <br>
                       <table class="thresholdValue">
                         <tr>
-                          <td>th threshold value:</td><td><input min="0" step="0.01" type="number" novalidate="true" (change)="changeTH($event)" value="{{TH}}"/></td>
+                          <td>th threshold value:</td><td><input max="1" min="0" step="0.01" type="number" novalidate="true" (change)="changeTH($event)" value="{{TH}}"/></td>
                         </tr>
                       </table>
 
