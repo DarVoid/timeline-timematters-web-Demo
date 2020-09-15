@@ -26,7 +26,6 @@ export class LinhaTemporalComponent implements OnInit {
   public chart1: any;
   public argumentos: any;
   public b: any;
-  public rendering: string;
   public isSet: boolean;
   public relevant: boolean;
   public tipo: number;
@@ -36,10 +35,9 @@ export class LinhaTemporalComponent implements OnInit {
 
   constructor() {
     this.isnotset = true;
-    this.rendering = 'rendering...';
     this.isSet = false;
     this.tipo = 0;
-    this.tipos = ['area','line', 'areaspline',"scatter"];
+    this.tipos = ["scatter"];
     this.relevant = false;
     this.options = {
       chart: {
@@ -88,7 +86,6 @@ export class LinhaTemporalComponent implements OnInit {
   }
   public update() {
     Highcharts.chart('container', this.options);
-    this.rendering = ' ';
   }
   toggleTipo() {
     this.tipo++;
@@ -134,7 +131,7 @@ export class LinhaTemporalComponent implements OnInit {
       },
       series: [
         { name: 'scores',
-          turboThreshold: 500000,
+          turboThreshold: 500000, findNearestPointBy: "x" ,visible: true,
           data: [[new Date('2018-01-25 18:38:31').getTime(), 2]]
         }
       ]
@@ -228,7 +225,7 @@ export class LinhaTemporalComponent implements OnInit {
       for (let tr = 0; tr <= max_series + 1; tr++ ) {
         p[tr] = [];
         const named = 'sentence '+ tr + ':';
-        this.options.series[tr] = {name: named, turboThreshold: 500000, data: []};
+        this.options.series[tr] = {name: named, findNearestPointBy: "x" , turboThreshold: 500000, data: []};
       }
       // console.log("p");
       // console.log(p);
@@ -255,7 +252,7 @@ export class LinhaTemporalComponent implements OnInit {
         this.options.series[h].data = lk;
         // console.log("lk");
         // console.log(lk);
-        this.tipos = ['scatter', 'column', 'line'];
+        this.tipos = ['scatter'];
 
       }
     }
