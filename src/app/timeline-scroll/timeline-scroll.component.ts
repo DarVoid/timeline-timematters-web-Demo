@@ -20,7 +20,6 @@ export class TimelineScrollComponent implements OnInit {
   @Input() docSen: any;
   @Input() argumentosRelevantes: any;
   public relevant: boolean;
-  public relevant2: boolean;
   public argumentos: any;
   public texto: string;
   public events: Array<any>;
@@ -37,7 +36,6 @@ export class TimelineScrollComponent implements OnInit {
     this.isnotset = true;
     this.loading = false;
     this.relevant = false;
-    this.relevant2 = false;
     this.relevant_string = "Showing all dates";
    }
 
@@ -56,15 +54,14 @@ export class TimelineScrollComponent implements OnInit {
 
   }
   setRelevance() {
+    this.toggleRelevance();
     if (this.relevant) {
       this.argumentos = this.argumentosTodos;
       this.relevant_string = "Showing all dates";
-      this.relevant = false;
 
     } else {
       this.argumentos = this.argumentosRelevantes;
       this.relevant_string = "Showing relevant dates only";
-      this.relevant = true;
 
     }
     this.loading = true;
@@ -83,6 +80,9 @@ export class TimelineScrollComponent implements OnInit {
     document.execCommand('copy');
     document.body.removeChild(clipboard);
 
+  }
+  toggleRelevance(){
+    this.relevant = !this.relevant;
   }
 
   update() {
