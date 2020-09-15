@@ -180,34 +180,34 @@ export class LinhaTemporalComponent implements OnInit {
       // tslint:disable-next-line: forin
        for (const y in this.argumentos) {
         // console.log(this.argumentos[y]);
-        console.log("valor de y grafico");
+        //console.log("valor de y grafico");
         let valor_y = this.argumentos[y].y.split("</p>")[0];
         const valor = valor_y.substring(27,valor_y.length);
-         console.log(valor);
+         //console.log(valor);
 
         p.push([new Date(this.argumentos[y].x.substring(0,10)).getTime(), valor*1]);
       }
        //p= p.reduce()AQUI É PARA REDUZIR A DIFERENTES VALORES
-       p = p.sort((a, b)=>{return a-b;
+       p = p.sort((a, b)=>{return a[0]-b[0];
         }).filter(
             (element , index, array) => {
 
         if (index == 0) {
-           console.log("element");
-          // console.log(element[0].toString().split('-').join(''));
+           //console.log("element");
+           console.log(element[0].toString().split('-').join(''));
           // console.log("Element is Viable");
           // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
           return true;
         } else {
           // console.log("element");
-          // console.log(element[0].toString().split('-').join(''));
+           console.log(element[0].toString().split('-').join(''));
           // console.log("Element is Viable");
           // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
           return element[0] != array[index - 1][0];
         }
       });
-      console.log("please show me ")
-      console.log(p);
+      //console.log("please show me ")
+      //console.log(p);
        this.options.series[0].data = p;
        console.log(this.options.series[0]);
 
@@ -222,8 +222,8 @@ export class LinhaTemporalComponent implements OnInit {
           data: [[new Date('2018-01-25 18:38:31').getTime(), 2]]
         }
       ]*/
-      console.log('argumentos');
-      console.log(this.argumentos);
+      //console.log('argumentos');
+      //console.log(this.argumentos);
       this.options.series = [];
       for (let tr = 0; tr <= max_series + 1; tr++ ) {
         p[tr] = [];
