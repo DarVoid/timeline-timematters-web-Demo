@@ -224,7 +224,7 @@ export class KeywordExctractionComponent implements OnInit {
     this.languageOptions = ['auto-detect', 'English', 'Portuguese', 'Spanish', 'German', 'Dutch', 'Italian', 'French'];
     this.languagueSelected = this.languageOptions[0];
     this.maxValTH = 1;
-    this.dateBegin = new Date().getFullYear();
+    this.dateBegin = 0;
     this.dateEnd = 2100;
     this.numberOfKeyWords = 10;
     this.contextWindow = 'full_sentence';
@@ -269,6 +269,16 @@ export class KeywordExctractionComponent implements OnInit {
       }
     }
     this.update();
+  }
+  selecionarDataFim(event:any){
+    this.dateEnd = event.target.value;
+    console.log(event.target.value);
+    
+  }
+  selecionarDataInicio(event:any){
+    this.dateBegin = event.target.value;
+    console.log(event.target.value);
+    
   }
   toggleKeywords() {
     this.withKeywords = !this.withKeywords;
@@ -645,6 +655,8 @@ export class KeywordExctractionComponent implements OnInit {
             numberOfKeywords : this.numberOfKeyWords,
             nContextualWindow: j,
             documentType: this.documentTypeSelected,
+            dateBegin: this.dateBegin,
+            dateEnd: this.dateEnd,
             n: k,
             tH: this.TH
           };

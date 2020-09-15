@@ -61,7 +61,7 @@
             <div *ngIf="!showOnlyRel else onlyRel">
               <table class="table table-borderless">
                 <tbody *ngFor="let item of dataset">
-                  <tr (click)="putOnClipboard($event,item.x)">
+                  <tr >
                     <td><h3>{{item.x}}</h3></td><!--meter .substrin(0,10 para so ano)-->
                     <td class="TabelaTexto" [innerHTML]="item.y | safe:'html'"></td>
                   </tr>

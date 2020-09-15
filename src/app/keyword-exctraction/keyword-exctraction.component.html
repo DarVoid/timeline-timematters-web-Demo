@@ -68,7 +68,7 @@
             <div *ngIf="!showOnlyRel else onlyRel">
               <table class="table table-borderless">
                 <tbody *ngFor="let item of dataset">
-                  <tr (click)="putOnClipboard($event,item.y)">
+                  <tr >
                     <td><h3>{{item.x}}</h3></td><!--meter .substrin(0,10 para so ano)-->
                     <td class="TabelaTexto" [innerHTML]="item.y | safe:'html'"></td>
                   </tr>
@@ -294,13 +294,13 @@
                     <span title="inferior year limit">
                         <mat-form-field name="beginDateControl" color="warn">
                           <mat-label>Begin Date</mat-label>
-                          <input matInput type="number" name="dataInicio"  min="0" value="{{dateBegin}}"/>
+                          <input matInput (change)="selecionarDataInicio($event)"type="number" name="dataInicio"  min="0" value="{{dateBegin}}"/>
                         </mat-form-field>
                     </span>
                       <span title="superior year limit">
                         <mat-form-field name="endDateControl" color="warn">
                           <mat-label>End Date</mat-label>
-                          <input matInput type="number" name="dataFim" placeholder="2100" min="0" value="2100"/>
+                          <input matInput (change)="selecionarDataFim($event)"  type="number" name="dataFim" placeholder="2100" min="0" value="2100"/>
                         </mat-form-field>
                       </span>
                       <span>

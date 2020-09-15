@@ -20,6 +20,7 @@ export class TimelineService {
 
   public getTextKeyDateFromSingleDoc(search: string, options: any): Observable<any> {
       const formData = new FormData();
+      
       console.log('options');
       console.log(options);
       let realURL = this.url + '/SingleDoc';
@@ -29,127 +30,53 @@ export class TimelineService {
         realURL += '/RuleBased/api/v1.0';
       }
       if (options.docOrSentence === 'doc') {
-        realURL += '/ScoreByDoc?';
+        realURL += '/ScoreByDoc';
       } else {
-        realURL += '/ScoreBySentence?';
+        realURL += '/ScoreBySentence';
       }
       formData.append('text', search);
-      let caracterfinal = realURL.charAt(realURL.length - 1);
 
       if (options.docCreatTime) {
-
-          if (caracterfinal == '?') {
-            realURL += 'document_creation_time=' + options.docCreatTime;
-          } else {
-            realURL += '&document_creation_time=' + options.docCreatTime;
-          }
-          caracterfinal = realURL.charAt(realURL.length - 1);
+        formData.append('document_creation_time', options.docCreatTime);
         
       }
       if (options.dateGranularity) {
-
-        if (caracterfinal == '?') {
-          realURL += 'date_granularity=' + options.dateGranularity;
-        } else {
-          realURL += '&date_granularity=' + options.dateGranularity;
-        }
-        caracterfinal = realURL.charAt(realURL.length - 1);
+        formData.append('date_granularity', options.dateGranularity);
 
       }
       if (options.language) {
-
-          if (caracterfinal == '?') {
-            realURL += 'language=' + options.language;
-          } else {
-            realURL += '&language=' + options.language;
-          }
-          caracterfinal = realURL.charAt(realURL.length - 1);
+        formData.append('language', options.language);
       }
       if (options.documentType) {
-
-        if (caracterfinal == '?') {
-          realURL += 'document_type=' + options.documentType;
-        } else {
-          realURL += '&document_type=' + options.documentType;
-        }
-        caracterfinal = realURL.charAt(realURL.length - 1);
+        formData.append('document_type', options.documentType);
       }
       if (options.tH) {
-
-        if (caracterfinal == '?') {
+        formData.append('TH', options.tH);
           if (options.tH>1){
-            realURL += 'TH=' + "1";
-          }else{
-            realURL += 'TH=' + options.tH;
+            formData.append('TH', "1");
           }
-        } else {
-          if (options.tH>1){
-            realURL += '&TH=' + "1";
-          }else{
-            realURL += '&TH=' + options.tH;
-          }
-        }
-        caracterfinal = realURL.charAt(realURL.length - 1);
       }
       if (options.n) {
         if (options.algo == 'py_heideltime') {
-
-          if (caracterfinal == '?') {
-            realURL += 'N=' + options.n*1;
-          } else {
-            realURL += '&N=' + options.n*1;
-          }
-          caracterfinal = realURL.charAt(realURL.length - 1);
-
-
+          formData.append('N', options.n);
         }
       }
       if (options.nContextualWindow) {
-
-        if (caracterfinal == '?') {
-          realURL += 'n_contextual_window=' + options.nContextualWindow;
-        } else {
-          realURL += '&n_contextual_window=' + options.nContextualWindow;
-        }
-        caracterfinal = realURL.charAt(realURL.length - 1);
+        formData.append('n_contextual_window', options.nContextualWindow);
       }
       if (options.number_of_keywords) {
-
-        if (caracterfinal == '?') {
-          realURL += 'number_of_keywords=' + options.numberOfKeywords;
-        } else {
-          realURL += '&number_of_keywords=' + options.numberOfKeywords;
-        }
-        caracterfinal = realURL.charAt(realURL.length - 1);
+        formData.append('number_of_keywords', options.numberOfKeywords);
       }
       if (options.ngram) {
-
-        if (caracterfinal == '?') {
-          realURL += 'ngram=' + options.ngram;
-        } else {
-          realURL += '&ngram=' + options.ngram;
-        }
-        caracterfinal = realURL.charAt(realURL.length - 1);
+        formData.append('ngram', options.ngram);
       }
       if (options.dateBegin) {
-
-          if (caracterfinal == '?') {
-            realURL += 'begin_date=' + options.dateBegin;
-          } else {
-            realURL += '&begin_date=' + options.dateBegin;
-          }
-          caracterfinal = realURL.charAt(realURL.length - 1);
+        formData.append('begin_date', options.dateBegin);
 
         
       }
       if (options.dateEnd) {
-
-          if (caracterfinal == '?') {
-            realURL += 'end_date=' + options.dateEnd;
-          } else {
-            realURL += '&end_date=' + options.dateEnd;
-          }
-          caracterfinal = realURL.charAt(realURL.length - 1);
+        formData.append('end_date', options.dateEnd);
 
         
       }

@@ -147,6 +147,16 @@ export class QuerysingledocComponent implements OnInit {
     console.log(event);
     this.contextFullSentence = event.checked;
   }
+  selecionarDataFim(event:any){
+    this.dateEnd = event.target.value;
+    console.log(event.target.value);
+    
+  }
+  selecionarDataInicio(event:any){
+    this.dateBegin = event.target.value;
+    console.log(event.target.value);
+    
+  }
   update() {
     if (this.requestMade) {
       this.opcoes = {
