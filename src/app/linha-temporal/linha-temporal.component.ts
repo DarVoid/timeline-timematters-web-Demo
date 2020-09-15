@@ -194,13 +194,13 @@ export class LinhaTemporalComponent implements OnInit {
 
         if (index == 0) {
            //console.log("element");
-           console.log(element[0].toString().split('-').join(''));
+          // console.log(element[0].toString().split('-').join(''));
           // console.log("Element is Viable");
           // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
           return true;
         } else {
           // console.log("element");
-           console.log(element[0].toString().split('-').join(''));
+          // console.log(element[0].toString().split('-').join(''));
           // console.log("Element is Viable");
           // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
           return element[0] != array[index - 1][0];
@@ -209,12 +209,12 @@ export class LinhaTemporalComponent implements OnInit {
       //console.log("please show me ")
       //console.log(p);
        this.options.series[0].data = p;
-       console.log(this.options.series[0]);
+      // console.log(this.options.series[0]);
 
     } else {
       let max_series = this.numSen;
-       console.log("numsen");
-       console.log(max_series);
+      // console.log("numsen");
+      // console.log(max_series);
 
       /*series: [
         { name:'scores',
