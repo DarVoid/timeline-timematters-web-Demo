@@ -30,6 +30,7 @@ export class TimelineScrollComponent implements OnInit {
   public jsonText: string;
   public isnotset:boolean;
   public loading:boolean;
+  public relevant_string:string;
   constructor(private _snackBar: MatSnackBar, private yake:YakeService, private arquivo:ArquivoService) {
     // console.log(this.TLObj);
     this.rendering = 'rendering';
@@ -37,6 +38,8 @@ export class TimelineScrollComponent implements OnInit {
     this.isSet = false;
     this.isnotset = true;
     this.loading = false;
+    this.relevant = true;
+    this.relevant_string = "Showing relevant dates only";
    }
 
   ngOnInit() {
@@ -55,15 +58,14 @@ export class TimelineScrollComponent implements OnInit {
       this.isSet = true;
     }
     if (this.relevant) {
-      this.relevant = false;
-    } else {
-      this.relevant = true;
-    }
-    if (this.relevant) {
       this.argumentos = this.argumentosRelevantes;
+      this.relevant_string = "Showing relevant dates only";
+      this.relevant = false;
 
     } else {
       this.argumentos = this.argumentosTodos;
+      this.relevant_string = "Showing all dates";
+      this.relevant = true;
 
     }
     this.loading= true;

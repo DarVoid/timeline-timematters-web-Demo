@@ -398,7 +398,7 @@ app-frame {
   line-height: 15px;
   font-weight: normal;
   margin: 0 0 3px 0;
-  color: red !important;
+  color:  rgba(0,64,107,0.89) !important;
 }
 
 .tl-timeline p {
@@ -412,3 +412,7 @@ app-frame {
 }
 // QUERYSINGLEDOC page
 
+.tl-credit{
+    overflow: hidden;
+    white-space: nowrap;
+}
