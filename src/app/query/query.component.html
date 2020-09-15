@@ -80,7 +80,7 @@
               </table>
             </ng-template>
           </mat-tab>
-          
+
           <!-- TIMELINE -->
           <mat-tab label="Timeline" *ngIf="options.result && dataset.length>0"  > <!-- *ngIf="options.docOrSentence"--> 
             <app-linha-temporal [docSen]="options.docOrSentence=='doc'" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
@@ -109,7 +109,7 @@
       </div>
 
       <div class="col-lg-12 text-right">
-        <a *ngIf="options" color="primary" (click)="goBack()" href="/time-matters"><button type="reset" class="btn btn-link">Go Back</button></a>
+        <!--<a *ngIf="options" color="primary" (click)="goBack()" href="/time-matters"><button type="reset" class="btn btn-link">Go Back</button></a>-->
         <button *ngIf="options" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
       </div>
   </div>

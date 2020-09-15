@@ -68,7 +68,7 @@
             <div *ngIf="!showOnlyRel else onlyRel">
               <table class="table table-borderless">
                 <tbody *ngFor="let item of dataset">
-                  <tr (click)="putOnClipboard($event,item.x)">
+                  <tr (click)="putOnClipboard($event,item.y)">
                     <td><h3>{{item.x}}</h3></td><!--meter .substrin(0,10 para so ano)-->
                     <td class="TabelaTexto" [innerHTML]="item.y | safe:'html'"></td>
                   </tr>
@@ -140,10 +140,7 @@
                   <button (click)="setDefaultText(1,'French')"  mat-menu-item >
                     <span>FR - Politics</span>
                   </button>
-                  <div class="divider"></div>
-                  <button (click)="setDefaultText(2,'Italian')" mat-menu-item>
-                    <span>IT - Sports </span>
-                  </button>
+                  
                   <div class="divider"></div>
                   <button (click)="setDefaultText(3,'Portuguese')" mat-menu-item>
                     <span>PT - Politics </span>

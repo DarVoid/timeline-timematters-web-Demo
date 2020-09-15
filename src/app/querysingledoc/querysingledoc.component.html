@@ -180,7 +180,9 @@
   </form>
 </div>
 
-  <ng-template #mostra>
+  <ng-template #mostra><div class="col-lg-12 text-right">
+    <button  class="btn btn-link" (click)="goBack()" type="button">GO BACK</button>
+  </div>
     <app-query [article]="resultado" [options]="opcoes" > </app-query>
 
 <!--
@@ -193,7 +195,6 @@
 
     </div>-->
   </ng-template>
-
 
 
 

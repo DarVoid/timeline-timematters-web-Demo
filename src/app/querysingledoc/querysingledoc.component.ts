@@ -81,6 +81,30 @@ export class QuerysingledocComponent implements OnInit {
       this.url = 'https://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/';
     }
   }
+  goBack(){
+    this.algoritmoSelected = this.algoritmosDate[0];
+    this.dateGranularitySelected = this.dateGranularityOptions[0];
+    this.documentTypeSelected = this.documentTypeOptions[0];
+    this.languagueSelected = this.languageOptions[0];
+    this.dateBegin = 0;
+    this.dateEnd = 2100;
+    this.maxValTH = 1;
+    this.numberOfKeyWords = 10;
+    this.contextWindow = 1;
+    this.contextFullSentence = true;
+    this.simbaValueMax = true;
+    this.simbaValue = 1;
+    this.cheating = false;
+    this.showOnlyRel = false;
+    this.ngramSelected = 1;
+    this.byDocOrSentece = true;
+    this.hiddenoptionKW = false;
+    this.hiddenoption = false;
+    this.loading = false;
+    this.requestMade = false;
+    this.hiddenoptionTM = false;
+    this.TH=0.05;
+  }
   changeTH(event:any){
     
     if(event.preventDefault){
