@@ -40,9 +40,9 @@
                 <br>
 
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
-                <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleKeywords()">{{withKeywordsSentence}}</mat-slide-toggle>
+                <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleKeywords()">Keywords On</mat-slide-toggle>
                 <br>
-                <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleRel()">{{showOnlyRel?"Showing relevant dates only":"Showing All Dates"}}</mat-slide-toggle>
+                <mat-slide-toggle class="afterAnnotated" color="warn" (click)="toggleRel()">Show only relevant dates </mat-slide-toggle>
                 <!--EM CIMA-->
                 <br>
                 <br>
@@ -62,7 +62,7 @@
               <table class="table table-borderless">
                 <tbody *ngFor="let item of dataset">
                   <tr >
-                    <td><h3>{{item.x}}</h3></td><!--meter .substrin(0,10 para so ano)-->
+                    <td><h3>{{item.x}}</h3></td><!--meter .substrin(0,10 para so ano)--> <!--TIAGO METE AZUL CLASS NO H3-->
                     <td class="TabelaTexto" [innerHTML]="item.y | safe:'html'"></td>
                   </tr>
                 </tbody>
