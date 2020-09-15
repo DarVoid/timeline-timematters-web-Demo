@@ -30,6 +30,7 @@ export class TimelineScrollComponent implements OnInit {
   public isnotset:boolean;
   public loading:boolean;
   public relevant_string:string;
+  public scheduler: any;
   constructor(private _snackBar: MatSnackBar, private yake:YakeService, private arquivo:ArquivoService) {
     // console.log(this.TLObj);
     this.isSet = false;
@@ -116,21 +117,23 @@ export class TimelineScrollComponent implements OnInit {
               }
 
               if(h == this.argumentos.length-1){
-                this.loading  = false;
-                let a = setTimeout(function(){ 
-                  j = {events: events};
-                  this.jsonText = j;
-                  console.log(j);
-                  const additionalOptions = {
-                    start_at_end: false,
-                    timenav_height: 10,
-                    default_bg_color: {r: 255, g: 255, b: 255},
-                    trackResize: "false"
-                  };
-                  
-                  // tslint:disable-next-line: no-unused-expression
-                  new TL.Timeline('my-timeline', j, additionalOptions);
-                }, 1500); //tentar por isto com um w8 for all
+                this.scheduler = setTimeout(()=>{
+                  this.loading  = false;
+                    j = {events: events};
+                    this.jsonText = j;
+                    console.log(j);
+                    const additionalOptions = {
+                      start_at_end: false,
+                      timenav_height: 10,
+                      default_bg_color: {r: 255, g: 255, b: 255},
+                      trackResize: "false"
+                    };
+                    
+                    // tslint:disable-next-line: no-unused-expression
+                    new TL.Timeline('my-timeline', j, additionalOptions);
+                  return;
+                }, 1000); //wait ten seconds before continuing
+                
 
                
               }
