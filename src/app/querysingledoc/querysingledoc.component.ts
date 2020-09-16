@@ -271,6 +271,9 @@ export class QuerysingledocComponent implements OnInit {
   toggleOption() {
     this.hiddenoption = !this.hiddenoption;
   }
+  forceUnicodeEncoding(cons:string) {
+    return unescape(encodeURIComponent(cons));
+  }
   showArticle(event: any) {
     event.preventDefault();
     this.loading = true;
@@ -333,6 +336,7 @@ export class QuerysingledocComponent implements OnInit {
             // pedido recebido aqui
 
             console.log(res2);
+            console.log(this.artigo.text);
             if (res2.message) {
               this._snackBar.open('This URL has no data we can use', ':(', {
                 duration: 2000
