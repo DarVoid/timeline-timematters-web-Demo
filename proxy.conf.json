@@ -1,0 +1,10 @@
+{
+  "/apiurl/*": {
+    "target": "https://tm-websuiteapps.ipt.pt/",
+    "secure": true,
+    "pathRewrite": {
+    "^/apiurl": ""
+  }
+    ,"changeOrigin": true
+  }
+}

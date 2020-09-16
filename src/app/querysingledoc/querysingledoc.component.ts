@@ -286,7 +286,7 @@ export class QuerysingledocComponent implements OnInit {
         console.log(res);
         this.artigo = res;
         console.log('texto artigo');
-        console.log(this.artigo.text);
+        console.log(this.artigo.content);
         // this.documentCreationTime="";
         // tslint:disable-next-line: max-line-length
         if (res.date_creation) {
@@ -325,20 +325,15 @@ export class QuerysingledocComponent implements OnInit {
             break;
           }
         this.update();
-        console.log('artigo');
-        console.log(this.artigo.text);
-        this.timeline.getTextKeyDateFromSingleDoc(this.artigo.text, this.opcoes).pipe(take(1)).subscribe((res2) => {
+        this.timeline.getTextKeyDateFromSingleDoc(this.artigo.content, this.opcoes).pipe(take(1)).subscribe((res2) => {
 
           if (res2) {
-            // console.log('nice');
+             console.log(res2);
             this.resultado = res2;
 
             // pedido recebido aqui
-
-            console.log(res2);
-            console.log(this.artigo.text);
             if (res2.message) {
-              this._snackBar.open('Sorry, but we were not able to extract any results due to an error on time-matters. Article length:', this.artigo.text.length, {
+              this._snackBar.open('Sorry, but we were not able to extract any results due to an error on time-matters. Article length:', this.artigo.content.length, {
                 duration: 4000
               });
               this.requestMade = false;

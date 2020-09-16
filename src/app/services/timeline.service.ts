@@ -34,8 +34,8 @@ export class TimelineService {
       } else {
         realURL += '/ScoreBySentence';
       }
-      console.log(search.split('\"').join('\'\'').split("“").join("\"").split("”").join("\""));
-      formData.append('text', search.split('\"').join('\'\'').split("“").join("\"").split("”").join("\""));
+      console.log(search.split('\"').join('\'\'').split("“").join("\"").split("”").join("\"").split("’").join("\'"));
+      formData.append('text', search.split('\"').join('\'\'').split("“").join("\"").split("”").join("\"")); 
 
       if (options.docCreatTime) {
         formData.append('document_creation_time', options.docCreatTime);

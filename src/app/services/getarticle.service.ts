@@ -11,14 +11,16 @@ export class GetarticleService {
   url2: string;
   constructor(private http: HttpClient) {
     // this.url2 = 'https://tm-websuiteapps.ipt.pt/url2content/api/v1.0/parse';
-    this.url = 'https://langdec-api-heroku.herokuapp.com/getarticle/';
-    //this.url =https://tm-websuiteapps.ipt.pt/url2content/api/v1.0/parse?url=
+    //this.url = 'https://langdec-api-heroku.herokuapp.com/getarticle/';
+    this.url = '/apiurl/url2content/api/v1.0/parse?url='
   }
 
-    public getArticles(search: string): Observable<any> {
-      const formData = new FormData();
-      formData.append('url', search);
-      return this.http.post(this.url, formData,
+    public getArticles(search: any): Observable<any> {
+      //const formData = new FormData();
+      console.log(search);
+      let realurl = this.url + search;
+      //formData.append('text', search); // change text to url if teacher's
+      return this.http.get(realurl//, formData,
           ).pipe(map((res, err) => {
         if (res) {
           console.log(res);
