@@ -338,8 +338,8 @@ export class QuerysingledocComponent implements OnInit {
             console.log(res2);
             console.log(this.artigo.text);
             if (res2.message) {
-              this._snackBar.open('This URL has no data we can use', ':(', {
-                duration: 2000
+              this._snackBar.open('Sorry, but we were not able to extract any results due to an error on time-matters. Article length:', this.artigo.text.length, {
+                duration: 4000
               });
               this.requestMade = false;
               this.loading = false;

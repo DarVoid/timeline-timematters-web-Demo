@@ -341,7 +341,7 @@ export class KeywordExctractionComponent implements OnInit {
   }
   fullSentence(event: any) {
     console.log('full_sentence?');
-    console.log(event);
+    console.log(event.checked);
     this.contextFullSentence = event.checked;
   }
   selecionarContextualWindow(event: any) {
