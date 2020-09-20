@@ -103,15 +103,15 @@ export class TimelineScrollComponent implements OnInit {
               let url2=res2.responseItems[0].imgLinkToArchive;
               console.log("Storyline rule-based");
               if (this.argumentos[h].x.length == 4) {
-                events.push({ start_date:  { year: this.argumentos[h].x},media:{thumbnail: url2, url:url2,link: url2, credit: '<p>powered by Arquivo.pt</p>'}, text: { headline : '<p class="changeCaptio">'+captio.substring(0,1).toUpperCase()+captio.substring(1,captio.length)+'</p>', text: this.argumentos[h].y}}); //
+                events.push({ start_date:  { year: this.argumentos[h].x},media:{thumbnail: url2, url:url2,link: url2, credit: '<p class="textoArquivo" >powered by Arquivo.pt</p>'}, text: { headline : '<p class="changeCaptio">'+captio.substring(0,1).toUpperCase()+captio.substring(1,captio.length)+'</p>', text: this.argumentos[h].y}}); //
         
               } else if (this.argumentos[h].x.split('-').length === 2) {
                 // tslint:disable-next-line: max-line-length
-                events.push({start_date:  {year: this.argumentos[h].x.split('-')[0],month: this.argumentos[h].x.split('-')[1] },media:{thumbnail: url2,url:url2,link: url2, credit: '<p>powered by Arquivo.pt</p>'}, text: { headline : "<p>"+captio.substring(0,1).toUpperCase()+captio.substring(1,captio.length)+"</p>", text: this.argumentos[h].y}});
+                events.push({start_date:  {year: this.argumentos[h].x.split('-')[0],month: this.argumentos[h].x.split('-')[1] },media:{thumbnail: url2,url:url2,link: url2, credit: '<p class="textoArquivo">powered by Arquivo.pt</p>'}, text: { headline : "<p>"+captio.substring(0,1).toUpperCase()+captio.substring(1,captio.length)+"</p>", text: this.argumentos[h].y}});
               } else {
                 //,media:{url:url2, caption:captio}
                 // tslint:disable-next-line: max-line-length
-                events.push({start_date:  {year: this.argumentos[h].x.substring(0,10).split('-')[0],month: this.argumentos[h].x.substring(0,10).split('-')[1], day: this.argumentos[h].x.substring(0,10).split('-')[2] },media:{thumbnail: url2,url:url2,link: url2, credit: '<p>powered by Arquivo.pt</p>'}, text: { headline : "<p>"+captio.substring(0,1).toUpperCase()+captio.substring(1,captio.length)+"</p>", text: this.argumentos[h].y}}); 
+                events.push({start_date:  {year: this.argumentos[h].x.substring(0,10).split('-')[0],month: this.argumentos[h].x.substring(0,10).split('-')[1], day: this.argumentos[h].x.substring(0,10).split('-')[2] },media:{thumbnail: url2,url:url2,link: url2, credit: '<p class="textoArquivo">powered by Arquivo.pt</p>'}, text: { headline : "<p>"+captio.substring(0,1).toUpperCase()+captio.substring(1,captio.length)+"</p>", text: this.argumentos[h].y}}); 
               }
 
               if(h == this.argumentos.length-1){

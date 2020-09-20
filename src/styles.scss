@@ -43,7 +43,7 @@ p.noticeme{
 }
 
 .noticem3 {
-  padding-top: 30px;
+  padding-top: 20px;
   color:black !important;
 }
 
@@ -410,9 +410,15 @@ app-frame {
   margin-top: 0px;
   padding-top: 0px;
 }
+
+.tl-timeline p.textoArquivo {
+  font-size: 13px !important;
+}
+
 // QUERYSINGLEDOC page
 
 .tl-credit{
     overflow: hidden;
     white-space: nowrap;
 }
+
