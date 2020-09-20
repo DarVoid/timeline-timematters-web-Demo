@@ -36,7 +36,7 @@ export class TimelineService {
       }
       console.log(search.split('\"').join('\'\'').split("“").join("\"").split("”").join("\"").split("’").join("\'"));
       formData.append('text', search.split('\"').join('\'\'').split("“").join("\"").split("”").join("\"")); 
-
+      /*
       if (options.docCreatTime) {
         formData.append('document_creation_time', options.docCreatTime);
         
@@ -82,7 +82,7 @@ export class TimelineService {
         
       }
       if (options.result) {
-      }
+      }*/
       console.log("pedido FINAL");
       console.log(realURL);
       return this.http.post(realURL, formData
