@@ -21,6 +21,16 @@
   padding-left: 20px;
 }
 
+@media screen and (max-width:575px) {
+  .miniText{
+    font-size: 23px;
+  }
+  
+  .miniText2 {
+    font-size: 14px;
+  }
+}
+
 @import '~@angular/material/theming';
 
 @include mat-core();
@@ -40,7 +50,6 @@ $app-theme: mat-light-theme($app-primary, $app-accent);
     color: white;
     text-align: center;
     background-color: #d10019;
-    /*background-color: #cc4625; */
     font-family: 'Work Sans', sans-serif;
   }
 
@@ -48,6 +57,7 @@ $app-theme: mat-light-theme($app-primary, $app-accent);
     font-size: 18px;
     color: #ffffff;
   }
+
   .mat-menu-item:hover, .mat-list-item:hover {
    background-color: rgba(0,64,107,0.89);
   }
@@ -80,7 +90,6 @@ $app-theme: mat-light-theme($app-primary, $app-accent);
   }
 
   mat-sidenav {
-   /* background-color: #cc4625;*/ 
    background-color: #d10019;
   }
 
