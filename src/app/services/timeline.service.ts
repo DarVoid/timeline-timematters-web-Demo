@@ -26,8 +26,25 @@ export class TimelineService {
       let realURL = this.url + '/SingleDoc';
       if (options.algo === 'py_heideltime') {
         realURL += '/Heideltime/api/v1.0';
+        if (options.docCreatTime) {
+          formData.append('document creation time', options.docCreatTime);
+          if (options.language) {
+            formData.append('language', options.language);
+          }
+          
+        }
       } else {
         realURL += '/RuleBased/api/v1.0';
+        if (options.dateBegin ) {
+          formData.append('begin_date', options.dateBegin);
+  
+          
+        }
+        if (options.dateEnd) {
+          formData.append('end_date', options.dateEnd);
+  
+          
+        }
       }
       if (options.docOrSentence === 'doc') {
         realURL += '/ScoreByDoc';
@@ -36,17 +53,10 @@ export class TimelineService {
       }
       console.log(search.split('\"').join('\'\'').split("“").join("\"").split("”").join("\"").split("’").join("\'"));
       formData.append('text', search.split('\"').join('\'\'').split("“").join("\"").split("”").join("\"")); 
-      /*
-      if (options.docCreatTime) {
-        formData.append('document_creation_time', options.docCreatTime);
-        
-      }
+      
       if (options.dateGranularity) {
         formData.append('date_granularity', options.dateGranularity);
 
-      }
-      if (options.language) {
-        formData.append('language', options.language);
       }
       if (options.documentType) {
         formData.append('document_type', options.documentType);
@@ -71,18 +81,8 @@ export class TimelineService {
       if (options.ngram) {
         formData.append('ngram', options.ngram);
       }
-      if (options.dateBegin && options.algo != 'py_heideltime') {
-        formData.append('begin_date', options.dateBegin);
-
-        
-      }
-      if (options.dateEnd && options.algo != 'py_heideltime') {
-        formData.append('end_date', options.dateEnd);
-
-        
-      }
       if (options.result) {
-      }*/
+      }
       console.log("pedido FINAL");
       console.log(realURL);
       return this.http.post(realURL, formData

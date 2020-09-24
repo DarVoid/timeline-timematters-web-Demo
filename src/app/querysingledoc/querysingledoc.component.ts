@@ -294,7 +294,7 @@ export class QuerysingledocComponent implements OnInit {
           this.documentCreationTime = new Date(res.date_creation).getFullYear() + '-' + new Date(res.date_creation).getMonth() + '-' + new Date(res.date_creation).getDate();
           console.log(this.documentCreationTime);
         }
-        switch (res.language) {
+        switch (res.lang) {
           case 'en':
 
             this.languagueSelected = 'English';
@@ -318,8 +318,8 @@ export class QuerysingledocComponent implements OnInit {
             this.languagueSelected = 'Spanish';
             break;
           default:
-            console.log(res.language);
-            this._snackBar.open('Language not supported', res.language, {
+            console.log(res);
+            this._snackBar.open('Language not supported', res.lang, {
               duration: 2000
             });
             break;
