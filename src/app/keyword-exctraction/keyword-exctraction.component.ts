@@ -485,14 +485,25 @@ export class KeywordExctractionComponent implements OnInit {
             let sentence_to_write= this.result.SentencesNormalized.map((a)=>{
               //console.log(a);
               //console.log(a.toString().search(Object.keys(this.result.Score)[i]))
-              if(a.toLowerCase().toString().search(Object.keys(this.result.Score)[i])!=-1){
+              if(a.toLowerCase().toString().search(Object.keys(this.result.Score)[i].toLowerCase())!=-1){
                 let nova= a.replace(value_to_be_replaced,value_to_replace_for);
-                nova= a.replace(value_to_be_replaced.toLocaleUpperCase(),value_to_replace_for);//.toLowerCase().toString().replace(Object.keys(this.result.Score)[i].toLowerCase(), )
+                console.log(nova);
+                nova= nova.replace(value_to_be_replaced.toUpperCase(),value_to_replace_for);//.toLowerCase().toString().replace(Object.keys(this.result.Score)[i].toLowerCase(), )
+                console.log(nova);
                 return nova;
               }
             });
             
             sentence_to_write = sentence_to_write.join("__,");
+            this.result.TempExpressions.map((a)=>{
+              console.log(a);
+              if(sentence_to_write.search(a[0])!=-1){
+                sentence_to_write = sentence_to_write.replace(a[0],a[1]);
+              }
+              if(sentence_to_write.search(a[0].toUpperCase())!=-1){
+                sentence_to_write = sentence_to_write.replace(a[0].toUpperCase(),a[1]);
+              }
+            });
             sentence_to_write = sentence_to_write.split("__,").filter((aasd)=>{return aasd.length!=0})[0];
             //console.log(sentence_to_write);
             a = '<p class="noticem3">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][0] + '</p><p>'+sentence_to_write+'</p>';
