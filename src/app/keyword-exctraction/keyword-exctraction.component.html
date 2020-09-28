@@ -35,7 +35,7 @@
                 
               </span>
                 <hr>
-                <app-frame [argumentos]="result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>
+                <app-frame [argumentos]="result" [showOnlyRelevants]="showOnlyRelSnap" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>
                 <hr>
                 <div class="dateScoreColors">
                   <span><b>{{!showOnlyRel?"5": "4"}}-color likert relevance scale:   </b></span>
@@ -49,7 +49,7 @@
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
                 <mat-slide-toggle class="afterAnnotated"  color="warn" (click)="toggleKeywords()">Keywords On</mat-slide-toggle>
                 <br>
-                <mat-slide-toggle class="afterAnnotated" [checked]="showOnlyRel" color="warn" (click)="toggleRel()">Show only relevant dates</mat-slide-toggle>
+                <mat-slide-toggle class="afterAnnotated" (toggleChange)="toggleRel()" [checked]="showOnlyRelSnap" color="warn" >Show only relevant dates</mat-slide-toggle>
                 <!--EM CIMA-->
                 <br>
                 <br>
@@ -63,7 +63,7 @@
           <mat-tab label="Temporal Clustering" *ngIf="dataset.length>0">
             
             <br>
-            <mat-slide-toggle (click)='toggleRel()' [checked]="showOnlyRel" class="afterAnnotated" color="warn" >{{showOnlyRel?"Showing relevant dates only":"Showing all dates"}}</mat-slide-toggle>
+            <mat-slide-toggle (toggleChange)='toggleRel()' [checked]="showOnlyRelSnap" class="afterAnnotated" color="warn" >Show only relevant dates</mat-slide-toggle>
             <br><br>
             <div *ngIf="!showOnlyRel else onlyRel">
               <table class="table table-borderless">

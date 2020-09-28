@@ -51,6 +51,7 @@ export class KeywordExctractionComponent implements OnInit {
   public simbaValue: number;
   public cheating: boolean;
   public showOnlyRel: boolean;
+  public showOnlyRelSnap: boolean;
   public differentValues: Array<any>;
   public differentRelValues: Array<any>;
   public contextFullSentence: boolean;
@@ -231,6 +232,7 @@ export class KeywordExctractionComponent implements OnInit {
     this.simbaValue = 10;
     this.cheating = false;
     this.showOnlyRel = true;
+    this.showOnlyRelSnap = true;
     this.TH = 0.05;
   }
   toggleOptionKeywords() {
@@ -242,7 +244,9 @@ export class KeywordExctractionComponent implements OnInit {
   }
 
   toggleRel() {
+    
     this.showOnlyRel = !this.showOnlyRel;
+    this.showOnlyRelSnap = this.showOnlyRel;
   }
   
   changeTH(event:any){
