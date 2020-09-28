@@ -42,7 +42,7 @@
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
                 <mat-slide-toggle class="afterAnnotated" color="warn" (toggleChange)="toggleKeywords()">Keywords On</mat-slide-toggle>
                 <br>
-                <mat-slide-toggle class="afterAnnotated" color="warn" (toggleChange)="toggleRel()">Show only relevant dates </mat-slide-toggle>
+                <mat-slide-toggle class="afterAnnotated" color="warn" [checked]="showOnlyRel" (toggleChange)="toggleRel()">Show only relevant dates </mat-slide-toggle>
                 <!--EM CIMA-->
                 <br>
                 <br>
