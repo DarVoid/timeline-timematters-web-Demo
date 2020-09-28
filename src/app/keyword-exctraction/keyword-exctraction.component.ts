@@ -476,13 +476,22 @@ export class KeywordExctractionComponent implements OnInit {
           if (this.byDocOrSentece) {
             //descobrir se este é sentence ou doc
             console.log("resultado");
-            console.log(Object.keys(this.result.Score)[i]);
+            let value_to_be_replaced=Object.keys(this.result.Score)[i];
+            console.log(value_to_be_replaced);
+            //[Object.keys(this.result.Score)[i].toLowerCase()]);
+            let value_to_replace_for = this.result.TempExpressions.filter((a)=>{return a[0].toLowerCase()==Object.keys(this.result.Score)[i];}
+            )[0][1];
+            console.log(value_to_replace_for);
             let sentence_to_write= this.result.SentencesNormalized.map((a)=>{
               //console.log(a);
               //console.log(a.toString().search(Object.keys(this.result.Score)[i]))
-              if(a.toLowerCase().toString().search(Object.keys(this.result.Score)[i])!=-1)
-              return a;
+              if(a.toLowerCase().toString().search(Object.keys(this.result.Score)[i])!=-1){
+                let nova= a.replace(value_to_be_replaced,value_to_replace_for);
+                nova= a.replace(value_to_be_replaced.toLocaleUpperCase(),value_to_replace_for);//.toLowerCase().toString().replace(Object.keys(this.result.Score)[i].toLowerCase(), )
+                return nova;
+              }
             });
+            
             sentence_to_write = sentence_to_write.join("__,");
             sentence_to_write = sentence_to_write.split("__,").filter((aasd)=>{return aasd.length!=0})[0];
             //console.log(sentence_to_write);
@@ -498,7 +507,6 @@ export class KeywordExctractionComponent implements OnInit {
             // tslint:disable-next-line: forin
             for (const xd in this.result.Score[Object.keys(this.result.Score)[i]]) {
               // if()
-
               d.push({x: Object.keys(this.result.Score)[i], y: this.result.Score[Object.keys(this.result.Score)[i]][xd][0], series: xd});
               // console.log(d);
               
