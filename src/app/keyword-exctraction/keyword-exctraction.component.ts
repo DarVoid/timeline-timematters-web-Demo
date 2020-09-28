@@ -527,7 +527,9 @@ export class KeywordExctractionComponent implements OnInit {
           // console.log("b");
           // console.log(b);
           // console.log("end");
-
+          //a2 = a2.replace()
+          //a2 = a2.replace()
+          
           c2.push({x: b2, y: a2, z: d2});
           c.push({x: b, y: a, z: d});
             // console.log();
