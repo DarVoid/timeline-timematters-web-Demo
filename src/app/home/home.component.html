@@ -8,7 +8,7 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar class="navSideTitle">Time-Matters Demo</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item class="mat-list-item" href="/time-matters">Home <span class="material-icons">home</span></a>
+      <a mat-list-item class="mat-list-item" href="/">Home <span class="material-icons">home</span></a>
       <a mat-list-item class="mat-list-item" [matMenuTriggerFor]="menu1">Tag Dates <mat-icon>keyboard_arrow_down</mat-icon></a>
       <a mat-list-item class="mat-list-item" href="http://time-matters.inesctec.pt/api" target="_blank">API <span class="material-icons">computer</span></a>
       <a mat-list-item class="mat-list-item" href="https://github.com/liaad/time-matters" target="_blank">GitHub <i class="fab fa-github material-icons" aria-hidden="true"></i></a>
@@ -33,7 +33,7 @@
         
           <img class="ceninha" src="assets\logo.png" />
         <div class="spacer"></div><div [ngClass]="{hidden: (isHandset$ | async) === true}">
-        <a href="/time-matters"><button mat-button   ><i class="fas fa-home"></i> Home</button></a>
+        <a href="/"><button mat-button   ><i class="fas fa-home"></i> Home</button></a>
         <a><button mat-button [matMenuTriggerFor]="menu1" ngbDropdownToggle><i class="fas fa-chevron-down"></i> Tag Dates</button></a>
         <a  target="_blank" href="http://time-matters.inesctec.pt/api"><button mat-button ><i class="fas fa-laptop-code"></i> API</button></a>
         <a target="_blank" href="https://github.com/liaad/time-matters"><button mat-button><i class="fab fa-github" aria-hidden="true"></i> GitHub</button></a>
