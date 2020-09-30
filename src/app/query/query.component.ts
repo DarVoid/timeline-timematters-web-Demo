@@ -32,6 +32,7 @@ export class QueryComponent implements OnChanges {
     this.showOnlyRel = true;
     this.differentValues = [];
     this.page = 0;
+    this.docOrSentence= true;
   }
 
   ngOnChanges() {
@@ -104,6 +105,12 @@ export class QueryComponent implements OnChanges {
     }else{
       this.exe_time_algo = this.options.result.ExecutionTime.rule_based_processing.toFixed(3);;
     }
+    if(this.options.docOrSentence == 'doc'){
+      this.docOrSentence=true;
+    }else{
+      this.docOrSentence=false;
+    }
+
     this.differentValues = this.options.result.TempExpressions.sort(
           (a, b) => a[0] - b[0]).filter(
               (element , index, array) => {
@@ -214,24 +221,50 @@ export class QueryComponent implements OnChanges {
           } else {
             let valorDeA = '';
             let valorDeA2 = '';
+
+
+
             // tslint:disable-next-line: forin
             for (const xd in this.options.result.Score[Object.keys(this.options.result.Score)[i]]) {
+              let sentence_to_write= this.options.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'');
 
+               this.options.result.TempExpressions.map((a)=>{
+                console.log(a);
+                if(sentence_to_write.search(a[0])!=-1){
+                  sentence_to_write = sentence_to_write.replace(a[0],a[1]);
+                }
+                if(sentence_to_write.search(a[0].toUpperCase())!=-1){
+                  sentence_to_write = sentence_to_write.replace(a[0].toUpperCase(),a[1]);
+                }
+              });
               // tslint:disable-next-line: max-line-length
               d.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0], series: xd});
               console.log(d);
+
+              
+
               // tslint:disable-next-line: max-line-length
-              valorDeA += '<span title="' + this.options.result.SentencesNormalized[xd.toString()] + '"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] + '</p><p>'+this.options.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'')+'</p></span>';
+              
               if (this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] > 0.35) {
+                // tslint:disable-next-line: whitespace
                 // tslint:disable-next-line: max-line-length
-                valorDeA2 += '<span title="' + this.options.result.SentencesNormalized[xd.toString()] + '"><p  class="noticeme">Date score sentence ' + xd + ': ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] + '</p><p>'+this.options.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'')+'</p></span>';
+                valorDeA += '<span title="' + sentence_to_write + '"><p class="noticem4">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] + '</p><p>'+sentence_to_write+'</p></span>';
+
+                valorDeA2 += '<span title="' + sentence_to_write + '"><p class="noticem4">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] + '</p><p>'+sentence_to_write+'</p></span>';
 
                 // tslint:disable-next-line: max-line-length
-                d2.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0], series: xd});
-                console.log(d2);
+                d.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0], series: xd});
+                
+                // console.log(d2);
                 // TODO: meter d e d2 nos datasets
+              } else {
+                //valorDeA += '<span title="' + this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'') + '"><p class="noticem5">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'')+'</p></span>';
+                valorDeA += '<span title="' + sentence_to_write + '"><p class="noticem5">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] + '</p><p>'+sentence_to_write+'</p></span>';
+                
               }
 
+              console.log("array de relevantes");
+              console.log(d);
             }
             a = valorDeA;
             a2 = valorDeA2;

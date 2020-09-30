@@ -72,7 +72,6 @@ export class ScoreComponent implements OnChanges {
       let cores1 = [];
       let dados2 = [];
       let cores2 = [];
-      let sorted0Scores = [];
 
       console.log("AAAAAAAAAAA");
       //console.log(Object.keys(this.argumentos.Score));
@@ -80,6 +79,7 @@ export class ScoreComponent implements OnChanges {
       let nonsortables = Object.keys(this.argumentos.Score).filter((i)=>{return !/^\d+$/.test(i.substring(0,5).toString().split('-').join(''))});
       console.log(sortables);
       console.log(nonsortables);
+      
       //sorted0Scores.push({key: i, value: this.argumentos.Score[i][0]})
       sortables = sortables.sort((a, b)=>{
         a= a.substring(0,10).replace(/[^\d]/g, '');
@@ -98,7 +98,9 @@ export class ScoreComponent implements OnChanges {
         console.log("a: "+a+"\nb:"+b+ "\n");
         return parseInt(a) - parseInt(b);
       });
-      
+      //Aqui tiago preciso que pegues no array sortables e deixes apenas valores nao repetidos;
+
+      //
       //this.argumentos.Score
       // tslint:disable-next-line: forin
       for (let i in sortables) {
