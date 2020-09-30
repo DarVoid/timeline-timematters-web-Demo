@@ -391,12 +391,12 @@ export class KeywordExctractionComponent implements OnInit {
       document.body.removeChild(clipboard);
     }else{
 
-      this._snackBar.open('Message copied to Clipboard', 'Length: ' + this.result.TextNormalized.split("<d>").join("").split("</d>").join("").split("<kw>").join("").split("</kw>").join("").length + ' characters', {
+      this._snackBar.open('Message copied to Clipboard', 'Length: ' + this.result.TextNormalized.split("<kw>").join("").split("</kw>").join("").length + ' characters', {
         duration: 2000
       });
       const clipboard = document.createElement('input');
   
-      clipboard.setAttribute('value', this.result.TextNormalized.split("<d>").join("").split("</d>").join("").split("<kw>").join("").split("</kw>").join(""));
+      clipboard.setAttribute('value', this.result.TextNormalized.split("<kw>").join("").split("</kw>").join(""));
       document.body.appendChild(clipboard);
       clipboard.select();
       document.execCommand('copy');
