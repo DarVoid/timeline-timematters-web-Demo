@@ -74,7 +74,7 @@ export class TimelineService {
       if (options.nContextualWindow) {
         formData.append('n_contextual_window', options.nContextualWindow);
       }
-      if (options.number_of_keywords) {
+      if (options.numberOfKeywords) {
         formData.append('number_of_keywords', options.numberOfKeywords);
       }
       if (options.ngram) {
