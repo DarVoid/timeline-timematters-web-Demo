@@ -130,7 +130,7 @@ export class TimelineScrollComponent implements OnInit {
                     // tslint:disable-next-line: no-unused-expression
                     new TL.Timeline('my-timeline', j, additionalOptions);
                   return;
-                }, 1000); //wait ten seconds before continuing
+                }, 3000); //wait ten seconds before continuing
                 
 
                

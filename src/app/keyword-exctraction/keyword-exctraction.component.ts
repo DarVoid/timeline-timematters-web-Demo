@@ -528,22 +528,34 @@ export class KeywordExctractionComponent implements OnInit {
               // console.log(d);
               
               console.log(a);
+              let sentence_to_write= this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'');
+
+               this.result.TempExpressions.map((a)=>{
+                console.log(a);
+                if(sentence_to_write.search(a[0])!=-1){
+                  sentence_to_write = sentence_to_write.replace(a[0],a[1]);
+                }
+                if(sentence_to_write.search(a[0].toUpperCase())!=-1){
+                  sentence_to_write = sentence_to_write.replace(a[0].toUpperCase(),a[1]);
+                }
+              });
+              
               // tslint:disable-next-line: whitespace
               // tslint:disable-next-line: max-line-length
-              valorDeA += '<span title="' + this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'') + '"><p class="noticem5">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'')+'</p></span>';
               if (this.result.Score[Object.keys(this.result.Score)[i]][xd][0] > 0.35) {
                 // tslint:disable-next-line: whitespace
                 // tslint:disable-next-line: max-line-length
-                valorDeA += '<span title="' + this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'') + '"><p class="noticem4">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'')+'</p></span>';
+                valorDeA += '<span title="' + sentence_to_write + '"><p class="noticem4">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+sentence_to_write+'</p></span>';
 
-                valorDeA2 += '<span title="' + this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'') + '"><p class="noticem4">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'')+'</p></span>';
+                valorDeA2 += '<span title="' + sentence_to_write + '"><p class="noticem4">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+sentence_to_write+'</p></span>';
 
                 d2.push({x: Object.keys(this.result.Score)[i], y: this.result.Score[Object.keys(this.result.Score)[i]][xd][0], series: xd});
                 // console.log(d2);
                 // TODO: meter d e d2 nos datasets
               } else {
                 //valorDeA += '<span title="' + this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'') + '"><p class="noticem5">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'')+'</p></span>';
-
+                valorDeA += '<span title="' + sentence_to_write + '"><p class="noticem5">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+sentence_to_write+'</p></span>';
+              
               }
 
             }

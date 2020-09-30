@@ -12,7 +12,7 @@ export class GetarticleService {
   constructor(private http: HttpClient) {
     // this.url2 = 'https://tm-websuiteapps.ipt.pt/url2content/api/v1.0/parse';
     //this.url = 'https://langdec-api-heroku.herokuapp.com/getarticle/';
-    this.url = '/apiurl/url2content/api/v1.0/parse?url='
+    this.url = '/url2content/api/v1.0/parse?url='
   }
 
     public getArticles(search: any): Observable<any> {
