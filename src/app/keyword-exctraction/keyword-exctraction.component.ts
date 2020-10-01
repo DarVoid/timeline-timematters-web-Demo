@@ -45,6 +45,8 @@ export class KeywordExctractionComponent implements OnInit {
   public listaConteudos: Array<string>;
   public optio: any;
   public dataset: any;
+  public datasetFixed: any;
+  public datasetFixed2: any;
   public datasetRelOnly: any;
   public numberOfKeyWords: number;
   public contextWindow: any;
@@ -234,6 +236,7 @@ export class KeywordExctractionComponent implements OnInit {
     this.showOnlyRel = false;
     this.showOnlyRelSnap = true;
     this.TH = 0.05;
+    
   }
   toggleOptionKeywords() {
     this.hiddenoptionKW = !this.hiddenoptionKW;
@@ -609,7 +612,35 @@ export class KeywordExctractionComponent implements OnInit {
         // console.log(c);
         // console.log("end");
         this.dataset = c;
+        this.datasetFixed= this.dataset;
+        for(let hu=0;hu<this.datasetFixed.length; hu++){
+          
+        this.result.TempExpressions.map((a)=>{
+          console.log(a);
+          if(this.datasetFixed[hu].y.search(a[0])!=-1){
+            this.datasetFixed[hu].y = this.datasetFixed[hu].y.replace(a[0],a[1]);
+          }
+          if(this.datasetFixed[hu].y.search(a[0].toUpperCase())!=-1){
+            this.datasetFixed[hu].y = this.datasetFixed[hu].y.replace(a[0].toUpperCase(),a[1]);
+          }
+        });
+
+        }
         this.datasetRelOnly = c2;
+        this.datasetFixed2= this.datasetRelOnly;
+        for(let hu=0;hu<this.datasetFixed2.length; hu++){
+          
+        this.result.TempExpressions.map((a)=>{
+          console.log(a);
+          if(this.datasetFixed2[hu].y.search(a[0])!=-1){
+            this.datasetFixed2[hu].y = this.datasetFixed2[hu].y.replace(a[0],a[1]);
+          }
+          if(this.datasetFixed[hu].y.search(a[0].toUpperCase())!=-1){
+            this.datasetFixed2[hu].y = this.datasetFixed2[hu].y.replace(a[0].toUpperCase(),a[1]);
+          }
+        });
+
+        }
         console.log(this.dataset);
         console.log(this.datasetRelOnly);
   }
