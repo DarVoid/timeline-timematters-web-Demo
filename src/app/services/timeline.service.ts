@@ -27,7 +27,7 @@ export class TimelineService {
       if (options.algo === 'py_heideltime') {
         realURL += '/Heideltime/api/v1.0';
         if (options.docCreatTime) {
-          formData.append('document creation time', options.docCreatTime);          
+          formData.append('document_creation_time', options.docCreatTime);          
         }
         if (options.language) {
           formData.append('language', options.language);
