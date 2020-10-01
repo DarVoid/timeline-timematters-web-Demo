@@ -124,6 +124,7 @@ export class FrameComponent implements OnInit, OnChanges {
         // console.log(this.dateScores);
       }
     } else {
+      console.log("por frase!");
       if (this.argumentos) {
       // BEGIN SENTENCE CODE
       // console.log(this.argumentos.SentencesTokens);
@@ -138,11 +139,12 @@ export class FrameComponent implements OnInit, OnChanges {
         // console.log('frase ' + i);
         // console.log(frases[i]);
       }*/
+      let frases2=[];
       // tslint:disable-next-line: whitespace
       // tslint:disable-next-line: forin
-      for (let fraseIndex in frases) {
+      for (let fraseIndex=0; fraseIndex < frases.length; fraseIndex++) {
 
-        frases[fraseIndex] = frases[fraseIndex].replace(/<d>(.*?)<\/d>/gi, (x) => {
+        frases2[fraseIndex] = frases[fraseIndex].replace(/<d>(.*?)<\/d>/gi, (x) => {
           let valor = x.replace(/<d>/, '');
           valor = valor.substring(0, valor.length - 4);
           let titulo = this.dateScores[valor.toLowerCase()][fraseIndex][0];
@@ -196,9 +198,14 @@ export class FrameComponent implements OnInit, OnChanges {
           console.log("cor");
           console.log(cor);
           
-          if (this.showOnlyRelevants && (cor === 'black')) {
+          if (this.showOnlyRelevants ) {
+            if(cor === 'black'){
 
-            x = textoAEscrever;
+              x = textoAEscrever;
+
+            }else{
+              x = '<span title="' + valorSpan + '">' + '<b class="' + cor + '">' + textoAEscrever + '</b>' + '</span>';
+            }
 
           } else {
             x = '<span title="' + valorSpan + '">' + '<b class="' + cor + '">' + textoAEscrever + '</b>' + '</span>';
@@ -207,7 +214,7 @@ export class FrameComponent implements OnInit, OnChanges {
 
         }); // end callback replace <d>
 
-        this.texto = frases.join(' ');
+        this.texto = frases2.join(' ');
 
       }// end iteration phrases
       if (!this.keywordsMatter) {
