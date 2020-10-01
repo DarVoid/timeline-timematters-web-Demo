@@ -228,15 +228,7 @@ export class QueryComponent implements OnChanges {
             for (const xd in this.options.result.Score[Object.keys(this.options.result.Score)[i]]) {
               let sentence_to_write= this.options.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'');
 
-               this.options.result.TempExpressions.map((a)=>{
-                console.log(a);
-                if(sentence_to_write.search(a[0])!=-1){
-                  sentence_to_write = sentence_to_write.replace(a[0],a[1]);
-                }
-                if(sentence_to_write.search(a[0].toUpperCase())!=-1){
-                  sentence_to_write = sentence_to_write.replace(a[0].toUpperCase(),a[1]);
-                }
-              });
+               
               // tslint:disable-next-line: max-line-length
               d.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0], series: xd});
               console.log(d);

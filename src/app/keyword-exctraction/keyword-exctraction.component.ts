@@ -231,7 +231,7 @@ export class KeywordExctractionComponent implements OnInit {
     this.contextWindow = 'full_sentence';
     this.simbaValue = 10;
     this.cheating = false;
-    this.showOnlyRel = true;
+    this.showOnlyRel = false;
     this.showOnlyRelSnap = true;
     this.TH = 0.05;
   }
@@ -246,7 +246,7 @@ export class KeywordExctractionComponent implements OnInit {
   toggleRel() {
     
     this.showOnlyRel = !this.showOnlyRel;
-    this.showOnlyRelSnap = this.showOnlyRel;
+    //this.showOnlyRelSnap = this.showOnlyRel;
   }
   
   changeTH(event:any){
@@ -478,7 +478,7 @@ export class KeywordExctractionComponent implements OnInit {
           // console.log(this.result.Score[Object.keys(this.result.Score)[i]][0]);
           // handle Dataset
           if (this.byDocOrSentece) {
-            //descobrir se este é sentence ou doc
+            
             console.log("resultado");
             let value_to_be_replaced=Object.keys(this.result.Score)[i];
             console.log(value_to_be_replaced);
@@ -530,31 +530,23 @@ export class KeywordExctractionComponent implements OnInit {
               console.log(a);
               let sentence_to_write= this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'');
 
-               this.result.TempExpressions.map((a)=>{
-                console.log(a);
-                if(sentence_to_write.search(a[0])!=-1){
-                  sentence_to_write = sentence_to_write.replace(a[0],a[1]);
-                }
-                if(sentence_to_write.search(a[0].toUpperCase())!=-1){
-                  sentence_to_write = sentence_to_write.replace(a[0].toUpperCase(),a[1]);
-                }
-              });
+               
               
               // tslint:disable-next-line: whitespace
               // tslint:disable-next-line: max-line-length
               if (this.result.Score[Object.keys(this.result.Score)[i]][xd][0] > 0.35) {
                 // tslint:disable-next-line: whitespace
                 // tslint:disable-next-line: max-line-length
-                valorDeA += '<span title="' + sentence_to_write + '"><p class="noticem4">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+sentence_to_write+'</p></span>';
+                valorDeA += '<p class="noticem4">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+sentence_to_write+'</p>';
 
-                valorDeA2 += '<span title="' + sentence_to_write + '"><p class="noticem4">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+sentence_to_write+'</p></span>';
+                valorDeA2 += '<p class="noticem4">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+sentence_to_write+'</p>';
 
                 d2.push({x: Object.keys(this.result.Score)[i], y: this.result.Score[Object.keys(this.result.Score)[i]][xd][0], series: xd});
                 // console.log(d2);
                 // TODO: meter d e d2 nos datasets
               } else {
                 //valorDeA += '<span title="' + this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'') + '"><p class="noticem5">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'')+'</p></span>';
-                valorDeA += '<span title="' + sentence_to_write + '"><p class="noticem5">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+sentence_to_write+'</p></span>';
+                valorDeA += '<p class="noticem5">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+sentence_to_write+'</p>';
               
               }
 

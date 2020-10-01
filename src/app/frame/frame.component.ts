@@ -11,7 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class FrameComponent implements OnInit, OnChanges {
   @Input() argumentos: any;
   @Input() keywordsMatter: any;
-  @Input() showOnlyRelevants: any;
+  @Input() showOnlyRelevants: boolean;
   @Input() docOrSentence: any;
   textoNormalizado: string;
   keywordScores: any;
@@ -141,37 +141,41 @@ export class FrameComponent implements OnInit, OnChanges {
       // tslint:disable-next-line: whitespace
       // tslint:disable-next-line: forin
       for (let fraseIndex in frases) {
+
         frases[fraseIndex] = frases[fraseIndex].replace(/<d>(.*?)<\/d>/gi, (x) => {
           let valor = x.replace(/<d>/, '');
           valor = valor.substring(0, valor.length - 4);
-          let titulo = this.dateScores[valor.toLowerCase()];
+          let titulo = this.dateScores[valor.toLowerCase()][fraseIndex][0];
+          console.log(titulo)
           let cor = '';
           if (titulo) {
-            // console.log('titulo');
-            // console.log(titulo[Object.keys(titulo)[0].toString()][0]);
-            titulo = titulo[Object.keys(titulo)[0].toString()][0];
+             console.log('titulo');
+            // console.log(titulo[Object.keys(titulo)[0].toString()]);
+            //titulo = titulo[Object.keys(titulo)[0].toString()][0];
           } else {
-            titulo = 'ta a falhar';
+            titulo = this.dateScores[valor.toLowerCase()][fraseIndex]["0"];
+            //titulo = titulo[Object.keys(titulo)[0].toString()];
+            console.log("this.dateScores");
+            console.log(this.dateScores[valor.toLowerCase()][fraseIndex]["0"]);
+
           }
 
-          if (titulo < 0.3) {
+          if ( titulo*1 < 0.35 && titulo*1 >=0) {
             cor = 'black';
           } else {
             cor = 'red';
-            if (titulo < 0.4) {
+            if (titulo < 0.5) {
               cor = 'green';
-            } else if (titulo > 0.4) {
+            } else if (titulo >= 0.5) {
               cor = 'blue';
-              if (titulo > 0.6) {
+              if (titulo > 0.7) {
                 cor = 'yellow';
               }
-              if (titulo > 0.8) {
+              if (titulo > 0.9) {
                 cor = 'purple';
               }
 
-
             }
-
           }
           // console.log(cor);
           // cor definida
@@ -184,10 +188,14 @@ export class FrameComponent implements OnInit, OnChanges {
           for (let lk in this.argumentos.TempExpressions) {
             if (this.argumentos.TempExpressions[lk][0] === x.substring(3, x.length - 4)) {
               textoAEscrever = this.argumentos.TempExpressions[lk][1];
-
+              console.log(textoAEscrever);
             }
           }
-
+          console.log("this.showOnlyRelevants");
+          console.log(this.showOnlyRelevants);
+          console.log("cor");
+          console.log(cor);
+          
           if (this.showOnlyRelevants && (cor === 'black')) {
 
             x = textoAEscrever;
