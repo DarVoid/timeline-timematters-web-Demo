@@ -13,6 +13,8 @@ export class QueryComponent implements OnChanges {
   public withKeywords: boolean;
   public numberOfKeyWords: number;
   public dataset: Array<any>;
+  public datasetFixed: Array<any>;
+  public datasetFixed2: Array<any>;
   public datasetRelOnly: Array<any>;
   public withKeywordsSentence: string;
   public differentValues: Array<any>;
@@ -308,7 +310,37 @@ export class QueryComponent implements OnChanges {
         // console.log(c);
         // console.log("end");
     this.dataset = c;
+    
+    this.datasetFixed= this.dataset;
+    for(let hu=0;hu<this.datasetFixed.length; hu++){
+      
+    this.options.result.TempExpressions.map((a)=>{
+      console.log(a);
+      if(this.datasetFixed[hu].y.search(a[0])!=-1){
+        this.datasetFixed[hu].y = this.datasetFixed[hu].y.replace(a[0],a[1]);
+      }
+      if(this.datasetFixed[hu].y.search(a[0].toUpperCase())!=-1){
+        this.datasetFixed[hu].y = this.datasetFixed[hu].y.replace(a[0].toUpperCase(),a[1]);
+      }
+    });
+
+    }
     this.datasetRelOnly = c2;
+    
+    this.datasetFixed2= this.datasetRelOnly;
+    for(let hu=0;hu<this.datasetFixed2.length; hu++){
+      
+    this.options.result.TempExpressions.map((a)=>{
+      console.log(a);
+      if(this.datasetFixed2[hu].y.search(a[0])!=-1){
+        this.datasetFixed2[hu].y = this.datasetFixed2[hu].y.replace(a[0],a[1]);
+      }
+      if(this.datasetFixed[hu].y.search(a[0].toUpperCase())!=-1){
+        this.datasetFixed2[hu].y = this.datasetFixed2[hu].y.replace(a[0].toUpperCase(),a[1]);
+      }
+    });
+
+    }
     console.log('this.dataset');
     console.log(this.dataset);
     console.log('this.datasetRelOnly');

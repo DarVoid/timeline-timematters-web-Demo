@@ -58,7 +58,7 @@
           </mat-tab>
           
           <mat-tab label="Storyline" *ngIf="dataset.length>0">
-            <app-timeline-scroll [docSen]="byDocOrSentece" [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
+            <app-timeline-scroll [docSen]="byDocOrSentece" [argumentosTodos]="datasetFixed" [argumentosRelevantes]="datasetFixed2"></app-timeline-scroll>
           
           </mat-tab>
           <mat-tab label="Temporal Clustering" *ngIf="dataset.length>0">

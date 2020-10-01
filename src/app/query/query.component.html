@@ -50,7 +50,7 @@
 
           <!-- STORYLINE -->
           <mat-tab label="Storyline"  *ngIf="dataset.length>0">
-            <app-timeline-scroll [docSen]="options.docOrSentence=='doc'"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"></app-timeline-scroll>
+            <app-timeline-scroll [docSen]="options.docOrSentence=='doc'"  [argumentosTodos]="datasetFixed" [argumentosRelevantes]="datasetFixed2"></app-timeline-scroll>
           </mat-tab>
 
           <!-- TEMPORAL CLUSTERING -->
@@ -60,7 +60,7 @@
             <br><br>
             <div *ngIf="!showOnlyRel else onlyRel">
               <table class="table table-borderless">
-                <tbody *ngFor="let item of dataset">
+                <tbody *ngFor="let item of datasetFixed">
                   <tr >
                     <td><h3>{{item.x}}</h3></td><!--meter .substrin(0,10 para so ano)--> <!--TIAGO METE AZUL CLASS NO H3-->
                     <td class="TabelaTexto" [innerHTML]="item.y | safe:'html'"></td>
@@ -71,7 +71,7 @@
             
             <ng-template #onlyRel>
               <table class="table table-borderless">
-                <tbody *ngFor="let item of datasetRelOnly">
+                <tbody *ngFor="let item of datasetFixed2">
                   <tr (click)="putOnClipboard($event,item.x)">
                     <td><h3>{{item.x}}</h3></td><!--meter .substrin(0,10 para so ano)-->
                     <td [innerHTML]="item.y | safe:'html'"></td>
