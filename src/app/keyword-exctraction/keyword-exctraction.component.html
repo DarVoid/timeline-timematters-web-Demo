@@ -67,18 +67,22 @@
             <mat-slide-toggle (toggleChange)='toggleRel()' [checked]="showOnlyRel" class="afterAnnotated" color="warn" >Show only relevant dates</mat-slide-toggle>
             <br><br>
             <div *ngIf="!showOnlyRel else onlyRel">
-              <table class="table table-borderless">
-                <tbody *ngFor="let item of datasetFixed">
-                  <tr >
-                    <td><h3>{{item.x}}</h3></td><!--meter .substrin(0,10 para so ano)--> <!--TIAGO METE AZUL CLASS NO H3-->
-                    <td class="TabelaTexto" [innerHTML]="item.y | safe:'html'"></td>
-                  </tr>
-                </tbody>
-              </table>
+              <div *ngIf="datasetFixed.length>0 else nodata1">
+                <table class="table table-borderless">
+                  <tbody *ngFor="let item of datasetFixed">
+                    <tr >
+                      <td><h3>{{item.x}}</h3></td><!--meter .substrin(0,10 para so ano)--> <!--TIAGO METE AZUL CLASS NO H3-->
+                      <td class="TabelaTexto" [innerHTML]="item.y | safe:'html'"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
             </div>
             
             <ng-template #onlyRel>
-              <table class="table table-borderless">
+              <div *ngIf="datasetFixed2.length>0 else nodata2">
+                <table class="table table-borderless">
                 <tbody *ngFor="let item of datasetFixed2">
                   <tr (click)="putOnClipboard($event,item.x)">
                     <td><h3>{{item.x}}</h3></td><!--meter .substrin(0,10 para so ano)-->
@@ -86,6 +90,15 @@
                 </tr>
                 </tbody>
               </table>
+
+              </div>
+              <ng-template #nodata1>
+                <h1>No Data</h1>    
+              </ng-template>
+              <ng-template #nodata2>
+                <h1>No relevant data</h1>    
+              </ng-template>
+              
             </ng-template>
 
           <!--WIP-->

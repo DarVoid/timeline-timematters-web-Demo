@@ -28,6 +28,7 @@ export class TimelineScrollComponent implements OnInit {
   public jsonText: string;
   public isnotset:boolean;
   public loading:boolean;
+  public nodata:boolean;
   public relevant_string:string;
   public scheduler: any;
   constructor(private _snackBar: MatSnackBar, private yake:YakeService, private arquivo:ArquivoService) {
@@ -36,6 +37,7 @@ export class TimelineScrollComponent implements OnInit {
     this.isnotset = true;
     this.loading = false;
     this.relevant = false;
+    this.nodata = false;
     this.relevant_string = "Show only relevant dates";
    }
 
@@ -89,6 +91,15 @@ export class TimelineScrollComponent implements OnInit {
   update() {
 
     let j: any;
+    if(this.argumentos.length==0){
+      this.loading=false;
+      this.nodata=true;
+      this._snackBar.open('No data', this.argumentos.length, {
+        duration: 2000
+      });
+    }else{
+      this.nodata=false;
+    }
 
     const events = [];
     // tslint:disable-next-line: forin
