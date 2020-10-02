@@ -67,9 +67,8 @@ export class TimelineService {
           }
       }
       if (options.n) {
-        if (options.algo == 'py_heideltime') {
           formData.append('N', options.n);
-        }
+        
       }
       if (options.nContextualWindow) {
         formData.append('n_contextual_window', options.nContextualWindow);

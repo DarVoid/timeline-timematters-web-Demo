@@ -335,6 +335,7 @@ export class KeywordExctractionComponent implements OnInit {
   selecionaTamanhoSimbaVectors(event: any) {
     console.log(event.target.value);
     this.simbaValue = event.target.value;
+    
   }
   selecionarGranularidade(event: any) {
     console.log('entrou mudar granularidade');
@@ -352,7 +353,10 @@ export class KeywordExctractionComponent implements OnInit {
     this.contextFullSentence = event.checked;
   }
   selecionarContextualWindow(event: any) {
-    this.contextWindow = event;
+
+
+    console.log(event.target.value);
+    this.contextWindow = event.target.value;
   }
   selecionarLanguage(event: any) {
     this.languagueSelected = event;
