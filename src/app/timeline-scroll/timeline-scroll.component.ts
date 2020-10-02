@@ -35,7 +35,7 @@ export class TimelineScrollComponent implements OnInit {
     this.isSet = false;
     this.isnotset = true;
     this.loading = false;
-    this.relevant = true;
+    this.relevant = false;
     this.relevant_string = "Show only relevant dates";
    }
 
@@ -46,9 +46,12 @@ export class TimelineScrollComponent implements OnInit {
     
     if(document.getElementById("my-timeline") && this.isnotset){
       this.isnotset = false;
-      this.argumentos = this.argumentosRelevantes;
-      this.loading = true;
-      this.update();
+      if(this.argumentosRelevantes.length>0){
+        this.relevant=true
+      }else{
+        this.relevant=false;
+      }
+      this.setRelevance();
       this.isSet = true;
     }
 

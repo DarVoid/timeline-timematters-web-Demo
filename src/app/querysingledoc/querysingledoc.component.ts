@@ -82,28 +82,28 @@ export class QuerysingledocComponent implements OnInit {
     }
   }
   goBack(){
-    this.algoritmoSelected = this.algoritmosDate[0];
+    //this.algoritmoSelected = this.algoritmosDate[0];
     this.dateGranularitySelected = this.dateGranularityOptions[0];
-    this.documentTypeSelected = this.documentTypeOptions[0];
+    //this.documentTypeSelected = this.documentTypeOptions[0];
     this.languagueSelected = this.languageOptions[0];
-    this.dateBegin = 0;
-    this.dateEnd = 2100;
-    this.maxValTH = 1;
-    this.numberOfKeyWords = 10;
-    this.contextWindow = 1;
-    this.contextFullSentence = true;
-    this.simbaValueMax = true;
-    this.simbaValue = 1;
+    //this.dateBegin = 0;
+    //this.dateEnd = 2100;
+    //this.maxValTH = 1;
+    //this.numberOfKeyWords = 10;
+    //this.contextWindow = 1;
+    //this.contextFullSentence = true;
+    //this.simbaValueMax = true;
+    //this.simbaValue = 1;
     this.cheating = false;
     this.showOnlyRel = false;
-    this.ngramSelected = 1;
+    //this.ngramSelected = 1;
     this.byDocOrSentece = true;
     this.hiddenoptionKW = false;
     this.hiddenoption = false;
     this.loading = false;
     this.requestMade = false;
     this.hiddenoptionTM = false;
-    this.TH=0.05;
+    //this.TH=0.05;
   }
   changeTH(event:any){
     
@@ -158,6 +158,18 @@ export class QuerysingledocComponent implements OnInit {
     
   }
   update() {
+    
+    let j, k;
+    if (this.contextFullSentence) {
+    j = 'full_sentence';
+  } else {
+    j = this.contextWindow;
+  }
+    if (this.simbaValueMax) {
+    k = 'max';
+  } else {
+    k = this.simbaValue;
+  }
     if (this.requestMade) {
       this.opcoes = {
         docCreatTime : this.documentCreationTime,
@@ -167,9 +179,9 @@ export class QuerysingledocComponent implements OnInit {
         ngram : this.ngramSelected,
         language : this.languagueSelected,
         numberOfKeywords : this.numberOfKeyWords,
-        nContextualWindow: this.contextWindow,
+        nContextualWindow: j,
         documentType: this.documentTypeSelected,
-        n: this.simbaValue,
+        n: k,
         result: this.resultado,
         dateBegin: this.dateBegin,
         dateEnd: this.dateEnd,
@@ -239,7 +251,7 @@ export class QuerysingledocComponent implements OnInit {
     console.log(event);
   }
   selecionarContextualWindow(event: any) {
-    this.contextWindow = event;
+    this.contextWindow = event.target.value;
   }
   selecionarNKeywords(event: any) {
     this.numberOfKeyWords = event.target.value;
