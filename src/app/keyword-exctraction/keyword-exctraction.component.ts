@@ -758,18 +758,33 @@ export class KeywordExctractionComponent implements OnInit {
 
 
     } else {
+      let j, k;
+      if (this.contextFullSentence) {
+      j = 'full_sentence';
+    } else {
+      j = this.contextWindow;
+    }
+      if (this.simbaValueMax) {
+      k = 'max';
+    } else {
+      k = this.simbaValue;
+    }
+
       this.optio = {
-        docCreatTime : this.documentCreationTime,
-        dateGranularity : this.dateGranularitySelected,
-        docOrSentence  : this.byDocOrSentece ? 'doc' : 'sentence',
-        algo: this.algoritmoSelected,
-        ngram : this.ngramSelected,
-        language : this.languagueSelected,
-        numberOfKeywords : this.numberOfKeyWords,
-        nContextualWindow: this.contextWindow,
-        documentType: this.documentTypeSelected,
-        N: this.simbaValue
-      };
+          docCreatTime : this.documentCreationTime,
+          dateGranularity : this.dateGranularitySelected,
+          docOrSentence  : this.byDocOrSentece ? 'doc' : 'sentence',
+          algo: this.algoritmoSelected,
+          ngram : this.ngramSelected,
+          language : this.languagueSelected,
+          numberOfKeywords : this.numberOfKeyWords,
+          nContextualWindow: j,
+          documentType: this.documentTypeSelected,
+          dateBegin: this.dateBegin,
+          dateEnd: this.dateEnd,
+          n: k,
+          tH: this.TH
+        };
 
       this.timeline.getTextKeyDateFromSingleDoc(this.conteudoDefault, this.optio).subscribe((res) => {
 
