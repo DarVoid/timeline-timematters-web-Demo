@@ -255,7 +255,8 @@ export class LinhaTemporalComponent implements OnInit {
         this.options.series[h].data = lk;
         // console.log("lk");
         // console.log(lk);
-        this.tipos = ['scatter', 'column', 'line'];
+        this.tipos = ['scatter'];
+        this.tipo=0;
 
       }
     }

@@ -71,12 +71,15 @@
                 <table class="table table-borderless">
                   <tbody *ngFor="let item of datasetFixed">
                     <tr >
-                      <td><h3><b>{{item.x}}</b></h3></td><!--meter .substrin(0,10 para so ano)--> <!--TIAGO METE AZUL CLASS NO H3-->
+                      <td><h3><b><strong>{{item.x}}</strong></b></h3></td><!--meter .substrin(0,10 para so ano)--> <!--TIAGO METE AZUL CLASS NO H3-->
                       <td class="TabelaTexto" [innerHTML]="item.y | safe:'html'"></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
+              <ng-template #nodata1>
+                <h1>No Data</h1>    
+              </ng-template>
               
             </div>
             
@@ -85,16 +88,13 @@
                 <table class="table table-borderless">
                 <tbody *ngFor="let item of datasetFixed2">
                   <tr (click)="putOnClipboard($event,item.x)">
-                    <td><h3><b>{{item.x}}</b></h3></td><!--meter .substrin(0,10 para so ano)-->
+                    <td><h3><b><strong>{{item.x}}</strong></b></h3></td><!--meter .substrin(0,10 para so ano)-->
                     <td [innerHTML]="item.y | safe:'html'"></td>
                 </tr>
                 </tbody>
               </table>
 
               </div>
-              <ng-template #nodata1>
-                <h1>No Data</h1>    
-              </ng-template>
               <ng-template #nodata2>
                 <h1>No relevant data</h1>    
               </ng-template>
@@ -112,7 +112,7 @@
 
 
           <mat-tab *ngIf="byDocOrSentece" class="afterGraphs" label="Scores">
-            <h3></h3>
+            <br><br><br>
             <div class="row my-row2 justify-content-center">
               <div class="score">
                 <app-score [argumentos]="result" ></app-score>

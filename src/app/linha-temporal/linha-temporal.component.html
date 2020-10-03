@@ -5,4 +5,5 @@
     <!--<button  class='{{!isSet?"viewable": "nonviewable"}}' class="btn-primary" (click)="setRelevance();setRelevance();">Confirm</button>-->
     <br/>
     <div id="container" ></div>
-    <button  (click)="toggleTipo()" class="btn-primary" >Toggle Chart Type</button>
+
+    <button  (click)="toggleTipo()" class="btn-primary" *ngIf="tipos.length>3" >Toggle Chart Type</button>
