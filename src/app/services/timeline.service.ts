@@ -23,6 +23,8 @@ export class TimelineService {
       
       console.log('options');
       console.log(options);
+      console.log('search');
+      console.log(search.trim());
       let realURL = this.url + '/SingleDoc';
       if (options.algo === 'py_heideltime') {
         realURL += '/Heideltime/api/v1.0';
@@ -50,8 +52,8 @@ export class TimelineService {
       } else {
         realURL += '/ScoreBySentence';
       }
-      console.log(search.split('\"').join('\'\'').split("“").join("\"").split("”").join("\"").split("’").join("\'"));
-      formData.append('text', search.split('\"').join('\'\'').split("“").join("\"").split("”").join("\"")); 
+      //console.log(search.split('\"').join('\'').split("“").join("\"").split("”").join("\"").split("’").join("\'"));
+      formData.append('text', search.split("“").join("\'").split("”").join("\'").split('\"').join('\''));   
       
       if (options.dateGranularity) {
         formData.append('date_granularity', options.dateGranularity);

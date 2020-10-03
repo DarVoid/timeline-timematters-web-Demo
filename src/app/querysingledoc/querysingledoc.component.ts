@@ -78,7 +78,9 @@ export class QuerysingledocComponent implements OnInit {
     if(this.inpu){
 
     }else{
-      this.url = 'https://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/';
+      this.url = 'https://sicnoticias.pt/pais/2016-07-07-Cronologia-do-processo-Casa-Pia';
+      //https://sicnoticias.pt/pais/2016-07-07-Cronologia-do-processo-Casa-Pia
+      //https://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/
     }
   }
   goBack(){
@@ -283,9 +285,20 @@ export class QuerysingledocComponent implements OnInit {
   toggleOption() {
     this.hiddenoption = !this.hiddenoption;
   }
-  forceUnicodeEncoding(cons:string) {
-    return unescape(encodeURIComponent(cons));
+  public copyToClipboard(event: any) {
+      const clipboard = document.createElement('input');
+      clipboard.setAttribute('value', event);
+      document.body.appendChild(clipboard);
+      clipboard.select();
+      document.execCommand('copy');
+      document.body.removeChild(clipboard);
+      this._snackBar.open('Document copied to clipboard', "", {
+        duration: 2000
+      });
+    
+
   }
+  
   showArticle(event: any) {
     event.preventDefault();
     this.loading = true;
@@ -337,47 +350,55 @@ export class QuerysingledocComponent implements OnInit {
             break;
           }
         this.update();
-        this.timeline.getTextKeyDateFromSingleDoc(this.artigo.content, this.opcoes).pipe(take(1)).subscribe((res2) => {
-
-          if (res2) {
-             console.log(res2);
-            this.resultado = res2;
-
-            // pedido recebido aqui
-            if (res2.message) {
-              this._snackBar.open('Sorry, but we were not able to extract any results due to an error on time-matters. Article length:', this.artigo.content.length, {
-                duration: 4000
-              });
-              this.requestMade = false;
-              this.loading = false;
-              return ' ';
-            }
-            if (res2.length == 0) {
-              this._snackBar.open('This URL has no data we can use', ':(', {
-                duration: 2000
-              });
-              this.requestMade = false;
-              this.loading = false;
-              return ' ';
-
-            }
-            this.requestMade = true;
-            this.update();
-            this.loading = false;
-
-            return ' ';
-          } else {
-            console.log('oof');
-            return ' ';
-          }
-          }
-        );
+        console.log("SOCORRO");
+        console.log(this.opcoes);
+        console.log(this.artigo);
+        //let cenak= this.artigo.content.replace("\\u21b5",'');
+        
+       
 
       }
 
 
+      return;
+    },(err)=>{},  ()=>{
+      console.log("reached this place");
+      this.timeline.getTextKeyDateFromSingleDoc(this.artigo.content, this.opcoes).pipe(take(1)).subscribe((res) => {
+          
+      if (res) {
+         console.log(res);
+        this.resultado = res;
 
-    });
+        // pedido recebido aqui
+        if (res.message) {
+          this._snackBar.open('Sorry, but we were not able to extract any results due to an error on time-matters. Article length:', this.artigo.content.length, {
+            duration: 4000
+          });
+          this.requestMade = false;
+          this.loading = false;
+          return ' ';
+        }
+        if (res.length == 0) {
+          this._snackBar.open('This URL has no data we can use', ':(', {
+            duration: 2000
+          });
+          this.requestMade = false;
+          this.loading = false;
+          return ' ';
+
+        }
+        this.requestMade = true;
+        this.update();
+        this.loading = false;
+
+        return ' ';
+      } else {
+        console.log('oof');
+        return ' ';
+      }
+      }
+    );
+  });
 }
 
 }
