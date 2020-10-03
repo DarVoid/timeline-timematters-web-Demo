@@ -24,7 +24,7 @@ export class TimelineService {
       console.log('options');
       console.log(options);
       console.log('search');
-      console.log(search.trim());
+      console.log(search);
       let realURL = this.url + '/SingleDoc';
       if (options.algo === 'py_heideltime') {
         realURL += '/Heideltime/api/v1.0';

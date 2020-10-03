@@ -38,6 +38,7 @@ export class QuerysingledocComponent implements OnInit {
   public loading: boolean;
   public documentCreationTime: string;
   public opcoes: any;
+  public scheduler: any;
   public resultado: any;
   public TH: number;
   public hiddenoptionTM: boolean;
@@ -316,7 +317,15 @@ export class QuerysingledocComponent implements OnInit {
         // tslint:disable-next-line: max-line-length
         if (res.date_creation) {
           // tslint:disable-next-line: max-line-length
-          this.documentCreationTime = new Date(res.date_creation).getFullYear() + '-' + new Date(res.date_creation).getMonth() + '-' + new Date(res.date_creation).getDate();
+          let month:any= new Date(res.date_creation).getMonth();
+          if (month*1 <10){
+            month = "0" + month;
+          }
+          let day:any = new Date(res.date_creation).getDate()
+          if(day*1 <10){
+            day = "0"+day;
+          }
+          this.documentCreationTime = new Date(res.date_creation).getFullYear() + '-' + month + '-' + day;
           console.log(this.documentCreationTime);
         }
         switch (res.lang) {
@@ -362,7 +371,12 @@ export class QuerysingledocComponent implements OnInit {
 
       return;
     },(err)=>{},  ()=>{
-      console.log("reached this place");
+      this.scheduler = setTimeout(()=>{
+        console.log("reached this place");
+        console.log(this.artigo.content.toString());
+        console.log(this.opcoes);
+        
+
       this.timeline.getTextKeyDateFromSingleDoc(this.artigo.content, this.opcoes).pipe(take(1)).subscribe((res) => {
           
       if (res) {
@@ -398,7 +412,10 @@ export class QuerysingledocComponent implements OnInit {
       }
       }
     );
-  });
+  
+
+      },1000);
+      });
 }
 
 }
