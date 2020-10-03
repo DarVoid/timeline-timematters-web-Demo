@@ -49,7 +49,7 @@ p.noticeme{
 
 .noticem4 {
   padding-top: 20px;
-  color: blue;
+  color: green;
 }
 
 .noticem5 {
@@ -243,6 +243,10 @@ $app-theme: mat-light-theme($app-primary, $app-accent);
 body {
   background-color: #e8e3e3;
   zoom: 90%;
+}
+
+.azul {
+  color: blue;
 }
 
 .mat-drawer-container {
