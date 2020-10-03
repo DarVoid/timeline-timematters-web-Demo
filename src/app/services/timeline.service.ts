@@ -53,7 +53,7 @@ export class TimelineService {
         realURL += '/ScoreBySentence';
       }
       //console.log(search.split('\"').join('\'').split("“").join("\"").split("”").join("\"").split("’").join("\'"));
-      formData.append('text', search.split("“").join("\'").split("”").join("\'").split('\"').join('\''));   
+      formData.append('text', search);    //.split("“").join("\'").split("”").join("\'").split('\"').join('\'')
       
       if (options.dateGranularity) {
         formData.append('date_granularity', options.dateGranularity);

@@ -49,7 +49,7 @@ export class TimelineScrollComponent implements OnInit {
     if(document.getElementById("my-timeline") && this.isnotset){
       this.isnotset = false;
       if(this.argumentosRelevantes.length>0){
-        this.relevant=true
+        
       }else{
         this.relevant=false;
       }
