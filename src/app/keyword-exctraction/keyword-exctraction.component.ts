@@ -233,7 +233,7 @@ export class KeywordExctractionComponent implements OnInit {
     this.contextWindow = 'full_sentence';
     this.simbaValue = 10;
     this.cheating = false;
-    this.showOnlyRel = false;
+    this.showOnlyRel = true;
     this.showOnlyRelSnap = true;
     this.TH = 0.05;
     

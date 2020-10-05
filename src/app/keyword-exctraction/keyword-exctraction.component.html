@@ -205,7 +205,7 @@
                       </mat-form-field>
                       <mat-form-field (change)="selecionarNKeywords($event)" color="warn" name="number_keywords">
                         <mat-label class="algorithm">Number of Keywords</mat-label>
-                        <input class="algorithm" matInput type="number" name="nkey" placeholder="number of keywords" min="1" value="10"/>
+                        <input class="algorithm" matInput type="number" name="nkey" placeholder="number of keywords" min="1" [value]="numberOfKeyWords"/>
                       </mat-form-field>
                       <br>
                     </div>
@@ -317,6 +317,7 @@
                           <input matInput (change)="selecionarDataFim($event)"  type="number" name="dataFim" placeholder="2100" min="0" value="2100"/>
                         </mat-form-field>
                       </span>
+                     <!-- 
                       <span>
                         <mat-form-field color="warn">
                           <mat-label class="algorithm">Date Granularity </mat-label>
@@ -329,6 +330,7 @@
   
                         </mat-form-field>
                       </span>
+                     -->
                       <!--FIM OPÇÕES RELATIVAS AO RULEBASED-->
                     </ng-template></mat-card>
 
