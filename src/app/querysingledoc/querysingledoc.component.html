@@ -142,18 +142,19 @@
                   <input matInput (change)="selecionarDataFim($event)"   type="number" name="dataFim" placeholder="2100" min="0" value="2100"/>
                 </mat-form-field>
               </span>
+              <!--
               <span>
-                <mat-form-field color="warn">
-                  <mat-label class="algorithm">Date Granularity </mat-label>
-                  <mat-select class="algorithm" (valueChange)="selecionarGranularidade($event)" [value]="dateGranularitySelected">
-                    <mat-option class="mat-menu-item2" hidden>full</mat-option>
-                    <mat-option class="mat-menu-item2" *ngFor="let granu of dateGranularityOptions" [value]="granu">
-                      {{granu}}
-                    </mat-option>
-                  </mat-select>
-  
-                </mat-form-field>
-              </span>
+                  <mat-form-field color="warn">
+                    <mat-label class="algorithm">Date Granularity </mat-label>
+                    <mat-select class="algorithm" (valueChange)="selecionarGranularidade($event)" [value]="dateGranularitySelected">
+                      <mat-option class="mat-menu-item2" hidden>full</mat-option>
+                      <mat-option class="mat-menu-item2" *ngFor="let granu of dateGranularityOptions" [value]="granu">
+                        {{granu}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </span>
+              -->
 
               <!--FIM OPÇÕES RELATIVAS AO RULEBASED-->
             </ng-template>
