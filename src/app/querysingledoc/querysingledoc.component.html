@@ -35,11 +35,11 @@
                 <br>
                 <mat-form-field (change)="selecionarngram($event)" name="ngrams" color="warn">
                   <mat-label class="algorithm">Ngrams</mat-label>
-                  <input class="algorithm" matInput type="number" name="ngram" color="warn" placeholder="ngrams" min="1" value="1"/>
+                  <input class="algorithm" matInput type="number" name="ngram" color="warn" placeholder="ngrams" min="1" value="1" [value]="ngramSelected"/>
                 </mat-form-field>
                 <mat-form-field (change)="selecionarNKeywords($event)" name="number_keywords" color="warn">
                   <mat-label class="algorithm">Number of Keywords</mat-label>
-                  <input class="algorithm" matInput type="number" color="warn" name="nkey" placeholder="number of keywords" min="1" value="10"/>
+                  <input class="algorithm" matInput type="number" color="warn" name="nkey" placeholder="number of keywords" min="1" value="10" [value]="numberOfKeyWords"/>
                 </mat-form-field>
               </div>
 
@@ -129,7 +129,7 @@
             </div>
             <ng-template #rule_based>
               <!--OPÇÕES RELATIVAS AO RULE_BASED-->
-              <h3>Py Rule Based options:</h3>
+              <h3 class="algorithm">Py Rule Based options:</h3>
             <span title="inferior year limit">
                 <mat-form-field name="beginDateControl" color="warn">
                   <mat-label>Begin Date</mat-label>
