@@ -121,7 +121,7 @@
       </div>
 
       <div class="col-lg-12 text-right">
-        <!--<a *ngIf="options" color="primary" (click)="goBack()" href="/time-matters"><button type="reset" class="btn btn-link">Go Back</button></a>-->
+        <button type="reset" class="btn btn-link" (click)="goBack()">Go Back</button>
         <button *ngIf="options" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
       </div>
   </div>

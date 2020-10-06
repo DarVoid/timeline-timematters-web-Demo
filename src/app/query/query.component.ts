@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, enableProdMode } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, enableProdMode, EventEmitter, Output } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
@@ -9,6 +9,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class QueryComponent implements OnChanges {
   @Input() options: any;
   @Input() article: any;
+  @Output() goBackque: EventEmitter<any> = new EventEmitter();
   public showOnlyRel: boolean;
   public withKeywords: boolean;
   public numberOfKeyWords: number;
@@ -57,6 +58,7 @@ export class QueryComponent implements OnChanges {
   }
   goBack() {
     // falta fazer
+    this.goBackque.emit(null);
   }
   public putOnClipboard(event: any, cena: string) {
     event.preventDefault();

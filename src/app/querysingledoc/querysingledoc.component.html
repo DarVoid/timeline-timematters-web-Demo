@@ -182,15 +182,15 @@
 </div>
 
   <ng-template #mostra>
-    <app-query [article]="resultado" [options]="opcoes" > </app-query>
+    <app-query (goBackque)="goBack()" [article]="resultado" [options]="opcoes" > </app-query>
     <br><br>
-    <footer>
+    <!--<footer>
       <div class="col-md-11 col-sm-8 col-xs-6 my-col5">
         <div class="col-lg-12 text-right">
           <button class="btn btn-link" (click)="goBack()" type="button">Go Back</button>
         </div>
       </div>
-    </footer>
+    </footer>-->
 
 
 <!--
