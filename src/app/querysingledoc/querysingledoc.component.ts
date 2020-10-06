@@ -79,7 +79,7 @@ export class QuerysingledocComponent implements OnInit {
     if(this.inpu){
 
     }else{
-      this.url = 'https://sicnoticias.pt/pais/2016-07-07-Cronologia-do-processo-Casa-Pia';
+      this.url = 'https://www.labmanager.com/lab-health-and-safety/covid-19-a-history-of-coronavirus-22021';
       //https://sicnoticias.pt/pais/2016-07-07-Cronologia-do-processo-Casa-Pia
       //https://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/
     }
