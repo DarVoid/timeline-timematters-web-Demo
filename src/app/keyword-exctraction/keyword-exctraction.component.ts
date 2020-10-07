@@ -537,9 +537,16 @@ export class KeywordExctractionComponent implements OnInit {
               
               console.log(a);
               let sentence_to_write= this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'');
-
-               
-              
+              let data_chave = Object.keys(this.result.Score)[i];
+              console.log("frase");
+               console.log("frase a ser escrita");
+               console.log(this.result.Score[data_chave][xd]);
+               console.log(this.result.Score);
+               console.log(sentence_to_write);
+              console.log(data_chave);
+              let data_chave_replaced_by = "<strong>"+ this.result.Score[data_chave][xd][1][0]+ "</strong>";
+              sentence_to_write= sentence_to_write.replace(data_chave,data_chave_replaced_by);
+              sentence_to_write= sentence_to_write.replace(data_chave.toLowerCase(),data_chave_replaced_by);
               // tslint:disable-next-line: whitespace
               // tslint:disable-next-line: max-line-length
               if (this.result.Score[Object.keys(this.result.Score)[i]][xd][0] > 0.35) {

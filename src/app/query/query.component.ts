@@ -237,7 +237,7 @@ export class QueryComponent implements OnChanges {
               // tslint:disable-next-line: max-line-length
               d.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0], series: xd});
               console.log(d);
-
+              
               
 
               // tslint:disable-next-line: max-line-length
