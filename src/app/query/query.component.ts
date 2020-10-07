@@ -181,6 +181,7 @@ export class QueryComponent implements OnChanges {
             //[Object.keys(this.result.Score)[i].toLowerCase()]);
             let value_to_replace_for = this.options.result.TempExpressions.filter((a)=>{return a[0].toLowerCase()==Object.keys(this.options.result.Score)[i];}
             )[0][1];
+            value_to_replace_for = "<strong>"+value_to_replace_for+"</strong>";
             console.log(value_to_replace_for);
             
             let sentence_to_write = this.options.result.SentencesNormalized.map((a)=>{

@@ -492,6 +492,7 @@ export class KeywordExctractionComponent implements OnInit {
             //[Object.keys(this.result.Score)[i].toLowerCase()]);
             let value_to_replace_for = this.result.TempExpressions.filter((a)=>{return a[0].toLowerCase()==Object.keys(this.result.Score)[i];}
             )[0][1];
+            value_to_replace_for = "<strong>"+value_to_replace_for+"</strong>";
             console.log(value_to_replace_for);
             let sentence_to_write= this.result.SentencesNormalized.map((a)=>{
               //console.log(a);
