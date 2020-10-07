@@ -237,7 +237,7 @@ export class QueryComponent implements OnChanges {
               let data_chave_replaced_by = "<strong>"+ this.options.result.Score[data_chave][xd][1][0]+ "</strong>";
               sentence_to_write= sentence_to_write.replace(data_chave,data_chave_replaced_by);
               sentence_to_write= sentence_to_write.replace(data_chave.toLowerCase(),data_chave_replaced_by);
-               
+              sentence_to_write= sentence_to_write.replace(data_chave.toUpperCase(),data_chave_replaced_by);
               // tslint:disable-next-line: max-line-length
               d.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0], series: xd});
               console.log(d);

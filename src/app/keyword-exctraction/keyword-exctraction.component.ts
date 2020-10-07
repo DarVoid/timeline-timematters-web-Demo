@@ -542,6 +542,7 @@ export class KeywordExctractionComponent implements OnInit {
               let data_chave_replaced_by = "<strong>"+ this.result.Score[data_chave][xd][1][0]+ "</strong>";
               sentence_to_write= sentence_to_write.replace(data_chave,data_chave_replaced_by);
               sentence_to_write= sentence_to_write.replace(data_chave.toLowerCase(),data_chave_replaced_by);
+              sentence_to_write= sentence_to_write.replace(data_chave.toUpperCase(),data_chave_replaced_by);
               // tslint:disable-next-line: whitespace
               // tslint:disable-next-line: max-line-length
               if (this.result.Score[Object.keys(this.result.Score)[i]][xd][0] > 0.35) {
