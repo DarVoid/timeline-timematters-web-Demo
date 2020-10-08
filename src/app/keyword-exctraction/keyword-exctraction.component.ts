@@ -600,19 +600,54 @@ export class KeywordExctractionComponent implements OnInit {
         for (const data in c) {
           // console.log(c[data].x);
           // console.log(c[data].x.substring(0,10));
-
-          const j = Date.parse(c[data].x.substring(0,10).split('-').join(' '));
+          let data_prov = c[data].x.substring(0,10).split('-').join(' ')
+          const j = Date.parse(data_prov);
           // console.log (j);
           c[data].dateparsed = j;
+          data_prov = data_prov.split(' ').join('');
+          if(data_prov.length==6){
+            data_prov+="00";
+          }if(data_prov.length==4){
+            data_prov+="0000";
+          }
+          c[data].dateparsed2 = data_prov
+
         }
         // tslint:disable-next-line: forin
         for (const data in c2) {
-          const j = Date.parse(c2[data].x.substring(0,10).split('-').join(' '));
+           let data_prov = c2[data].x.substring(0,10).split('-').join(' ')
+          const j = Date.parse(data_prov);
           // console.log (j);
           c2[data].dateparsed = j;
+          data_prov = data_prov.split(' ').join('');
+          if(data_prov.length==6){
+            data_prov+="00";
+          }if(data_prov.length==4){
+            data_prov+="0000";
+          }
+          c2[data].dateparsed2 = data_prov;
+
         }
-        c = c.sort(( a , b ) => a.dateparsed - b.dateparsed);
-        c2 = c2.sort(( a , b ) => a.dateparsed - b.dateparsed);
+        c = c.sort(( a , b ) =>{
+          console.log ("a");
+          console.log ("b");
+          console.log (a);
+          console.log (b);
+          return  a.dateparsed2 - b.dateparsed2;
+        });
+        c2 = c2.sort(( a , b ) => {
+          console.log ("a");
+          console.log ("b");
+          console.log (a);
+          console.log (b);
+          return  a.dateparsed2 - b.dateparsed2;
+        });
+        c = c.sort(( a , b ) =>{
+          return  a.dateparsed - b.dateparsed;
+        });
+        c2 = c2.sort(( a , b ) => {
+          return  a.dateparsed - b.dateparsed;
+        });
         // console.log("a,b,join");
         // console.log(a);
         // console.log(b);

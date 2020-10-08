@@ -359,7 +359,7 @@ export class QuerysingledocComponent implements OnInit {
             break;
           }
         this.update();
-        console.log("SOCORRO");
+        
         console.log(this.opcoes);
         console.log(this.artigo);
         //let cenak= this.artigo.content.replace("\\u21b5",'');
