@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit{
     );
 
   constructor(private breakpointObserver: BreakpointObserver,private router:Router) {
-    this.page = "1";
+    this.page = "6";
   }
 
   ngOnInit() {
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit{
     
   }
   changePage(pagina: string){
-   if(pagina == "0"){
+   if(pagina == "6"){
     this.router.navigate(['']);
    }
    console.log(pagina);
