@@ -445,3 +445,26 @@ app-frame {
     white-space: nowrap;
 }
 
+// HOME page
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 40.25%;
+  padding-top: 25px;
+  height: 0px;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+.legenda {
+  font-family: 'Work Sans', sans-serif !important;
+  text-align: right;
+}
