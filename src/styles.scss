@@ -449,22 +449,33 @@ app-frame {
 
 .videoWrapper {
   position: relative;
-  padding-bottom: 30.25%;
-  padding-top: 25px;
+  padding-bottom: 56.25%;
+  padding-top: 0px;
   height: 75%;
+  text-align: center;
 }
 
 .videoWrapper iframe {
   position: absolute;
-  left: 12%;
+  left: 0%;
   top: 0px;
-  right: 12%;
+  right: 0%;
   bottom: 0px;
-  height: 95%;
+  height: 75%;
   width: 75%;
 }
 
 .legenda {
   font-family: 'Work Sans', sans-serif !important;
   text-align: right;
+}
+.legenda b{
+  color: #000000;
+}
+.popup {
+  height: 100%;
+  width: 100%;
+}
+.changeCursor{
+  cursor: pointer;
 }

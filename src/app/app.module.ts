@@ -40,6 +40,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { AboutAcknowledgementsComponent } from './about-acknowledgements/about-acknowledgements.component';
 import {MatSliderModule} from '@angular/material/slider';
+import { TutorialComponent } from './tutorial/tutorial.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -58,8 +60,10 @@ import {MatSliderModule} from '@angular/material/slider';
     QuerysingledocComponent,
     ArquivoComponent,
     TratarArquivoComponent,
-    AboutAcknowledgementsComponent
+    AboutAcknowledgementsComponent,
+    TutorialComponent
   ],
+  entryComponents:[TutorialComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -86,7 +90,8 @@ import {MatSliderModule} from '@angular/material/slider';
     MatCheckboxModule,
     MatDatepickerModule,
     MatPaginatorModule,
-    MatSliderModule
+    MatSliderModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

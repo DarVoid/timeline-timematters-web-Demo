@@ -3,6 +3,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
+import { TutorialComponent } from '../tutorial/tutorial.component';
 //import {MatGridListModule} from '@angular/material/grid-list';
 
 
@@ -22,18 +24,19 @@ export class HomeComponent implements OnInit{
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver,private router:Router) {
-    this.page = "6";
+  constructor(private breakpointObserver: BreakpointObserver,private router:Router, public dialog:MatDialog) {
+    this.page = "1";
+    
+  }
+  openDialog(){
+    this.dialog.open(TutorialComponent, {height:"80%", width: "100%"})
   }
 
   ngOnInit() {
-
-  }
-  refresh(){
-    
+    //this.openDialog();
   }
   changePage(pagina: string){
-   if(pagina == "6"){
+   if(pagina == "1"){
     this.router.navigate(['']);
    }
    console.log(pagina);
