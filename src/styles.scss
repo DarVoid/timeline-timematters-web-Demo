@@ -445,7 +445,7 @@ app-frame {
     white-space: nowrap;
 }
 
-// HOME page
+// TUTORIAL page
 
 .videoWrapper {
   position: relative;
@@ -469,17 +469,7 @@ app-frame {
 .legenda {
   font-family: 'Work Sans', sans-serif !important;
   text-align: right;
-  margin-top: -50px;  
-}
-.legenda b{
-  color: #000000;
-}
-.popup {
-  height: 100%;
-  width: 100%;
-}
-.changeCursor{
-  cursor: pointer;
+  margin-top: -40px;
 }
 
 .noScroll{
@@ -488,4 +478,106 @@ app-frame {
 
 .cdk-overlay-pane{
   overflow-y: hidden !important;
+}
+
+@media (min-width: 768px) {
+  .legenda {
+    margin-top: -30px;  
+  }
+
+  .legenda b {
+    padding-right: 0px;
+  }
+}
+
+@media (max-width: 1225px){
+  .mat-dialog-container {
+    height:80% !important;
+  }
+
+  .Tutorial {
+    padding-left: 38px !important;
+  }
+
+  .legenda b{
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width: 965px){
+  .mat-dialog-container {
+    height:70% !important;
+  }
+
+  .Tutorial {
+    padding-left: 33px !important;
+  }
+  .legenda b{
+    font-size: 15px !important;
+  }
+  
+}
+
+@media (max-width: 769px){
+  .mat-dialog-container {
+    height:55% !important;
+  }
+
+  .Tutorial {
+    padding-left: 25px !important;
+  }
+
+  .legenda b{
+    font-size: 15px !important;
+    padding-right: 0px !important;
+  }
+}
+
+@media (max-width: 600px){
+  .mat-dialog-container {
+    height:45% !important;
+  }
+
+  .Tutorial {
+    padding-left: 20px !important;
+  }
+
+  .legenda b{
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 415px){
+  .mat-dialog-container {
+    height:38% !important;
+  }
+
+  .Tutorial {
+    padding-left: 13px !important;
+  }
+
+  .legenda b{
+    font-size: 13px !important;
+  }
+}
+
+.legenda b{
+  color: #000000;
+  padding-right: 45px;  
+}
+a {
+  outline: none;
+}
+
+.popup {
+  height: 100%;
+  width: 100%;
+}
+.changeCursor{
+  cursor: pointer;
+}
+
+.Tutorial {
+  padding-left: 55px;
+  font-family: 'Work Sans', sans-serif !important;
 }
