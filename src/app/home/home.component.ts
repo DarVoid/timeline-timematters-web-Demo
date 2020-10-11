@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit{
     
   }
   openDialog(){
-    this.dialog.open(TutorialComponent, {height:"80%", width: "100%"})
+    this.dialog.open(TutorialComponent, {height:"90%", width: "100%"})
   }
 
   ngOnInit() {

@@ -449,25 +449,27 @@ app-frame {
 
 .videoWrapper {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-bottom: 56.25%;
   padding-top: 0px;
-  height: 75%;
-  text-align: center;
+  overflow-y: hidden;
 }
 
 .videoWrapper iframe {
   position: absolute;
-  left: 0%;
   top: 0px;
-  right: 0%;
   bottom: 0px;
-  height: 75%;
-  width: 75%;
+  height: 90%;
+  width: 90%;
+  overflow-y: hidden;
 }
 
 .legenda {
   font-family: 'Work Sans', sans-serif !important;
   text-align: right;
+  margin-top: -50px;  
 }
 .legenda b{
   color: #000000;
@@ -478,4 +480,12 @@ app-frame {
 }
 .changeCursor{
   cursor: pointer;
+}
+
+.noScroll{
+  overflow-y: hidden;
+}
+
+.cdk-overlay-pane{
+  overflow-y: hidden !important;
 }
