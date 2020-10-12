@@ -492,6 +492,7 @@ export class KeywordExctractionComponent implements OnInit {
             //[Object.keys(this.result.Score)[i].toLowerCase()]);
             let value_to_replace_for = this.result.TempExpressions.filter((a)=>{return a[0].toLowerCase()==Object.keys(this.result.Score)[i];}
             )[0][1];
+            value_to_replace_for = "<strong>"+value_to_replace_for+"</strong>";
             console.log(value_to_replace_for);
             let sentence_to_write= this.result.SentencesNormalized.map((a)=>{
               //console.log(a);
@@ -536,9 +537,12 @@ export class KeywordExctractionComponent implements OnInit {
               
               console.log(a);
               let sentence_to_write= this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'');
-
-               
+              let data_chave = Object.keys(this.result.Score)[i];
               
+              let data_chave_replaced_by = "<strong>"+ this.result.Score[data_chave][xd][1][0]+ "</strong>";
+              sentence_to_write= sentence_to_write.replace(data_chave,data_chave_replaced_by);
+              sentence_to_write= sentence_to_write.replace(data_chave.toLowerCase(),data_chave_replaced_by);
+              sentence_to_write= sentence_to_write.replace(data_chave.toUpperCase(),data_chave_replaced_by);
               // tslint:disable-next-line: whitespace
               // tslint:disable-next-line: max-line-length
               if (this.result.Score[Object.keys(this.result.Score)[i]][xd][0] > 0.35) {
@@ -596,19 +600,54 @@ export class KeywordExctractionComponent implements OnInit {
         for (const data in c) {
           // console.log(c[data].x);
           // console.log(c[data].x.substring(0,10));
-
-          const j = Date.parse(c[data].x.substring(0,10).split('-').join(' '));
+          let data_prov = c[data].x.substring(0,10).split('-').join(' ')
+          const j = Date.parse(data_prov);
           // console.log (j);
           c[data].dateparsed = j;
+          data_prov = data_prov.split(' ').join('');
+          if(data_prov.length==6){
+            data_prov+="00";
+          }if(data_prov.length==4){
+            data_prov+="0000";
+          }
+          c[data].dateparsed2 = data_prov
+
         }
         // tslint:disable-next-line: forin
         for (const data in c2) {
-          const j = Date.parse(c2[data].x.substring(0,10).split('-').join(' '));
+           let data_prov = c2[data].x.substring(0,10).split('-').join(' ')
+          const j = Date.parse(data_prov);
           // console.log (j);
           c2[data].dateparsed = j;
+          data_prov = data_prov.split(' ').join('');
+          if(data_prov.length==6){
+            data_prov+="00";
+          }if(data_prov.length==4){
+            data_prov+="0000";
+          }
+          c2[data].dateparsed2 = data_prov;
+
         }
-        c = c.sort(( a , b ) => a.dateparsed - b.dateparsed);
-        c2 = c2.sort(( a , b ) => a.dateparsed - b.dateparsed);
+        c = c.sort(( a , b ) =>{
+          console.log ("a");
+          console.log ("b");
+          console.log (a);
+          console.log (b);
+          return  a.dateparsed2 - b.dateparsed2;
+        });
+        c2 = c2.sort(( a , b ) => {
+          console.log ("a");
+          console.log ("b");
+          console.log (a);
+          console.log (b);
+          return  a.dateparsed2 - b.dateparsed2;
+        });
+        c = c.sort(( a , b ) =>{
+          return  a.dateparsed - b.dateparsed;
+        });
+        c2 = c2.sort(( a , b ) => {
+          return  a.dateparsed - b.dateparsed;
+        });
         // console.log("a,b,join");
         // console.log(a);
         // console.log(b);

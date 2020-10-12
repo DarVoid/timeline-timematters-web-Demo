@@ -107,7 +107,7 @@ export class TimelineScrollComponent implements OnInit {
       console.log("conteudo");
       console.log(this.argumentos[h].y.split("</p>")[1].split("(...)").join("").split("<kw>").join("").split("</kw>").join("").split("<d>").join("").split("</d>").join(""));
       
-      this.yake.getKeywords(this.argumentos[h].y.split("</p>")[1].split("(...)").join("").split("<kw>").join("").split("</kw>").join("").split("<d>").join("").split("</d>").join("")).pipe(take(1)).subscribe((res)=>{
+      this.yake.getKeywords(this.argumentos[h].y.split("</p>")[1].split("(...)").join("").split("<kw>").join("").split("</kw>").join("").split("<d>").join("").split("</d>").join("").split("</strong>").join("").split("<strong>").join("")).pipe(take(1)).subscribe((res)=>{
         if (res) {
           console.log(res);
           let captio=res.keywords[0].ngram;

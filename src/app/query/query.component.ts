@@ -181,6 +181,7 @@ export class QueryComponent implements OnChanges {
             //[Object.keys(this.result.Score)[i].toLowerCase()]);
             let value_to_replace_for = this.options.result.TempExpressions.filter((a)=>{return a[0].toLowerCase()==Object.keys(this.options.result.Score)[i];}
             )[0][1];
+            value_to_replace_for = "<strong>"+value_to_replace_for+"</strong>";
             console.log(value_to_replace_for);
             
             let sentence_to_write = this.options.result.SentencesNormalized.map((a)=>{
@@ -231,8 +232,12 @@ export class QueryComponent implements OnChanges {
             // tslint:disable-next-line: forin
             for (const xd in this.options.result.Score[Object.keys(this.options.result.Score)[i]]) {
               let sentence_to_write= this.options.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'');
-
-               
+              let data_chave = Object.keys(this.options.result.Score)[i];
+              
+              let data_chave_replaced_by = "<strong>"+ this.options.result.Score[data_chave][xd][1][0]+ "</strong>";
+              sentence_to_write= sentence_to_write.replace(data_chave,data_chave_replaced_by);
+              sentence_to_write= sentence_to_write.replace(data_chave.toLowerCase(),data_chave_replaced_by);
+              sentence_to_write= sentence_to_write.replace(data_chave.toUpperCase(),data_chave_replaced_by);
               // tslint:disable-next-line: max-line-length
               d.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0], series: xd});
               console.log(d);
@@ -272,14 +277,17 @@ export class QueryComponent implements OnChanges {
           // console.log("b");
           // console.log(b);
           // console.log("end");
-
-          c2.push({x: b, y: a2, z: d2});
+          let nop= d.filter((a)=>{
+            return a.y>0.35;
+          });
+          c2.push({x: b, y: a2, z: nop});
           c.push({x: b, y: a, z: d});
             // console.log();
             // console.log(Object.keys(this.result.Score)[i].split('-').join(''));
-
+          console.log(c2);
           /^\d+$/.test(Object.keys(this.options.result.Score)[i].substring(0,10).split('-').join('')) ? '' : c.pop();
           /^\d+$/.test(Object.keys(this.options.result.Score)[i].substring(0,10).split('-').join('')) ? '' : c2.pop();
+          console.log(c2);
           c2 = c2.filter((y) => {
             if (y.y) {
               return true;
@@ -287,24 +295,65 @@ export class QueryComponent implements OnChanges {
               return false;
             }
           });
-
+          console.log(c2);
         }
         // tslint:disable-next-line: forin
     for (const data in c) {
-          const j = Date.parse(c[data].x.substring(0,10).split('-').join(' '));
+          let data_prov = c[data].x.substring(0,10).split('-').join(' '); 
+          
+          const j = Date.parse(data_prov);
           // console.log (j);
           c[data].dateparsed = j;
+          data_prov = data_prov.split(' ').join('');
+          if(data_prov.length==6){
+            data_prov+="00";
+          }if(data_prov.length==4){
+            data_prov+="0000";
+          }
+          c[data].dateparsed2 = data_prov
         }
         // tslint:disable-next-line: forin
     for (const data in c2) {
-          const j = Date.parse(c2[data].x.substring(0,10).split('-').join(' '));
+          let data_prov = c2[data].x.substring(0,10).split('-').join(' ')   
+          const j = Date.parse(data_prov);
           // console.log (j);
           c2[data].dateparsed = j;
+          data_prov = data_prov.split(' ').join('');
+          if(data_prov.length==6){
+            data_prov+="00";
+          }if(data_prov.length==4){
+            data_prov+="0000";
+          }
+          c2[data].dateparsed2 = data_prov;
         }
-        // tslint:disable-next-line: no-shadowed-variable
-    c = c.sort(( a , b ) => a.dateparsed - b.dateparsed);
-        // tslint:disable-next-line: no-shadowed-variable
-    c2 = c2.sort(( a , b ) => a.dateparsed - b.dateparsed);
+        c = c.sort(( a , b ) =>{
+          console.log ("a");
+          console.log ("b");
+          console.log (a);
+          console.log (b);
+          return  a.dateparsed - b.dateparsed;
+        });
+        c2 = c2.sort(( a , b ) => {
+          console.log ("a");
+          console.log ("b");
+          console.log (a);
+          console.log (b);
+          return  a.dateparsed - b.dateparsed;
+        });
+        c = c.sort(( a , b ) =>{
+          console.log ("a");
+          console.log ("b");
+          console.log (a);
+          console.log (b);
+          return  a.dateparsed2 - b.dateparsed2;
+        });
+        c2 = c2.sort(( a , b ) => {
+          console.log ("a");
+          console.log ("b");
+          console.log (a);
+          console.log (b);
+          return  a.dateparsed2 - b.dateparsed2;
+        });
         // console.log("a,b,join");
         // console.log(a);
         // console.log(b);
