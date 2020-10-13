@@ -461,8 +461,8 @@ app-frame {
   position: absolute;
   top: 0px;
   bottom: 0px;
-  height: 90%;
-  width: 90%;
+  height: 92%;
+  width: 95%;
   overflow-y: hidden;
 }
 
@@ -562,7 +562,7 @@ app-frame {
 }
 
 .legenda b{
-  color: #000000;
+  color: #ffffff;
   padding-right: 45px;  
 }
 a {
@@ -580,4 +580,7 @@ a {
 .Tutorial {
   padding-left: 55px;
   font-family: 'Work Sans', sans-serif !important;
+}
+.mat-dialog-container{
+  background-color: #000000;
 }
