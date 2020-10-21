@@ -95,12 +95,12 @@
 
 
     <div *ngIf='page=="0" else pagina1'>
-      <app-keyword-exctraction></app-keyword-exctraction>
+      <app-exctraction></app-exctraction>
       
     </div>
     <ng-template #pagina1>
       <div *ngIf='page=="1" else pagina2'>
-        <app-keyword-exctraction></app-keyword-exctraction>
+        <app-exctraction></app-exctraction>
         <div *ngIf="false"> 
           <br/>
           <div class="col-md-11 col-sm-8 col-xs-6 my-col2">

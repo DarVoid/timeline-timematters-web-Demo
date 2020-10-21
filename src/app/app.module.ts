@@ -14,7 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { KeywordExctractionComponent } from './keyword-exctraction/keyword-exctraction.component';
+import { ExctractionComponent } from './exctraction/exctraction.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FrameComponent } from './frame/frame.component';
 import { ScoreComponent } from './score/score.component';
@@ -48,7 +48,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
   declarations: [
     AppComponent,
     HomeComponent,
-    KeywordExctractionComponent,
+    ExctractionComponent,
     FrameComponent,
     ScoreComponent,
     SafePipe,

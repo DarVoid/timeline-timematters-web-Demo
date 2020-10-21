@@ -12,11 +12,11 @@ import { isNull } from 'util';
 import { YakeService } from '../services/yake.service';
 
 @Component({
-  selector: 'app-keyword-exctraction',
-  templateUrl: './keyword-exctraction.component.html',
-  styleUrls: ['./keyword-exctraction.component.scss']
+  selector: 'app-exctraction',
+  templateUrl: './exctraction.component.html',
+  styleUrls: ['./exctraction.component.scss']
 })
-export class KeywordExctractionComponent implements OnInit {
+export class ExctractionComponent implements OnInit {
   public result: any;
   public requestMade: boolean;
   public requestReceived: boolean;
