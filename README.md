@@ -7,8 +7,8 @@ windows:
 having git bash installed
 
 ## Development server
-1- clone this repo
-2- cd time-matters
+1- clone this repo.
+2- change directory to project folder.
 3- Run `ng serve --proxy-config proxy.conf.json` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 The option `--proxy-config proxy.conf.json` is essential to run the necessary reverse proxy. 
 
