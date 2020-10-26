@@ -124,8 +124,29 @@ export class TimelineScrollComponent implements OnInit {
                 events.push({start_date:  {year: this.argumentos[h].x.split('-')[0],month: this.argumentos[h].x.split('-')[1] },media:{thumbnail: url2,url:url2,link: url2, credit: '<p class="textoArquivo">powered by Arquivo.pt</p>'}, text: { headline : "<p>"+captio.substring(0,1).toUpperCase()+captio.substring(1,captio.length)+"</p>", text: this.argumentos[h].y}});
               } else {
                 //,media:{url:url2, caption:captio}
-                // tslint:disable-next-line: max-line-length
-                events.push({start_date:  {year: this.argumentos[h].x.substring(0,10).split('-')[0],month: this.argumentos[h].x.substring(0,10).split('-')[1], day: this.argumentos[h].x.substring(0,10).split('-')[2] },media:{thumbnail: url2,url:url2,link: url2, credit: '<p class="textoArquivo">powered by Arquivo.pt</p>'}, text: { headline : "<p>"+captio.substring(0,1).toUpperCase()+captio.substring(1,captio.length)+"</p>", text: this.argumentos[h].y}}); 
+                if (this.argumentos[h].x.length > 10){
+                  console.log("Horas");
+                  console.log(this.argumentos[h].x);
+                  if(this.argumentos[h].x.charAt(10)=="t" || this.argumentos[h].x.charAt(10)=="T" && this.argumentos[h].x.charAt(11)*1>=0 &&this.argumentos[h].x.charAt(11)*1<=9   ){
+                    let horas=this.argumentos[h].x.substring(10).split(":")[0];
+                    let min=this.argumentos[h].x.substring(10).split(":")[1];
+                    console.log("horas");
+                  console.log(horas);
+                  console.log("min");
+                  console.log(min);
+                  // tslint:disable-next-line: max-line-length
+                  events.push({start_date:  {year: this.argumentos[h].x.substring(0,10).split('-')[0],month: this.argumentos[h].x.substring(0,10).split('-')[1], day: this.argumentos[h].x.substring(0,10).split('-')[2] },media:{thumbnail: url2,url:url2,link: url2, credit: '<p class="textoArquivo">powered by Arquivo.pt</p>'}, text: { headline : "<p>"+captio.substring(0,1).toUpperCase()+captio.substring(1,captio.length)+"</p>", text: "<p>"+horas.substring(1)+"h"+min+"min </p>"+this.argumentos[h].y}}); 
+                
+                  }else{
+                    // tslint:disable-next-line: max-line-length
+                  events.push({start_date:  {year: this.argumentos[h].x.substring(0,10).split('-')[0],month: this.argumentos[h].x.substring(0,10).split('-')[1], day: this.argumentos[h].x.substring(0,10).split('-')[2] },media:{thumbnail: url2,url:url2,link: url2, credit: '<p class="textoArquivo">powered by Arquivo.pt</p>'}, text: { headline : "<p>"+captio.substring(0,1).toUpperCase()+captio.substring(1,captio.length)+"</p>", text: this.argumentos[h].y}}); 
+                  
+                  }
+                }else{
+                  // tslint:disable-next-line: max-line-length
+                  events.push({start_date:  {year: this.argumentos[h].x.substring(0,10).split('-')[0],month: this.argumentos[h].x.substring(0,10).split('-')[1], day: this.argumentos[h].x.substring(0,10).split('-')[2] },media:{thumbnail: url2,url:url2,link: url2, credit: '<p class="textoArquivo">powered by Arquivo.pt</p>'}, text: { headline : "<p>"+captio.substring(0,1).toUpperCase()+captio.substring(1,captio.length)+"</p>", text: this.argumentos[h].y}}); 
+                  
+                }
               }
 
               if(h == this.argumentos.length-1){
