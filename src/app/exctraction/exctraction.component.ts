@@ -63,6 +63,8 @@ export class ExctractionComponent implements OnInit {
   public exe_time_YAKE:string;
   public exe_time_algo:string;
   public exe_time_GTE:string;
+  public numero_total:number;
+  public numero_total2:number;
   constructor(private yake: YakeService,private timeline: TimelineService, private _snackBar: MatSnackBar, private _lang: LangdetectService) {
     /*private timeline: TimelineService*/
     this.ngramSelected = 1;
@@ -426,23 +428,32 @@ export class ExctractionComponent implements OnInit {
       this.exe_time_algo = this.result.ExecutionTime.heideltime_processing.toFixed(3);
     }else{
       this.exe_time_algo = this.result.ExecutionTime.rule_based_processing.toFixed(3);
-    }
-          this.differentValues = this.result.TempExpressions.sort(
+    } 
+    console.log("temporal cenas");
+    console.log(this.result.TempExpressions);
+    let last= "";
+    this.numero_total = this.result.TempExpressions.length;
+    this.numero_total2 = this.result.TempExpressions.filter((cada)=>{
+
+      return this.result.Score[cada[0].toLowerCase()][0] > 0.35
+    }).length;
+    console.log(this.numero_total);
+    last = "";      
+    this.differentValues = this.result.TempExpressions.sort(
             (a, b) => a[0] - b[0]).filter(
                 (element , index, array) => {
   
             if (index == 0) {
-              // console.log("element");
-              // console.log(element[0].toString().split('-').join(''));
-              // console.log("Element is Viable");
-              // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
+              last = element[0];
               return /^\d+$/.test(element[0].toString().split('-').join(''));
             } else {
               // console.log("element");
               // console.log(element[0].toString().split('-').join(''));
               // console.log("Element is Viable");
               // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
-              return element[0].toString().split('-').join('') != array[index - 1][0].toString().split('-').join('') && /^\d+$/.test(element[0].toString().split('-').join(''));
+              let este=last;
+              last= element[0];
+              return element[0].toString().split('-').join('') != este && /^\d+$/.test(element[0].toString().split('-').join(''));
             }
           });
         if (this.byDocOrSentece) {
@@ -465,6 +476,32 @@ export class ExctractionComponent implements OnInit {
             return this.result.Score[a[0]];
           });
 
+          
+          this.numero_total = this.result.TempExpressions.length;
+          //this.numero_total2 = this.result.Score.filter((cada)=>{return cada[0]>0.35}).length;
+          console.log("teste");
+          let valores= Object.keys(this.result.Score);
+          
+          console.log(valores);
+          let total2=0;
+          valores.map((kelp)=>{
+            console.log(this.result.Score[kelp]);
+            Object.keys(this.result.SentencesTokens).map((kolp)=>{
+              console.log(kolp)
+              if(this.result.Score[kelp][kolp+""]){
+                if(this.result.Score[kelp][kolp+""][0]>0.35){
+                  total2++;
+                  console.log(this.result.Score[kelp][kolp+""][0]);
+                  console.log(this.result.Score[kelp][kolp+""]);
+                }
+              }
+
+            });
+          });
+          this.numero_total2=total2;
+          
+          this.result.Score
+          
         }
         //console.log(this.differentRelValues);
         //console.log(this.differentValues);
@@ -531,6 +568,7 @@ export class ExctractionComponent implements OnInit {
             let valorDeA2 = '';
             // tslint:disable-next-line: forin
             for (const xd in this.result.Score[Object.keys(this.result.Score)[i]]) {
+
               // if()
               d.push({x: Object.keys(this.result.Score)[i], y: this.result.Score[Object.keys(this.result.Score)[i]][xd][0], series: xd});
               // console.log(d);

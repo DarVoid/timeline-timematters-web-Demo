@@ -25,7 +25,7 @@
                 <br>
                 <span><p class="afterAnnotated">Time-Matters algorithm took {{exe_time_total}} Sec. (of which {{exe_time_algo}} Sec. were spent for <i>{{algoritmoSelected}}</i> processing;  {{exe_time_YAKE}} Sec. for YAKE!; and {{exe_time_GTE}} Sec. for GTE)</p>
 
-                <p class="afterAnnotated"><i>{{!showOnlyRel?differentValues.length:differentRelValues.length}} {{!showOnlyRel?"":"relevant "}}</i> temporal expressions were annotated in the text by Time-Matters and the <i>{{algoritmoSelected}}</i> temporal tagger. Mouse over them to see their relevance scores. Scores are determined by Time-Matters and vary between 0 (not relevant) and 1 (extremely relevant).</p>
+                <p class="afterAnnotated"><i>{{!showOnlyRel?numero_total:numero_total2}} {{!showOnlyRel?"":"relevant "}}</i> instances of temporal expressions were annotated in the text by Time-Matters and the <i>{{algoritmoSelected}}</i> temporal tagger. Mouse over them to see their relevance scores. Scores are determined by Time-Matters and vary between 0 (not relevant) and 1 (extremely relevant).</p>
                 <div class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>
                   
                   <p>The top-<i>{{numberOfKeyWords}} {{ngramSelected}}</i>-gram keywords were  annotated in the text through YAKE! software. Mouse over them to see their relevance scores, the lower the better.</p>

@@ -26,7 +26,8 @@ export class QueryComponent implements OnChanges {
   public exe_time_YAKE:string;
   public exe_time_algo:string;
   public exe_time_GTE :string;
-  
+  public numero_total:number;
+  public numero_total2:number;
 
   // tslint:disable-next-line: variable-name
   constructor(private _snackBar: MatSnackBar) {
@@ -114,7 +115,20 @@ export class QueryComponent implements OnChanges {
     }else{
       this.docOrSentence=false;
     }
+    console.log("temporal cenas");
+    let last= "";
+    this.numero_total = this.options.result.TempExpressions.length;
+    this.numero_total2 = this.options.result.TempExpressions.filter((cada)=>{
+      return cada[1]>0.35;
+    }).length;
+    this.numero_total = this.options.result.TempExpressions.length;
+    this.numero_total2 = this.options.result.TempExpressions.filter((cada)=>{
 
+      return this.options.result.Score[cada[0].toLowerCase()][0] > 0.35
+    }).length;
+    console.log(this.numero_total);
+    
+    last = "";      
     this.differentValues = this.options.result.TempExpressions.sort(
           (a, b) => a[0] - b[0]).filter(
               (element , index, array) => {
@@ -124,13 +138,16 @@ export class QueryComponent implements OnChanges {
             // console.log(element[0].toString().split('-').join(''));
             // console.log("Element is Viable");
             // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
+            last = element[0];   
             return /^\d+$/.test(element[0].toString().split('-').join(''));
           } else {
             // console.log("element");
             // console.log(element[0].toString().split('-').join(''));
             // console.log("Element is Viable");
             // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
-            return element[0] != array[index - 1][0] && /^\d+$/.test(element[0].toString().split('-').join(''));
+            let este=last;
+            last= element[0];
+            return element[0].toString().split('-').join('') != este && /^\d+$/.test(element[0].toString().split('-').join(''));
           }
         });
     if (this.options.docOrSentence == 'doc') {
@@ -143,6 +160,7 @@ export class QueryComponent implements OnChanges {
               console.log(this.options.result.Score);
               console.log(this.options.result.Score[element[0].toLowerCase()]);*/
               // tslint:disable-next-line: no-shadowed-variable
+              last = element[0];
               const a = element[0].toLowerCase() + '';
               // console.log(a);
               return this.options.result.Score[a][0] > 0.35;
@@ -154,6 +172,28 @@ export class QueryComponent implements OnChanges {
           this.differentRelValues = this.differentValues.map((a) => {
             return this.options.result.Score[a[0]];
           });
+
+          this.numero_total = this.options.result.TempExpressions.length;
+          //this.numero_total2 = this.result.Score.filter((cada)=>{return cada[0]>0.35}).length;
+          console.log("teste");
+          let valores= Object.keys(this.options.result.Score);
+          
+          let total2=0;
+          valores.map((kelp)=>{
+            console.log(this.options.result.Score[kelp]);
+            Object.keys(this.options.result.SentencesTokens).map((kolp)=>{
+              console.log(kolp)
+              if(this.options.result.Score[kelp][kolp+""]){
+                if(this.options.result.Score[kelp][kolp+""][0]>0.35){
+                  total2++;
+                  console.log(this.options.result.Score[kelp][kolp+""][0]);
+                  console.log(this.options.result.Score[kelp][kolp+""]);
+                }
+              }
+
+            });
+          });
+          this.numero_total2=total2;
 
         }
     console.log(this.differentRelValues);
