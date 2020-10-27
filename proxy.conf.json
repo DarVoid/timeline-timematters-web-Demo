@@ -8,5 +8,12 @@
     "target": "https://tm-websuiteapps.ipt.pt/",
     "secure": true
     ,"changeOrigin": true
+  },  "/imagesearch/*": {
+    "target": "https://arquivo.pt",
+    "secure": true
+    ,"changeOrigin": true
   }
+
+
+  
 }

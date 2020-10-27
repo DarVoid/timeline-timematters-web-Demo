@@ -11,7 +11,7 @@ export class ArquivoService {
   urlIMG: string;
   constructor(private http: HttpClient) {
     this.url = 'https://arquivo.pt/textsearch';
-     this.urlIMG = 'https://arquivo.pt/imagesearch';
+     this.urlIMG = '/imagesearch';
   }
 
   public getLinkFromOptions(search: string, options: any): Observable<any> {
