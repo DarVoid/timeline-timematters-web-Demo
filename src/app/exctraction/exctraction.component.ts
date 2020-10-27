@@ -477,7 +477,7 @@ export class ExctractionComponent implements OnInit {
           });
 
           
-          this.numero_total = this.result.TempExpressions.length;
+          
           //this.numero_total2 = this.result.Score.filter((cada)=>{return cada[0]>0.35}).length;
           console.log("teste");
           let valores= Object.keys(this.result.Score);
@@ -499,7 +499,26 @@ export class ExctractionComponent implements OnInit {
             });
           });
           this.numero_total2=total2;
+          console.log("teste");
+          valores= Object.keys(this.result.Score);
           
+          console.log(valores);
+           total2=0;
+          valores.map((kelp)=>{
+            console.log(this.result.Score[kelp]);
+            Object.keys(this.result.SentencesTokens).map((kolp)=>{
+              console.log(kolp)
+              if(this.result.Score[kelp][kolp+""]){
+                if(this.result.Score[kelp][kolp+""][0]>=0){
+                  total2++;
+                  console.log(this.result.Score[kelp][kolp+""][0]);
+                  console.log(this.result.Score[kelp][kolp+""]);
+                }
+              }
+
+            });
+          });
+          this.numero_total=total2;
           this.result.Score
           
         }
