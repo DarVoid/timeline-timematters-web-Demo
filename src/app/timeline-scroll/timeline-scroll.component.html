@@ -1,6 +1,6 @@
 
 <br/>
-<mat-slide-toggle  *ngIf="argumentosTodos.length>0 " (toggleChange)='setRelevance()' class="afterAnnotated" color="warn" [checked]="relevant">{{relevant_string}}</mat-slide-toggle>
+<mat-slide-toggle [disabled]="loading" *ngIf="argumentosTodos.length>0 " (toggleChange)='setRelevance()' class="afterAnnotated" color="warn" [checked]="relevant">{{relevant_string}}</mat-slide-toggle>
 <div  class='{{loading?"viewable": "nonviewable"}}'><mat-progress-bar mode="indeterminate"></mat-progress-bar></div>
 <hr/><div *ngIf="nodata"><h1>No data</h1></div>
 
