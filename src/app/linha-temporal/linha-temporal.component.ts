@@ -88,6 +88,7 @@ export class LinhaTemporalComponent implements OnInit {
   }
   public update() {
     Highcharts.chart('container', this.options);
+    
     this.rendering = ' ';
   }
   toggleTipo() {
@@ -176,16 +177,19 @@ export class LinhaTemporalComponent implements OnInit {
        console.log(this.argumentos);
 
       // console.log(this.options.series[0]);
-
+      this.argumentos= this.argumentos.filter((a)=>{
+        return !isNaN(a.dateparsed);
+      });
       // tslint:disable-next-line: forin
        for (const y in this.argumentos) {
         // console.log(this.argumentos[y]);
         //console.log("valor de y grafico");
+
         let valor_y = this.argumentos[y].y.split("</p>")[0];
         const valor = valor_y.substring(27,valor_y.length);
         console.log("valor:");
         console.log(valor);
-
+        console.log(this.argumentos[y]);
         p.push([new Date(this.argumentos[y].x.substring(0,10)).getTime(), valor*1]);
       }
        //p= p.reduce()AQUI É PARA REDUZIR A DIFERENTES VALORES
