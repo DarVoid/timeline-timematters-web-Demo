@@ -548,15 +548,15 @@ export class ExctractionComponent implements OnInit {
             //[Object.keys(this.result.Score)[i].toLowerCase()]);
             let value_to_replace_for = this.result.TempExpressions.filter((a)=>{return a[0].toLowerCase()==Object.keys(this.result.Score)[i];}
             )[0][1];
-            value_to_replace_for = "<strong>"+value_to_replace_for+"</strong>";
+            value_to_replace_for = "<strong><d>"+value_to_replace_for+"</d></strong>";
             console.log(value_to_replace_for);
             let sentence_to_write= this.result.SentencesNormalized.map((a)=>{
               //console.log(a);
               //console.log(a.toString().search(Object.keys(this.result.Score)[i]))
               if(a.toLowerCase().toString().search(Object.keys(this.result.Score)[i].toLowerCase())!=-1){
-                let nova= a.replace(value_to_be_replaced,value_to_replace_for);
+                let nova= a.replace("<d>"+value_to_be_replaced+"</d>","<d>"+value_to_replace_for+"</d>");
                 console.log(nova);
-                nova= nova.replace(value_to_be_replaced.toUpperCase(),value_to_replace_for);//.toLowerCase().toString().replace(Object.keys(this.result.Score)[i].toLowerCase(), )
+                nova= nova.replace("<d>"+value_to_be_replaced.toUpperCase()+"</d>","<d>"+value_to_replace_for+"</d>");//.toLowerCase().toString().replace(Object.keys(this.result.Score)[i].toLowerCase(), )
                 console.log(nova);
                 return nova;
               }
@@ -564,12 +564,13 @@ export class ExctractionComponent implements OnInit {
             
             sentence_to_write = sentence_to_write.join("__,");
             this.result.TempExpressions.map((a)=>{
+              console.log("DEBUG TEMPORAL");
               console.log(a);
               if(sentence_to_write.search(a[0])!=-1){
-                sentence_to_write = sentence_to_write.replace(a[0],a[1]);
+                sentence_to_write = sentence_to_write.replace("<d>"+a[0]+"</d>","<d>"+a[1]+"</d>");
               }
               if(sentence_to_write.search(a[0].toUpperCase())!=-1){
-                sentence_to_write = sentence_to_write.replace(a[0].toUpperCase(),a[1]);
+                sentence_to_write = sentence_to_write.replace("<d>"+a[0].toUpperCase()+"</d>","<d>"+a[1]+"</d>");
               }
             });
             sentence_to_write = sentence_to_write.split("__,").filter((aasd)=>{return aasd.length!=0})[0];
@@ -718,10 +719,10 @@ export class ExctractionComponent implements OnInit {
         this.result.TempExpressions.map((a)=>{
           console.log(a);
           if(this.datasetFixed[hu].y.search(a[0])!=-1){
-            this.datasetFixed[hu].y = this.datasetFixed[hu].y.replace(a[0],a[1]);
+            this.datasetFixed[hu].y = this.datasetFixed[hu].y.replace("<d>"+a[0]+"</d>","<d>"+a[1]+"</d>");
           }
           if(this.datasetFixed[hu].y.search(a[0].toUpperCase())!=-1){
-            this.datasetFixed[hu].y = this.datasetFixed[hu].y.replace(a[0].toUpperCase(),a[1]);
+            this.datasetFixed[hu].y = this.datasetFixed[hu].y.replace("<d>"+a[0].toUpperCase()+"</d>","<d>"+a[1]+"</d>");
           }
         });
 
@@ -733,10 +734,10 @@ export class ExctractionComponent implements OnInit {
         this.result.TempExpressions.map((a)=>{
           console.log(a);
           if(this.datasetFixed2[hu].y.search(a[0])!=-1){
-            this.datasetFixed2[hu].y = this.datasetFixed2[hu].y.replace(a[0],a[1]);
+            this.datasetFixed2[hu].y = this.datasetFixed2[hu].y.replace("<d>"+a[0]+"</d>","<d>"+a[1]+"</d>");
           }
           if(this.datasetFixed[hu].y.search(a[0].toUpperCase())!=-1){
-            this.datasetFixed2[hu].y = this.datasetFixed2[hu].y.replace(a[0].toUpperCase(),a[1]);
+            this.datasetFixed2[hu].y = this.datasetFixed2[hu].y.replace("<d>"+a[0].toUpperCase()+"</d>","<d>"+a[1]+"</d>");
           }
         });
 
