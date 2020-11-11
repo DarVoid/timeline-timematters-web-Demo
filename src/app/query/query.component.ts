@@ -428,10 +428,10 @@ export class QueryComponent implements OnChanges {
     this.options.result.TempExpressions.map((a)=>{
       console.log(a);
       if(this.datasetFixed[hu].y.search(a[0])!=-1){
-        this.datasetFixed[hu].y = this.datasetFixed[hu].y.replace("<d>"+a[0]+"</d>",+"</d>"+a[1]+"</d>");
+        this.datasetFixed[hu].y = this.datasetFixed[hu].y.replace("<d>"+a[0]+"</d>",a[1]);
       }
       if(this.datasetFixed[hu].y.search(a[0].toUpperCase())!=-1){
-        this.datasetFixed[hu].y = this.datasetFixed[hu].y.replace("<d>"+a[0].toUpperCase()+"</d>","<d>"+a[1]+"</d>");
+        this.datasetFixed[hu].y = this.datasetFixed[hu].y.replace("<d>"+a[0].toUpperCase()+"</d>",a[1]);
       }
     });
 
@@ -444,10 +444,10 @@ export class QueryComponent implements OnChanges {
     this.options.result.TempExpressions.map((a)=>{
       console.log(a);
       if(this.datasetFixed2[hu].y.search(a[0])!=-1){
-        this.datasetFixed2[hu].y = this.datasetFixed2[hu].y.replace("<d>"+a[0]+"</d>",a[1]+"</d>");
+        this.datasetFixed2[hu].y = this.datasetFixed2[hu].y.replace("<d>"+a[0]+"</d>",a[1]);
       }
       if(this.datasetFixed[hu].y.search(a[0].toUpperCase())!=-1){
-        this.datasetFixed2[hu].y = this.datasetFixed2[hu].y.replace("<d>"+a[0].toUpperCase()+"</d>","<d>"+a[1]+"</d>");
+        this.datasetFixed2[hu].y = this.datasetFixed2[hu].y.replace("<d>"+a[0].toUpperCase()+"</d>",a[1]);
       }
     });
 
