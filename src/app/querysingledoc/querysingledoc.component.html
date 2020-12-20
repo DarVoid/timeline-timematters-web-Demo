@@ -110,8 +110,13 @@
               <mat-form-field (changeValue)="selecionarTipoDocumento($event)" name="tipoDoc" color="warn">
                 <mat-label class="algorithm">Document Type</mat-label>
                 <mat-select class="algorithm" (valueChange)="selecionarTipoDocumento($event)" [value]="documentTypeSelected" >
-                  <mat-option class="mat-menu-item2" *ngFor="let typeo of documentTypeOptions" [value]="typeo">
-                    {{typeo}}
+                  <mat-option class="mat-menu-item2" *ngFor="let typeo of documentTypeOptions" [value]="typeo[0]">
+                    {{typeo[0]}}<span #tooltip="matTooltip"
+                    matTooltip="{{typeo[1]}}"
+                    [matTooltipPosition]="right"
+                    matTooltipHideDelay="10"
+                    aria-label="Button that displays a tooltip that hides when scrolled out of the container"
+                    ><i class="fas fa-question" ></i></span>
                   </mat-option>
                 </mat-select>
               </mat-form-field>

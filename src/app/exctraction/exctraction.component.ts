@@ -31,7 +31,7 @@ export class ExctractionComponent implements OnInit {
   public algoritmoSelected: string;
   public dateGranularityOptions: Array<string>;
   public dateGranularitySelected: string;
-  public documentTypeOptions: Array<string>;
+  public documentTypeOptions: Array<any>;
   public documentTypeSelected: string;
   public documentCreationTime: string;
   public languageOptions: Array<string>;
@@ -65,9 +65,11 @@ export class ExctractionComponent implements OnInit {
   public exe_time_GTE:string;
   public numero_total:number;
   public numero_total2:number;
+  public right: string;
   constructor(private yake: YakeService,private timeline: TimelineService, private _snackBar: MatSnackBar, private _lang: LangdetectService) {
     /*private timeline: TimelineService*/
     this.ngramSelected = 1;
+    this.right ="right"
     this.byDocOrSentece = true;
     this.result = '';
     this.differentRelValues = [];
@@ -224,7 +226,7 @@ export class ExctractionComponent implements OnInit {
     this.algoritmoSelected = this.algoritmosDate[0];
     this.dateGranularityOptions = ['full', 'year', 'month', 'day'];
     this.dateGranularitySelected = this.dateGranularityOptions[0];
-    this.documentTypeOptions = ['news', 'narrative', 'colloquial', 'scientific'];
+    this.documentTypeOptions = [['news', 'news-style documents (document creation time should be provided whenever possible)' ], ['narrative', 'narrative-style documents (e.g., Wikipedia articles)' ], [ 'colloquial', 'non-standard language (e.g., tweets or SMS)' ], [ 'scientific', 'documents with a local time frame (e.g., clinical trials)' ]];
     this.documentTypeSelected = this.documentTypeOptions[0];
     this.languageOptions = ['auto-detect', 'English', 'Portuguese', 'Spanish', 'German', 'Dutch', 'Italian', 'French'];
     this.languagueSelected = this.languageOptions[0];

@@ -16,7 +16,7 @@ export class QuerysingledocComponent implements OnInit {
   public algoritmoSelected: string;
   public dateGranularityOptions: Array<string>;
   public dateGranularitySelected: string;
-  public documentTypeOptions: Array<string>;
+  public documentTypeOptions: Array<any>;
   public documentTypeSelected: string;
   public languageOptions: Array<string>;
   public languagueSelected: string;
@@ -42,16 +42,18 @@ export class QuerysingledocComponent implements OnInit {
   public resultado: any;
   public TH: number;
   public hiddenoptionTM: boolean;
+  public right: string;
   @Input() inpu: any;
 
   constructor(private article: GetarticleService, private timeline: TimelineService, private _snackBar: MatSnackBar) {
     
     //
+    this.right ="right"
     this.algoritmosDate = ['py_heideltime' , 'py_rule_based'];
     this.algoritmoSelected = this.algoritmosDate[0];
     this.dateGranularityOptions = ['full', 'year', 'month', 'day'];
     this.dateGranularitySelected = this.dateGranularityOptions[0];
-    this.documentTypeOptions = ['news', 'narrative', 'colloquial', 'scientific'];
+    this.documentTypeOptions = [['news', 'news-style documents (document creation time should be provided whenever possible)' ], ['narrative', 'narrative-style documents (e.g., Wikipedia articles)' ], [ 'colloquial', 'non-standard language (e.g., tweets or SMS)' ], [ 'scientific', 'documents with a local time frame (e.g., clinical trials)' ]];
     this.documentTypeSelected = this.documentTypeOptions[0];
     this.languageOptions = ['auto-detect', 'English', 'Portuguese', 'Spanish', 'German', 'Dutch', 'Italian', 'French'];
     this.languagueSelected = this.languageOptions[0];

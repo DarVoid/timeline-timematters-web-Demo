@@ -39,7 +39,7 @@
                 
                 <hr>
                 <div class="dateScoreColors">
-                  <span><b>{{!showOnlyRel?"5": "4"}}-color likert relevance scale:   </b></span>
+                  <span><b>{{!showOnlyRel?"5": "4"}}-color Likert relevance scale:   </b></span>
                   <span class='{{!showOnlyRel?"black": "nonviewable"}}'>[0; 0.35]</span>
                   <span class="green">]0.35; 0.5]</span>
                   <span class="blue">]0.5; 0.7]</span>
@@ -284,11 +284,16 @@
                       <mat-form-field (changeValue)="selecionarTipoDocumento($event)" name="tipoDoc" color="warn">
                         <mat-label class="algorithm">Document Type</mat-label>
                         <mat-select class="algorithm" (valueChange)="selecionarTipoDocumento($event)" [value]="documentTypeSelected">
-                          <mat-option class="mat-menu-item2" *ngFor="let typeo of documentTypeOptions" [value]="typeo">
-                            {{typeo}}
+                          <mat-option class="mat-menu-item1" *ngFor="let typeo of documentTypeOptions" [value]="typeo[0]">
+                            {{typeo[0]}} <span #tooltip="matTooltip"
+                            matTooltip="{{typeo[1]}}"
+                            [matTooltipPosition]="right"
+                            matTooltipHideDelay="10"
+                            aria-label="Button that displays a tooltip that hides when scrolled out of the container"
+                            ><i class="fas fa-question" ></i></span>
                           </mat-option>
                         </mat-select>
-                      </mat-form-field>
+                      </mat-form-field><span ></span>
                       <!--<mat-form-field color="warn">
                         <mat-label class="algorithm">Date Granularity </mat-label>
                         <mat-select class="algorithm" (valueChange)="selecionarGranularidade($event)" [value]="dateGranularitySelected">

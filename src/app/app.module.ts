@@ -42,7 +42,7 @@ import { AboutAcknowledgementsComponent } from './about-acknowledgements/about-a
 import {MatSliderModule} from '@angular/material/slider';
 import { TutorialComponent } from './tutorial/tutorial.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -91,7 +91,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     MatDatepickerModule,
     MatPaginatorModule,
     MatSliderModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
