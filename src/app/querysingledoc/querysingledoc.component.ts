@@ -12,7 +12,7 @@ import { take } from 'rxjs/operators';
 export class QuerysingledocComponent implements OnInit {
   public url: string;
   public artigo: any;
-  public algoritmosDate: Array<string>;
+  public algoritmosDate: Array<any>;
   public algoritmoSelected: string;
   public dateGranularityOptions: Array<string>;
   public dateGranularitySelected: string;
@@ -49,12 +49,12 @@ export class QuerysingledocComponent implements OnInit {
     
     //
     this.right ="right"
-    this.algoritmosDate = ['py_heideltime' , 'py_rule_based'];
-    this.algoritmoSelected = this.algoritmosDate[0];
+    this.algoritmosDate = [['py_heideltime','makes use of Heideltime temporal tagger to detect a range of diferente temporal expressions'] , ['py_rule_based','a simple rule-based approach that only takes into account dates in the format of dddd (e.g., 2021)']];
+    this.algoritmoSelected = this.algoritmosDate[0][0];
     this.dateGranularityOptions = ['full', 'year', 'month', 'day'];
     this.dateGranularitySelected = this.dateGranularityOptions[0];
     this.documentTypeOptions = [['news', 'news-style documents (document creation time should be provided whenever possible)' ], ['narrative', 'narrative-style documents (e.g., Wikipedia articles)' ], [ 'colloquial', 'non-standard language (e.g., tweets or SMS)' ], [ 'scientific', 'documents with a local time frame (e.g., clinical trials)' ]];
-    this.documentTypeSelected = this.documentTypeOptions[0];
+    this.documentTypeSelected = this.documentTypeOptions[0][0];
     this.languageOptions = ['auto-detect', 'English', 'Portuguese', 'Spanish', 'German', 'Dutch', 'Italian', 'French'];
     this.languagueSelected = this.languageOptions[0];
     this.dateBegin = 0;

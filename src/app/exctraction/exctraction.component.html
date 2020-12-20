@@ -252,10 +252,15 @@
                     <mat-form-field name="valorAlgoritmo" color="warn">
                       <mat-label class="algorithm">temporal annotation method</mat-label>
                       <mat-select  class="algorithm"(valueChange)="selecionarAlgoritmo($event)" [value]="algoritmoSelected" >
-                        <mat-option class="mat-menu-item2" hidden>py_heideltime</mat-option>
+                        <mat-option class="mat-menu-item1" hidden>py_heideltime</mat-option>
 
-                        <mat-option class="mat-menu-item2" *ngFor="let algo of algoritmosDate" [value]="algo">
-                          {{algo}}
+                        <mat-option class="mat-menu-item1" *ngFor="let algo of algoritmosDate" [value]="algo[0]">
+                          {{algo[0]}} <span #tooltip="matTooltip"
+                          matTooltip="{{algo[1]}}"
+                          [matTooltipPosition]="right"
+                          matTooltipHideDelay="10"
+                          aria-label="Button that displays a tooltip that hides when scrolled out of the container"
+                          ><i class="fas fa-question" ></i></span>
                         </mat-option>
                       </mat-select>
                     </mat-form-field>
