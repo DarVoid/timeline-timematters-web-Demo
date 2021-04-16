@@ -46,7 +46,7 @@ export class QuerysingledocComponent implements OnInit {
   @Input() inpu: any;
 
   constructor(private article: GetarticleService, private timeline: TimelineService, private _snackBar: MatSnackBar) {
-    
+
     //
     this.right ="right"
     this.algoritmosDate = [['py_heideltime','makes use of Heideltime temporal tagger to detect a range of diferente temporal expressions'] , ['py_rule_based','a simple rule-based approach that only takes into account dates in the format of dddd (e.g., 2021)']];
@@ -111,7 +111,7 @@ export class QuerysingledocComponent implements OnInit {
     //this.TH=0.05;
   }
   changeTH(event:any){
-    
+
     if(event.preventDefault){
       event.preventDefault();
     }
@@ -155,15 +155,15 @@ export class QuerysingledocComponent implements OnInit {
   selecionarDataFim(event:any){
     this.dateEnd = event.target.value;
     console.log(event.target.value);
-    
+
   }
   selecionarDataInicio(event:any){
     this.dateBegin = event.target.value;
     console.log(event.target.value);
-    
+
   }
   update() {
-    
+
     let j, k;
     if (this.contextFullSentence) {
     j = 'full_sentence';
@@ -298,10 +298,10 @@ export class QuerysingledocComponent implements OnInit {
       this._snackBar.open('Document copied to clipboard', "", {
         duration: 2000
       });
-    
+
 
   }
-  
+
   showArticle(event: any) {
     event.preventDefault();
     this.loading = true;
@@ -358,15 +358,16 @@ export class QuerysingledocComponent implements OnInit {
             this._snackBar.open('Language not supported', res.lang, {
               duration: 2000
             });
+            this.languagueSelected = 'English';
             break;
           }
         this.update();
-        
+
         console.log(this.opcoes);
         console.log(this.artigo);
         //let cenak= this.artigo.content.replace("\\u21b5",'');
-        
-       
+
+
 
       }
 
@@ -375,12 +376,12 @@ export class QuerysingledocComponent implements OnInit {
     },(err)=>{},  ()=>{
       this.scheduler = setTimeout(()=>{
         console.log("reached this place");
-        console.log(this.artigo.content.toString());
+        console.log(this.artigo.content);
         console.log(this.opcoes);
-        
+
 
       this.timeline.getTextKeyDateFromSingleDoc(this.artigo.content, this.opcoes).pipe(take(1)).subscribe((res) => {
-          
+
       if (res) {
          console.log(res);
         this.resultado = res;
@@ -414,9 +415,9 @@ export class QuerysingledocComponent implements OnInit {
       }
       }
     );
-  
 
-      },1000);
+
+      },3000);
       });
 }
 
