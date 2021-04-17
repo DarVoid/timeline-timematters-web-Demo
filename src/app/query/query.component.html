@@ -1,7 +1,7 @@
 
     <br>
     <br>
-    <div class="col-md-11 col-sm-8 col-xs-6 my-col2">
+    <div class="">
       <!--FRASE DOS TEMPOS DE EXECUÇÃO-->
       <span title="não suportado, api não tem a opção "><p class="frase1"></p>
       </span>
@@ -12,24 +12,24 @@
       </div>
         <ng-template #graficos >
           <mat-card>
+            <div class="">
+              <div class="col-lg-12 text-right">
+                <button class="btn btn-link" (click)="goBack()" type="button">Go Back</button>
+              </div>
+            </div>
           <mat-tab-group>
 
+            <!-- STORYLINE -->
+            <mat-tab label="Storyline"  *ngIf="dataset.length>0">
+              <app-timeline-scroll [docSen]="options.docOrSentence=='doc'"  [argumentosTodos]="datasetFixed" [argumentosRelevantes]="datasetFixed2"></app-timeline-scroll>
+            </mat-tab>
             <!-- ANNOTATED TEXT-->
             <mat-tab label="Annotated text">
                 <br>
-                <span title=" "><p class="">Time-Matters algorithm took {{exe_time_total}} Sec. (of which {{exe_time_algo}} Sec. were spent for <i>{{options.algo}}</i> processing;  {{exe_time_YAKE}} Sec. for YAKE!; and {{exe_time_GTE}} Sec. for GTE)</p></span>
 
-                <p class="afterAnnotated"><i>{{!showOnlyRel?numero_total:numero_total2}} {{!showOnlyRel?"":"relevant "}}</i> instances of temporal expressions were annotated in the text. Mouse over them to see their relevance scores. Scores are determined by Time-Matters and vary between 0 (not relevant) and 1 (extremely relevant)</p>
-               
-                <div class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>
-                  <p class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>The top-<i>{{numberOfKeyWords}} {{options.ngram}}</i>-gram keywords were  annotated in the text through YAKE! software. Mouse over them to see their relevance scores, the lower the better.</p>
-                  
-                </div>
-                <p class="afterAnnotated">Language: <i>{{options.language}}</i></p>
-                <hr>
                 <app-frame [docOrSentence]="options.docOrSentence" [argumentos]="options.result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"   class="result"></app-frame>
                 <hr>
-                <div class="dateScoreColors"> 
+                <div class="dateScoreColors">
                   <span><b><i>{{!showOnlyRel?"5": "4"}}</i>-color Likert relevance scale:   </b></span>
                   <span class='{{!showOnlyRel?"black": "nonviewable"}}'>[0; 0.35]</span>
                   <span class="green">]0.35; 0.5]</span>
@@ -48,10 +48,7 @@
                 <br>
           </mat-tab>
 
-          <!-- STORYLINE -->
-          <mat-tab label="Storyline"  *ngIf="dataset.length>0">
-            <app-timeline-scroll [docSen]="options.docOrSentence=='doc'"  [argumentosTodos]="datasetFixed" [argumentosRelevantes]="datasetFixed2"></app-timeline-scroll>
-          </mat-tab>
+
 
           <!-- TEMPORAL CLUSTERING -->
           <mat-tab label="Temporal Clustering" *ngIf="dataset.length>0">
@@ -70,11 +67,11 @@
                 </table>
               </div>
               <ng-template #nodata1>
-                <h1>No Data</h1>    
+                <h1>No Data</h1>
               </ng-template>
-              
+
             </div>
-            
+
             <ng-template #onlyRel>
               <div *ngIf="datasetFixed2.length>0 else nodata2">
                 <table class="table table-borderless">
@@ -87,20 +84,20 @@
                 </table>
               </div>
               <ng-template #nodata2>
-                <h1>No relevant data</h1>    
+                <h1>No relevant data</h1>
               </ng-template>
             </ng-template>
           </mat-tab>
 
           <!-- TIMELINE -->
-          <mat-tab label="Timeline" *ngIf="options.result && dataset.length>0"  > <!-- *ngIf="options.docOrSentence"--> 
+          <mat-tab label="Timeline" *ngIf="options.result && dataset.length>0"  > <!-- *ngIf="options.docOrSentence"-->
             <app-linha-temporal [docSen]="options.docOrSentence=='doc'" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
           </mat-tab>
 
-          
+
 
           <!-- SCORES -->
-          
+
             <mat-tab *ngIf="docOrSentence" class="afterGraphs" (click)="setpage(1)" label="Scores" >
               <br><br><br>
               <div class="row my-row2 justify-content-center">
@@ -113,15 +110,12 @@
           </mat-tab-group>
         </mat-card>
           <br>
-          <!--<div class="col-lg-12 text-right">
-            <a *ngIf="options" color="primary" href="/"><button type="reset" class="btn btn-link">Go back</button></a>
-            <button *ngIf="options" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
-          </div>-->
+          <div class="col-lg-12 text-right">
+            <button  color="primary"  type="submit" (click)="goBack()" class="btn btn-primary">
+              <i class="far fa-clipboard"></i> Go back</button>
+          </div>
         </ng-template>
       </div>
 
-      <div class="col-lg-12 text-right">
-        <button type="reset" class="btn btn-link" (click)="goBack()">Go Back</button>
-        <button *ngIf="options" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
-      </div>
+
   </div>

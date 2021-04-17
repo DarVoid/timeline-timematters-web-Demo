@@ -59,7 +59,7 @@ export class QueryComponent implements OnChanges {
   }
   goBack() {
     // falta fazer
-    this.goBackque.emit(null);
+    this.goBackque.emit(true);
   }
   public putOnClipboard(event: any, cena: string) {
     event.preventDefault();
@@ -127,8 +127,8 @@ export class QueryComponent implements OnChanges {
       return this.options.result.Score[cada[0].toLowerCase()][0] > 0.35
     }).length;
     console.log(this.numero_total);
-    
-    last = "";      
+
+    last = "";
     this.differentValues = this.options.result.TempExpressions.sort(
           (a, b) => a[0] - b[0]).filter(
               (element , index, array) => {
@@ -138,7 +138,7 @@ export class QueryComponent implements OnChanges {
             // console.log(element[0].toString().split('-').join(''));
             // console.log("Element is Viable");
             // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
-            last = element[0];   
+            last = element[0];
             return /^\d+$/.test(element[0].toString().split('-').join(''));
           } else {
             // console.log("element");
@@ -174,7 +174,7 @@ export class QueryComponent implements OnChanges {
           });
 
           let valores= Object.keys(this.options.result.Score);
-          
+
           console.log(valores);
           let total2=0;
           valores.map((kelp)=>{
@@ -194,7 +194,7 @@ export class QueryComponent implements OnChanges {
           this.numero_total2=total2;
           console.log("teste");
           valores= Object.keys(this.options.result.Score);
-          
+
           console.log(valores);
            total2=0;
           valores.map((kelp)=>{
@@ -241,18 +241,18 @@ export class QueryComponent implements OnChanges {
             )[0][1];
             value_to_replace_for = "<strong><d>"+value_to_replace_for+"</d></strong>";
             console.log(value_to_replace_for);
-            
+
             let sentence_to_write = this.options.result.SentencesNormalized.map((a)=>{
              // console.log(a);
              // console.log(a.toString().search(Object.keys(this.options.result.Score)[i]))
              if(a.toLowerCase().toString().search(Object.keys(this.options.result.Score)[i].toLowerCase())!=-1){
               let nova= a.replace("<d>"+value_to_be_replaced+"</d>","<d>"+value_to_replace_for+"</d>");
-              
+
               console.log(nova);
               nova= nova.replace("<d>"+value_to_be_replaced.toUpperCase()+"</d>","<d>"+value_to_replace_for+"</d>");//.toLowerCase().toString().replace(Object.keys(this.result.Score)[i].toLowerCase(), )
               console.log(nova);
                  return nova;
-            }                
+            }
             });
             sentence_to_write = sentence_to_write.join("__,");
             this.options.result.TempExpressions.map((a)=>{
@@ -266,7 +266,7 @@ export class QueryComponent implements OnChanges {
                 sentence_to_write = sentence_to_write.replace("<d>"+a[0].toUpperCase()+"</d>","<d>"+a[1]+"</d>");
               }
             });
-            
+
             console.log("sentence:");
             console.log(sentence_to_write);
             sentence_to_write = sentence_to_write.split("__,").filter((aasd)=>{return aasd.length!=0})[0];
@@ -293,7 +293,7 @@ export class QueryComponent implements OnChanges {
             for (const xd in this.options.result.Score[Object.keys(this.options.result.Score)[i]]) {
               let sentence_to_write= this.options.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'');
               let data_chave = Object.keys(this.options.result.Score)[i];
-              
+
               let data_chave_replaced_by = "<strong>"+ this.options.result.Score[data_chave][xd][1][0]+ "</strong>";
               sentence_to_write= sentence_to_write.replace(data_chave,data_chave_replaced_by);
               sentence_to_write= sentence_to_write.replace(data_chave.toLowerCase(),data_chave_replaced_by);
@@ -302,10 +302,10 @@ export class QueryComponent implements OnChanges {
               d.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0], series: xd});
               console.log(d);
 
-              
+
 
               // tslint:disable-next-line: max-line-length
-              
+
               if (this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] > 0.35) {
                 // tslint:disable-next-line: whitespace
                 // tslint:disable-next-line: max-line-length
@@ -315,13 +315,13 @@ export class QueryComponent implements OnChanges {
 
                 // tslint:disable-next-line: max-line-length
                 d.push({x: Object.keys(this.options.result.Score)[i], y: this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0], series: xd});
-                
+
                 // console.log(d2);
                 // TODO: meter d e d2 nos datasets
               } else {
                 //valorDeA += '<span title="' + this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'') + '"><p class="noticem5">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'')+'</p></span>';
                 valorDeA += '<span title="' + sentence_to_write + '"><p class="noticem5">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][xd][0] + '</p><p>'+sentence_to_write+'</p></span>';
-                
+
               }
 
               console.log("array de relevantes");
@@ -359,8 +359,8 @@ export class QueryComponent implements OnChanges {
         }
         // tslint:disable-next-line: forin
     for (const data in c) {
-          let data_prov = c[data].x.substring(0,10).split('-').join(' '); 
-          
+          let data_prov = c[data].x.substring(0,10).split('-').join(' ');
+
           const j = Date.parse(data_prov);
           // console.log (j);
           c[data].dateparsed = j;
@@ -374,7 +374,7 @@ export class QueryComponent implements OnChanges {
         }
         // tslint:disable-next-line: forin
     for (const data in c2) {
-          let data_prov = c2[data].x.substring(0,10).split('-').join(' ')   
+          let data_prov = c2[data].x.substring(0,10).split('-').join(' ')
           const j = Date.parse(data_prov);
           // console.log (j);
           c2[data].dateparsed = j;
@@ -421,10 +421,10 @@ export class QueryComponent implements OnChanges {
         // console.log(c);
         // console.log("end");
     this.dataset = c;
-    
+
     this.datasetFixed= this.dataset;
     for(let hu=0;hu<this.datasetFixed.length; hu++){
-      
+
     this.options.result.TempExpressions.map((a)=>{
       console.log(a);
       if(this.datasetFixed[hu].y.search(a[0])!=-1){
@@ -437,10 +437,10 @@ export class QueryComponent implements OnChanges {
 
     }
     this.datasetRelOnly = c2;
-    
+
     this.datasetFixed2= this.datasetRelOnly;
     for(let hu=0;hu<this.datasetFixed2.length; hu++){
-      
+
     this.options.result.TempExpressions.map((a)=>{
       console.log(a);
       if(this.datasetFixed2[hu].y.search(a[0])!=-1){

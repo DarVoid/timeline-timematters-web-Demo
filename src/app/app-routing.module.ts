@@ -1,12 +1,13 @@
-import { HomeComponent } from './home/home.component';
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { QuerysingledocComponent } from './querysingledoc/querysingledoc.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: QuerysingledocComponent
   }
 ];
 
