@@ -81,7 +81,8 @@ export class QuerysingledocComponent implements OnInit {
     if(this.inpu){
 
     }else{
-      this.url = 'https://www.labmanager.com/lab-health-and-safety/covid-19-a-history-of-coronavirus-22021';
+      this.url = 'https://arquivo.pt/noFrame/replay/20191211154001/https://www.jornaldenegocios.pt/economia/detalhe/milhares-desfilam-em-lisboa-contra-a-troika-e-o-governo'
+      //'https://www.labmanager.com/lab-health-and-safety/covid-19-a-history-of-coronavirus-22021';
       //https://sicnoticias.pt/pais/2016-07-07-Cronologia-do-processo-Casa-Pia
       //https://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/
     }
@@ -233,6 +234,7 @@ export class QuerysingledocComponent implements OnInit {
     event.preventDefault();
     console.log(event.target.value);
     this.url = event.target.value;
+
   }
   maxSimba(event: any){
     console.log("simba");
@@ -309,6 +311,17 @@ export class QuerysingledocComponent implements OnInit {
       this.url = this.inpu;
     }
     this.update();
+    let sizeOfURL1 = 'https://arquivo.pt/noFrame/replay/'.length
+    if(this.url.substring(0,sizeOfURL1)=='https://arquivo.pt/noFrame/replay/'){
+
+
+      let ano = this.url.substring(sizeOfURL1,sizeOfURL1+4)
+      let mes = this.url.substring(sizeOfURL1+4,sizeOfURL1+6)
+      let dia = this.url.substring(sizeOfURL1+6,sizeOfURL1+8)
+      this.documentCreationTime = ano+ '-' + mes + '-' + dia
+      console.log("data")
+      console.log(this.documentCreationTime)
+    }
     this.article.getArticles(this.url).pipe(take(1)).subscribe((res) => {
       if (res) {
         console.log(res);
