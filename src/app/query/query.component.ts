@@ -256,9 +256,9 @@ export class QueryComponent implements OnChanges {
             });
             sentence_to_write = sentence_to_write.join("__,");
             this.options.result.TempExpressions.map((a)=>{
-              console.log("DEBUG TEMPORAL");
-              console.log(a);
-              console.log(sentence_to_write);
+              //console.log("DEBUG TEMPORAL");
+              //console.log(a);
+              //console.log(sentence_to_write);
               if(sentence_to_write.search(a[0])!=-1){
                 sentence_to_write = sentence_to_write.replace("<d>"+a[0]+"</d>","<d>"+a[1]+"</d>");
               }
@@ -267,8 +267,8 @@ export class QueryComponent implements OnChanges {
               }
             });
             
-            console.log("sentence:");
-            console.log(sentence_to_write);
+            //console.log("sentence:");
+            //console.log(sentence_to_write);
             sentence_to_write = sentence_to_write.split("__,").filter((aasd)=>{return aasd.length!=0})[0];
             a = '<p class="noticem5">Score: ' + this.options.result.Score[Object.keys(this.options.result.Score)[i]][0] + '</p><p>' + sentence_to_write + '</p>';
             // tslint:disable-next-line: max-line-length

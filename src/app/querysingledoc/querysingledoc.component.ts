@@ -330,6 +330,19 @@ export class QuerysingledocComponent implements OnInit {
           this.documentCreationTime = new Date(res.date_creation).getFullYear() + '-' + month + '-' + day;
           console.log(this.documentCreationTime);
         }
+        else{
+          // tslint:disable-next-line: max-line-length
+          let month:any= new Date().getMonth();
+          if (month*1 <10){
+            month = "0" + month;
+          }
+          let day:any = new Date().getDate()
+          if(day*1 <10){
+            day = "0"+day;
+          }
+          this.documentCreationTime = new Date().getFullYear() + '-' + month + '-' + day;
+          console.log(this.documentCreationTime);
+        }
         switch (res.lang) {
           case 'en':
 
@@ -379,7 +392,8 @@ export class QuerysingledocComponent implements OnInit {
         console.log(this.opcoes);
         
 
-      this.timeline.getTextKeyDateFromSingleDoc(this.artigo.content, this.opcoes).pipe(take(1)).subscribe((res) => {
+      this.timeline.getTextKeyDateFromSingleDoc(this.artigo.content, this.opcoes)
+      .pipe(take(1)).subscribe((res) => {
           
       if (res) {
          console.log(res);
