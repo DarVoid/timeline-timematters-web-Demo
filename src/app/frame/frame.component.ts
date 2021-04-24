@@ -28,7 +28,8 @@ export class FrameComponent implements OnInit, OnChanges {
     if(this.docOrSentence == 'doc'){
       if (this.argumentos) {
         this.textoNormalizado = this.argumentos.TextNormalized;
-        // console.log(this.argumentos.TextNormalized);
+        console.log("Frame DEBUG");
+        console.log(this.argumentos.TextNormalized);
         this.keywordScores = this.argumentos.RelevantKWs;
         this.dateScores = this.argumentos.Score;
 

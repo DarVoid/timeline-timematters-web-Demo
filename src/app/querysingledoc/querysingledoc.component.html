@@ -27,7 +27,7 @@
                 <mat-slide-toggle  name="docOrSentece" color="warn" (toggleChange)="toggleDocOrSentence()">{{byDocOrSentece?'Annotate dates by doc':'Annotate dates by sentence'}}</mat-slide-toggle>
               </div>
 
-              
+
               <div class="col-lg-12 space-center algorithm">
                 <mat-slide-toggle name="KW" color="warn" (toggleChange)="toggleOptionKeywords()">YAKE options</mat-slide-toggle>
               </div>
@@ -65,7 +65,7 @@
                 <input class="algorithm" matInput (change)="selecionaTamanhoSimbaVectors($event)" [disabled]="simbaValueMax"  [value]="simbaValue" name="simba"  type="number" placeholder="N"/>
               </mat-form-field>
               <mat-checkbox color="warn" class="example-margin algorithm" (change)="maxSimba($event)" [checked]="simbaValueMax">InfoSimba max value</mat-checkbox>
-              
+
               <br>
 
               <mat-form-field  color="warn" name="windowContext" >
@@ -74,7 +74,7 @@
 
               </mat-form-field>
               <mat-checkbox class="example-margin algorithm" color="warn" (change)="fullSentence($event)" [checked]="contextFullSentence">full sentence </mat-checkbox>
-             
+
                 <br>
 
               </div>
@@ -103,15 +103,7 @@
                 <mat-label>Document Creation Date:</mat-label>
                 <input matInput name="docCreatDate" class="date" type="date" />
               </mat-form-field>
-              <mat-form-field name="lingua" color="warn">
-                <mat-label class="algorithm">Language </mat-label>
-                <mat-select class="algorithm" (valueChange)="selecionarLanguage($event)" [value]="languagueSelected" >
-                  <mat-option class="mat-menu-item2" hidden>English</mat-option>
-                  <mat-option class="mat-menu-item2" *ngFor="let lingo of languageOptions" [value]="lingo">
-                    {{lingo}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+
               <mat-form-field (changeValue)="selecionarTipoDocumento($event)" name="tipoDoc" color="warn">
                 <mat-label class="algorithm">Document Type</mat-label>
                 <mat-select class="algorithm" (valueChange)="selecionarTipoDocumento($event)" [value]="documentTypeSelected" >
@@ -125,7 +117,7 @@
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-              
+
               <!--<mat-form-field color="warn">
                 <mat-label class="algorithm">Date Granularity </mat-label>
                 <mat-select class="algorithm" (valueChange)="selecionarGranularidade($event)" [value]="dateGranularitySelected">
