@@ -34,18 +34,20 @@ export class FrameComponent implements OnInit, OnChanges {
         console.log(this.argumentos.TextNormalized);
         this.keywordScores = this.argumentos.RelevantKWs;
         this.dateScores = this.argumentos.Score;
-
+        var a = [];
+        var indice = 0;
         this.texto = this.textoNormalizado.replace(/<d>(.*?)<\/d>/gi, (x) => {
+          console.log("FRASE");
+          console.log(x);
+          console.log(a);
+
           let valor = x.replace(/<d>/, "");
           valor = valor.substring(0, valor.length - 4);
-          // console.log('valor:');
-          // console.log(valor);
-          console.log("DOC score do valor");
-          console.log(this.dateScores[valor]);
 
           let titulo = this.dateScores[valor.toLowerCase()];
-          // console.log(titulo);
-          // console.log(this.dateScores[valor]);
+          //console.log(titulo);
+          //console.log(this.dateScores[valor]);
+
           let cor = "";
           if (titulo) {
             // console.log('titulo');
@@ -71,31 +73,65 @@ export class FrameComponent implements OnInit, OnChanges {
               }
             }
           }
-          let textoAEscrever = "";
-          for (let i = 0; i < this.argumentos.TempExpressions.length; i++) {
-            // console.log('expressoes temporais');
-            let ind = i + "";
-            // console.log(this.argumentos.TempExpressions[ind]);
-            if (
-              this.argumentos.TempExpressions[ind][0].toString() ===
-              x.substring(3, x.length - 4)
-            ) {
-              textoAEscrever = this.argumentos.TempExpressions[
-                ind
-              ][1].toString();
+          if (a.length != 0) {
+            let exists = false;
+            var maxElement = 0;
+            a.map((allElementsInA) => {
+              if (allElementsInA.valor == valor) {
+                maxElement = allElementsInA.index;
+                exists = true;
+              }
+            });
+            if (exists) {
+              a.push({
+                valor,
+                index: maxElement + 1,
+                indice,
+                cor,
+                titulo,
+              });
+            } else {
+              a.push({
+                valor,
+                index: 0,
+                indice,
+                cor,
+                titulo,
+              });
             }
-          }
-          if (this.showOnlyRelevants && cor === "black") {
-            x = textoAEscrever;
           } else {
-            x =
+            a.push({
+              valor,
+              index: 0,
+              indice,
+              cor,
+              titulo,
+            });
+          }
+          // console.log('valor:');
+          // console.log(valor);
+          // console.log("DOC score do valor");
+          // console.log(this.dateScores[valor]);
+
+          let cena = a.map((elementInA) => {
+            if (elementInA.indice == indice && elementInA.valor == valor) {
+              return elementInA.index;
+            }
+          });
+
+          indice++;
+          if (this.showOnlyRelevants && cor === "black") {
+            x = x; //textoAEscrever;
+          } else {
+            x = //
               '<span title="' +
               titulo +
               '">' +
               '<b class="' +
               cor +
               '">' +
-              textoAEscrever +
+              x +
+              //textoAEscrever +
               "</b>" +
               "</span>";
           }
@@ -104,6 +140,58 @@ export class FrameComponent implements OnInit, OnChanges {
 
           return x;
         });
+        var indice = 0;
+        this.texto = this.textoNormalizado.replace(/<d>(.*?)<\/d>/gi, (x) => {
+          let objecto = a.filter((each) => {
+            return each.indice == indice;
+          });
+          console.log("COOKIES");
+          console.log(objecto);
+          console.log(this.argumentos.TempExpressions);
+          let filteredstuff = this.argumentos.TempExpressions.filter((cada) => {
+            // console.log(cada[0] )
+            // console.log(objecto[0].valor )
+            return cada[0] == objecto[0].valor;
+          });
+          let repl_sentence = filteredstuff[objecto[0].index][1];
+
+          console.log(repl_sentence[1]);
+          console.log(x);
+          indice++;
+          if (this.showOnlyRelevants && objecto[0].cor === "black") {
+            repl_sentence = repl_sentence; //textoAEscrever;
+          } else {
+            repl_sentence = //
+              '<span title="' +
+              objecto[0].titulo +
+              '">' +
+              '<b class="' +
+              objecto[0].cor +
+              '">' +
+              repl_sentence +
+              //textoAEscrever +
+              "</b>" +
+              "</span>";
+          }
+          return repl_sentence;
+        });
+        //let textoAEscrever = "";
+        //  for (let i = 0; i < this.argumentos.TempExpressions.length; i++) {
+        //    console.log('expressoes temporais');
+        //    console.log(indice)
+        //    console.log(i)
+        //    let ind = i + "";
+        //    console.log(this.argumentos.TempExpressions[ind])
+        //    if (
+        //      this.argumentos.TempExpressions[ind][0].toString() ===
+        //      x.substring(3, x.length - 4)
+        //    ) {
+        //      textoAEscrever = this.argumentos.TempExpressions[
+        //        ind
+        //      ][1].toString();
+        //    }
+        //  }
+        console.log(this.texto);
         if (!this.keywordsMatter) {
           this.texto = this.texto.replace(/<kw>(.*?)<\/kw>/gi, (x) => {
             let valor = x.replace(/<kw>/, "");
