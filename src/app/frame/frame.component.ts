@@ -197,7 +197,7 @@ export class FrameComponent implements OnInit, OnChanges {
           console.log(this.showOnlyRelevants);
           console.log("cor");
           console.log(cor);
-          
+
           if (this.showOnlyRelevants ) {
             if(cor === 'black'){
 
@@ -214,7 +214,7 @@ export class FrameComponent implements OnInit, OnChanges {
 
         }); // end callback replace <d>
 
-        this.texto = frases2.join(' ');
+        this.texto = frases2.join('');
 
       }// end iteration phrases
       if (!this.keywordsMatter) {

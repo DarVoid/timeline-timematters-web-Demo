@@ -17,25 +17,36 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 
 .purple{
   background-color:#21961b !important;
-
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 }
 .black{
   background-color:rgb(181, 11, 11) !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 }
 .blue{
   background-color:#386c7d !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 
 }
 .green{
   background-color:rgba(181, 11, 11, 0.6) !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 
 }
 .red{
   background-color:#a33a14 !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 
 }
 .yellow{
   background-color:rgba(33, 150, 27, 0.6) !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 
 }
 p.noticeme{
@@ -202,7 +213,7 @@ section.NavSection {
 .tituloProjeto {
   color: white;
   font-family: 'Work Sans';
-  font-size: 35px; 
+  font-size: 35px;
   padding-top:27px;
   line-height:1.125;
   font-weight: 600;
@@ -482,7 +493,7 @@ app-frame {
 
 @media (min-width: 768px) {
   .legenda {
-    margin-top: -30px;  
+    margin-top: -30px;
   }
 
   .legenda b {
@@ -515,7 +526,7 @@ app-frame {
   .legenda b{
     font-size: 15px !important;
   }
-  
+
 }
 
 @media (max-width: 769px){
@@ -563,7 +574,7 @@ app-frame {
 
 .legenda b{
   color: #ffffff;
-  padding-right: 45px;  
+  padding-right: 45px;
 }
 a {
   outline: none;
