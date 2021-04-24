@@ -8,17 +8,17 @@ import { map } from 'rxjs/operators';
 })
 export class YakeService {
   url: string;
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.url = 'http://yake.inesctec.pt/yake/v2/extract_keywords';
   }
 
   public getKeywords(search: string): Observable<any> {
     const formData = new FormData();
-    
-    let realURL = this.url + '?content=' 
+
+    let realURL = this.url + '?content='
     + search.split("<p>")[1].split("<kw>").join("").split("</kw>").join("").split("<d>").join("").split("</d>").join("").trim()
     +'&max_ngram_size=3&number_of_keywords=1&highlight=true';
-    
+
     // console.log(realURL);
     return this.http.get(realURL
         ).pipe(map((res, err) => {

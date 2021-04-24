@@ -154,9 +154,13 @@ export class QueryComponent implements OnChanges {
     this.numero_total2 = this.options.result.TempExpressions.filter((cada) => {
       return this.options.result.Score[cada[0].toLowerCase()][0] > 0.35;
     }).length;
-    console.log(this.numero_total);
+    //console.log(this.numero_total);
 
     last = "";
+    console.log("Temp Expressions");
+    console.log(this.options.result.TempExpressions);
+    console.log(this.differentValues);
+
     this.differentValues = this.options.result.TempExpressions.sort(
       (a, b) => a[0] - b[0]
     ).filter((element, index, array) => {
@@ -165,15 +169,15 @@ export class QueryComponent implements OnChanges {
         // console.log(element[0].toString().split('-').join(''));
         // console.log("Element is Viable");
         // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
-        last = element[0];
+        last = Object.assign({}, element[0]);
         return /^\d+$/.test(element[0].toString().split("-").join(""));
       } else {
         // console.log("element");
         // console.log(element[0].toString().split('-').join(''));
         // console.log("Element is Viable");
         // console.log(/^\d+$/.test(element[0].toString().split('-').join('')));
-        let este = last;
-        last = element[0];
+        let este = Object.assign({}, last);
+        last = Object.assign({}, element[0]);
         return (
           element[0].toString().split("-").join("") != este &&
           /^\d+$/.test(element[0].toString().split("-").join(""))
@@ -257,7 +261,7 @@ export class QueryComponent implements OnChanges {
       // handle Dataset
       if (this.options.docOrSentence == "doc") {
         // descobrir se este é sentence ou doc
-        console.log("resultado");
+        console.log("RESULTADO SET");
         let value_to_be_replaced = Object.keys(this.options.result.Score)[i];
         console.log(value_to_be_replaced);
         //[Object.keys(this.result.Score)[i].toLowerCase()]);
@@ -268,6 +272,7 @@ export class QueryComponent implements OnChanges {
             );
           }
         )[0][1];
+        console.log(value_to_replace_for);
         value_to_replace_for =
           "<strong><d>" + value_to_replace_for + "</d></strong>";
         console.log(value_to_replace_for);
@@ -347,6 +352,11 @@ export class QueryComponent implements OnChanges {
             sentence_to_write +
             "</p>";
 
+            console.log("CHEK")
+          console.log(
+            this.options.result.Score[Object.keys(this.options.result.Score)[i]]
+          );
+
           a2 =
             '<p class="noticem4">Score: ' +
             this.options.result.Score[
@@ -400,6 +410,8 @@ export class QueryComponent implements OnChanges {
             ][xd][0],
             series: xd,
           });
+          console.log("ver DUPLICADOS");
+
           console.log(d);
 
           // tslint:disable-next-line: max-line-length
@@ -441,6 +453,8 @@ export class QueryComponent implements OnChanges {
               ][xd][0],
               series: xd,
             });
+            console.log("ver DUPLICADOS");
+            console.log(d);
 
             // console.log(d2);
             // TODO: meter d e d2 nos datasets

@@ -482,6 +482,8 @@ export class ExctractionComponent implements OnInit {
     }).length;
     console.log(this.numero_total);
     last = "";
+    console.log("LISTA Expressoes");
+    console.log(this.result.TempExpressions);
     this.differentValues = this.result.TempExpressions.sort(
       (a, b) => a[0] - b[0]
     ).filter((element, index, array) => {
@@ -501,6 +503,7 @@ export class ExctractionComponent implements OnInit {
         );
       }
     });
+
     if (this.byDocOrSentece) {
       this.differentRelValues = this.differentValues.filter(
         (element, index, array) => {
@@ -863,6 +866,8 @@ export class ExctractionComponent implements OnInit {
         }
       });
     }
+    console.log("SEE DATA");
+
     console.log(this.dataset);
     console.log(this.datasetRelOnly);
   }

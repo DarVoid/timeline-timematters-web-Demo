@@ -7,7 +7,11 @@ import { forkJoin } from "rxjs";
 // import TL from '../../assets/TL1.js';
 declare var TL: any;
 declare var $: any;
-
+interface Evento{
+  text?: string,
+  start_date?: Date,
+  media: any
+}
 @Component({
   selector: "app-timeline-scroll",
   templateUrl: "./timeline-scroll.component.html",
@@ -15,6 +19,7 @@ declare var $: any;
 })
 export class TimelineScrollComponent implements OnInit {
   @Input() argumentosTodos: any;
+  @Input() compGeral: any;
   @Input() docSen: any;
   @Input() argumentosRelevantes: any;
   public relevant: boolean;
@@ -41,6 +46,7 @@ export class TimelineScrollComponent implements OnInit {
     this.relevant = false;
     this.nodata = false;
     this.relevant_string = "Show only relevant dates";
+    this.events = [];
   }
 
   ngOnInit() {
@@ -65,6 +71,29 @@ export class TimelineScrollComponent implements OnInit {
       this.argumentos = this.argumentosTodos;
     }
     this.loading = true;
+    console.log("socoroor")
+    var novos=[]
+     this.argumentos.map((cada)=>{
+      if(novos.length!=0){
+        novos.push(cada)
+      }else{
+        let exists=false
+        novos.map((all)=>{
+          if(all.dateparsed2==cada.dateparsed2){
+            exists = true
+          }else{
+
+          }
+        })
+        if(exists){
+
+        }else{
+          novos.push(cada)
+        }
+      }
+    })
+    this.argumentos = novos
+    console.log(this.argumentos)
     this.update();
   }
   public copyToClipboard(event: any) {
@@ -99,8 +128,8 @@ export class TimelineScrollComponent implements OnInit {
     } else {
       this.nodata = false;
     }
+    let novos = []
 
-    const events = [];
     // tslint:disable-next-line: forin
     for (let h = 0; h < this.argumentos.length; h++) {
       console.log("conteudo");
@@ -118,7 +147,13 @@ export class TimelineScrollComponent implements OnInit {
           .split("</d>")
           .join("")
       );
-
+      console.log("HELP " + h)
+      console.log(this.argumentos[h])
+      console.log(this.compGeral)
+        // let ceninha=   this.compGeral.SentencesNormalized.filter((cada)=>{
+        //     return cada.includes("<d>"+this.argumentos[h].x+"</d>")
+        //   })[0]
+        // console.log(ceninha)
       this.yake
         .getKeywords(
           this.argumentos[h].y
@@ -152,7 +187,7 @@ export class TimelineScrollComponent implements OnInit {
                   let url2 = res2.responseItems[0].imgLinkToArchive;
                   console.log("Storyline rule-based");
                   if (this.argumentos[h].x.length == 4) {
-                    events.push({
+                    this.events.push({
                       start_date: { year: this.argumentos[h].x },
                       media: {
                         thumbnail: url2,
@@ -172,7 +207,7 @@ export class TimelineScrollComponent implements OnInit {
                     }); //
                   } else if (this.argumentos[h].x.split("-").length === 2) {
                     // tslint:disable-next-line: max-line-length
-                    events.push({
+                    this.events.push({
                       start_date: {
                         year: this.argumentos[h].x.split("-")[0],
                         month: this.argumentos[h].x.split("-")[1],
@@ -216,7 +251,7 @@ export class TimelineScrollComponent implements OnInit {
                         console.log(min);
                         if (min * 1 > 0 && min * 1 < 60) {
                           // tslint:disable-next-line: max-line-length
-                          events.push({
+                          this.events.push({
                             start_date: {
                               year: this.argumentos[h].x
                                 .substring(0, 10)
@@ -251,7 +286,7 @@ export class TimelineScrollComponent implements OnInit {
                             },
                           });
                         } else {
-                          events.push({
+                          this.events.push({
                             start_date: {
                               year: this.argumentos[h].x
                                 .substring(0, 10)
@@ -282,7 +317,7 @@ export class TimelineScrollComponent implements OnInit {
                         }
                       } else {
                         // tslint:disable-next-line: max-line-length
-                        events.push({
+                        this.events.push({
                           start_date: {
                             year: this.argumentos[h].x
                               .substring(0, 10)
@@ -313,7 +348,7 @@ export class TimelineScrollComponent implements OnInit {
                       }
                     } else {
                       // tslint:disable-next-line: max-line-length
-                      events.push({
+                      this.events.push({
                         start_date: {
                           year: this.argumentos[h].x
                             .substring(0, 10)
@@ -346,8 +381,27 @@ export class TimelineScrollComponent implements OnInit {
 
                   if (h == this.argumentos.length - 1) {
                     this.scheduler = setTimeout(() => {
+
+                      //let novos =[]
+                      //this.events.map((elemento) => {
+                      //  console.log(elemento);
+                      //  let exists=false
+                      //  if(novos.length!=0){
+                      //    novos.map((cadaNovo: Evento)=>{
+//
+                      //      if(cadaNovo.start_date == elemento.start_date){
+                      //        exists=true
+                      //      }
+                      //    })
+                      //    if(!exists)
+                      //    novos.push(elemento)
+                      //  }else{
+                      //    novos.push(elemento)
+                      //  }
+                      //  return elemento
+                      //});
                       this.loading = false;
-                      j = { events: events };
+                      j = { events: this.events };
                       this.jsonText = j;
                       console.log(j);
                       const additionalOptions = {
@@ -360,7 +414,7 @@ export class TimelineScrollComponent implements OnInit {
                       // tslint:disable-next-line: no-unused-expression
                       new TL.Timeline("my-timeline", j, additionalOptions);
                       return;
-                    }, 3000); //wait ten seconds before continuing
+                    }, 2500); //wait ten seconds before continuing
                   }
                 }
               });
