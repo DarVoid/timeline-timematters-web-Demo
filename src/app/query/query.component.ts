@@ -459,7 +459,6 @@ export class QueryComponent implements OnChanges {
             console.log(d);
 
             // console.log(d2);
-            // TODO: meter d e d2 nos datasets
           } else {
             //valorDeA += '<span title="' + this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'') + '"><p class="noticem5">Score: ' + this.result.Score[Object.keys(this.result.Score)[i]][xd][0] + '</p><p>'+this.result.SentencesNormalized[xd.toString()].split('\"').join('\'\'')+'</p></span>';
             valorDeA +=
