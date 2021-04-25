@@ -6,9 +6,8 @@
       <span title=" "><p class="frase1"></p>
       </span>
       <!--FRASE DOS TEMPOS DE EXECUÇÃO-->
-      <div>
       <div *ngIf="!options else graficos">
-        <h1>No Data</h1>
+        <h1>Não foram encontrados dados, em caso de dúvida, a culpa é da API 🤣</h1>
       </div>
         <ng-template #graficos >
           <mat-card >
@@ -17,9 +16,6 @@
             <!-- ANNOTATED TEXT-->
             <mat-tab   label="Annotated text">
                 <br>
-
-
-
                 <p >URL: <a style="color:black" href="{{url}}" target="_blank"><u><i>{{url}}</i></u></a></p>
                 <p class="afterAnnotated">Linguagem: <i>{{options.language}}</i></p>
                 <hr>
@@ -52,7 +48,7 @@
           <!-- TEMPORAL CLUSTERING -->
           <mat-tab label="Temporal Clustering" *ngIf="dataset.length>0">
             <br>
-            <div style="display:flex; justify-content: flex-end;">
+            <div style="display:flex; justify-content: flex-end; overflow-x: none;">
               <mat-slide-toggle style="z-index: 10;margin-top:25px;margin-right: 50px ;" [checked]="showOnlyRel" (toggleChange)='toggleRel()' class="afterAnnotated" color="warn" >Apenas datas relevantes? </mat-slide-toggle>
             </div>
             <br><br>
@@ -68,7 +64,7 @@
                 </table>
               </div>
               <ng-template #nodata1>
-                <h1>No Data</h1>
+                <h1>Não foram encontrados dados, em caso de dúvida, a culpa é da API 🤣</h1>
               </ng-template>
 
             </div>
@@ -85,7 +81,7 @@
                 </table>
               </div>
               <ng-template #nodata2>
-                <h1>No relevant data</h1>
+                <h1>Não foram encontrados dados, em caso de dúvida, a culpa é da API 🤣</h1>
               </ng-template>
             </ng-template>
           </mat-tab>
@@ -107,10 +103,10 @@
             <button *ngIf="options" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
           </div>-->
         </ng-template>
-      </div>
-      <div class="col-lg-12 text-right">
-        <button mat-fab (click)="goBack()" class="btn btn-primary"><i class="fas fa-undo-alt"></i></button>
+        <div class="col-lg-12 text-right">
+          <button mat-fab (click)="goBack()" class="btn btn-primary"><i class="fas fa-undo-alt"></i></button>
+
+        </div>
 
       </div>
 
-  </div>
