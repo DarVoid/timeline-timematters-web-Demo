@@ -8,8 +8,8 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar class="navSideTitle">narrArquivo</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item class="mat-list-item" (click)='changePage("1")' href="/"> Inicio <span class="material-icons">home</span></a>
-      <a mat-list-item class="mat-list-item" [matMenuTriggerFor]="menu1"> narrArquiva <mat-icon>keyboard_arrow_down</mat-icon></a>
+      <a mat-list-item class="mat-list-item" (click)='changePage("1")' href="/"> Início <span class="material-icons">home</span></a>
+      <a mat-list-item class="mat-list-item" [matMenuTriggerFor]="menu1"> Narrativa  <i style="margin-left: 5px;" class="fas fa-book-open"> </i></a>
       <a mat-list-item class="mat-list-item" [matMenuTriggerFor]="menu2"> Sobre <mat-icon>keyboard_arrow_down</mat-icon></a>
     </mat-nav-list>
   </mat-sidenav>
@@ -29,8 +29,8 @@
 
           <!--<img class="ceninha" src="assets\logo.png" />-->
         <div class="spacer"></div><div [ngClass]="{hidden: (isHandset$ | async) === true}">
-        <a href="/" (click)='changePage("1")'><button mat-button> Inicio <i class="fas fa-home"></i></button></a>
-        <a><button mat-button [matMenuTriggerFor]="menu1" ngbDropdownToggle> narrArquiva <i class="fas fa-book-open"></i></button></a>
+        <a href="/" (click)='changePage("1")'><button mat-button> Início <i class="fas fa-home"></i></button></a>
+        <a><button mat-button [matMenuTriggerFor]="menu1" ngbDropdownToggle> Narrativa <i class="fas fa-book-open"></i></button></a>
         <a><button mat-button [matMenuTriggerFor]="menu2" ngbDropdownToggle> Sobre <i class="fas fa-chevron-down"></i></button></a>
       </div>
           </mat-toolbar>
@@ -45,36 +45,22 @@
     </mat-menu>
 
     <mat-menu #menu2="matMenu" ngbDropdownMenu>
-      <button mat-menu-item class="mat-menu-item" (click)='changePage("4")' ngbDropdownItem>Pessoas de Interesse <i class="fas fa-user-circle"></i></button>
+      <button mat-menu-item class="mat-menu-item" (click)='changePage("4")' ngbDropdownItem>Equipa <i class="fas fa-user-circle"></i></button>
       <div class="divider"></div>
       <button mat-menu-item class="mat-menu-item" (click)='changePage("5")' ngbDropdownItem>Trabalho Relacionado <i class="fas fa-book-open"></i></button>
-      <div class="divider"></div>
-      <button mat-menu-item class="mat-menu-item" (click)='changePage("7")' ngbDropdownItem>Reconhecimentos <i class="fa fa-book" aria-hidden="true"></i>
-      </button>
-      <div class="divider"></div>
-      <button  mat-menu-item class="mat-menu-item" >
-        <a  target="_blank" href="http://time-matters.inesctec.pt/api"> API <i class="fas fa-laptop-code"></i></a>
-      </button>
       <div class="divider"></div>
       <button mat-menu-item class="mat-menu-item">
         <a target="_blank" href="https://github.com/liaad/time-matters"> GitHub <i class="fab fa-github" aria-hidden="true"></i></a>
       </button>
       <div class="divider"></div>
-      <button mat-menu-item class="mat-menu-item" [matMenuTriggerFor]="menu3" aria-hidden="true"> Projectos Relacionados</button>
-    </mat-menu>
+      <button  mat-menu-item class="mat-menu-item" >
+        <a  target="_blank" href="http://time-matters.inesctec.pt/api"> API <i class="fas fa-laptop-code"></i></a>
+      </button>
 
-    <mat-menu #menu3="matMenu">
-      <a target="_blank" href="https://hub.docker.com/r/liaad/time-matters"><button mat-menu-item class="mat-menu-item">Dockerized Time-Matters <i class="fab fa-docker"></i> </button></a>
-      <div class="divider"></div>
-      <a target="_blank" href="https://hub.docker.com/r/liaad/py_heideltime"><button mat-menu-item class="mat-menu-item">Dockerized py_heideltime  <i class="fab fa-docker"></i> </button></a>
-      <div class="divider"></div>
-      <a target="_blank" href="https://hub.docker.com/r/liaad/yake-server"><button mat-menu-item class="mat-menu-item">Dockerized YAKE!  <i class="fab fa-docker"></i> </button></a>
-      <div class="divider"></div>
-      <a target="_blank" href="http://yake.inesctec.pt/"><button mat-menu-item class="mat-menu-item">YAKE! Demo  <i class="fab fa-docker"></i> </button></a>
-      <div class="divider"></div>
-      <a target="_blank" href="http://text2story.inesctec.pt/"><button mat-menu-item class="mat-menu-item">Text2Story  <i class="fas fa-book-open"></i> </button></a>
 
     </mat-menu>
+
+
 
     <section class="NavSection">
       <div class="layout">

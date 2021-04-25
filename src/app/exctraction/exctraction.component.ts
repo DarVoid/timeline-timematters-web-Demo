@@ -270,7 +270,7 @@ export class ExctractionComponent implements OnInit {
     this.maxValTH = 1;
     this.dateBegin = 0;
     this.dateEnd = 2100;
-    this.numberOfKeyWords = 10;
+    this.numberOfKeyWords = 30;
     this.contextWindow = "full_sentence";
     this.simbaValue = 10;
     this.cheating = false;

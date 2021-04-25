@@ -42,6 +42,8 @@ export class QuerysingledocComponent implements OnInit {
   public scheduler: any;
   public resultado: any;
   public TH: number;
+  public mudou: boolean;
+  public antigo: string;
   public hiddenoptionTM: boolean;
   public right: string;
   @Input() inpu: any;
@@ -52,6 +54,7 @@ export class QuerysingledocComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private _langDetec: LangdetectService
   ) {
+    this.mudou=false;
     //
     this.right = "right";
     this.algoritmosDate = [
@@ -94,7 +97,7 @@ export class QuerysingledocComponent implements OnInit {
     this.dateBegin = 0;
     this.dateEnd = 2100;
     this.maxValTH = 1;
-    this.numberOfKeyWords = 10;
+    this.numberOfKeyWords = 30;
     this.contextWindow = 1;
     this.contextFullSentence = true;
     this.simbaValueMax = true;
@@ -110,7 +113,7 @@ export class QuerysingledocComponent implements OnInit {
     this.hiddenoptionTM = false;
     this.TH = 0.05;
     this.url =
-    "https://arquivo.pt/noFrame/replay/20191211154001/https://www.jornaldenegocios.pt/economia/detalhe/milhares-desfilam-em-lisboa-contra-a-troika-e-o-governo";
+    "";
 
   }
 
@@ -118,12 +121,14 @@ export class QuerysingledocComponent implements OnInit {
     if (this.inpu) {
     } else {
       this.url =
-        "https://arquivo.pt/noFrame/replay/20191211154001/https://www.jornaldenegocios.pt/economia/detalhe/milhares-desfilam-em-lisboa-contra-a-troika-e-o-governo";
+        "";
       //https://sicnoticias.pt/pais/2016-07-07-Cronologia-do-processo-Casa-Pia
       //https://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/
     }
   }
   goBack() {
+    this.mudou=false;
+    this.antigo=''
     //this.algoritmoSelected = this.algoritmosDate[0];
     this.dateGranularitySelected = this.dateGranularityOptions[0];
     //this.documentTypeSelected = this.documentTypeOptions[0];
@@ -131,7 +136,7 @@ export class QuerysingledocComponent implements OnInit {
     //this.dateBegin = 0;
     //this.dateEnd = 2100;
     //this.maxValTH = 1;
-    //this.numberOfKeyWords = 10;
+    this.numberOfKeyWords = 30;
     //this.contextWindow = 1;
     //this.contextFullSentence = true;
     //this.simbaValueMax = true;
@@ -344,6 +349,7 @@ export class QuerysingledocComponent implements OnInit {
       console.log("data");
       console.log(this.documentCreationTime);
     }
+
     let sizeOfURL2 = "https://arquivo.pt/wayback/".length;
     if (this.url.substring(0, sizeOfURL2) == "https://arquivo.pt/wayback/") {
       let ano = this.url.substring(sizeOfURL2, sizeOfURL2 + 4);
@@ -352,12 +358,18 @@ export class QuerysingledocComponent implements OnInit {
       this.documentCreationTime = ano + "-" + mes + "-" + dia;
       console.log("data");
       console.log(this.documentCreationTime);
+      this.mudou = true;
+      this.antigo = this.url
+      this.url= "https://arquivo.pt/noFrame/replay/" + this.url.substring(sizeOfURL2, this.url.length)
     }
     this.article
       .getArticles(this.url)
       .pipe(take(1))
       .subscribe(
         (res) => {
+          if(this.mudou){
+            this.url =this.antigo
+          }
           if (res) {
             console.log(res);
             this.artigo = res;
@@ -365,36 +377,24 @@ export class QuerysingledocComponent implements OnInit {
             console.log(this.artigo.content);
             // this.documentCreationTime="";
             // tslint:disable-next-line: max-line-length
-            if (res.date_creation) {
-              // tslint:disable-next-line: max-line-length
-              let month: any = new Date(res.date_creation).getMonth();
-              if (month * 1 < 10) {
-                month = "0" + month;
-              }
-              let day: any = new Date(res.date_creation).getDate();
-              if (day * 1 < 10) {
-                day = "0" + day;
-              }
-              this.documentCreationTime =
-                new Date(res.date_creation).getFullYear() +
-                "-" +
-                month +
-                "-" +
-                day;
-              console.log(this.documentCreationTime);
+            if (this.documentCreationTime) {
             } else {
               // tslint:disable-next-line: max-line-length
-              let month: any = new Date().getMonth();
+              let month: number = new Date().getMonth();
+              let month_string=''
+
               if (month * 1 < 10) {
-                month = "0" + month;
+                month_string = "0" + (month+1);
+              }else{
+                month_string =  (month+1)+'';
               }
               let day: any = new Date().getDate();
               if (day * 1 < 10) {
                 day = "0" + day;
               }
               this.documentCreationTime =
-                new Date().getFullYear() + "-" + month + "-" + day;
-              console.log(this.documentCreationTime);
+                new Date().getFullYear() + "-" + month_string + "-" + day;
+              alert(this.documentCreationTime);
             }
             switch (res.lang) {
               case "en":
