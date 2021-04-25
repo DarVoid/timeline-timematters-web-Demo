@@ -631,13 +631,13 @@ export class QueryComponent implements OnChanges {
       });
     }
     this.datasetFixed = this.datasetFixed.filter((cada) => {
-      console.log("cada")
-      console.log(cada)
+      console.log("cada");
+      console.log(cada);
       return cada.y.includes("<strong");
     });
     this.datasetFixed2 = this.datasetFixed2.filter((cada) => {
-      console.log("cada")
-      console.log(cada)
+      console.log("cada");
+      console.log(cada);
       return cada.y.includes("<strong");
     });
     console.log("this.dataset");

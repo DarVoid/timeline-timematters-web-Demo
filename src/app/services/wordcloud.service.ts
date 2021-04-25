@@ -24,17 +24,17 @@ export class WordcloudService {
     this.yake.getKeywords(search).pipe(
       map((res, err) => {
         if (res) {
-          this.http.get(res
-            ).pipe(map((res2, err2) => {
-          if (res2) {
-            console.log(res2);
-            return res2;
-          } else {
-            console.log(err2);
-            return err2;
-          }
-        }));
-
+          this.http.get(res).pipe(
+            map((res2, err2) => {
+              if (res2) {
+                console.log(res2);
+                return res2;
+              } else {
+                console.log(err2);
+                return err2;
+              }
+            })
+          );
         } else {
           console.log(err);
           return err;

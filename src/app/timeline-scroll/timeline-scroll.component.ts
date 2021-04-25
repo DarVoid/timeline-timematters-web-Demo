@@ -563,47 +563,47 @@ export class TimelineScrollComponent implements OnInit {
                         }
                       } else {
                         let mes = this.argumentos[h].x.split("-")[1];
-                          let mes_string = "";
-                          switch (mes) {
-                            case "01":
-                              mes_string = "Janeiro";
-                              break;
-                            case "02":
-                              mes_string = "Fevereiro";
-                              break;
-                            case "03":
-                              mes_string = "Março";
-                              break;
-                            case "04":
-                              mes_string = "Abril";
-                              break;
-                            case "05":
-                              mes_string = "Maio";
-                              break;
-                            case "06":
-                              mes_string = "Junho";
-                              break;
-                            case "07":
-                              mes_string = "Julho";
-                              break;
-                            case "08":
-                              mes_string = "Agosto";
-                              break;
-                            case "09":
-                              mes_string = "Setembro";
-                              break;
-                            case "10":
-                              mes_string = "Outubro";
-                              break;
-                            case "11":
-                              mes_string = "Novembro";
-                              break;
-                            case "12":
-                              mes_string = "Dezembro";
-                              break;
-                            default:
-                              break;
-                          }
+                        let mes_string = "";
+                        switch (mes) {
+                          case "01":
+                            mes_string = "Janeiro";
+                            break;
+                          case "02":
+                            mes_string = "Fevereiro";
+                            break;
+                          case "03":
+                            mes_string = "Março";
+                            break;
+                          case "04":
+                            mes_string = "Abril";
+                            break;
+                          case "05":
+                            mes_string = "Maio";
+                            break;
+                          case "06":
+                            mes_string = "Junho";
+                            break;
+                          case "07":
+                            mes_string = "Julho";
+                            break;
+                          case "08":
+                            mes_string = "Agosto";
+                            break;
+                          case "09":
+                            mes_string = "Setembro";
+                            break;
+                          case "10":
+                            mes_string = "Outubro";
+                            break;
+                          case "11":
+                            mes_string = "Novembro";
+                            break;
+                          case "12":
+                            mes_string = "Dezembro";
+                            break;
+                          default:
+                            break;
+                        }
                         // tslint:disable-next-line: max-line-length
                         this.events.push({
                           start_date: {
@@ -617,15 +617,15 @@ export class TimelineScrollComponent implements OnInit {
                               .substring(0, 10)
                               .split("-")[2],
                             display_date:
-                            this.argumentos[h].x
-                              .substring(0, 10)
-                              .split("-")[2] +
-                            " de " +
-                            mes_string +
-                            " de " +
-                            this.argumentos[h].x
-                              .substring(0, 10)
-                              .split("-")[0],
+                              this.argumentos[h].x
+                                .substring(0, 10)
+                                .split("-")[2] +
+                              " de " +
+                              mes_string +
+                              " de " +
+                              this.argumentos[h].x
+                                .substring(0, 10)
+                                .split("-")[0],
                           },
                           media: {
                             thumbnail: url2,
