@@ -109,6 +109,9 @@ export class QuerysingledocComponent implements OnInit {
     this.requestMade = false;
     this.hiddenoptionTM = false;
     this.TH = 0.05;
+    this.url =
+    "https://arquivo.pt/noFrame/replay/20191211154001/https://www.jornaldenegocios.pt/economia/detalhe/milhares-desfilam-em-lisboa-contra-a-troika-e-o-governo";
+
   }
 
   ngOnInit(): void {

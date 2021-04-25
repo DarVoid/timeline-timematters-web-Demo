@@ -17,6 +17,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 export class QueryComponent implements OnChanges {
   @Input() options: any;
   @Input() article: any;
+  @Input() url: string;
   @Output() goBackque: EventEmitter<any> = new EventEmitter();
   public showOnlyRel: boolean;
   public withKeywords: boolean;
@@ -45,6 +46,7 @@ export class QueryComponent implements OnChanges {
     this.differentValues = [];
     this.page = 0;
     this.docOrSentence = true;
+    this.url=""
   }
 
   ngOnChanges() {
