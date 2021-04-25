@@ -866,6 +866,16 @@ export class ExctractionComponent implements OnInit {
         }
       });
     }
+    this.datasetFixed = this.datasetFixed.filter((cada) => {
+      console.log("cada")
+      console.log(cada)
+      return cada.y.includes("<strong");
+    });
+    this.datasetFixed2 = this.datasetFixed2.filter((cada) => {
+      console.log("cada")
+      console.log(cada)
+      return cada.y.includes("<strong");
+    });
     console.log("SEE DATA");
 
     console.log(this.dataset);

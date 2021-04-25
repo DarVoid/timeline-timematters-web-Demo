@@ -7,10 +7,10 @@ import { forkJoin } from "rxjs";
 // import TL from '../../assets/TL1.js';
 declare var TL: any;
 declare var $: any;
-interface Evento{
-  text?: string,
-  start_date?: Date,
-  media: any
+interface Evento {
+  text?: string;
+  start_date?: Date;
+  media: any;
 }
 @Component({
   selector: "app-timeline-scroll",
@@ -63,6 +63,45 @@ export class TimelineScrollComponent implements OnInit {
       this.isSet = true;
     }
   }
+  pushEvent(a) {
+    this.yake
+      .getKeywords(a.text)
+      .pipe(take(1))
+      .subscribe((resYake) => {
+        this.arquivo
+          .getImgURL(resYake)
+          .pipe(take(1))
+          .subscribe((resArquivo) => {
+            this.events.push({
+              start_date: {
+                year: a.data.substring(0, 10).split("-")[0],
+                month: a.data.substring(0, 10).split("-")[1],
+                day: a.data.substring(0, 10).split("-")[2],
+              },
+              media: {
+                thumbnail: resArquivo,
+                url: resArquivo,
+                link: resArquivo,
+                credit: '<p class="textoArquivo">powered by Arquivo.pt</p>',
+              },
+              text: {
+                headline:
+                    "<p>" +
+                  //  '<p class="hora"><strong>(' +
+                  //  horas.substring(1) +
+                  //  "h" +
+                  //  min +
+                  //  "min) </strong></p>" +
+                  //  "<p>" +
+                  resYake.substring(0, 1).toUpperCase() +
+                  resYake.substring(1, resYake.length) +
+                  "</p>",
+                text: a.texto,
+              },
+            });
+          });
+      });
+  }
   setRelevance() {
     this.toggleRelevance();
     if (this.relevant) {
@@ -71,29 +110,27 @@ export class TimelineScrollComponent implements OnInit {
       this.argumentos = this.argumentosTodos;
     }
     this.loading = true;
-    console.log("socoroor")
-    var novos=[]
-     this.argumentos.map((cada)=>{
-      if(novos.length!=0){
-        novos.push(cada)
-      }else{
-        let exists=false
-        novos.map((all)=>{
-          if(all.dateparsed2==cada.dateparsed2){
-            exists = true
-          }else{
-
+    console.log("socoroor");
+    var novos = [];
+    this.argumentos.map((cada) => {
+      if (novos.length != 0) {
+        novos.push(cada);
+      } else {
+        let exists = false;
+        novos.map((all) => {
+          if (all.dateparsed2 == cada.dateparsed2) {
+            exists = true;
+          } else {
           }
-        })
-        if(exists){
-
-        }else{
-          novos.push(cada)
+        });
+        if (exists) {
+        } else {
+          novos.push(cada);
         }
       }
-    })
-    this.argumentos = novos
-    console.log(this.argumentos)
+    });
+    this.argumentos = novos;
+    console.log(this.argumentos);
     this.update();
   }
   public copyToClipboard(event: any) {
@@ -115,6 +152,7 @@ export class TimelineScrollComponent implements OnInit {
   }
   toggleRelevance() {
     this.relevant = !this.relevant;
+    this.events = [];
   }
 
   update() {
@@ -128,33 +166,13 @@ export class TimelineScrollComponent implements OnInit {
     } else {
       this.nodata = false;
     }
-    let novos = []
 
     // tslint:disable-next-line: forin
     for (let h = 0; h < this.argumentos.length; h++) {
       console.log("conteudo");
-      console.log(
-        this.argumentos[h].y
-          .split("</p>")[1]
-          .split("(...)")
-          .join("")
-          .split("<kw>")
-          .join("")
-          .split("</kw>")
-          .join("")
-          .split("<d>")
-          .join("")
-          .split("</d>")
-          .join("")
-      );
-      console.log("HELP " + h)
-      console.log(this.argumentos[h])
-      console.log(this.compGeral)
-        // let ceninha=   this.compGeral.SentencesNormalized.filter((cada)=>{
-        //     return cada.includes("<d>"+this.argumentos[h].x+"</d>")
-        //   })[0]
-        // console.log(ceninha)
-      this.yake
+      if(this.argumentos[h].y.includes("<strong")){
+
+        this.yake
         .getKeywords(
           this.argumentos[h].y
             .split("</p>")[1]
@@ -379,47 +397,65 @@ export class TimelineScrollComponent implements OnInit {
                     }
                   }
 
-                  if (h == this.argumentos.length - 1) {
-                    this.scheduler = setTimeout(() => {
 
-                      //let novos =[]
-                      //this.events.map((elemento) => {
-                      //  console.log(elemento);
-                      //  let exists=false
-                      //  if(novos.length!=0){
-                      //    novos.map((cadaNovo: Evento)=>{
-//
-                      //      if(cadaNovo.start_date == elemento.start_date){
-                      //        exists=true
-                      //      }
-                      //    })
-                      //    if(!exists)
-                      //    novos.push(elemento)
-                      //  }else{
-                      //    novos.push(elemento)
-                      //  }
-                      //  return elemento
-                      //});
-                      this.loading = false;
-                      j = { events: this.events };
-                      this.jsonText = j;
-                      console.log(j);
-                      const additionalOptions = {
-                        start_at_end: false,
-                        timenav_height: 10,
-                        default_bg_color: { r: 255, g: 255, b: 255 },
-                        trackResize: "false",
-                      };
-
-                      // tslint:disable-next-line: no-unused-expression
-                      new TL.Timeline("my-timeline", j, additionalOptions);
-                      return;
-                    }, 2500); //wait ten seconds before continuing
-                  }
                 }
               });
           }
         });
+      }
+      if (h == this.argumentos.length - 1) {
+        this.scheduler = setTimeout(() => {
+          //let novos =[]
+          //this.events.map((elemento) => {
+          //  console.log(elemento);
+          //  let exists=false
+          //  if(novos.length!=0){
+          //    novos.map((cadaNovo: Evento)=>{
+          //
+          //      if(cadaNovo.start_date == elemento.start_date){
+          //        exists=true
+          //      }
+          //    })
+          //    if(!exists)
+          //    novos.push(elemento)
+          //  }else{
+          //    novos.push(elemento)
+          //  }
+          //  return elemento
+          //});
+          this.loading = false;
+          j = { events: this.events };
+          this.jsonText = j;
+          console.log(j);
+          const additionalOptions = {
+            start_at_end: false,
+            timenav_height: 10,
+            default_bg_color: { r: 255, g: 255, b: 255 },
+            trackResize: "false",
+          };
+
+          // tslint:disable-next-line: no-unused-expression
+          new TL.Timeline("my-timeline", j, additionalOptions);
+          return;
+        }, 2500); //wait ten seconds before continuing
+      }
+      console.log(
+        this.argumentos[h].y
+          .split("</p>")[1]
+          .split("(...)")
+          .join("")
+          .split("<kw>")
+          .join("")
+          .split("</kw>")
+          .join("")
+          .split("<d>")
+          .join("")
+          .split("</d>")
+          .join("")
+      );
+      console.log("HELP " + h);
+      //
+
     }
   }
 }
