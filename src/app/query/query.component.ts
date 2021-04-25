@@ -352,7 +352,7 @@ export class QueryComponent implements OnChanges {
             sentence_to_write +
             "</p>";
 
-            console.log("CHEK")
+          console.log("z");
           console.log(
             this.options.result.Score[Object.keys(this.options.result.Score)[i]]
           );
@@ -590,13 +590,16 @@ export class QueryComponent implements OnChanges {
     for (let hu = 0; hu < this.datasetFixed.length; hu++) {
       this.options.result.TempExpressions.map((a) => {
         console.log(a);
-        if (this.datasetFixed[hu].y.search(a[0]) != -1) {
+        if (this.datasetFixed[hu].y.search("<d>" + a[0] + "</d>") != -1) {
           this.datasetFixed[hu].y = this.datasetFixed[hu].y.replace(
             "<d>" + a[0] + "</d>",
             a[1]
           );
         }
-        if (this.datasetFixed[hu].y.search(a[0].toUpperCase()) != -1) {
+        if (
+          this.datasetFixed[hu].y.search("<d>" + a[0].toUpperCase() + "</d>") !=
+          -1
+        ) {
           this.datasetFixed[hu].y = this.datasetFixed[hu].y.replace(
             "<d>" + a[0].toUpperCase() + "</d>",
             a[1]
@@ -610,13 +613,16 @@ export class QueryComponent implements OnChanges {
     for (let hu = 0; hu < this.datasetFixed2.length; hu++) {
       this.options.result.TempExpressions.map((a) => {
         console.log(a);
-        if (this.datasetFixed2[hu].y.search(a[0]) != -1) {
+        if (this.datasetFixed2[hu].y.search("<d>" + a[0] + "</d>") != -1) {
           this.datasetFixed2[hu].y = this.datasetFixed2[hu].y.replace(
             "<d>" + a[0] + "</d>",
             a[1]
           );
         }
-        if (this.datasetFixed[hu].y.search(a[0].toUpperCase()) != -1) {
+        if (
+          this.datasetFixed[hu].y.search("<d>" + a[0].toUpperCase() + "</d>") !=
+          -1
+        ) {
           this.datasetFixed2[hu].y = this.datasetFixed2[hu].y.replace(
             "<d>" + a[0].toUpperCase() + "</d>",
             a[1]
@@ -624,6 +630,16 @@ export class QueryComponent implements OnChanges {
         }
       });
     }
+    this.datasetFixed = this.datasetFixed.filter((cada) => {
+      console.log("cada")
+      console.log(cada)
+      return cada.y.includes("<strong");
+    });
+    this.datasetFixed2 = this.datasetFixed2.filter((cada) => {
+      console.log("cada")
+      console.log(cada)
+      return cada.y.includes("<strong");
+    });
     console.log("this.dataset");
     console.log(this.dataset);
     console.log("this.datasetRelOnly");
