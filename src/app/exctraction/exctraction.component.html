@@ -27,16 +27,16 @@
 
                 <p class="afterAnnotated"><i>{{!showOnlyRel?numero_total:numero_total2}} {{!showOnlyRel?"":"relevant "}}</i> instances of temporal expressions were annotated in the text by Time-Matters and the <i>{{algoritmoSelected}}</i> temporal tagger. Mouse over them to see their relevance scores. Scores are determined by Time-Matters and vary between 0 (not relevant) and 1 (extremely relevant).</p>
                 <div class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>
-                  
+
                   <p>The top-<i>{{numberOfKeyWords}} {{ngramSelected}}</i>-gram keywords were  annotated in the text through YAKE! software. Mouse over them to see their relevance scores, the lower the better.</p>
-                  
+
                 </div>
                 <p class="afterAnnotated">Language: <i>{{languagueSelected}}</i></p>
-                
+
               </span>
                 <hr>
                 <app-frame [argumentos]="result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>
-                
+
                 <hr>
                 <div class="dateScoreColors">
                   <span><b>{{!showOnlyRel?"5": "4"}}-color Likert relevance scale:   </b></span>
@@ -56,13 +56,13 @@
                 <br>
 
           </mat-tab>
-          
-          <mat-tab label="Storyline" *ngIf="dataset.length>0">
-            <app-timeline-scroll [docSen]="byDocOrSentece" [argumentosTodos]="datasetFixed" [argumentosRelevantes]="datasetFixed2"></app-timeline-scroll>
-          
+
+          <mat-tab label="Storyline" *ngIf="dataset.length>0 && result">
+            <app-timeline-scroll  *ngIf=" result" [compGeral]="result" [docSen]="byDocOrSentece" [argumentosTodos]="datasetFixed" [argumentosRelevantes]="datasetFixed2"></app-timeline-scroll>
+
           </mat-tab>
           <mat-tab label="Temporal Clustering" *ngIf="dataset.length>0">
-            
+
             <br>
             <mat-slide-toggle (toggleChange)='toggleRel()' [checked]="showOnlyRel" class="afterAnnotated" color="warn" >Show only relevant dates</mat-slide-toggle>
             <br><br>
@@ -78,27 +78,27 @@
                 </table>
               </div>
               <ng-template #nodata1>
-                <h1>No Data</h1>    
+                <h1>No Data</h1>
               </ng-template>
-              
+
             </div>
-            
+
             <ng-template #onlyRel>
               <div *ngIf="datasetFixed2.length>0 else nodata2">
                 <table class="table table-borderless">
                 <tbody *ngFor="let item of datasetFixed2">
                   <tr >
                     <td ><h3><b><strong>{{item.x}}</strong></b></h3></td><!--meter .substrin(0,10 para so ano)-->
-                    <td [innerHTML]="item.y | safe:'html'"></td>
+                    <td class="TabelaTexto"  [innerHTML]="item.y | safe:'html'"></td>
                 </tr>
                 </tbody>
               </table>
 
               </div>
               <ng-template #nodata2>
-                <h1>No relevant data</h1>    
+                <h1>No relevant data</h1>
               </ng-template>
-              
+
             </ng-template>
 
           <!--WIP-->
@@ -107,7 +107,7 @@
             <app-linha-temporal [docSen]="byDocOrSentece" [numSen]="result.SentencesNormalized.length" [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"  ></app-linha-temporal>
           </mat-tab>
 
-          
+
 
 
 
@@ -154,7 +154,7 @@
                   <button (click)="setDefaultText(1,'French')"  mat-menu-item >
                     <span>FR - Politics</span>
                   </button>
-                  
+
                   <div class="divider"></div>
                   <button (click)="setDefaultText(3,'Portuguese')" mat-menu-item>
                     <span>PT - Politics </span>
@@ -167,12 +167,12 @@
                 </div>
                 <div class='{{loading?"viewable": "nonviewable"}}'><mat-progress-bar mode="indeterminate"></mat-progress-bar></div>
                 <mat-form-field class="example-full-width" >
-                  
+
                   <textarea matInput #texto class="text-area" (change)='setDefaultTexto(texto)' style="width:100%;" type="text" value="{{conteudoDefault}}" min_rows="4" rows="7" name="texto"></textarea>
                 </mat-form-field>
 
                 <div class="col-lg-16 text-center">
-                  
+
 
                   <mat-slide-toggle class="example-margin" color="warn" (toggleChange)="toggleOption()">Advanced options</mat-slide-toggle>
                 </div>
@@ -186,8 +186,8 @@
 
 
                     <mat-card>
-                      
-                    <br> 
+
+                    <br>
                     <div class="col-lg-12 text-center algorithm">
                       <mat-slide-toggle class="algorithm" name="docOrSentece" color="warn" (toggleChange)="toggleDocOrSentence()">{{byDocOrSentece?'Annotate dates by doc':'Annotate dates by sentence'}}</mat-slide-toggle>
                     </div>
@@ -198,7 +198,7 @@
                     <!-- YAKE OPTIONS -->
                     <div class='{{hiddenoptionKW?"viewable": "nonviewable"}}'>
                       <br>
-                    <!--  <h3 class="algorithm">Yake Options:</h3> --> 
+                    <!--  <h3 class="algorithm">Yake Options:</h3> -->
                       <mat-form-field (change)="selecionarngram($event)" color="warn" name="ngrams">
                         <mat-label class="algorithm">Ngrams</mat-label>
                         <input class="algorithm" matInput type="number" name="ngram" placeholder="ngrams" min="1" value="1" [value]="ngramSelected"/>
@@ -224,7 +224,7 @@
                       </table>
 
                       <br>
-                    
+
                       <mat-form-field color="warn">
                           <mat-label class="algorithm">N-size Context Vector</mat-label>
                           <input class="algorithm" [value]="simbaValue" (change)="selecionaTamanhoSimbaVectors($event)" [disabled]="simbaValueMax" name="simba" matInput type="number" placeholder="N"/>
@@ -239,10 +239,10 @@
                       <mat-checkbox class="example-margin algorithm" (change)="fullSentence($event)" color="warn" [checked]="contextFullSentence">Full Sentence</mat-checkbox>
 
                     </div>
-                    <!--end of timematters options-->    
+                    <!--end of timematters options-->
 
-                    
-                      
+
+
 
 
 
@@ -264,9 +264,9 @@
                         </mat-option>
                       </mat-select>
                     </mat-form-field>
-                   
 
-  
+
+
 
                     <br>
                     <div *ngIf="algoritmoSelected=='py_heideltime' else rule_based">
@@ -276,16 +276,7 @@
                         <mat-label>Document Creation Date:</mat-label>
                         <input matInput name="docCreatDate" class="date" type="date"/>
                       </mat-form-field>
-                      <mat-form-field name="lingua" color="warn">
-                        <mat-label class="algorithm">Language </mat-label>
-                        <mat-select class="algorithm" (valueChange)="selecionarLanguage($event)" [value]="languagueSelected">
-                          <mat-option class="mat-menu-item2" hidden>English</mat-option>
-                          <mat-option class="mat-menu-item2" *ngFor="let lingo of languageOptions" [value]="lingo">
-                            {{lingo}}
-                          </mat-option>
-                        </mat-select>
 
-                      </mat-form-field>
                       <mat-form-field (changeValue)="selecionarTipoDocumento($event)" name="tipoDoc" color="warn">
                         <mat-label class="algorithm">Document Type</mat-label>
                         <mat-select class="algorithm" (valueChange)="selecionarTipoDocumento($event)" [value]="documentTypeSelected">
@@ -309,7 +300,7 @@
                         </mat-select>
 
                       </mat-form-field>-->
-                      
+
                       <!--FIM OPÇÕES RELATIVAS AO PY_HEIDELTIME-->
                     </div>
                     <ng-template #rule_based>
@@ -327,7 +318,7 @@
                           <input matInput (change)="selecionarDataFim($event)"  type="number" name="dataFim" placeholder="2100" min="0" value="2100"/>
                         </mat-form-field>
                       </span>
-                     <!-- 
+                     <!--
                       <span>
                         <mat-form-field color="warn">
                           <mat-label class="algorithm">Date Granularity </mat-label>
@@ -337,7 +328,7 @@
                               {{granu}}
                             </mat-option>
                           </mat-select>
-  
+
                         </mat-form-field>
                       </span>
                      -->
