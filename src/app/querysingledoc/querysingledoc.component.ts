@@ -259,6 +259,9 @@ export class QuerysingledocComponent implements OnInit {
     console.log(event.target.value);
     this.url = event.target.value;
   }
+  setURL2(valor) {
+    this.url = valor
+  }
   maxSimba(event: any) {
     console.log("simba");
     console.log(event.checked);
