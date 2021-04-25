@@ -6,7 +6,7 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar class="navSideTitle">Time-Matters Demo</mat-toolbar>
+    <mat-toolbar class="navSideTitle">narrArquivo</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item class="mat-list-item" (click)='changePage("1")' href="/">Home <span class="material-icons">home</span></a>
       <a mat-list-item class="mat-list-item" [matMenuTriggerFor]="menu1">Tag Dates <mat-icon>keyboard_arrow_down</mat-icon></a>
@@ -30,24 +30,20 @@
           *ngIf="isHandset$ | async">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        
-          <img class="ceninha" src="assets\logo.png" />
+
+          <!--<img class="ceninha" src="assets\logo.png" />-->
         <div class="spacer"></div><div [ngClass]="{hidden: (isHandset$ | async) === true}">
-        <a href="/" (click)='changePage("1")'><button mat-button   ><i class="fas fa-home"></i> Home</button></a>
-        <a><button mat-button [matMenuTriggerFor]="menu1" ngbDropdownToggle><i class="fas fa-chevron-down"></i> Tag Dates</button></a>
-        <a  target="_blank" href="http://time-matters.inesctec.pt/api"><button mat-button ><i class="fas fa-laptop-code"></i> API</button></a>
-        <a target="_blank" href="https://github.com/liaad/time-matters"><button mat-button><i class="fab fa-github" aria-hidden="true"></i> GitHub</button></a>
-        <!--<a><button mat-button ><i class="fas fa-mobile-alt"></i> Mobile App</button></a>-->
-        <a><button mat-button [matMenuTriggerFor]="menu3" ngbDropdownToggle><i class="fas fa-chevron-down"></i> Related Projects</button></a>
-        <a><button mat-button [matMenuTriggerFor]="menu2" ngbDropdownToggle><i class="fas fa-chevron-down"></i> About</button></a>
+        <a href="/" (click)='changePage("1")'><button mat-button   ><i class="fas fa-home"></i> Inicio</button></a>
+        <a><button mat-button [matMenuTriggerFor]="menu1" ngbDropdownToggle><i class="fas fa-chevron-down"></i> narrArquiva</button></a>
+        <a><button mat-button [matMenuTriggerFor]="menu2" ngbDropdownToggle><i class="fas fa-chevron-down"></i> Sobre</button></a>
       </div>
           </mat-toolbar>
     </header>
 
     <mat-menu #menu1="matMenu">
-      <button mat-menu-item   (click)='changePage("1")'>Free Text Input <i class="fas fa-square"></i> </button>
+      <button mat-menu-item   (click)='changePage("1")'>URL <i class="fas fa-globe"></i>   </button>
       <div class="divider"></div>
-      <button mat-menu-item  (click)='changePage("2")'>Page URL <i class="fas fa-globe"></i> </button>
+      <button mat-menu-item  (click)='changePage("2")'>Texto livre <i class="fas fa-square"></i> </button>
       <!--<div class="divider"></div>-->
       <!--<button mat-menu-item  (click)='changePage("6")'>Search Arquivo.pt <i class="fas fa-search"></i> </button>-->
     </mat-menu>
@@ -57,7 +53,18 @@
       <div class="divider"></div>
       <button mat-menu-item class="mat-menu-item" (click)='changePage("5")' ngbDropdownItem>Related Work <i class="fas fa-book-open"></i></button>
       <div class="divider"></div>
-      <button mat-menu-item class="mat-menu-item" (click)='changePage("7")' ngbDropdownItem>Acknowledgements <i class="fa fa-book" aria-hidden="true"></i></button>
+      <button mat-menu-item class="mat-menu-item" (click)='changePage("7")' ngbDropdownItem>Acknowledgements <i class="fa fa-book" aria-hidden="true"></i>
+      </button>
+      <div class="divider"></div>
+      <button  mat-menu-item class="mat-menu-item" >
+        <a  target="_blank" href="http://time-matters.inesctec.pt/api"><i class="fas fa-laptop-code"></i> API</a>
+      </button>
+      <div class="divider"></div>
+      <button mat-menu-item class="mat-menu-item">
+        <a target="_blank" href="https://github.com/liaad/time-matters"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+      </button>
+      <div class="divider"></div>
+      <button mat-menu-item class="mat-menu-item" [matMenuTriggerFor]="menu3" aria-hidden="true"><i class="fas fa-chevron-down"></i> Related Projects</button>
     </mat-menu>
 
     <mat-menu #menu3="matMenu">
@@ -100,32 +107,32 @@
 
     <div *ngIf='page=="0" else pagina1'>
       <app-exctraction></app-exctraction>
-      
+
     </div>
     <ng-template #pagina1>
       <div *ngIf='page=="1" else pagina2'>
-        <app-exctraction></app-exctraction>
-        <div *ngIf="false"> 
+        <app-querysingledoc></app-querysingledoc>
+        <div *ngIf="false">
           <br/>
           <div class="col-md-11 col-sm-8 col-xs-6 my-col2">
             <span title=""><p class="frase1"></p></span>
             <div class="videoWrapper">
               <iframe src="https://www.youtube.com/embed/Q6Rz_TEvcgM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div> 
+            </div>
             <br>
             <div class="legenda">
-              <a href="https://www.bensound.com" target="_blank">Royalty Free Music from Bensound</a> 
+              <a href="https://www.bensound.com" target="_blank">Royalty Free Music from Bensound</a>
             </div>
 
-            
-            
+
+
           </div>
         </div>
-        
+
       </div>
       <ng-template #pagina2>
         <div *ngIf='page=="2" else pagina3'>
-          <app-querysingledoc></app-querysingledoc>
+          <app-exctraction></app-exctraction>
         </div>
         <ng-template #pagina3>
           <div *ngIf='page=="3" else pagina4'>

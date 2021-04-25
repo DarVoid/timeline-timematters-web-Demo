@@ -17,14 +17,9 @@
             <!-- ANNOTATED TEXT-->
             <mat-tab label="Annotated text">
                 <br>
-                <span title=" "><p class="">Time-Matters algorithm took {{exe_time_total}} Sec. (of which {{exe_time_algo}} Sec. were spent for <i>{{options.algo}}</i> processing;  {{exe_time_YAKE}} Sec. for YAKE!; and {{exe_time_GTE}} Sec. for GTE)</p></span>
 
-                <p class="afterAnnotated"><i>{{!showOnlyRel?numero_total:numero_total2}} {{!showOnlyRel?"":"relevant "}}</i> instances of temporal expressions were annotated in the text. Mouse over them to see their relevance scores. Scores are determined by Time-Matters and vary between 0 (not relevant) and 1 (extremely relevant)</p>
 
-                <div class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>
-                  <p class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>The top-<i>{{numberOfKeyWords}} {{options.ngram}}</i>-gram keywords were  annotated in the text through YAKE! software. Mouse over them to see their relevance scores, the lower the better.</p>
 
-                </div>
                 <p class="afterAnnotated">Language: <i>{{options.language}}</i></p>
                 <hr>
                 <app-frame [docOrSentence]="options.docOrSentence" [argumentos]="options.result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"   class="result"></app-frame>
@@ -93,22 +88,13 @@
           </mat-tab>
 
           <!-- TIMELINE -->
-          <mat-tab label="Timeline" *ngIf="options.result && dataset.length>0"  > <!-- *ngIf="options.docOrSentence"-->
-            <app-linha-temporal [docSen]="options.docOrSentence=='doc'" [numSen]="options.result.SentencesNormalized.length"  [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly" ></app-linha-temporal>
-          </mat-tab>
+
 
 
 
           <!-- SCORES -->
 
-            <mat-tab *ngIf="docOrSentence" class="afterGraphs" (click)="setpage(1)" label="Scores" >
-              <br><br><br>
-              <div class="row my-row2 justify-content-center">
-                <div class="score">
-                  <app-score [argumentos]="options.result" ></app-score>
-                </div>
-              </div>
-            </mat-tab>
+
 
           </mat-tab-group>
         </mat-card>

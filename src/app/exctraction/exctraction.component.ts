@@ -80,10 +80,10 @@ export class ExctractionComponent implements OnInit {
     this.differentRelValues = [];
     this.differentValues = [];
     this.requestMade = false;
-    this.withKeywords = true;
+    this.withKeywords = false;
     this.withKeywordsSentence = "Keywords Off";
     this.hiddenoption = false;
-    this.hiddenoptionKW = false;
+    this.hiddenoptionKW = true;
     this.hiddenoptionTM = false;
     this.loading = false;
     this.contextFullSentence = true;

@@ -23,17 +23,10 @@
           <mat-tab-group>
             <mat-tab  label="Annotated text">
                 <br>
-                <span><p class="afterAnnotated">Time-Matters algorithm took {{exe_time_total}} Sec. (of which {{exe_time_algo}} Sec. were spent for <i>{{algoritmoSelected}}</i> processing;  {{exe_time_YAKE}} Sec. for YAKE!; and {{exe_time_GTE}} Sec. for GTE)</p>
-
-                <p class="afterAnnotated"><i>{{!showOnlyRel?numero_total:numero_total2}} {{!showOnlyRel?"":"relevant "}}</i> instances of temporal expressions were annotated in the text by Time-Matters and the <i>{{algoritmoSelected}}</i> temporal tagger. Mouse over them to see their relevance scores. Scores are determined by Time-Matters and vary between 0 (not relevant) and 1 (extremely relevant).</p>
-                <div class='{{!withKeywords?"afterAnnotated":"nonviewable"}}'>
-
-                  <p>The top-<i>{{numberOfKeyWords}} {{ngramSelected}}</i>-gram keywords were  annotated in the text through YAKE! software. Mouse over them to see their relevance scores, the lower the better.</p>
-
-                </div>
+                <span>
                 <p class="afterAnnotated">Language: <i>{{languagueSelected}}</i></p>
 
-              </span>
+                </span>
                 <hr>
                 <app-frame [argumentos]="result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"  [docOrSentence]="byDocOrSentece?'doc':'sentence'" class="result"></app-frame>
 
@@ -48,7 +41,7 @@
                 </div>
                 <br>
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
-                <mat-slide-toggle class="afterAnnotated"  color="warn" (toggleChange)="toggleKeywords()">Keywords On</mat-slide-toggle>
+                <mat-slide-toggle class="afterAnnotated" [checked]="hiddenoptionKW" color="warn" (toggleChange)="toggleKeywords()">Keywords On</mat-slide-toggle>
                 <br>
                 <mat-slide-toggle class="afterAnnotated" (toggleChange)="toggleRel()" [checked]="showOnlyRel" color="warn" >Show only relevant dates</mat-slide-toggle>
                 <!--EM CIMA-->
@@ -103,27 +96,18 @@
 
           <!--WIP-->
           </mat-tab>
-          <mat-tab label="Timeline" *ngIf="dataset.length>0"><!--*ngIf="byDocOrSentece"-->
-            <app-linha-temporal [docSen]="byDocOrSentece" [numSen]="result.SentencesNormalized.length" [argumentosTodos]="dataset" [argumentosRelevantes]="datasetRelOnly"  ></app-linha-temporal>
-          </mat-tab>
 
 
 
 
 
-          <mat-tab *ngIf="byDocOrSentece" class="afterGraphs" label="Scores">
-            <br><br><br>
-            <div class="row my-row2 justify-content-center">
-              <div class="score">
-                <app-score [argumentos]="result" ></app-score>
-              </div>
-            </div>
-          </mat-tab>
+
+
           </mat-tab-group></mat-card>
           <br>
           <div class="col-lg-12 text-right">
             <button  (click)="goBack()" class="btn btn-link">Go back</button>
-            <button *ngIf="result" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to clipboard</button>
+
           </div>
         </ng-template>
       </div>
