@@ -107,12 +107,13 @@
 
 
           </mat-tab-group>
-          <div class="col-lg-12 text-right">
-            <button mat-fab (click)="goBack()" class="btn btn-primary"><i class="fas fa-undo-alt"></i></button>
 
-          </div>
         </mat-card>
           <br>
+          <div class="col-lg-12 text-right">
+            <button  mat-fab (click)="goBack()" class="btn btn-primary"><i class="fas fa-undo-alt"></i></button>
+
+          </div>
 
         </ng-template>
       </div>
@@ -178,7 +179,7 @@
           <div class="form-group"  style="z-index: 10;margin-top:-95px ;margin-right:6px ;">
             <div class="col-lg-12 text-right">
               <button mat-fab class="btn btn-primary" type="submit" [disabled]="loading" ><i class="fas fa-book-open" ></i>
-                <div class='{{loading?"viewable": "nonviewable"}}'><span style="z-index: 10;margin-top:-95px ;margin-right:6px ;" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <div class='{{loading?"viewable": "nonviewable"}}'><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                   </div>
               </button>
 

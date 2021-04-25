@@ -3,7 +3,7 @@
     <br>
     <div class="col-md-11 col-sm-8 col-xs-6 my-col2">
       <!--FRASE DOS TEMPOS DE EXECUÇÃO-->
-      <span title="não suportado, api não tem a opção "><p class="frase1"></p>
+      <span title=" "><p class="frase1"></p>
       </span>
       <!--FRASE DOS TEMPOS DE EXECUÇÃO-->
       <div>
@@ -11,11 +11,11 @@
         <h1>No Data</h1>
       </div>
         <ng-template #graficos >
-          <mat-card>
-          <mat-tab-group>
+          <mat-card >
+          <mat-tab-group >
 
             <!-- ANNOTATED TEXT-->
-            <mat-tab label="Annotated text">
+            <mat-tab   label="Annotated text">
                 <br>
 
 
@@ -36,7 +36,7 @@
                 <br>
 
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
-                <mat-slide-toggle class="afterAnnotated" color="warn" (toggleChange)="toggleKeywords()">Keywords?</mat-slide-toggle>
+                <mat-slide-toggle [checked]="!withKeywords" class="afterAnnotated" color="warn" (toggleChange)="toggleKeywords()">Keywords?</mat-slide-toggle>
                 <br>
                 <mat-slide-toggle class="afterAnnotated" color="warn" [checked]="showOnlyRel" (toggleChange)="toggleRel()">Apenas datas relevantes?</mat-slide-toggle>
                 <!--EM CIMA-->
@@ -45,7 +45,7 @@
           </mat-tab>
 
           <!-- STORYLINE -->
-          <mat-tab label="Storyline"  *ngIf="dataset.length>0 && options.result">
+          <mat-tab   label="Storyline"  *ngIf="dataset.length>0 && options.result">
             <app-timeline-scroll [compGeral]="options.result"  [docSen]="options.docOrSentence=='doc'"  [argumentosTodos]="datasetFixed" [argumentosRelevantes]="datasetFixed2"></app-timeline-scroll>
           </mat-tab>
 
@@ -108,9 +108,9 @@
           </div>-->
         </ng-template>
       </div>
-
       <div class="col-lg-12 text-right">
-        <button type="reset" class="btn btn-link" (click)="goBack()">Go Back</button>
+        <button mat-fab (click)="goBack()" class="btn btn-primary"><i class="fas fa-undo-alt"></i></button>
 
       </div>
+
   </div>

@@ -224,10 +224,11 @@ section.NavSection {
 
 @include mat-core();
 
-$app-primary: mat-palette($mat-green, A100);
+$app-primary: mat-palette($mat-cyan, A100);
 $app-accent:  mat-palette($mat-cyan, 800);
 
 $app-theme: mat-light-theme($app-primary, $app-accent);
+$app-theme: mat-dark-theme($app-primary, $app-accent);
 
 @mixin mix-app-theme($app-theme) {
 

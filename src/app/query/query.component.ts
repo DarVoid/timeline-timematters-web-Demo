@@ -40,13 +40,13 @@ export class QueryComponent implements OnChanges {
 
   // tslint:disable-next-line: variable-name
   constructor(private _snackBar: MatSnackBar) {
-    this.withKeywords = true;
+    this.withKeywords = false;
     this.withKeywordsSentence = "Keywords Off";
     this.showOnlyRel = true;
     this.differentValues = [];
     this.page = 0;
     this.docOrSentence = true;
-    this.url=""
+    this.url = "";
   }
 
   ngOnChanges() {
