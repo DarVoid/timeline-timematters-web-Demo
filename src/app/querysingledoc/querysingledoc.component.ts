@@ -339,23 +339,7 @@ export class QuerysingledocComponent implements OnInit {
             console.log(this.artigo.content);
             // this.documentCreationTime="";
             // tslint:disable-next-line: max-line-length
-            if (res.date_creation) {
-              // tslint:disable-next-line: max-line-length
-              let month: any = new Date(res.date_creation).getMonth();
-              if (month * 1 < 10) {
-                month = "0" + month;
-              }
-              let day: any = new Date(res.date_creation).getDate();
-              if (day * 1 < 10) {
-                day = "0" + day;
-              }
-              this.documentCreationTime =
-                new Date(res.date_creation).getFullYear() +
-                "-" +
-                month +
-                "-" +
-                day;
-              console.log(this.documentCreationTime);
+            if (this.documentCreationTime) {
             } else {
               // tslint:disable-next-line: max-line-length
               let month: any = new Date().getMonth();
