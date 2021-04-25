@@ -80,27 +80,48 @@ p.noticeme{
 }
 a:link {
   text-decoration: none;
-  color:black !important;
-  text-decoration-color:black !important;
+  color:white !important;
+  text-decoration-color:white !important;
 }
 
 
 a:visited {
   text-decoration: none;
-  color:black !important;
-  text-decoration-color:black !important;
+  color:white !important;
+  text-decoration-color:white !important;
 }
 
 a:hover {
   text-decoration: none !important;
-  color:black !important;
+  color:white !important;
 }
 
 a:active {
   text-decoration: none;
+  color:white !important;
+  text-decoration-color:white !important;
+}
+
+a:link.linkDoMal {
   color:black !important;
   text-decoration-color:black !important;
 }
+
+
+a:visited.linkDoMal{
+  color:black !important;
+  text-decoration-color:black !important;
+}
+
+a:hover.linkDoMal{
+  color:black !important;
+}
+
+a:active.linkDoMal{
+  color:black !important;
+  text-decoration-color:black !important;
+}
+
 .example-full-width{
   width: 100% !important;
 }
