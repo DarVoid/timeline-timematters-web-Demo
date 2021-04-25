@@ -33,9 +33,9 @@
 
           <!--<img class="ceninha" src="assets\logo.png" />-->
         <div class="spacer"></div><div [ngClass]="{hidden: (isHandset$ | async) === true}">
-        <a href="/" (click)='changePage("1")'><button mat-button   ><i class="fas fa-home"></i> Inicio</button></a>
-        <a><button mat-button [matMenuTriggerFor]="menu1" ngbDropdownToggle><i class="fas fa-chevron-down"></i> narrArquiva</button></a>
-        <a><button mat-button [matMenuTriggerFor]="menu2" ngbDropdownToggle><i class="fas fa-chevron-down"></i> Sobre</button></a>
+        <a href="/" (click)='changePage("1")'><button mat-button> Inicio <i class="fas fa-home"></i></button></a>
+        <a><button mat-button [matMenuTriggerFor]="menu1" ngbDropdownToggle> narrArquiva <i class="fas fa-book-open"></i></button></a>
+        <a><button mat-button [matMenuTriggerFor]="menu2" ngbDropdownToggle> Sobre <i class="fas fa-chevron-down"></i></button></a>
       </div>
           </mat-toolbar>
     </header>
@@ -49,22 +49,22 @@
     </mat-menu>
 
     <mat-menu #menu2="matMenu" ngbDropdownMenu>
-      <button mat-menu-item class="mat-menu-item" (click)='changePage("4")' ngbDropdownItem>People <i class="fas fa-user-circle"></i></button>
+      <button mat-menu-item class="mat-menu-item" (click)='changePage("4")' ngbDropdownItem>Pessoas de Interesse <i class="fas fa-user-circle"></i></button>
       <div class="divider"></div>
-      <button mat-menu-item class="mat-menu-item" (click)='changePage("5")' ngbDropdownItem>Related Work <i class="fas fa-book-open"></i></button>
+      <button mat-menu-item class="mat-menu-item" (click)='changePage("5")' ngbDropdownItem>Trabalho Relacionado <i class="fas fa-book-open"></i></button>
       <div class="divider"></div>
-      <button mat-menu-item class="mat-menu-item" (click)='changePage("7")' ngbDropdownItem>Acknowledgements <i class="fa fa-book" aria-hidden="true"></i>
+      <button mat-menu-item class="mat-menu-item" (click)='changePage("7")' ngbDropdownItem>Reconhecimentos <i class="fa fa-book" aria-hidden="true"></i>
       </button>
       <div class="divider"></div>
       <button  mat-menu-item class="mat-menu-item" >
-        <a  target="_blank" href="http://time-matters.inesctec.pt/api"><i class="fas fa-laptop-code"></i> API</a>
+        <a  target="_blank" href="http://time-matters.inesctec.pt/api"> API <i class="fas fa-laptop-code"></i></a>
       </button>
       <div class="divider"></div>
       <button mat-menu-item class="mat-menu-item">
-        <a target="_blank" href="https://github.com/liaad/time-matters"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+        <a target="_blank" href="https://github.com/liaad/time-matters"> GitHub <i class="fab fa-github" aria-hidden="true"></i></a>
       </button>
       <div class="divider"></div>
-      <button mat-menu-item class="mat-menu-item" [matMenuTriggerFor]="menu3" aria-hidden="true"><i class="fas fa-chevron-down"></i> Related Projects</button>
+      <button mat-menu-item class="mat-menu-item" [matMenuTriggerFor]="menu3" aria-hidden="true"> Projectos Relacionados</button>
     </mat-menu>
 
     <mat-menu #menu3="matMenu">
@@ -87,16 +87,12 @@
             <div class="headliner">
               <br>
               <h1 class="miniText">
-                Temporal Unfolding of Texts
-              </h1>
-              <!--<h1 class="miniText2">
-                To learn more, visit our <a target="_blank" href="https://github.com/liaad/time-matters"><b>Github web page.</b></a>
-              </h1>-->
+                narrArquivo
+              </h1><br>
               <h1 class="miniText2">
-                To see how it works, check out this <span (click)="openDialog()" class="changeCursor" ><b><u>video tutorial</u></b></span>
+
               </h1>
-              <h1 class="miniText2">
-              Check out our <a  target ="_blank" href = "https://youtu.be/Q8yT4aVM_Mw"><u><b>video</b></u></a> and <a target="_blank" href="http://www.ccc.ipt.pt/~ricardo/ficheiros/ECIR2021Poster.pdf"><u><b>poster</b></u></a>  presentation at ECIR 2021</h1>
+              <h1 class="miniText2"></h1>
               <br>
             </div>
           </div>
@@ -112,22 +108,7 @@
     <ng-template #pagina1>
       <div *ngIf='page=="1" else pagina2'>
         <app-querysingledoc></app-querysingledoc>
-        <div *ngIf="false">
-          <br/>
-          <div class="col-md-11 col-sm-8 col-xs-6 my-col2">
-            <span title=""><p class="frase1"></p></span>
-            <div class="videoWrapper">
-              <iframe src="https://www.youtube.com/embed/Q6Rz_TEvcgM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <br>
-            <div class="legenda">
-              <a href="https://www.bensound.com" target="_blank">Royalty Free Music from Bensound</a>
-            </div>
 
-
-
-          </div>
-        </div>
 
       </div>
       <ng-template #pagina2>

@@ -1,8 +1,11 @@
 
 <br/>
-<mat-slide-toggle [disabled]="loading" *ngIf="argumentosTodos.length>0 " (toggleChange)='setRelevance()' class="afterAnnotated" color="warn" [checked]="relevant">{{relevant_string}}</mat-slide-toggle>
-<div  class='{{loading?"viewable": "nonviewable"}}'><mat-progress-bar mode="indeterminate"></mat-progress-bar></div>
-<hr/><div *ngIf="nodata"><h1>No data</h1></div>
+<div   class='{{loading?"viewable": "nonviewable"}}'><mat-progress-bar mode="indeterminate"></mat-progress-bar></div>
+<div style="display: flex;justify-content: flex-end;">
+  <mat-slide-toggle style="z-index: 10;margin-top:25px;margin-right: 50px ;" [disabled]="loading" *ngIf="argumentosTodos.length>0 " (toggleChange)='setRelevance()' class="afterAnnotated" color="warn" [checked]="relevant">{{relevant_string}}</mat-slide-toggle>
 
-<div id='my-timeline' style="width: 100%; height: 450px"></div>
+</div>
+<div *ngIf="nodata"><h1>No data</h1></div>
+
+<div id='my-timeline' style="width: 100%; height: 400px"></div>
 

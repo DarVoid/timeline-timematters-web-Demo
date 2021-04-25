@@ -20,12 +20,12 @@
 
 
 
-                <p class="afterAnnotated">Language: <i>{{options.language}}</i></p>
+                <p class="afterAnnotated">Linguagem: <i>{{options.language}}</i></p>
                 <hr>
                 <app-frame [docOrSentence]="options.docOrSentence" [argumentos]="options.result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"   class="result"></app-frame>
                 <hr>
                 <div class="dateScoreColors">
-                  <span><b><i>{{!showOnlyRel?"5": "4"}}</i>-color Likert relevance scale:   </b></span>
+                  <span><b>Escala Likert de <i>{{!showOnlyRel?"5": "4"}}</i> cores para representar importância:   </b></span>
                   <span class='{{!showOnlyRel?"black": "nonviewable"}}'>[0; 0.35]</span>
                   <span class="green">]0.35; 0.5]</span>
                   <span class="blue">]0.5; 0.7]</span>
@@ -35,9 +35,9 @@
                 <br>
 
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
-                <mat-slide-toggle class="afterAnnotated" color="warn" (toggleChange)="toggleKeywords()">Keywords On</mat-slide-toggle>
+                <mat-slide-toggle class="afterAnnotated" color="warn" (toggleChange)="toggleKeywords()">Keywords?</mat-slide-toggle>
                 <br>
-                <mat-slide-toggle class="afterAnnotated" color="warn" [checked]="showOnlyRel" (toggleChange)="toggleRel()">Show only relevant dates </mat-slide-toggle>
+                <mat-slide-toggle class="afterAnnotated" color="warn" [checked]="showOnlyRel" (toggleChange)="toggleRel()">Apenas datas relevantes?</mat-slide-toggle>
                 <!--EM CIMA-->
                 <br>
                 <br>
@@ -51,10 +51,12 @@
           <!-- TEMPORAL CLUSTERING -->
           <mat-tab label="Temporal Clustering" *ngIf="dataset.length>0">
             <br>
-            <mat-slide-toggle [checked]="showOnlyRel" (toggleChange)='toggleRel()' class="afterAnnotated" color="warn" >Show only relevant dates </mat-slide-toggle>
+            <div style="display:flex; justify-content: flex-end;">
+              <mat-slide-toggle style="z-index: 10;margin-top:25px;margin-right: 50px ;" [checked]="showOnlyRel" (toggleChange)='toggleRel()' class="afterAnnotated" color="warn" >Apenas datas relevantes? </mat-slide-toggle>
+            </div>
             <br><br>
             <div *ngIf="!showOnlyRel else onlyRel">
-              <div *ngIf="datasetFixed.length>0 else nodata1">
+              <div style="margin-top:-70px;"  *ngIf="datasetFixed.length>0 else nodata1">
                 <table class="table table-borderless">
                   <tbody *ngFor="let item of datasetFixed">
                     <tr >
@@ -71,7 +73,7 @@
             </div>
 
             <ng-template #onlyRel>
-              <div *ngIf="datasetFixed2.length>0 else nodata2">
+              <div style="margin-top:-70px;"  *ngIf="datasetFixed2.length>0 else nodata2">
                 <table class="table table-borderless">
                   <tbody *ngFor="let item of datasetFixed2">
                     <tr >
@@ -108,6 +110,6 @@
 
       <div class="col-lg-12 text-right">
         <button type="reset" class="btn btn-link" (click)="goBack()">Go Back</button>
-        <button *ngIf="options" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
+
       </div>
   </div>

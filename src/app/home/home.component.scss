@@ -4,12 +4,14 @@
   }
 
 .miniText {
-  font-size: 27px;
+  font-size: 35px;
   font-family: 'Work Sans', sans-serif;
   margin-bottom: 0;
   color: #ffffff;
   background-color: #d10019;
   padding-left: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .miniText2 {
@@ -25,7 +27,7 @@
   .miniText{
     font-size: 23px;
   }
-  
+
   .miniText2 {
     font-size: 14px;
   }
@@ -46,7 +48,7 @@ $app-theme: mat-light-theme($app-primary, $app-accent);
   $accent: map-get($app-theme, accent);
 
   .mat-menu-item {
-    margin:-8px auto; 
+    margin:-8px auto;
     color: white;
     text-align: center;
     background-color: #d10019;

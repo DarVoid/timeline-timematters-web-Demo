@@ -3,182 +3,35 @@
   <br/>
   <form (submit)="showArticle($event)" >
     <div class="col-md-11 col-sm-8 col-xs-6 my-col">
-      <h2>Tag Dates from URL</h2>
+      <h2> </h2>
       <div class="col-lg-12">
         <div class="form-group">
           <mat-card>
             <mat-form-field class="example-full-width">
-              <div *ngIf="loading">
-                <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
-                <br>
-              </div>
-              <mat-label>Page URL</mat-label>
+
+              <mat-label>Criar narrativa de URL</mat-label>
               <input matInput placeholder="Please insert article URL" value="{{inpu?inpu:url}}" name="stuff" matInput (change)="setURL($event)">
               <mat-hint></mat-hint>
             </mat-form-field>
+            <div class="form-group">
+              <div class="col-lg12 text-right" style="z-index: 10;margin-top:-50px ;">
+
+                <button mat-fab class="btn btn-primary" type="submit" [disabled]="loading" >
+
+                  <div class='{{!loading?"viewable": "nonviewable"}}' > <i class="fas fa-book-open"></i></div>
+                  <div class='{{loading?"viewable": "nonviewable"}}'><span  class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    </div>
+                </button>
+              </div>
+            </div>
             <div class="col-lg-16 text-center">
-              <mat-slide-toggle class="example-margin" color="warn" (toggleChange)="toggleOption()">Advanced options</mat-slide-toggle>
+
             </div>
           </mat-card>
-          <div class='{{hiddenoption?"viewable ": "nonviewable"}}'>
-          <div class="col-lg-16 text-center everything">
-            <mat-card>
-              <div class="col-lg-12 text-center algorithm">
-                <mat-slide-toggle  name="docOrSentece" color="warn" (toggleChange)="toggleDocOrSentence()">{{byDocOrSentece?'Annotate dates by doc':'Annotate dates by sentence'}}</mat-slide-toggle>
-              </div>
 
-
-              <div class="col-lg-12 space-center algorithm">
-                <mat-slide-toggle name="KW" color="warn" (toggleChange)="toggleOptionKeywords()">YAKE options</mat-slide-toggle>
-              </div>
-              <!-- YAKE OPTIONS -->
-              <div class='{{hiddenoptionKW?"viewable": "nonviewable"}}'>
-                <br>
-                <mat-form-field (change)="selecionarngram($event)" name="ngrams" color="warn">
-                  <mat-label class="algorithm">Ngrams</mat-label>
-                  <input class="algorithm" matInput type="number" name="ngram" color="warn" placeholder="ngrams" min="1" value="1" [value]="ngramSelected"/>
-                </mat-form-field>
-                <mat-form-field (change)="selecionarNKeywords($event)" name="number_keywords" color="warn">
-                  <mat-label class="algorithm">Number of Keywords</mat-label>
-                  <input class="algorithm" matInput type="number" color="warn" name="nkey" placeholder="number of keywords" min="1" value="10" [value]="numberOfKeyWords"/>
-                </mat-form-field>
-              </div>
-
-              <div class="col-lg-12 text-center algorithm">
-                <mat-slide-toggle (toggleChange)="toggleTimeMattersOptions()" color="warn">Time-Matters options</mat-slide-toggle>
-              </div>
-
-              <!-- TIME-MATTERS OPTIONS -->
-              <div class='{{hiddenoptionTM?"viewable": "nonviewable"}}'>
-                <br>
-                <table class="thresholdValue algorithm">
-                  <tr>
-                    <td>th threshold value:</td>
-                    <td><input min="0" max="1" step="0.01" type="number" novalidate="true" (change)="changeTH($event)" value="{{TH}}"/></td>
-                  </tr>
-                </table>
-
-                <br>
-
-              <mat-form-field color="warn">
-                <mat-label class="algorithm">N-size Context Vector</mat-label>
-                <input class="algorithm" matInput (change)="selecionaTamanhoSimbaVectors($event)" [disabled]="simbaValueMax"  [value]="simbaValue" name="simba"  type="number" placeholder="N"/>
-              </mat-form-field>
-              <mat-checkbox color="warn" class="example-margin algorithm" (change)="maxSimba($event)" [checked]="simbaValueMax">InfoSimba max value</mat-checkbox>
-
-              <br>
-
-              <mat-form-field  color="warn" name="windowContext" >
-                <mat-label class="algorithm">N-Contextual Window</mat-label>
-                <input class="algorithm" color="warn" (change)="selecionarContextualWindow($event)" matInput type="number" name="context" [disabled]="contextFullSentence" [value]="contextWindow" placeholder="Contextual Window" min="1" value="full_sentence"/>
-
-              </mat-form-field>
-              <mat-checkbox class="example-margin algorithm" color="warn" (change)="fullSentence($event)" [checked]="contextFullSentence">full sentence </mat-checkbox>
-
-                <br>
-
-              </div>
-
-              <br>
-              <mat-form-field name="valorAlgoritmo" color="warn">
-                <mat-label class="algorithm">Temporal Annotation Method</mat-label>
-                <mat-select  class="algorithm" (valueChange)="selecionarAlgoritmo($event)" [value]="algoritmoSelected">
-                  <mat-option class="mat-menu-item1" hidden>py_heideltime</mat-option>
-
-                  <mat-option class="mat-menu-item1" *ngFor="let algo of algoritmosDate" [value]="algo[0]">
-                    <span #tooltip="matTooltip"
-                    matTooltip="{{algo[1]}}"
-                    [matTooltipPosition]="right"
-                    matTooltipHideDelay="10"
-                    aria-label="Button that displays a tooltip that hides when scrolled out of the container"
-                    >{{algo[0]}} </span>
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            <br>
-
-            <div *ngIf="algoritmoSelected=='py_heideltime' else rule_based">
-              <!--OPÇÕES RELATIVAS AO PY_HEIDELTIME-->
-              <h3 class="algorithm">Py Heideltime options:</h3><mat-form-field color="warn" *ngIf="algoritmoSelected=='py_heideltime'" (change)="selecionarDataReferencia($event)">
-                <mat-label>Document Creation Date:</mat-label>
-                <input matInput name="docCreatDate" class="date" type="date" />
-              </mat-form-field>
-
-              <mat-form-field (changeValue)="selecionarTipoDocumento($event)" name="tipoDoc" color="warn">
-                <mat-label class="algorithm">Document Type</mat-label>
-                <mat-select class="algorithm" (valueChange)="selecionarTipoDocumento($event)" [value]="documentTypeSelected" >
-                  <mat-option class="mat-menu-item2" *ngFor="let typeo of documentTypeOptions" [value]="typeo[0]">
-                    <span #tooltip="matTooltip"
-                    matTooltip="{{typeo[1]}}"
-                    [matTooltipPosition]="right"
-                    matTooltipHideDelay="10"
-                    aria-label="Button that displays a tooltip that hides when scrolled out of the container"
-                    > {{typeo[0]}}</span>
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-
-              <!--<mat-form-field color="warn">
-                <mat-label class="algorithm">Date Granularity </mat-label>
-                <mat-select class="algorithm" (valueChange)="selecionarGranularidade($event)" [value]="dateGranularitySelected">
-                  <mat-option class="mat-menu-item2" hidden>full</mat-option>
-                  <mat-option class="mat-menu-item2" *ngFor="let granu of dateGranularityOptions" [value]="granu">
-                    {{granu}}
-                  </mat-option>
-                </mat-select>
-
-              </mat-form-field>-->
-             <!--FIM OPÇÕES RELATIVAS AO PY_HEIDELTIME-->
-            </div>
-            <ng-template #rule_based>
-              <!--OPÇÕES RELATIVAS AO RULE_BASED-->
-              <h3 class="algorithm">Py Rule Based options:</h3>
-            <span title="inferior year limit">
-                <mat-form-field name="beginDateControl" color="warn">
-                  <mat-label>Begin Date</mat-label>
-                  <input matInput  (change)="selecionarDataInicio($event)" type="number" name="dataInicio" placeholder="0" min="0" value="0"/>
-                </mat-form-field>
-            </span>
-              <span title="superior year limit">
-                <mat-form-field name="endDateControl" color="warn">
-                  <mat-label>End Date</mat-label>
-                  <input matInput (change)="selecionarDataFim($event)"   type="number" name="dataFim" placeholder="2100" min="0" value="2100"/>
-                </mat-form-field>
-              </span>
-              <!--
-              <span>
-                  <mat-form-field color="warn">
-                    <mat-label class="algorithm">Date Granularity </mat-label>
-                    <mat-select class="algorithm" (valueChange)="selecionarGranularidade($event)" [value]="dateGranularitySelected">
-                      <mat-option class="mat-menu-item2" hidden>full</mat-option>
-                      <mat-option class="mat-menu-item2" *ngFor="let granu of dateGranularityOptions" [value]="granu">
-                        {{granu}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </span>
-              -->
-
-              <!--FIM OPÇÕES RELATIVAS AO RULEBASED-->
-            </ng-template>
-
-          </mat-card>
-
-          </div>
-        </div>
         </div>
 
-        <div class="form-group">
-          <div class="col-lg12 text-right">
 
-            <button class="btn btn-primary" type="submit" [disabled]="loading" >
-              <div class='{{!loading?"viewable": "nonviewable"}}' ><i class="fas fa-code" ></i>
-                {{loading?'Loading...':'Tag Dates'}}</div>
-              <div class='{{loading?"viewable": "nonviewable"}}'><span  class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                {{loading?'Loading...':'Tag Dates'}}</div>
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   </form>
