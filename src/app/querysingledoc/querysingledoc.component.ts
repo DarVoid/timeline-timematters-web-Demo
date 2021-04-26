@@ -342,10 +342,10 @@ export class QuerysingledocComponent implements OnInit {
   showArticle(event: any) {
 
     event.preventDefault();
+    window.scroll(0,0);
     this.showArticle2();
   }
   showArticle2() {
-    window.scroll(0,0)
     this.loading = true;
     if (this.inpu) {
       this.url = this.inpu;
