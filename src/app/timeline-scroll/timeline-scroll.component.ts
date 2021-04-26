@@ -34,6 +34,7 @@ export class TimelineScrollComponent implements OnInit {
   public nodata: boolean;
   public relevant_string: string;
   public scheduler: any;
+  public imagens: Array<any>;
   constructor(
     private _snackBar: MatSnackBar,
     private yake: YakeService,
@@ -47,6 +48,7 @@ export class TimelineScrollComponent implements OnInit {
     this.nodata = false;
     this.relevant_string = "Apenas datas relevantes?";
     this.events = [];
+    this.imagens = [];
   }
 
   ngOnInit() {
@@ -63,6 +65,8 @@ export class TimelineScrollComponent implements OnInit {
       this.isSet = true;
     }
   }
+
+  //not being used for now
   pushEvent(a) {
     this.yake
       .getKeywords(a.text)
@@ -195,13 +199,25 @@ export class TimelineScrollComponent implements OnInit {
             if (res) {
               console.log(res);
               let captio = res.keywords[0].ngram;
+              let exists = false
+              let index_for_this_request=0;
+              this.imagens.map((cada)=>{
+                console.log(cada)
+                if(cada.key==captio){
+                  cada.current_index= cada.current_index +1
+                  index_for_this_request= cada.current_index
+                }
+              })
+              if(!exists){
+                this.imagens.push({key: captio, current_index:0})
+              }
               this.arquivo
                 .getImgURL(captio)
                 .pipe(take(1))
                 .subscribe((res2: any) => {
                   if (res2) {
                     console.log(res2);
-                    let url2 = res2.responseItems[0].imgLinkToArchive;
+                    let url2 = res2.responseItems[index_for_this_request].imgLinkToArchive;
                     console.log("Storyline rule-based");
                     if (this.argumentos[h].x.length == 4) {
                       this.events.push({
