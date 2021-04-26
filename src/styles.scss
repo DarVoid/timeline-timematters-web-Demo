@@ -121,6 +121,29 @@ a:active.linkDoMal{
   color:black !important;
   text-decoration-color:black !important;
 }
+a:link.naoBranco {
+  text-decoration: none;
+  color:#033F72 !important;
+  text-decoration-color:#033F72 !important;
+}
+
+
+a:visited.naoBranco {
+  text-decoration: none;
+  color:#033F72 !important;
+  text-decoration-color:#033F72 !important;
+}
+
+a:hover.naoBranco {
+  text-decoration: #033F72 !important;
+  color:#033F72 !important;
+}
+
+a:active.naoBranco {
+  text-decoration: none;
+  color:#033F72 !important;
+  text-decoration-color:#033F72 !important;
+}
 
 .example-full-width{
   width: 100% !important;
@@ -414,9 +437,6 @@ app-frame {
   background-color: #ffffff;
 
 }
-.afterAnnotated{
-  color:black;
-}
 
 .black, .green, .blue, .yellow, .purple {
   color: white;
@@ -466,6 +486,25 @@ app-frame {
   padding-top: 0px;
 }
 
+.afterAnnotated{
+  color:black ;
+}
+.sobreTitulo{
+  color: #033F72 !important;
+  font-weight: 200;
+  font-size: 1.75em;
+  padding: 1.5rem;
+}
+.sobreContent{
+  color: #033F72 !important;
+  padding: 1.0em !important;
+  font-size: 20px;
+}
+.caixinha{
+  margin-top:55px;
+  display: flex;
+  justify-content: center;
+}
 .tl-timeline p.textoArquivo {
   font-size: 13px !important;
 }

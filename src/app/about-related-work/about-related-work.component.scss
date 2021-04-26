@@ -1,23 +1,23 @@
 * {
     font-family: 'Work Sans', sans-serif;
   }
-  
+
   .fundo {
     background-color: #e8e3e3;
     padding-top: 20px;
   }
-  
+
   .jumbotron {
     background: linear-gradient(to bottom, rgba(0,64,107,0.5) 0%,rgba(0,64,107,0.89) 100%);
   }
-  
+
   .text {
     color: #ffffff;
     font-size: 30px;
   }
 
   .p1 {
-      color: #ffffff;
+      color:#033F72;
       font-size: 15px;
       text-align: justify;
       padding-top: 15px;
@@ -25,13 +25,26 @@
   }
 
   .p2 {
-    color: #ffffff;
+    color: #033F72;
     font-size: 15px;
     text-align: justify;
     padding-top: 15px;
     padding-left: 30px;
   }
-  
+
+  .cardSmall{
+
+    margin-right: 5px;
+    margin-bottom: 7px;
+  }
+
+  .example-card {
+    min-width:  150px;
+    max-width:  150px;
+    min-height: 110px;
+    max-height: 110px;
+
+  }
   hr {
     border-top: 1px solid grey;
   }
