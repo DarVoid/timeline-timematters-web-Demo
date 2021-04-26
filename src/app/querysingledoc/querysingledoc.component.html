@@ -10,7 +10,7 @@
             <mat-form-field class="example-full-width">
 
               <mat-label>Criar narrativa a partir de URL</mat-label>
-              <input matInput placeholder="Please insert article URL" value="{{inpu?inpu:url}}" name="stuff" matInput (change)="setURL($event)">
+              <input [disabled]="loading" matInput placeholder="Please insert article URL" value="{{inpu?inpu:url}}" name="stuff" matInput (change)="setURL($event)">
               <mat-hint></mat-hint>
             </mat-form-field>
             <div class="form-group">
@@ -34,7 +34,7 @@
 
 
             <div *ngFor="let item of data" title="{{item.caption}}" type="submit" >
-              <mat-card  class="example-card cardBig" (click)="setURL2(item.link)">
+              <mat-card  class="example-card cardBig" (click)="!loading?setURL2(item.link):''">
                 <mat-card-header>
                   <div mat-card-avatar  style="background-image: url('../../assets/{{item.fotoPequena}}');"  class="example-header-image"></div>
                   <mat-card-title>{{item.title}}</mat-card-title>
