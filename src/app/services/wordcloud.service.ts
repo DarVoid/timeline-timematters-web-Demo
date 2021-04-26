@@ -13,22 +13,24 @@ import { YakeService } from "./yake.service";
 })
 export class WordcloudService {
   private url: string;
+  private urle2: string;
   private keywords:any;
   constructor(private http: HttpClient, private yake: YakeService) {
     this.url = "/wordCloudYAKE/api/v1.0/base64";
+    this.urle2 = "https://quickchart.io/wordcloud?text="
   }
 
   public getWordcloud(search: any):Observable<any>{
-    const formData = new FormData();
-    let realURL = this.url;
+  // const formData = new FormData();
+  // let realURL = this.url;
 
-    let cena=[]
-    search.map((cada)=>{
-      cena.push(cada)
-    })
+  // let cena=[]
+  // search.map((cada)=>{
+  //   cena.push(cada)
+  // })
+    let realURL = this.urle2 +search
 
-
-          return this.http.post(realURL,{width:300, height:300, json:{keywords:cena, language:"portuguese"}}).pipe(
+          return this.http.post(realURL,{}).pipe(
             map((res2, err2) => {
               if (res2) {
                 console.log(res2);

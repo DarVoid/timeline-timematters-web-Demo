@@ -1,3 +1,9 @@
-<img [src]="base64Data" />
-<div> {{base64Data}}</div>
-<button (click)="showWhatsup()">aaaaaaaa</button>
+<br>
+<br>
+<br>
+<div style="display: flex;justify-content: center;flex-wrap: wrap;align-items: center;">
+  <div *ngFor="let item of words" style="margin: 5px;color:#{{item.color}}; font-size: {{(item.fontSize).toFixed(0)}}px;">{{item.word}}</div>
+</div>
+<br>
+<br>
+<br>
