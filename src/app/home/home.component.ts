@@ -14,6 +14,8 @@ import { TutorialComponent } from "../tutorial/tutorial.component";
 })
 export class HomeComponent implements OnInit {
   public page: string;
+  public loading: boolean;
+  public url: string;
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
@@ -26,12 +28,18 @@ export class HomeComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog
   ) {
+    this.loading=false;
     this.page = "1";
   }
   openDialog() {
     this.dialog.open(TutorialComponent, { height: "90%", width: "100%" });
   }
+  changeURL($event){
+    this.url=$event
+  }
+  requestLoaded(){
 
+  }
   ngOnInit() {
     //this.openDialog();
   }

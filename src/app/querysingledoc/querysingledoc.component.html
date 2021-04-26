@@ -6,7 +6,7 @@
       <h2> </h2>
       <div class="col-lg-12">
         <div class="form-group">
-          <mat-card>
+         <mat-card class="nonviewable" >
             <mat-form-field class="example-full-width">
 
               <mat-label>Criar narrativa a partir de URL</mat-label>
@@ -17,7 +17,6 @@
               <div class="col-lg12 text-right" style="z-index: 10;margin-top:-50px ;">
 
                 <button mat-fab class="btn btn-primary" type="submit" [disabled]="loading" >
-                <!--<button mat-fab color="btn-primary"type="submit" [disabled]="loading" >-->
 
 
                   <div class='{{!loading?"viewable": "nonviewable"}}' > <i class="fas fa-book-open"></i></div>
@@ -34,86 +33,25 @@
           <div *ngIf="!requestMade" style="display: flex;justify-content: space-around;flex-wrap: wrap; ">
 
 
-            <mat-card  class="example-card cardBig" (click)="setURL2('https://arquivo.pt/noFrame/replay/20191211154001/https://www.jornaldenegocios.pt/economia/detalhe/milhares-desfilam-em-lisboa-contra-a-troika-e-o-governo')">
-              <mat-card-header>
-                <div mat-card-avatar  style="background-image: url('../../assets/7Redonda_PapaFrancisco.jpg');"  class="example-header-image"></div>
-                <mat-card-title>Shiba Inu</mat-card-title>
-                <mat-card-subtitle>Goodest Boy</mat-card-subtitle>
-              </mat-card-header>
-              <img mat-card-image  class="fotoCard"  src="../../assets/7Base_PapaFrancisco.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p>
-                  The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                  A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                  bred for hunting.
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
+            <div class="display:none;" *ngFor="let item of data" title="{{item.caption}}" type="submit" >
+              <mat-card  class="example-card cardBig" (click)="setURL2(item.link)">
+                <mat-card-header>
+                  <div mat-card-avatar  style="background-image: url('../../assets/{{item.fotoPequena}}');"  class="example-header-image"></div>
+                  <mat-card-title>{{item.title}}</mat-card-title>
+                  <mat-card-subtitle>{{item.byX}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image  class="fotoCard"  src="../../assets/{{item.fotoGrande}}" alt="{{item.title}}">
+                <!--<mat-card-content>
+                  <p style="flex-wrap: nowrap;">
+                    {{item.snippet}}
+                  </p>
+                </mat-card-content>-->
+                <mat-card-actions>
 
-              </mat-card-actions>
-            </mat-card>
-            <mat-card  class="example-card cardBig" (click)="setURL2('')">
-              <mat-card-header>
-                <div mat-card-avatar  style="background-image: url('../../assets/1Redonda_Lula.jpg');" class="example-header-image"></div>
-                <mat-card-title>Lula da Silva</mat-card-title>
-                <mat-card-subtitle>Good Boy</mat-card-subtitle>
-              </mat-card-header>
-              <img mat-card-image  class="fotoCard" src="../../assets/1Base_Lula.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p>
-                  He's nice and respectable. Oh wait! This was supposed to be news
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-              </mat-card-actions>
-            </mat-card>
-            <mat-card style="margin-right: 5px;margin-bottom: 7px;" class="example-card cardBig" (click)="setURL2('https://arquivo.pt/wayback/20170107192028/https://www.dinheirovivo.pt/outras/morreu-mario-soares/')">
-              <mat-card-header>
-                <div mat-card-avatar style="background-image: url('../../assets/12Soares.jpg');" class="example-header-image"></div>
-                <mat-card-title>Mario Soares</mat-card-title>
-                <mat-card-subtitle>by "Dinheiro Vivo"</mat-card-subtitle>
-              </mat-card-header>
-              <img mat-card-image class="fotoCard"  src="../../assets/p6-mario-soares-1024x683.jpg" alt="../../assets/p6-mario-soares-1024x683.jpg">
-              <mat-card-content>
-                <p>
-                  Morreu este sábado Mário Soares. O antigo Presidente da República tinha 92 anos e estava internado no Hospital da Cruz Vermelha desde 13 de dezembro de 2016.
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button type="submit">Visualizar narrativa</button>
-              </mat-card-actions>
-            </mat-card>
-            <mat-card style="margin-right: 5px;margin-bottom: 7px;" class="example-card cardBig" (click)="setURL2('')">
-              <mat-card-header>
-                <div mat-card-avatar style="background-image: url('../../assets/3Redonda_Imigrantes.jpg');"  class="example-header-image"></div>
-                <mat-card-title>Jorge Duque</mat-card-title>
-                <mat-card-subtitle>by the powers that be</mat-card-subtitle>
-              </mat-card-header>
-              <img mat-card-image class="fotoCard"  src="../../assets/3Base_Imigrantes.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p>
-                  Ganha Prémio Arquivo 2021 #Facil
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-              </mat-card-actions>
-            </mat-card>
-            <mat-card  class="example-card cardBig" (click)="setURL2('')">
-              <mat-card-header>
-                <div mat-card-avatar style="background-image: url('../../assets/5Redonda_TroikaLisboa.jpg');" class="example-header-image"></div>
-                <mat-card-title>Dog Barks</mat-card-title>
-                <mat-card-subtitle>Slightly gooder boy</mat-card-subtitle>
-              </mat-card-header>
-              <img mat-card-image  class="fotoCard"  src="../../assets/5Base_TroikaLisboa.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p>
-                  Ouf, ouf
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
+                </mat-card-actions>
+              </mat-card>
+            </div>
 
-              </mat-card-actions>
-            </mat-card>
           </div>
         </div>
 

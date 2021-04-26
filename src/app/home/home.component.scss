@@ -99,3 +99,17 @@ $app-theme: mat-light-theme($app-primary, $app-accent);
 }
 
 @include mix-app-theme($app-theme);
+.btn-primary {
+  background-color: #d10019;
+ /* background-color: #cc4625; */
+  border-color: transparent;
+  font-family: 'Work Sans', sans-serif;
+}s
+
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active {
+  background-color: #a80519;
+/*  background-color: #993d26; */
+  border-color: transparent;
+  box-shadow: 0 0 0 0.2rem rgba(168, 5, 25,.5);
+}

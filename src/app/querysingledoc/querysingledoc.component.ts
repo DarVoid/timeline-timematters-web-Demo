@@ -4,6 +4,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { TimelineService } from "../services/timeline.service";
 import { take } from "rxjs/operators";
 import { LangdetectService } from "../services/langdetect.service";
+import * as data from '../../assets/data.json';
 
 @Component({
   selector: "app-querysingledoc",
@@ -46,6 +47,7 @@ export class QuerysingledocComponent implements OnInit {
   public antigo: string;
   public hiddenoptionTM: boolean;
   public right: string;
+  public data: any;
   @Input() inpu: any;
 
   constructor(
@@ -54,6 +56,8 @@ export class QuerysingledocComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private _langDetec: LangdetectService
   ) {
+    this.data = data
+    this.data = this.data.default.data
     this.mudou=false;
     //
     this.right = "right";
@@ -125,6 +129,8 @@ export class QuerysingledocComponent implements OnInit {
       //https://sicnoticias.pt/pais/2016-07-07-Cronologia-do-processo-Casa-Pia
       //https://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/
     }
+    console.log("DATA BOA")
+    console.log(this.data)
   }
   goBack() {
     this.mudou=false;
@@ -266,6 +272,8 @@ export class QuerysingledocComponent implements OnInit {
   }
   setURL2(valor) {
     this.url = valor
+    this.inpu = valor
+    this.showArticle2()
   }
   maxSimba(event: any) {
     console.log("simba");
@@ -333,6 +341,211 @@ export class QuerysingledocComponent implements OnInit {
 
   showArticle(event: any) {
     event.preventDefault();
+    this.loading = true;
+    if (this.inpu) {
+      this.url = this.inpu;
+    }
+    this.update();
+    let sizeOfURL1 = "https://arquivo.pt/noFrame/replay/".length;
+    if (
+      this.url.substring(0, sizeOfURL1) == "https://arquivo.pt/noFrame/replay/"
+    ) {
+      let ano = this.url.substring(sizeOfURL1, sizeOfURL1 + 4);
+      let mes = this.url.substring(sizeOfURL1 + 4, sizeOfURL1 + 6);
+      let dia = this.url.substring(sizeOfURL1 + 6, sizeOfURL1 + 8);
+      this.documentCreationTime = ano + "-" + mes + "-" + dia;
+      console.log("data");
+      console.log(this.documentCreationTime);
+    }
+
+    let sizeOfURL2 = "https://arquivo.pt/wayback/".length;
+    if (this.url.substring(0, sizeOfURL2) == "https://arquivo.pt/wayback/") {
+      let ano = this.url.substring(sizeOfURL2, sizeOfURL2 + 4);
+      let mes = this.url.substring(sizeOfURL2 + 4, sizeOfURL2 + 6);
+      let dia = this.url.substring(sizeOfURL2 + 6, sizeOfURL2 + 8);
+      this.documentCreationTime = ano + "-" + mes + "-" + dia;
+      console.log("data");
+      console.log(this.documentCreationTime);
+      this.mudou = true;
+      this.antigo = this.url
+      this.url= "https://arquivo.pt/noFrame/replay/" + this.url.substring(sizeOfURL2, this.url.length)
+    }
+    this.article
+      .getArticles(this.url)
+      .pipe(take(1))
+      .subscribe(
+        (res) => {
+          if(this.mudou){
+            this.url =this.antigo
+          }
+          if (res) {
+            console.log(res);
+            this.artigo = res;
+            console.log("texto artigo");
+            console.log(this.artigo.content);
+            // this.documentCreationTime="";
+            // tslint:disable-next-line: max-line-length
+            if (this.documentCreationTime) {
+            } else {
+              // tslint:disable-next-line: max-line-length
+              let month: number = new Date().getMonth();
+              let month_string=''
+
+              if (month * 1 < 10) {
+                month_string = "0" + (month+1);
+              }else{
+                month_string =  (month+1)+'';
+              }
+              let day: any = new Date().getDate();
+              if (day * 1 < 10) {
+                day = "0" + day;
+              }
+              this.documentCreationTime =
+                new Date().getFullYear() + "-" + month_string + "-" + day;
+              alert(this.documentCreationTime);
+            }
+            switch (res.lang) {
+              case "en":
+                this.languagueSelected = "English";
+                this.update();
+                break;
+              case "fr":
+                this.languagueSelected = "French";
+                this.update();
+                break;
+              case "pt":
+                this.languagueSelected = "Portuguese";
+                this.update();
+                break;
+              case "ge":
+                this.languagueSelected = "German";
+                this.update();
+                break;
+              case "it":
+                this.languagueSelected = "Italian";
+                this.update();
+                break;
+              case "nl":
+                this.languagueSelected = "Dutch";
+                this.update();
+                break;
+              case "es":
+                this.languagueSelected = "Spanish";
+                this.update();
+                break;
+              default:
+                console.log(res);
+                this._snackBar.open(
+                  "Language will be auto-detected",
+                  res.lang,
+                  {
+                    duration: 2000,
+                  }
+                );
+                //auto-dete
+                this._langDetec
+                  .getLanguageFromContent(this.artigo.content)
+                  .pipe(take(1))
+                  .subscribe((response) => {
+                    console.log("LINGUA DO TEXTO");
+                    console.log(response);
+                    switch (response.lang) {
+                      case "en":
+                        this.languagueSelected = "English";
+                        this.update();
+                        break;
+                      case "fr":
+                        this.languagueSelected = "French";
+                        this.update();
+                        break;
+                      case "pt":
+                        this.languagueSelected = "Portuguese";
+                        this.update();
+                        break;
+                      case "ge":
+                        this.languagueSelected = "German";
+                        this.update();
+                        break;
+                      case "it":
+                        this.languagueSelected = "Italian";
+                        this.update();
+                        break;
+                      case "nl":
+                        this.languagueSelected = "Dutch";
+                        this.update();
+                        break;
+                      case "es":
+                        this.languagueSelected = "Spanish";
+                        this.update();
+                        break;
+                      default:
+                    }
+                  });
+                break;
+            }
+
+            console.log(this.opcoes);
+            console.log(this.artigo);
+            //let cenak= this.artigo.content.replace("\\u21b5",'');
+          }
+
+          return;
+        },
+        (err) => {},
+        () => {
+          this.scheduler = setTimeout(() => {
+            console.log("reached this place");
+            console.log(this.artigo.content.toString());
+            console.log(this.opcoes);
+
+            this.timeline
+              .getTextKeyDateFromSingleDoc(this.artigo.content, this.opcoes)
+              .pipe(take(1))
+              .subscribe((res) => {
+                if (res) {
+                  console.log(res);
+                  this.resultado = res;
+
+                  // pedido recebido aqui
+                  if (res.message) {
+                    this._snackBar.open(
+                      "Sorry, but we were not able to extract any results due to an error on time-matters. Article length:",
+                      this.artigo.content.length,
+                      {
+                        duration: 4000,
+                      }
+                    );
+                    this.requestMade = false;
+                    this.loading = false;
+                    return " ";
+                  }
+                  if (res.length == 0) {
+                    this._snackBar.open(
+                      "This URL has no data we can use",
+                      ":(",
+                      {
+                        duration: 2000,
+                      }
+                    );
+                    this.requestMade = false;
+                    this.loading = false;
+                    return " ";
+                  }
+                  this.requestMade = true;
+                  this.update();
+                  this.loading = false;
+
+                  return " ";
+                } else {
+                  console.log("oof");
+                  return " ";
+                }
+              });
+          }, 1000);
+        }
+      );
+  }
+  showArticle2() {
     this.loading = true;
     if (this.inpu) {
       this.url = this.inpu;
