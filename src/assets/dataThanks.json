@@ -30,14 +30,14 @@
   "link":"http://www.ubi.pt"
 },
 {
-	"fotoGrande": "UI.png",
-	"title":"UI",
-  "link":"https://www.uibk.ac.at/"
-},
-{
-	"fotoGrande": "UE.svg",
+	"fotoGrande": "UE.png",
 	"title":"UE",
   "link":"https://ec.europa.eu/regional_policy/pt/funding/erdf/"
+},
+{
+	"fotoGrande": "logo_fct.png",
+	"title":"FCT",
+  "link":"https://www.fct.pt/"
 },
 {
 	"fotoGrande": "portugal2020.png",
@@ -48,11 +48,6 @@
 	"fotoGrande": "norte2020.png",
 	"title":"Norte2020",
   "link":"https://www.norte2020.pt/"
-},
-{
-	"fotoGrande": "LIAAD.png",
-	"title":"LIAAD",
-  "link":"https://www.inesctec.pt/pt/centros/liaad"
 }
 
 

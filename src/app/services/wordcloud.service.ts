@@ -15,7 +15,7 @@ export class WordcloudService {
   private url: string;
   private keywords:any;
   constructor(private http: HttpClient, private yake: YakeService) {
-    this.url = "/wordCloudYAKE/api/v1.0/base64?";
+    this.url = "/wordCloudYAKE/api/v1.0/base64";
   }
 
   public getWordcloud(search: any):Observable<any>{
@@ -26,10 +26,9 @@ export class WordcloudService {
     search.map((cada)=>{
       cena.push(cada)
     })
-    let hus = Object.entries(JSON.stringify({width:300, height:300, json:{keywords:cena}})).map(e => e.join('=')).join('&');
-    realURL=realURL+hus
 
-          return this.http.get(realURL).pipe(
+
+          return this.http.post(realURL,{width:300, height:300, json:{keywords:cena, language:"portuguese"}}).pipe(
             map((res2, err2) => {
               if (res2) {
                 console.log(res2);
