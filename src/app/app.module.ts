@@ -43,6 +43,7 @@ import { MatSliderModule } from "@angular/material/slider";
 import { TutorialComponent } from "./tutorial/tutorial.component";
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { WordcloudComponent } from './wordcloud/wordcloud.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     TratarArquivoComponent,
     AboutAcknowledgementsComponent,
     TutorialComponent,
+    WordcloudComponent,
   ],
   entryComponents: [TutorialComponent],
   imports: [

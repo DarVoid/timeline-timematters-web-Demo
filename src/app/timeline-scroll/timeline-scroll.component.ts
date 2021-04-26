@@ -157,6 +157,7 @@ export class TimelineScrollComponent implements OnInit {
   toggleRelevance() {
     this.relevant = !this.relevant;
     this.events = [];
+    this.imagens = [];
   }
 
   update() {
@@ -206,6 +207,7 @@ export class TimelineScrollComponent implements OnInit {
                 if(cada.key==captio){
                   cada.current_index= cada.current_index +1
                   index_for_this_request= cada.current_index
+                  exists = true
                 }
               })
               if(!exists){

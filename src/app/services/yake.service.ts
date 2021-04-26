@@ -44,4 +44,35 @@ export class YakeService {
       })
     );
   }
+  public getKeywords2(search: string): Observable<any> {
+    const formData = new FormData();
+
+    let realURL =
+      this.url +
+      "?content=" +
+      search
+        .split("<kw>")
+        .join("")
+        .split("</kw>")
+        .join("")
+        .split("<d>")
+        .join("")
+        .split("</d>")
+        .join("")
+        .trim() +
+      "&max_ngram_size=3&number_of_keywords=30&highlight=true";
+
+    // console.log(realURL);
+    return this.http.get(realURL).pipe(
+      map((res, err) => {
+        if (res) {
+          console.log(res);
+          return res;
+        } else {
+          console.log(err);
+          return err;
+        }
+      })
+    );
+  }
 }

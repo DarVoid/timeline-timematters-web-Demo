@@ -46,6 +46,21 @@
 }
 
 
+.p1 {
+  color:#033F72;
+  font-size: 15px;
+  text-align: justify;
+  padding-top: 15px;
+  padding-left: 14px;
+}
+
+.p2 {
+color: #033F72;
+font-size: 15px;
+text-align: justify;
+padding-top: 15px;
+padding-left: 30px;
+}
 .mat-list-base .mat-list-item .mat-list-avatar, .mat-list-base .mat-list-option .mat-list-avatar {
   flex-shrink: 0;
   width: 50px;
@@ -59,4 +74,18 @@
 }
 
 
+.example-card {
+  min-width:    280px;
+  max-width:    280px;
+  min-height:   280px;
+
+}
+.fotoCard{
+  height:40%;
+  inherits: width ;
+}
+.cardBig{
+  margin-right: 5px;
+  margin-bottom: 7px;
+}
 

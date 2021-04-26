@@ -12,8 +12,12 @@
     "target": "https://arquivo.pt",
     "secure": true
     ,"changeOrigin": true
+  },  "/wordCloudYAKE/*": {
+    "target": "https://tm-websuiteapps.ipt.pt/",
+    "secure": true
+    ,"changeOrigin": true
   }
 
 
-  
+
 }

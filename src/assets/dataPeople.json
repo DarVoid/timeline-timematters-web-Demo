@@ -1,0 +1,111 @@
+{"data":[
+  {
+	"fotoGrande": "RCampos.jpg",
+	"title":"Ricardo Campos",
+  "links": [
+    {
+      "tipo": "LinkedIn",
+      "link": "https://www.linkedin.com/in/camposricardo/",
+      "icon": "<i class=\"fab fa-linkedin\"></i>"
+    },
+    {
+      "tipo": "Website",
+      "link": "http://www.ccc.ipt.pt/~ricardo/",
+      "icon": "<i class=\"fas fa-globe-americas\"></i>"
+    },
+    {
+      "tipo": "Email",
+      "link": "mailto://ricardo.campos@ipt.pt",
+      "icon": "<i class=\"far fa-envelope\"></i>"
+    }
+  ]
+	},
+{
+	"fotoGrande": "fotoJorge.png",
+	"title":"Jorge Duque",
+  "links":[
+    {
+      "tipo":"LinkedIn",
+      "link":"https://www.linkedin.com/in/djorge7/",
+      "icon": "<i class=\"fab fa-linkedin\"></i>"
+    },
+    {
+      "tipo":"GitHub",
+      "link":"https://github.com/DarVoid/",
+      "icon": "<i class=\"fab fa-github\"></i>"
+    },
+    {
+      "tipo":"Email",
+      "link":"mailto://jorgeraposoduque@gmail.com",
+      "icon": "<i class=\"far fa-envelope\"></i>"
+    }
+  ]
+},
+{
+	"fotoGrande": "Alipio.jpg",
+	"title":"Alípio Jorge",
+  "links": [
+    {
+      "tipo": "LinkedIn",
+      "link": "https://www.linkedin.com/in/al%C3%ADpio-jorge-29085813/",
+      "icon": "<i class=\"fab fa-linkedin\"></i>"
+    },
+    {
+      "tipo": "Website",
+      "link": "https://www.dcc.fc.up.pt/~amjorge/",
+      "icon": "<i class=\"fas fa-globe-americas\"></i>"
+    },
+    {
+      "tipo": "Email",
+      "link": "mailto://amjorge@fc.up.pt",
+      "icon": "<i class=\"far fa-envelope\"></i>"
+    }
+  ]
+},
+{
+	"fotoGrande": "GD.jpg",
+	"title":"Gaël Dias",
+  "links": [
+    {
+      "tipo": "LinkedIn",
+      "link": "https://www.linkedin.com/in/ga%C3%ABl-dias-98132949/",
+      "icon": "<i class=\"fab fa-linkedin\"></i>"
+    },
+    {
+      "tipo": "Website",
+      "link": "https://dias.users.greyc.fr/",
+      "icon": "<i class=\"fas fa-globe-americas\"></i>"
+    },
+    {
+      "tipo": "Email",
+      "link": "mailto://gael.dias@unicaen.fr ",
+      "icon": "<i class=\"far fa-envelope\"></i>"
+    }
+  ]
+},
+{
+	"fotoGrande": "CN.jpg",
+	"title":"Célia Nunes",
+  "links": [
+    {
+      "tipo": "LinkedIn",
+      "link": "https://www.linkedin.com/in/c%C3%A9lia-nunes-7523a968/",
+      "icon": "<i class=\"fab fa-linkedin\"></i>"
+    },
+    {
+      "tipo": "Website",
+      "link": "http://www.mat.ubi.pt/~celia/",
+      "icon": "<i class=\"fas fa-globe-americas\"></i>"
+    },
+    {
+      "tipo": "Email",
+      "link": "mailto://celian@ubi.pt",
+      "icon": "<i class=\"far fa-envelope\"></i>"
+    }
+  ]
+
+}
+
+
+]
+}

@@ -4,8 +4,8 @@ import {
   HttpHeaders,
   HttpErrorResponse,
 } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { Observable, throwError } from "rxjs";
+import { map, take } from "rxjs/operators";
 import { YakeService } from "./yake.service";
 
 @Injectable({
@@ -13,18 +13,23 @@ import { YakeService } from "./yake.service";
 })
 export class WordcloudService {
   private url: string;
-
+  private keywords:any;
   constructor(private http: HttpClient, private yake: YakeService) {
-    this.url = "/wordCloudYAKE/api/v1.0/base64";
+    this.url = "/wordCloudYAKE/api/v1.0/base64?";
   }
 
-  public getImgURL(search: string) {
+  public getWordcloud(search: any):Observable<any>{
     const formData = new FormData();
     let realURL = this.url;
-    this.yake.getKeywords(search).pipe(
-      map((res, err) => {
-        if (res) {
-          this.http.get(res).pipe(
+
+    let cena=[]
+    search.map((cada)=>{
+      cena.push(cada)
+    })
+    let hus = Object.entries(JSON.stringify({width:300, height:300, json:{keywords:cena}})).map(e => e.join('=')).join('&');
+    realURL=realURL+hus
+
+          return this.http.get(realURL).pipe(
             map((res2, err2) => {
               if (res2) {
                 console.log(res2);
@@ -35,11 +40,5 @@ export class WordcloudService {
               }
             })
           );
-        } else {
-          console.log(err);
-          return err;
         }
-      })
-    );
-  }
 }
