@@ -2,10 +2,14 @@
   .hidden {
     display: none;
   }
-
+  @font-face {
+    font-family: "Nexa Bold";
+    src: url(../../assets/nexa-bold.otf);
+    font-weight: bold;
+  }
 .miniText {
   font-size: 35px;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Nexa Bold", cursive ;
   margin-bottom: 0;
   color: #ffffff;
   background-color: #d10019;

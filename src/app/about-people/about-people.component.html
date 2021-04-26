@@ -20,7 +20,7 @@
             <mat-card-title><a class="preto">{{item.title}}</a></mat-card-title>
 
           </mat-card-header>
-          <img style="padding: 10px;border-radius: 50%;" mat-card-image  class="fotoCard"  src="../../assets/{{item.fotoGrande}}" alt="{{item.title}}">
+          <img  mat-card-image  class="fotoCard"  src="../../assets/{{item.fotoGrande}}" alt="{{item.title}}">
 
           <div style="justify-content: center;">
             <a class="preto" *ngFor="let item2 of item.links" target="_blank" href="{{item2.link}}">

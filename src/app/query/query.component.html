@@ -16,7 +16,8 @@
             <!-- ANNOTATED TEXT-->
             <mat-tab   label="Annotated text">
                 <br>
-                <p >URL: <a class="linkDoMal" href="{{url}}" target="_blank">{{url}}</a></p>
+                <p >URL: <u><a class="linkDoMal" href="{{url}}" target="_blank">{{url}}</a></u></p>
+
                 <hr>
                 <app-frame [docOrSentence]="options.docOrSentence" [argumentos]="options.result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"   class="result"></app-frame>
                 <hr>

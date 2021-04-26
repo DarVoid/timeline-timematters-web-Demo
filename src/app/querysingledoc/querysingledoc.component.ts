@@ -345,6 +345,7 @@ export class QuerysingledocComponent implements OnInit {
     this.showArticle2();
   }
   showArticle2() {
+    window.scroll(0,0)
     this.loading = true;
     if (this.inpu) {
       this.url = this.inpu;
