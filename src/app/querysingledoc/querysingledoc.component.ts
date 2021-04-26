@@ -342,16 +342,17 @@ export class QuerysingledocComponent implements OnInit {
             if (this.documentCreationTime) {
             } else {
               // tslint:disable-next-line: max-line-length
-              let month: any = new Date().getMonth();
-              if (month * 1 < 10) {
-                month = "0" + month;
+              let month: number = new Date().getMonth()+ 1;
+              let month_str: string = month + ''
+              if ((month * 1) < 10) {
+                month_str = "0" + month_str;
               }
               let day: any = new Date().getDate();
               if (day * 1 < 10) {
                 day = "0" + day;
               }
               this.documentCreationTime =
-                new Date().getFullYear() + "-" + month + "-" + day;
+                new Date().getFullYear() + "-" + month_str + "-" + day;
               console.log(this.documentCreationTime);
             }
             switch (res.lang) {
