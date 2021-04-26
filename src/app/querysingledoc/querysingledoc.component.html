@@ -33,7 +33,7 @@
           <div *ngIf="!requestMade" style="display: flex;justify-content: space-around;flex-wrap: wrap; ">
 
 
-            <div class="display:none;" *ngFor="let item of data" title="{{item.caption}}" type="submit" >
+            <div *ngFor="let item of data" title="{{item.caption}}" type="submit" >
               <mat-card  class="example-card cardBig" (click)="setURL2(item.link)">
                 <mat-card-header>
                   <div mat-card-avatar  style="background-image: url('../../assets/{{item.fotoPequena}}');"  class="example-header-image"></div>
@@ -41,11 +41,11 @@
                   <mat-card-subtitle>{{item.byX}}</mat-card-subtitle>
                 </mat-card-header>
                 <img mat-card-image  class="fotoCard"  src="../../assets/{{item.fotoGrande}}" alt="{{item.title}}">
-                <!--<mat-card-content>
+                <mat-card-content>
                   <p style="flex-wrap: nowrap;">
                     {{item.snippet}}
                   </p>
-                </mat-card-content>-->
+                </mat-card-content>
                 <mat-card-actions>
 
                 </mat-card-actions>
