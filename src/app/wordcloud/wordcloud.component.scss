@@ -1,0 +1,20 @@
+
+.wordcloud{
+  width: 50%;
+}
+@media only screen and (max-width: 1500px){
+.wordcloud{
+  width: 75%;
+}
+}
+@media only screen and (max-width: 980px){
+.wordcloud{
+  width: 50%;
+}
+}
+@media only screen and (max-width: 500px){
+.wordcloud{
+  transform-origin: 0 0;
+  transform: rotate(90deg);
+}
+}

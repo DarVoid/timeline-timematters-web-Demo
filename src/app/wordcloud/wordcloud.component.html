@@ -1,9 +1,17 @@
 <br>
 <br>
 <br>
-<div style="display: flex;justify-content: center;flex-wrap: wrap;align-items: center;">
-  <div *ngFor="let item of words" style="margin: 5px;color:#{{item.color}}; font-size: {{(item.fontSize).toFixed(0)}}px;">{{item.word}}</div>
+<div style="display: flex; justify-content: center; flex-wrap: wrap; align-items: center;">
+  <mat-card class="wordcloud">
+    <div style="display: flex; justify-content: center; flex-wrap: wrap; align-items: center;">
+
+        <div *ngFor="let item of words" style="margin: 5px; color:#{{item.color}}; font-size: {{(item.fontSize).toFixed(0)}}px;">{{item.word}}</div>
+
+
+    </div>
+    </mat-card>
 </div>
+
 <br>
 <br>
 <br>
