@@ -886,14 +886,14 @@ export class ExctractionComponent implements OnInit {
     // console.log(event.target.docCreatDate.value);
     // {{ dateObj | date:'mm:ss' }}
     if (this.conteudoDefault.length == 0) {
-      this._snackBar.open("No text to annotate", "", {
+      this._snackBar.open("Sem texto", "", {
         duration: 2000,
       });
       return;
     }
 
     this.loading = true;
-    this._snackBar.open("Your request is being processed", "", {
+    this._snackBar.open("Pedido efectuado", "", {
       duration: 2000,
     });
     if (this.languagueSelected == "auto-detect") {
@@ -902,12 +902,12 @@ export class ExctractionComponent implements OnInit {
         .pipe(take(1))
         .subscribe((res) => {
           if (res) {
-            this._snackBar.open("Language Detected: ", res.lang, {
+            this._snackBar.open("Linguagem Detectada: ", res.lang, {
               duration: 2000,
             });
           } else {
             this._snackBar.open(
-              "Text Too Short",
+              "Texto demasiado pequeno",
               this.conteudoDefault.length.toString(),
               {
                 duration: 2000,
@@ -937,7 +937,7 @@ export class ExctractionComponent implements OnInit {
               this.languagueSelected = "Spanish";
               break;
             default:
-              this._snackBar.open("Language not Supported", res.lang, {
+              this._snackBar.open("Linguagem não suportada: ", res.lang, {
                 duration: 2000,
               });
               break;

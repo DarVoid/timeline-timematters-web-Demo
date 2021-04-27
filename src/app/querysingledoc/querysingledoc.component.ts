@@ -334,7 +334,7 @@ export class QuerysingledocComponent implements OnInit {
     clipboard.select();
     document.execCommand("copy");
     document.body.removeChild(clipboard);
-    this._snackBar.open("Document copied to clipboard", "", {
+    this._snackBar.open("Documento copiado para o clipboard", "", {
       duration: 2000,
     });
   }
@@ -441,7 +441,7 @@ export class QuerysingledocComponent implements OnInit {
               default:
                 console.log(res);
                 this._snackBar.open(
-                  "Language will be auto-detected",
+                  "Linguagem vai ser detectada: ",
                   res.lang,
                   {
                     duration: 2000,
@@ -514,7 +514,7 @@ export class QuerysingledocComponent implements OnInit {
                   // pedido recebido aqui
                   if (res.message) {
                     this._snackBar.open(
-                      "Sorry, but we were not able to extract any results due to an error on time-matters. Article length:",
+                      "API não retornou resultados utilizáveis 😞:",
                       this.artigo.content.length,
                       {
                         duration: 4000,
@@ -526,8 +526,8 @@ export class QuerysingledocComponent implements OnInit {
                   }
                   if (res.length == 0) {
                     this._snackBar.open(
-                      "This URL has no data we can use",
-                      ":(",
+                      "Sem dados para mostrar",
+                      "😭",
                       {
                         duration: 2000,
                       }

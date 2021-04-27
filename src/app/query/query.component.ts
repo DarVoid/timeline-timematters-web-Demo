@@ -85,7 +85,7 @@ export class QueryComponent implements OnChanges {
       event.preventDefault();
       console.log(this.page);
       this._snackBar.open(
-        "Message copied to Clipboard",
+        "Mensagem copiada para o clipboard",
         "Length: " + this.options.result.TextNormalized.length + " characters",
         {
           duration: 2000,
@@ -101,8 +101,8 @@ export class QueryComponent implements OnChanges {
       event.preventDefault();
       console.log(this.page);
       this._snackBar.open(
-        "Message copied to Clipboard",
-        "Length: " +
+        "Mensagem copiada para o clipboard",
+        "Tamanho: " +
           this.options.result.TextNormalized.split("<kw>")
             .join("")
             .split("</kw>")

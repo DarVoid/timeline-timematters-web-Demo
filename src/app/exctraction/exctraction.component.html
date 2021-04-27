@@ -21,7 +21,7 @@
         <ng-template #graficos >
           <mat-card>
           <mat-tab-group>
-            <mat-tab  label="Annotated text">
+            <mat-tab  label="Texto Anotado">
                 <br>
                 <span>
 
@@ -53,7 +53,7 @@
             <app-timeline-scroll  *ngIf=" result" [compGeral]="result" [docSen]="byDocOrSentece" [argumentosTodos]="datasetFixed" [argumentosRelevantes]="datasetFixed2"></app-timeline-scroll>
 
           </mat-tab>
-          <mat-tab label="Temporal Clustering" *ngIf="dataset.length>0">
+          <mat-tab label="Agrupamento Temporal" *ngIf="dataset.length>0">
 
             <br>
             <div style="display: flex; justify-content: flex-end;">
@@ -98,7 +98,9 @@
 
           <!--WIP-->
           </mat-tab>
-
+          <mat-tab label="Nuvem de Palavras">
+            <app-wordcloud [args]="result"></app-wordcloud>
+          </mat-tab >
 
 
 

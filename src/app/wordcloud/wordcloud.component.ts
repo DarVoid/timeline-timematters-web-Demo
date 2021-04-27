@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { WordcloudService } from '../services/wordcloud.service';
 import { YakeService } from '../services/yake.service';
-
+import html2canvas from 'html2canvas';
 @Component({
   selector: 'app-wordcloud',
   templateUrl: './wordcloud.component.html',
@@ -69,6 +69,9 @@ export class WordcloudComponent implements OnInit {
           })
           arrayOfStuffs = arrayOfStuffs.sort(() => (Math.random() > .5) ? 1 : -1)
           this.words=arrayOfStuffs
+          html2canvas(document.querySelector("#capture")).then(canvas => {
+           console.log(canvas)
+        });
       }
     })
     console.log(this.keywords)
