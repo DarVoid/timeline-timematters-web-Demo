@@ -122,8 +122,7 @@ export class QuerysingledocComponent implements OnInit {
     this.url = "";
   }
 
-  ngOnInit(): void {}
-  ngOnChanges() {
+  ngOnInit(): void {
     this.requestMade = false;
     this.requestMake.emit(this.requestMade);
     this.loaded.emit(this.loading);
@@ -136,6 +135,8 @@ export class QuerysingledocComponent implements OnInit {
     }
     console.log("DATA BOA");
     console.log(this.data);
+  }
+  ngOnChanges() {
   }
   goBack() {
     this.mudou = false;

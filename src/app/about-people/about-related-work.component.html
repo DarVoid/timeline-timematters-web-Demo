@@ -1,0 +1,47 @@
+<div  class="col-md-11 col-sm-8 col-xs-6 my-col caixinha" >
+
+  <mat-card class="col-md-8" >
+    <div class="sobreTitulo">
+      Referências académicas:
+    </div>
+
+    <mat-divider></mat-divider>
+    <mat-list >
+      <p class="p1">Este projecto foi desenvolvido por investigadores afiliados ao Instituto Politécnico de Tomar, Ci2 - Centro de Investigação em Cidades Inteligentes, INESC TEC, Universidade do Porto, Universidade de Caën, Universidade da Beira Interior, Centro de Matemática e Aplicações (CMA – UBI), Centro de Matemática e Aplicações (CMA), FCT Nova
+      </p>
+      <p class="p1">
+        Referências Bibliográficas: </p>
+      <p class="p1">
+        - Campos, R., Duque, J., Cândido, T., Mendes, J., Dias, G., Jorge, A. and Nunes, C., (2021). Time-Matters: Temporal Unfolding of Texts. In: Hiemstra D., Moens M-F., Mothe J., Perego R., Potthast M., Sebastiani F. (eds), Advances in Information Retrieval. ECIR'21 (Lucca, Italy. March 28 - April 1). Lecture Notes in Computer Science, vol 12657, pp. 492 - 497. Springer. <a class="naoBranco"  href="https://link.springer.com/chapter/10.1007/978-3-030-72240-1_53" target="_blank"><b>[pdf]</b></a><a  class="naoBranco" target ="_blank"href="https://youtu.be/Q8yT4aVM_Mw"><b> [video]</b></a> <a class="naoBranco"  target="_blank" href="http://www.ccc.ipt.pt/~ricardo/ficheiros/ECIR2021Poster.pdf"><b> [poster]</b></a>
+      </p>
+      <p class="p2">
+        - Campos, R., Dias, G., Jorge, A. and Nunes, C. (2017). Identifying Top Relevant Dates for Implicit Time Sensitive Queries. In Information Retrieval Journal. Springer, Vol 20(4), pp 363-398. <a class="naoBranco" target="_blank" href="https://link.springer.com/article/10.1007/s10791-017-9302-1"> <b>[pdf]</b> </a>
+      </p>
+
+
+
+    </mat-list>
+  </mat-card>
+
+</div>
+<div  class="col-md-11 col-sm-8 col-xs-6 my-col caixinha">
+
+  <mat-card class="col-md-8" >
+    <div class="sobreTitulo">
+      Agradecimentos
+    </div>
+
+    <mat-divider></mat-divider><br>
+    <p class="p1">Ricardo Campos e Alípio Jorge foram financiados pelo FEDER - Fundo Europeu de Desenvolvimento Regional através do Programa Operacional Regional do Norte de Portugal (NORTE 2020), no âmbito do PORTUGAL 2020 e por Fundos Nacionais através da agência de financiamento portuguesa FCT - Fundação para a Ciência e a Tecnologia ao abrigo do projeto PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-03185). Este financiamento enquadra-se na linha de pesquisa do projeto Text2Story (https://text2story.inesctec.pt/). Célia Nunes foi financiada pela Fundação para a Ciência e a Tecnologia ao abrigo dos projetos UIDB/00212/2020</p>
+    <div style="display: flex;justify-content: space-evenly;flex-wrap: wrap;">
+      <a  *ngFor="let item of data" target="_blank" href="{{item.link}}">
+        <mat-card style="justify-content: center;align-items: center; " class="example-card cardSmall" >
+          <br><div style="height:100%;justify-content: center;align-items: center; "><img mat-card-image  class="fotoCard"  src="../../assets/{{item.fotoGrande}}" alt="{{item.title}}"></div>
+
+        </mat-card>
+      </a>
+
+    </div>
+  </mat-card>
+
+</div>
