@@ -16,6 +16,10 @@
     "target": "https://tm-websuiteapps.ipt.pt/",
     "secure": true
     ,"changeOrigin": true
+  },  "/yake/*": {
+    "target": "http://yake.inesctec.pt",
+    "secure": true
+    ,"changeOrigin": true
   }
 
 

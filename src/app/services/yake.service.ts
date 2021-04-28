@@ -9,7 +9,7 @@ import { map } from "rxjs/operators";
 export class YakeService {
   url: string;
   constructor(private http: HttpClient) {
-    this.url = "http://yake.inesctec.pt/yake/v2/extract_keywords";
+    this.url = "/yake/v2/extract_keywords";
   }
 
   public getKeywords(search: string): Observable<any> {
