@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   public page: string;
   public loading: boolean;
   public url: string;
+  public requestMade: boolean;
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit {
     public dialog: MatDialog
   ) {
     this.loading=false;
+    this.requestMade=false;
     this.page = "1";
   }
   openDialog() {
@@ -49,5 +51,15 @@ export class HomeComponent implements OnInit {
     }
     console.log(pagina);
     this.page = pagina;
+  }
+
+  handleValueQuery(event: any){
+    this.url= event
+  }
+  handleLoaded(event: any){
+    this.loading= event
+  }
+  handleRequest(event: any){
+    this.requestMade= event
   }
 }

@@ -73,31 +73,34 @@
                 </h1><br>
                 <h1 class="miniText2">
                   Crie e visualize  narrativas a partir de arquivos da web
-                </h1>
-                <!--<div *ngIf='page=="1"' >
-                  <mat-card style="margin-left: 40%;display: flex; justify-content: center;">
-                    <mat-form-field class="example-full-width">
+                </h1><br>
+                <div style="display: flex; justify-content: center;" *ngIf='page=="1" && !requestMade' >
+
+                  <mat-card class="example-almost-width" style="display: flex; justify-content: center;">
+                    <mat-form-field  class="example-full-width">
 
                       <mat-label>Criar narrativa a partir de URL</mat-label>
-                      <input matInput placeholder="Please insert article URL" matInput>
+                      <input [disabled]="loading" #URLst (change)="setURLNonDef($event)"  value="{{url}}" matInput >
                       <mat-hint></mat-hint>
                     </mat-form-field>
                     <div  class="form-group">
-                      <div class="col-lg12 text-right" style="z-index: 10;margin-top:0px ;">
+                      <form (submit)="setURLToBox($event)">
+                        <div class="col-lg8 " style="z-index: 10;margin-top:0px ;">
 
-                        <button mat-fab class="btn btn-primary" type="submit" [disabled]="loading" >
+                          <button mat-fab class="btn btn-primary"  type="submit" [disabled]="loading" >
 
 
-                          <div class='{{!loading?"viewable": "nonviewable"}}' > <i class="fas fa-book-open"></i></div>
-                          <div class='{{loading?"viewable": "nonviewable"}}'><span  class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                            </div>
-                        </button>
-                      </div>
+                            <div class='{{!loading?"viewable": "nonviewable"}}'  > <i class="fas fa-book-open"></i></div>
+                            <div class='{{loading?"viewable": "nonviewable"}}'><span  class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                              </div>
+                          </button>
+                        </div>
+                      </form>
                     </div>
                   </mat-card>
 
                   <br>
-                </div>-->
+                </div>
               <h1 class="miniText2"></h1><br>
               <br>
             </div>
@@ -113,7 +116,7 @@
     </div>
     <ng-template #pagina1>
       <div *ngIf='page=="1" else pagina2'>
-        <app-querysingledoc></app-querysingledoc>
+        <app-querysingledoc [inpu]="url" (requestMake)="handleRequest($event)"  (queryValue)="handleValueQuery($event)" (loaded)="handleLoaded($event)" ></app-querysingledoc>
 
 
       </div>
