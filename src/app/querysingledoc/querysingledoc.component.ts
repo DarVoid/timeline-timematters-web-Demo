@@ -1,10 +1,10 @@
 import { GetarticleService } from "./../services/getarticle.service";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { TimelineService } from "../services/timeline.service";
 import { take } from "rxjs/operators";
 import { LangdetectService } from "../services/langdetect.service";
-import * as data from '../../assets/data.json';
+import * as data from "../../assets/data.json";
 
 @Component({
   selector: "app-querysingledoc",
@@ -12,6 +12,9 @@ import * as data from '../../assets/data.json';
   styleUrls: ["./querysingledoc.component.scss"],
 })
 export class QuerysingledocComponent implements OnInit {
+  @Output() loaded: EventEmitter<any> = new EventEmitter();
+  @Output() queryValue: EventEmitter<any> = new EventEmitter();
+  @Output() requestMake: EventEmitter<any> = new EventEmitter();
   public url: string;
   public artigo: any;
   public algoritmosDate: Array<any>;
@@ -56,9 +59,9 @@ export class QuerysingledocComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private _langDetec: LangdetectService
   ) {
-    this.data = data
-    this.data = this.data.default.data
-    this.mudou=false;
+    this.data = data;
+    this.data = this.data.default.data;
+    this.mudou = false;
     //
     this.right = "right";
     this.algoritmosDate = [
@@ -116,25 +119,27 @@ export class QuerysingledocComponent implements OnInit {
     this.requestMade = false;
     this.hiddenoptionTM = false;
     this.TH = 0.05;
-    this.url =
-    "";
-
+    this.url = "";
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  ngOnChanges() {
+    this.requestMade = false;
+    this.requestMake.emit(this.requestMade);
+    this.loaded.emit(this.loading);
     if (this.inpu) {
+      this.setURL2(this.inpu);
     } else {
-      this.url =
-        "";
+      this.url = "";
       //https://sicnoticias.pt/pais/2016-07-07-Cronologia-do-processo-Casa-Pia
       //https://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/
     }
-    console.log("DATA BOA")
-    console.log(this.data)
+    console.log("DATA BOA");
+    console.log(this.data);
   }
   goBack() {
-    this.mudou=false;
-    this.antigo=''
+    this.mudou = false;
+    this.antigo = "";
     //this.algoritmoSelected = this.algoritmosDate[0];
     this.dateGranularitySelected = this.dateGranularityOptions[0];
     //this.documentTypeSelected = this.documentTypeOptions[0];
@@ -155,6 +160,7 @@ export class QuerysingledocComponent implements OnInit {
     this.hiddenoption = false;
     this.loading = false;
     this.requestMade = false;
+    this.requestMake.emit(this.requestMade)
     this.hiddenoptionTM = false;
     //this.TH=0.05;
   }
@@ -269,11 +275,12 @@ export class QuerysingledocComponent implements OnInit {
     event.preventDefault();
     console.log(event.target.value);
     this.url = event.target.value;
+    this.queryValue.emit(this.url);
   }
   setURL2(valor) {
-    this.url = valor
-    this.inpu = valor
-    this.showArticle2()
+    this.url = valor;
+    this.queryValue.emit(this.url);
+    this.showArticle2();
   }
   maxSimba(event: any) {
     console.log("simba");
@@ -340,15 +347,16 @@ export class QuerysingledocComponent implements OnInit {
   }
 
   showArticle(event: any) {
-
     event.preventDefault();
-    window.scroll(0,0);
+    window.scroll(0, 0);
     this.showArticle2();
   }
   showArticle2() {
     this.loading = true;
+    this.loaded.emit(true);
     if (this.inpu) {
       this.url = this.inpu;
+      this.queryValue.emit(this.url);
     }
     this.update();
     let sizeOfURL1 = "https://arquivo.pt/noFrame/replay/".length;
@@ -372,16 +380,18 @@ export class QuerysingledocComponent implements OnInit {
       console.log("data");
       console.log(this.documentCreationTime);
       this.mudou = true;
-      this.antigo = this.url
-      this.url= "https://arquivo.pt/noFrame/replay/" + this.url.substring(sizeOfURL2, this.url.length)
+      this.antigo = this.url;
+      this.url =
+        "https://arquivo.pt/noFrame/replay/" +
+        this.url.substring(sizeOfURL2, this.url.length);
     }
     this.article
       .getArticles(this.url)
       .pipe(take(1))
       .subscribe(
         (res) => {
-          if(this.mudou){
-            this.url = this.antigo
+          if (this.mudou) {
+            this.url = this.antigo;
           }
           if (res) {
             console.log(res);
@@ -394,12 +404,12 @@ export class QuerysingledocComponent implements OnInit {
             } else {
               // tslint:disable-next-line: max-line-length
               let month: number = new Date().getMonth();
-              let month_string=''
+              let month_string = "";
 
               if (month * 1 < 10) {
-                month_string = "0" + (month+1);
-              }else{
-                month_string =  (month+1)+'';
+                month_string = "0" + (month + 1);
+              } else {
+                month_string = month + 1 + "";
               }
               let day: any = new Date().getDate();
               if (day * 1 < 10) {
@@ -440,13 +450,9 @@ export class QuerysingledocComponent implements OnInit {
                 break;
               default:
                 console.log(res);
-                this._snackBar.open(
-                  "Linguagem vai ser detectada: ",
-                  res.lang,
-                  {
-                    duration: 2000,
-                  }
-                );
+                this._snackBar.open("Linguagem vai ser detectada: ", res.lang, {
+                  duration: 2000,
+                });
                 //auto-dete
                 this._langDetec
                   .getLanguageFromContent(this.artigo.content)
@@ -513,32 +519,26 @@ export class QuerysingledocComponent implements OnInit {
 
                   // pedido recebido aqui
                   if (res.message) {
-                    this._snackBar.open(
-                      "API não retornou resultados utilizáveis 😞:",
-                      this.artigo.content.length,
-                      {
-                        duration: 4000,
-                      }
-                    );
                     this.requestMade = false;
+                    this.requestMake.emit(this.requestMade)
                     this.loading = false;
+                    this.loaded.emit(false);
                     return " ";
                   }
                   if (res.length == 0) {
-                    this._snackBar.open(
-                      "Sem dados para mostrar",
-                      "😭",
-                      {
-                        duration: 2000,
-                      }
-                    );
+                    this._snackBar.open("Sem dados para mostrar", "😭", {
+                      duration: 2000,
+                    });
                     this.requestMade = false;
+                    this.requestMake.emit(this.requestMade)
                     this.loading = false;
+                    this.loaded.emit(false);
                     return " ";
                   }
                   this.requestMade = true;
                   this.update();
                   this.loading = false;
+                  this.loaded.emit(false);
 
                   return " ";
                 } else {

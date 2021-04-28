@@ -21,12 +21,17 @@ export class WordcloudComponent implements OnInit {
       this.showWhatsup()
     }
   }
+  ngAfterViewChecked(){
+
+  }
   showWhatsup(){
     let texto =  this.args.TextNormalized
+    console.log(texto)
 
     this._yake.getKeywords2(texto).pipe(take(1))
     .subscribe((res) => {
       if(res){
+
           let gg = res.keywords
           this.keywords = gg
           let arrayOfStuffs=[]
