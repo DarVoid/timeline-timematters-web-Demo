@@ -150,11 +150,11 @@ export class QueryComponent implements OnChanges {
     let last = "";
     this.numero_total = this.options.result.TempExpressions.length;
     this.numero_total2 = this.options.result.TempExpressions.filter((cada) => {
-      return cada[1] > 0.35;
+      return cada[1] > 0.5;
     }).length;
     this.numero_total = this.options.result.TempExpressions.length;
     this.numero_total2 = this.options.result.TempExpressions.filter((cada) => {
-      return this.options.result.Score[cada[0].toLowerCase()][0] > 0.35;
+      return this.options.result.Score[cada[0].toLowerCase()][0] > 0.5;
     }).length;
     //console.log(this.numero_total);
 
@@ -198,7 +198,7 @@ export class QueryComponent implements OnChanges {
           last = element[0];
           const a = element[0].toLowerCase() + "";
           // console.log(a);
-          return this.options.result.Score[a][0] > 0.35;
+          return this.options.result.Score[a][0] > 0.5;
         }
       );
     } else {
@@ -216,7 +216,7 @@ export class QueryComponent implements OnChanges {
         Object.keys(this.options.result.SentencesTokens).map((kolp) => {
           console.log(kolp);
           if (this.options.result.Score[kelp][kolp + ""]) {
-            if (this.options.result.Score[kelp][kolp + ""][0] > 0.35) {
+            if (this.options.result.Score[kelp][kolp + ""][0] > 0.5) {
               total2++;
               console.log(this.options.result.Score[kelp][kolp + ""][0]);
               console.log(this.options.result.Score[kelp][kolp + ""]);
@@ -343,7 +343,7 @@ export class QueryComponent implements OnChanges {
         if (
           this.options.result.Score[
             Object.keys(this.options.result.Score)[i]
-          ][0] > 0.35
+          ][0] > 0.5
         ) {
           a =
             '<p class="noticem4">Score: ' +
@@ -421,7 +421,7 @@ export class QueryComponent implements OnChanges {
           if (
             this.options.result.Score[
               Object.keys(this.options.result.Score)[i]
-            ][xd][0] > 0.35
+            ][xd][0] > 0.5
           ) {
             // tslint:disable-next-line: whitespace
             // tslint:disable-next-line: max-line-length
@@ -487,7 +487,7 @@ export class QueryComponent implements OnChanges {
       // console.log(b);
       // console.log("end");
       let nop = d.filter((a) => {
-        return a.y > 0.35;
+        return a.y > 0.5;
       });
       c2.push({ x: b, y: a2, z: nop });
       c.push({ x: b, y: a, z: d });

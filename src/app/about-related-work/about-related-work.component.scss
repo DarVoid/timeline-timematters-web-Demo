@@ -1,6 +1,4 @@
-* {
-  font-family: "Nexa Bold", cursive !important;
-  }
+
 
   .fundo {
     background-color: #e8e3e3;
@@ -9,6 +7,27 @@
 
   .jumbotron {
     background: linear-gradient(to bottom, rgba(0,64,107,0.5) 0%,rgba(0,64,107,0.89) 100%);
+  }
+  .miniText {
+    font-size: 35px;
+    font-family: "Nexa Bold", cursive ;
+    margin-bottom: 0;
+    color: #ffffff;
+    background-color: #033F72;
+    padding-left: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .miniText2 {
+    font-size: 17px;
+    font-family: 'Work Sans', sans-serif;
+    margin-bottom: 0;
+    color: #ffffff;
+    background-color: #033F72;
+    padding-left: 20px;
+    display: flex;
+    justify-content: center;
   }
 
   .text {

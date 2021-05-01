@@ -1,5 +1,5 @@
 * {
-  font-family: "Nexa Bold", cursive !important;
+  //font-family: "Nexa Bold", cursive !important;
   color: #ffffff;
 }
 .fundo {
@@ -8,6 +8,28 @@
 .titulo_preto{
   color: black;
 }
+.miniText {
+  font-size: 35px;
+  font-family: "Nexa Bold", cursive ;
+  margin-bottom: 0;
+  color: #ffffff;
+  background-color: #033F72;
+  padding-left: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.miniText2 {
+  font-size: 17px;
+  font-family: 'Work Sans', sans-serif;
+  margin-bottom: 0;
+  color: #ffffff;
+  background-color: #033F72;
+  padding-left: 20px;
+  display: flex;
+  justify-content: center;
+}
+
 
 .knowTeam {
   font-size: 30px;

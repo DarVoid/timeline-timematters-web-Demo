@@ -120,7 +120,7 @@ export class FrameComponent implements OnInit, OnChanges {
           });
 
           indice++;
-          if (this.showOnlyRelevants && cor === "black") {
+          if (this.showOnlyRelevants && (cor === "black" || cor === "green")) {
             x = x; //textoAEscrever;
           } else {
             x = //
@@ -158,7 +158,7 @@ export class FrameComponent implements OnInit, OnChanges {
           console.log(repl_sentence[1]);
           console.log(x);
           indice++;
-          if (this.showOnlyRelevants && objecto[0].cor === "black") {
+          if (this.showOnlyRelevants && (objecto[0].cor === "black"||objecto[0].cor === "green")) {
             repl_sentence = repl_sentence; //textoAEscrever;
           } else {
             repl_sentence = //
@@ -313,7 +313,7 @@ export class FrameComponent implements OnInit, OnChanges {
               console.log(cor);
 
               if (this.showOnlyRelevants) {
-                if (cor === "black") {
+                if (cor === "black" || cor === "green") {
                   x = textoAEscrever;
                 } else {
                   x =

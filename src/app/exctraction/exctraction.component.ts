@@ -478,7 +478,7 @@ export class ExctractionComponent implements OnInit {
     let last = "";
     this.numero_total = this.result.TempExpressions.length;
     this.numero_total2 = this.result.TempExpressions.filter((cada) => {
-      return this.result.Score[cada[0].toLowerCase()][0] > 0.35;
+      return this.result.Score[cada[0].toLowerCase()][0] > 0.5;
     }).length;
     console.log(this.numero_total);
     last = "";
@@ -514,7 +514,7 @@ export class ExctractionComponent implements OnInit {
               console.log(this.result.Score[element[0].toLowerCase()]);*/
           const a = element[0].toLowerCase() + "";
           // console.log(a);
-          return this.result.Score[a][0] > 0.35;
+          return this.result.Score[a][0] > 0.5;
         }
       );
     } /**else docOrSentence */ else {
@@ -533,7 +533,7 @@ export class ExctractionComponent implements OnInit {
         Object.keys(this.result.SentencesTokens).map((kolp) => {
           console.log(kolp);
           if (this.result.Score[kelp][kolp + ""]) {
-            if (this.result.Score[kelp][kolp + ""][0] > 0.35) {
+            if (this.result.Score[kelp][kolp + ""][0] > 0.5) {
               total2++;
               console.log(this.result.Score[kelp][kolp + ""][0]);
               console.log(this.result.Score[kelp][kolp + ""]);
@@ -641,7 +641,7 @@ export class ExctractionComponent implements OnInit {
           "</p><p>" +
           sentence_to_write +
           "</p>";
-        if (this.result.Score[Object.keys(this.result.Score)[i]][0] > 0.35) {
+        if (this.result.Score[Object.keys(this.result.Score)[i]][0] > 0.5) {
           a =
             '<p class="noticem4">Score: ' +
             this.result.Score[Object.keys(this.result.Score)[i]][0] +
@@ -694,7 +694,7 @@ export class ExctractionComponent implements OnInit {
           // tslint:disable-next-line: whitespace
           // tslint:disable-next-line: max-line-length
           if (
-            this.result.Score[Object.keys(this.result.Score)[i]][xd][0] > 0.35
+            this.result.Score[Object.keys(this.result.Score)[i]][xd][0] > 0.5
           ) {
             // tslint:disable-next-line: whitespace
             // tslint:disable-next-line: max-line-length
