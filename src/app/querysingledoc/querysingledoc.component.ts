@@ -280,7 +280,6 @@ export class QuerysingledocComponent implements OnInit {
   }
   setURL2(valor) {
     this.url = valor;
-    this.queryValue.emit(this.url);
     this.showArticle2();
   }
   maxSimba(event: any) {

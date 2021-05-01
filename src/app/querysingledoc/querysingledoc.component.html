@@ -7,9 +7,10 @@
       <h1 class="miniText2">
         Crie e visualize  narrativas a partir de arquivos da web
       </h1>
-    </div><br>
+    </div><br><br>
 </div>
 <div style="background-color: #033F72 "><br ></div>
+<div *ngIf="!requestMade "></div>
 <div *ngIf="!requestMade " style="width: 100%;background-color: #033F72 ;display: flex;justify-content: center;">
 
   <form style="width: 100%;justify-content: center;" (submit)="showArticle($event)" >
@@ -17,29 +18,10 @@
 
       <div class="col-lg-12 ">
         <div class="form-group"  style="display:flex;justify-content: center;">
-         <mat-card class="col-lg-8 example-almost-width">
-            <br><mat-form-field  class="example-full-width">
+          <div class="example-almost-width">
+            <input [disabled]="loading" value="{{inpu?inpu:url}}" (change)="setURL($event)" type="text" class="form-control" id="narrativaURL"  placeholder="Insira URL...">
+          </div>
 
-              <mat-label>Criar narrativa a partir de URL</mat-label>
-              <input [disabled]="loading" appearance="outline" value="{{inpu?inpu:url}}" name="stuff" matInput (change)="setURL($event)">
-              <mat-hint></mat-hint>
-            </mat-form-field>
-            <div class="form-group">
-              <div class="col-lg12 text-right" style="z-index: 10;margin-right:-3px ;margin-top:-55px ;">
-
-                <button mat-fab class="btn btn-primary" type="submit" [disabled]="loading" >
-
-
-                  <div class='{{!loading?"viewable": "nonviewable"}}' > <i class="fas fa-book-open"></i></div>
-                  <div class='{{loading?"viewable": "nonviewable"}}'><span  class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                    </div>
-                </button>
-              </div>
-            </div>
-            <div class="col-lg-16 text-center">
-
-            </div>
-          </mat-card>
           <br>
 
         </div>
@@ -49,6 +31,7 @@
     </div>
   </form>
 </div><br>
+<div   class='{{loading?"viewable": "nonviewable"}}'><mat-progress-bar mode="indeterminate"></mat-progress-bar></div>
 <div *ngIf="!requestMade else mostra" >
 
 <br>
