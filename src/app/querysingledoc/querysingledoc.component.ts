@@ -288,9 +288,7 @@ export class QuerysingledocComponent implements OnInit {
   setURL2(valor) {
     this.url = valor;
     this.showArticle2();
-    this._snackBar.open("A criar narrativa, pode demorar algum tempo ", "", {
-      duration: 3500,
-    });
+
   }
   maxSimba(event: any) {
     console.log("simba");
