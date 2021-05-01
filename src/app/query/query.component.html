@@ -32,7 +32,7 @@
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
                 <mat-slide-toggle [checked]="!withKeywords" class="afterAnnotated" color="warn" (toggleChange)="toggleKeywords()">Keywords?</mat-slide-toggle>
                 <br>
-                <mat-slide-toggle class="afterAnnotated" color="warn" [checked]="showOnlyRel" (toggleChange)="toggleRel()">Apenas datas relevantes?</mat-slide-toggle>
+                <mat-slide-toggle *ngIf="datasetFixed.length != datasetFixed.length" class="afterAnnotated" color="warn" [checked]="showOnlyRel" (toggleChange)="toggleRel()">Apenas datas relevantes?</mat-slide-toggle>
                 <!--EM CIMA-->
                 <br>
                 <br>

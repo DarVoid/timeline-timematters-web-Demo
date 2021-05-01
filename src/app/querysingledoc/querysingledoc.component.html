@@ -1,15 +1,13 @@
-<div style="background-color: #033F72 ">
-  <div class="headliner">
+<div style="display:flex; justify-content: center; background-color: #033F72; ">
+
     <br>
-      <h1 class="miniText">
+      <!--<h1 class="miniText">
         narrArquivo
-      </h1><br>
-      <h1 class="miniText2">
-        Crie e visualize  narrativas a partir de arquivos da web
-      </h1>
-    </div><br><br>
+      </h1>-->
+      <img style="width: 300px; " src="../../assets/narrArquivogran.png"/>
+      <br/><br><br>
 </div>
-<div style="background-color: #033F72 "><br ></div>
+<div style="background-color:rgba(3, 63, 114, 1) "><br ></div>
 <div *ngIf="!requestMade "></div>
 <div *ngIf="!requestMade " style="width: 100%;background-color: #033F72 ;display: flex;justify-content: center;">
 
@@ -31,13 +29,13 @@
     </div>
   </form>
 </div><br>
-<div   class='{{loading?"viewable": "nonviewable"}}'><mat-progress-bar mode="indeterminate"></mat-progress-bar></div>
 <div *ngIf="!requestMade else mostra" >
 
 <br>
-<h1 class="miniText3">As nossas narrativas:</h1>
+<h1 *ngIf="!loading" class="miniText3" style="margin-left: 40px;">As nossas narrativas:</h1>
 <br>
-  <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-left: 5%;margin-right: 5%; overflow-x: auto;" >
+  <div *ngIf="!loading else spinner" style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-left: 5%;margin-right: 5%; overflow-x: auto;" >
+
     <div *ngFor="let item of data" title="{{item.caption}}" type="submit" >
       <mat-card  class="example-card cardBig" (click)="!loading?setURL2(item.link):''">
         <mat-card-header>
@@ -58,6 +56,13 @@
       </mat-card>
     </div>
   </div>
+  <ng-template #spinner >
+
+    <div style="display:flex;align-items: center; justify-content: center;">
+      <p>criar narrativa para o url: {{url}}</p> <br/><p>Pode demorar algum tempo...</p><br/>
+      <img src="../../assets/loading.gif"/>
+    </div>
+  </ng-template>
 
 
 </div>

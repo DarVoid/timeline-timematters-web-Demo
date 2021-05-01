@@ -7,6 +7,7 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar class="navSideTitle">narrArquivo</mat-toolbar>
+
     <mat-nav-list>
       <a mat-list-item class="mat-list-item" (click)='changePage("1")' href="/"> Início <span class="material-icons">home</span></a>
       <a mat-list-item class="mat-list-item" [matMenuTriggerFor]="menu1"> Narrativa  <i style="margin-left: 5px;" class="fas fa-book-open"> </i></a>
@@ -58,47 +59,7 @@
 
 
 
-    <section class="NavSection">
-      <div class="layout">
-        <div class="layout-row">
-          <div class="layout-col">
-            <div>
-              <br>
-                <!--<br>
-                <div style="display: flex; justify-content: center;" *ngIf='page=="1" && !requestMade' >
 
-                  <mat-card class="example-almost-width" style="display: flex; justify-content: center;">
-                    <mat-form-field  class="example-full-width">
-
-                      <mat-label>Criar narrativa a partir de URL</mat-label>
-                      <input [disabled]="loading" #URLst (change)="setURLNonDef($event)"  value="{{url}}" matInput >
-                      <mat-hint></mat-hint>
-                    </mat-form-field>
-                    <div  class="form-group">
-                      <form (submit)="setURLToBox($event)">
-                        <div class="col-lg8 " style="z-index: 10;margin-top:0px ;">
-
-                          <button mat-fab class="btn btn-primary"  type="submit" [disabled]="loading" >
-
-
-                            <div class='{{!loading?"viewable": "nonviewable"}}'  > <i class="fas fa-book-open"></i></div>
-                            <div class='{{loading?"viewable": "nonviewable"}}'><span  class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                              </div>
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                  </mat-card>
-
-                  <br>
-                </div>
-              <h1 class="miniText2"></h1><br>
-              <br>-->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
 
     <div *ngIf='page=="0" else pagina1'>
@@ -107,7 +68,7 @@
     </div>
     <ng-template #pagina1>
       <div *ngIf='page=="1" else pagina2'>
-        <app-querysingledoc [inpu]="url" (requestMake)="handleRequest($event)"  (queryValue)="handleValueQuery($event)" (loaded)="handleLoaded($event)" ></app-querysingledoc>
+        <app-querysingledoc [dostuffs]="dostuff" [inpu]="url" (requestMake)="handleRequest($event)"  (queryValue)="handleValueQuery($event)" (loaded)="handleLoaded($event)" ></app-querysingledoc>
 
 
       </div>

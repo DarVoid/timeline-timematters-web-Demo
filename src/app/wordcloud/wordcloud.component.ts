@@ -31,7 +31,6 @@ export class WordcloudComponent implements OnInit {
     this._yake.getKeywords2(texto).pipe(take(1))
     .subscribe((res) => {
       if(res){
-
           let gg = res.keywords
           this.keywords = gg
           let arrayOfStuffs=[]

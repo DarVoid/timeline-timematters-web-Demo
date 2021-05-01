@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   public page: string;
   public loading: boolean;
   public url: string;
+  public dostuff: string;
   public requestMade: boolean;
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
@@ -46,8 +47,13 @@ export class HomeComponent implements OnInit {
     //this.openDialog();
   }
   changePage(pagina: string) {
+    console.log(pagina)
+    console.log(this.page)
     if (pagina == "1") {
-      this.router.navigate([""]);
+      if (pagina == this.page) {
+        this.dostuff+="1"
+        this.router.navigate(["/"]);
+      }
     }
     console.log(pagina);
     this.page = pagina;

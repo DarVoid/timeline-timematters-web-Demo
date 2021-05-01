@@ -41,6 +41,7 @@ export class QuerysingledocComponent implements OnInit {
   public hiddenoption: boolean;
   public requestMade: boolean;
   public loading: boolean;
+  public loading2: boolean;
   public documentCreationTime: string;
   public opcoes: any;
   public scheduler: any;
@@ -52,6 +53,7 @@ export class QuerysingledocComponent implements OnInit {
   public right: string;
   public data: any;
   @Input() inpu: any;
+  @Input() dostuffs: string;
 
   constructor(
     private article: GetarticleService,
@@ -59,6 +61,7 @@ export class QuerysingledocComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private _langDetec: LangdetectService
   ) {
+    this.loading2 =false
     this.data = data;
     this.data = this.data.default.data;
     this.mudou = false;
@@ -137,6 +140,10 @@ export class QuerysingledocComponent implements OnInit {
     console.log(this.data);
   }
   ngOnChanges() {
+    if(this.dostuffs){
+      this.goBack();
+
+    }
   }
   goBack() {
     this.mudou = false;
@@ -281,6 +288,9 @@ export class QuerysingledocComponent implements OnInit {
   setURL2(valor) {
     this.url = valor;
     this.showArticle2();
+    this._snackBar.open("A criar narrativa, pode demorar algum tempo ", "", {
+      duration: 3500,
+    });
   }
   maxSimba(event: any) {
     console.log("simba");
