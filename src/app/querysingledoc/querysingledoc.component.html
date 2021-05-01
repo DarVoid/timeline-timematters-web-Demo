@@ -48,31 +48,33 @@
       </div>
     </div>
   </form>
-</div>
-<div *ngIf="!requestMade else mostra" style="display: flex;flex-wrap: wrap; justify-content:space-around;margin-top: 20px;margin-right: 10%;margin-left: 10%;">
+</div><br>
+<div *ngIf="!requestMade else mostra" >
 
 <br>
 <br>
+  <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-left: 5%;margin-right: 5%; overflow-x: auto;" >
+    <div *ngFor="let item of data" title="{{item.caption}}" type="submit" >
+      <mat-card  class="example-card cardBig" (click)="!loading?setURL2(item.link):''">
+        <mat-card-header>
+          <div mat-card-avatar  style="background-image: url('../../assets/{{item.fotoPequena}}');"  class="example-header-image"></div>
+          <mat-card-title>{{item.title}}</mat-card-title>
+          <mat-card-subtitle>{{item.byX}}</mat-card-subtitle>
+          <mat-card-subtitle>      {{item.date}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image  class="fotoCard"  src="../../assets/{{item.fotoGrande}}" alt="{{item.title}}">
+        <mat-card-content>
+          <p style="flex-wrap: nowrap;">
+            {{item.snippet}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
 
-  <div *ngFor="let item of data" title="{{item.caption}}" type="submit" style="justify-content: space-between; ">
-    <mat-card  class="example-card cardBig" (click)="!loading?setURL2(item.link):''">
-      <mat-card-header>
-        <div mat-card-avatar  style="background-image: url('../../assets/{{item.fotoPequena}}');"  class="example-header-image"></div>
-        <mat-card-title>{{item.title}}</mat-card-title>
-        <mat-card-subtitle>{{item.byX}}</mat-card-subtitle>
-        <mat-card-subtitle>      {{item.date}}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image  class="fotoCard"  src="../../assets/{{item.fotoGrande}}" alt="{{item.title}}">
-      <mat-card-content>
-        <p style="flex-wrap: nowrap;">
-          {{item.snippet}}
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-
-      </mat-card-actions>
-    </mat-card>
+        </mat-card-actions>
+      </mat-card>
+    </div>
   </div>
+
 
 </div>
 
