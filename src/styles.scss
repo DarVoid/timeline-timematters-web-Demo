@@ -21,7 +21,7 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
   margin-right: 0px !important;
 }
 .black{
-  background-color:rgb(181, 11, 11) !important;
+  background-color:rgb(3, 63, 114) !important;
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
@@ -32,13 +32,13 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 
 }
 .green{
-  background-color:rgba(181, 11, 11, 0.6) !important;
+  background-color:rgba(3, 63, 114, 1) !important;
   margin-left: 0px !important;
   margin-right: 0px !important;
 
 }
 .red{
-  background-color:#a33a14 !important;
+  background-color:#033F72 !important;
   margin-left: 0px !important;
   margin-right: 0px !important;
 
@@ -257,7 +257,7 @@ a:active.naoBranco {
 }
 
 section.NavSection {
-  background-color: #d10019;
+  background-color: #033F72;
   padding-bottom: 10px;
 }
 
@@ -290,7 +290,7 @@ $app-theme: mat-dark-theme($app-primary, $app-accent);
     position: sticky;
     top: 0;
     z-index: 9;
-    background-color: #d10019;
+    background-color: #033F72;
   }
 
 

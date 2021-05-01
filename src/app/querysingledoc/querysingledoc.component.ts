@@ -418,7 +418,6 @@ export class QuerysingledocComponent implements OnInit {
               }
               this.documentCreationTime =
                 new Date().getFullYear() + "-" + month_string + "-" + day;
-              alert(this.documentCreationTime);
             }
             switch (res.lang) {
               case "en":
