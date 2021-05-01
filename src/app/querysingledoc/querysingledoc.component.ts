@@ -451,7 +451,7 @@ export class QuerysingledocComponent implements OnInit {
                 break;
               default:
                 console.log(res);
-                this._snackBar.open("Linguagem vai ser detectada: ", res.lang, {
+                this._snackBar.open("O idioma vai ser detetado: ", res.lang, {
                   duration: 2000,
                 });
                 //auto-dete

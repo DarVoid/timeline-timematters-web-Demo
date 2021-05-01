@@ -49,13 +49,9 @@
       <div class="divider"></div>
       <button mat-menu-item class="mat-menu-item" (click)='changePage("5")' ngbDropdownItem> Artigos Científicos <i class="fas fa-book-open"></i></button>
       <div class="divider"></div>
-      <button mat-menu-item class="mat-menu-item">
-        <a target="_blank" href="https://github.com/liaad/time-matters"> GitHub <i class="fab fa-github" aria-hidden="true"></i></a>
-      </button>
-      <div class="divider"></div>
-      <button  mat-menu-item class="mat-menu-item" >
-        <a  target="_blank" href="http://time-matters.inesctec.pt/api"> API <i class="fas fa-laptop-code"></i></a>
-      </button>
+      <a target="_blank" href="https://github.com/liaad/time-matters"><button mat-menu-item class="mat-menu-item">
+        GitHub <i class="fab fa-github" aria-hidden="true"></i>
+      </button></a>
 
 
     </mat-menu>
@@ -66,7 +62,7 @@
       <div class="layout">
         <div class="layout-row">
           <div class="layout-col">
-            <div class="headliner">
+            <div>
               <br>
                 <!--<br>
                 <div style="display: flex; justify-content: center;" *ngIf='page=="1" && !requestMade' >

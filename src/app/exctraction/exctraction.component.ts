@@ -902,7 +902,7 @@ export class ExctractionComponent implements OnInit {
         .pipe(take(1))
         .subscribe((res) => {
           if (res) {
-            this._snackBar.open("Linguagem Detectada: ", res.lang, {
+            this._snackBar.open("Idioma detetado: ", res.lang, {
               duration: 2000,
             });
           } else {
@@ -937,7 +937,7 @@ export class ExctractionComponent implements OnInit {
               this.languagueSelected = "Spanish";
               break;
             default:
-              this._snackBar.open("Linguagem não suportada: ", res.lang, {
+              this._snackBar.open("Idioma não suportada: ", res.lang, {
                 duration: 2000,
               });
               break;
