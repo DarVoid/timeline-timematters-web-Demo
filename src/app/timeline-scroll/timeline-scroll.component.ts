@@ -689,6 +689,8 @@ export class TimelineScrollComponent implements OnInit {
           //  return elemento
           //});
           this.loading = false;
+          console.log("DEBUG")
+          console.log(this.events)
           j = { events: this.events };
           this.jsonText = j;
           console.log(j);
@@ -702,7 +704,7 @@ export class TimelineScrollComponent implements OnInit {
           // tslint:disable-next-line: no-unused-expression
           new TL.Timeline("my-timeline", j, additionalOptions);
           return;
-        }, 2500); //wait ten seconds before continuing
+        }, 3500); //wait ten seconds before continuing
       }
       console.log(
         this.argumentos[h].y
