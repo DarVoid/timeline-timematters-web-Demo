@@ -24,15 +24,15 @@
     <p class="p1">Esta plataforma foi desenvolvida por Ricardo Campos, docente do Instituto Politécnico de Tomar (IPT) e investigador do INESC TEC e do Ci2 - Centro de Investigação em Cidades Inteligentes, Jorge Duque, aluno do Instituto Politécnico de Tomar (IPT), Alípio Jorge, docente na Faculdade de Ciências da Universidade do Porto (UP) e coordenador do LIAAD INESC TEC, Gaël Dias, docente da Universidade de Caën, e Célia Nunes, docente da Universidade da Beira Interior (UBI), investigadora do Centro de Matemática e Aplicações (CMA – UBI) e colaboradora do Centro de Matemática e Aplicações (CMA), FCT Nova
     </p>
     <p class="p1">
-      O logótipo do narrArquivo foi desenvolvido por Rúben Marques Pedro, designer de produto e gráfico. Parte do seu portfolio pode ser visto em: <a href="https://www.coroflot.com/ruben_m_pedro" class="preto"  target="_blank">Ruben Marques Pedro, Product & Graphic Designer in Porto, Portugal</a>
+      O logótipo do narrArquivo foi desenvolvido por Rúben Marques Pedro, designer de produto e gráfico. Parte do seu portfolio pode ser visto em: <u><a href="https://www.coroflot.com/ruben_m_pedro" class="naoBranco"  target="_blank">Ruben Marques Pedro, Product & Graphic Designer in Porto, Portugal</a></u>
     </p><br>
     <mat-divider></mat-divider><br><br>
     <!---->
     <div style="display: flex;justify-content: space-around;flex-wrap: wrap;">
-      <div style="flex-wrap: no-wrap;" *ngFor="let item of data" title="{{item.caption}}" type="submit" >
+      <div style="flex-wrap: no-wrap;" *ngFor="let item of data" title="{{item.caption}}" >
         <mat-card  class="example-card cardBig" >
           <mat-card-header>
-            <mat-card-title><a class="preto">{{item.title}}</a></mat-card-title>
+            <mat-card-title><span class="preto">{{item.title}}</span></mat-card-title>
 
           </mat-card-header>
           <img  mat-card-image  class="fotoCard"  src="../../assets/{{item.fotoGrande}}" alt="{{item.title}}">
