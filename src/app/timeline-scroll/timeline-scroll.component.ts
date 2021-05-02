@@ -112,7 +112,9 @@ export class TimelineScrollComponent implements OnInit {
       this.argumentos = this.argumentosRelevantes;
     } else {
       this.argumentos = this.argumentosTodos;
+
     }
+    console.log(this.argumentos)
     this.loading = true;
     this.update();
   }

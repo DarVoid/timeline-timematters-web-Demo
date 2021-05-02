@@ -62,10 +62,10 @@ export class YakeService {
     return this.http.post(realURL, formData).pipe(
       map((res, err) => {
         if (res) {
-          console.log(res);
+         // console.log(res);
           return res;
         } else {
-          console.log(err);
+         // console.log(err);
           return err;
         }
       })

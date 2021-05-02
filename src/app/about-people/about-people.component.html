@@ -38,15 +38,15 @@
   </div>
 </div>
 <br>
-<div style="display: flex;justify-content: center;flex-wrap: wrap;">
-  <div *ngFor="let item of data" >
+<div style="display: flex;justify-content: center;flex-wrap: wrap; ">
+  <div style="margin-left: 10px;margin-right: 10px;display: flex;justify-content: space-between;flex-direction: column;align-items: center;" *ngFor="let item of data" >
 
-      <img  mat-card-image  class="fotoCard"  src="../../assets/{{item.fotoGrande}}" alt="{{item.title}}">
+      <img  class="fotoCard"  src="../../assets/{{item.fotoGrande}}">
 
-      <div style="justify-content: center;">
+      <div style="color:#000;margin-top: 8px;font-size: 16pt; justify-content: center;text-align: center;">
         {{item.firstName}} {{item.lastName}}<br>
-        <a class="preto" *ngFor="let item2 of item.links" target="_blank" href="{{item2.link}}">
-          <button class="btn" ><a  class="preto"[innerHTML]="item2.icon  | safe:'html'"></a> </button>
+        <a style="color:#000;" *ngFor="let item2 of item.links" target="_blank" href="{{item2.link}}">
+          <button class="btn" ><a  style="color:#000;" [innerHTML]="item2.icon  | safe:'html'"></a> </button>
         </a>
       </div>
 

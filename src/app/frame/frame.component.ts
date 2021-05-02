@@ -30,16 +30,16 @@ export class FrameComponent implements OnInit, OnChanges {
     if (this.docOrSentence == "doc") {
       if (this.argumentos) {
         this.textoNormalizado = this.argumentos.TextNormalized;
-        console.log("Frame DEBUG");
-        console.log(this.argumentos.TextNormalized);
+       // console.log("Frame DEBUG");
+       // console.log(this.argumentos.TextNormalized);
         this.keywordScores = this.argumentos.RelevantKWs;
         this.dateScores = this.argumentos.Score;
         var a = [];
         var indice = 0;
         this.texto = this.textoNormalizado.replace(/<d>(.*?)<\/d>/gi, (x) => {
-          console.log("FRASE");
-          console.log(x);
-          console.log(a);
+         // console.log("FRASE");
+         // console.log(x);
+         // console.log(a);
 
           let valor = x.replace(/<d>/, "");
           valor = valor.substring(0, valor.length - 4);
@@ -145,9 +145,9 @@ export class FrameComponent implements OnInit, OnChanges {
           let objecto = a.filter((each) => {
             return each.indice == indice;
           });
-          console.log("COOKIES");
-          console.log(objecto);
-          console.log(this.argumentos.TempExpressions);
+         // console.log("COOKIES");
+         // console.log(objecto);
+         // console.log(this.argumentos.TempExpressions);
           let filteredstuff = this.argumentos.TempExpressions.filter((cada) => {
             // console.log(cada[0] )
             // console.log(objecto[0].valor )
@@ -155,8 +155,8 @@ export class FrameComponent implements OnInit, OnChanges {
           });
           let repl_sentence = filteredstuff[objecto[0].index][1];
 
-          console.log(repl_sentence[1]);
-          console.log(x);
+         // console.log(repl_sentence[1]);
+         // console.log(x);
           indice++;
           if (this.showOnlyRelevants && (objecto[0].cor === "black"||objecto[0].cor === "green")) {
             repl_sentence = repl_sentence; //textoAEscrever;
@@ -191,7 +191,7 @@ export class FrameComponent implements OnInit, OnChanges {
         //      ][1].toString();
         //    }
         //  }
-        console.log(this.texto);
+        //console.log(this.texto);
         if (!this.keywordsMatter) {
           this.texto = this.texto.replace(/<kw>(.*?)<\/kw>/gi, (x) => {
             let valor = x.replace(/<kw>/, "");
@@ -232,7 +232,7 @@ export class FrameComponent implements OnInit, OnChanges {
         // console.log(this.dateScores);
       }
     } else {
-      console.log("por frase!");
+     // console.log("por frase!");
       if (this.argumentos) {
         // BEGIN SENTENCE CODE
         // console.log(this.argumentos.SentencesTokens);
@@ -257,19 +257,19 @@ export class FrameComponent implements OnInit, OnChanges {
               let valor = x.replace(/<d>/, "");
               valor = valor.substring(0, valor.length - 4);
               let titulo = this.dateScores[valor.toLowerCase()][fraseIndex][0];
-              console.log(titulo);
+             // console.log(titulo);
               let cor = "";
               if (titulo) {
-                console.log("titulo");
+               // console.log("titulo");
                 // console.log(titulo[Object.keys(titulo)[0].toString()]);
                 //titulo = titulo[Object.keys(titulo)[0].toString()][0];
               } else {
                 titulo = this.dateScores[valor.toLowerCase()][fraseIndex]["0"];
                 //titulo = titulo[Object.keys(titulo)[0].toString()];
-                console.log("this.dateScores");
-                console.log(
-                  this.dateScores[valor.toLowerCase()][fraseIndex]["0"]
-                );
+               // console.log("this.dateScores");
+               // console.log(
+               //   this.dateScores[valor.toLowerCase()][fraseIndex]["0"]
+               // );
               }
 
               if (titulo * 1 < 0.35 && titulo * 1 >= 0) {
@@ -304,13 +304,13 @@ export class FrameComponent implements OnInit, OnChanges {
                   x.substring(3, x.length - 4)
                 ) {
                   textoAEscrever = this.argumentos.TempExpressions[lk][1];
-                  console.log(textoAEscrever);
+                 // console.log(textoAEscrever);
                 }
               }
-              console.log("this.showOnlyRelevants");
-              console.log(this.showOnlyRelevants);
-              console.log("cor");
-              console.log(cor);
+            // console.log("this.showOnlyRelevants");
+            // console.log(this.showOnlyRelevants);
+            // console.log("cor");
+            // console.log(cor);
 
               if (this.showOnlyRelevants) {
                 if (cor === "black" || cor === "green") {

@@ -64,14 +64,14 @@ export class ArquivoService {
       realURL += "&prettyPrint=" + options.prettyPrint;
     }
 
-    console.log(realURL);
+    // console.log(realURL);
     return this.http.get(realURL).pipe(
       map((res, err) => {
         if (res) {
-          console.log(res);
+         // console.log(res);
           return res;
         } else {
-          console.log(err);
+         // console.log(err);
           return err;
         }
       })
@@ -83,10 +83,10 @@ export class ArquivoService {
     return this.http.get(realURL).pipe(
       map((res, err) => {
         if (res) {
-          console.log(res);
+         // console.log(res);
           return res;
         } else {
-          console.log(err);
+         // console.log(err);
           return err;
         }
       })

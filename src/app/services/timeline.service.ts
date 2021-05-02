@@ -27,10 +27,10 @@ export class TimelineService {
   ): Observable<any> {
     const formData = new FormData();
 
-    console.log("options");
-    console.log(options);
-    console.log("search");
-    console.log(search);
+   // console.log("options");
+   // console.log(options);
+   // console.log("search");
+   // console.log(search);
     let realURL = this.url + "/SingleDoc";
     if (options.algo === "py_heideltime") {
       realURL += "/Heideltime/api/v1.0";
@@ -83,18 +83,18 @@ export class TimelineService {
     }
     if (options.result) {
     }
-    console.log("pedido FINAL");
-    console.log(realURL);
+   // console.log("pedido FINAL");
+   // console.log(realURL);
     return this.http.post(realURL, formData).pipe(
       map((res, err) => {
         if (res) {
-          console.log("bem");
-          console.log(res);
+        //  console.log("bem");
+        //  console.log(res);
           return res;
         } else {
-          console.log("erro");
-          console.log(realURL);
-          console.log(err);
+        //  console.log("erro");
+        //  console.log(realURL);
+        //  console.log(err);
           return err;
         }
       })
@@ -108,13 +108,13 @@ export class TimelineService {
     return this.http.get(realURL).pipe(
       map((res, err) => {
         if (res) {
-          console.log("bem");
-          console.log(res);
+         // console.log("bem");
+         // console.log(res);
           return res;
         } else {
-          console.log("erro");
-          console.log(realURL);
-          console.log(err);
+         // console.log("erro");
+         // console.log(realURL);
+         // console.log(err);
           return err;
         }
       })

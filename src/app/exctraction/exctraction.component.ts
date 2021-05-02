@@ -832,7 +832,7 @@ export class ExctractionComponent implements OnInit {
     this.datasetFixed = this.dataset;
     for (let hu = 0; hu < this.datasetFixed.length; hu++) {
       this.result.TempExpressions.map((a) => {
-        console.log(a);
+        // console.log(a);
         if (this.datasetFixed[hu].y.search(a[0]) != -1) {
           this.datasetFixed[hu].y = this.datasetFixed[hu].y.replace(
             "<d>" + a[0] + "</d>",

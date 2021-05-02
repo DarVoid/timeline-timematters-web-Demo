@@ -26,7 +26,7 @@ export class WordcloudComponent implements OnInit {
   }
   showWhatsup(){
     let texto =  this.args.TextNormalized
-    console.log(texto)
+    // console.log(texto)
 
     this._yake.getKeywords2(texto).pipe(take(1))
     .subscribe((res) => {
@@ -74,11 +74,11 @@ export class WordcloudComponent implements OnInit {
           arrayOfStuffs = arrayOfStuffs.sort(() => (Math.random() > .5) ? 1 : -1)
           this.words=arrayOfStuffs
           html2canvas(document.querySelector("#capture")).then(canvas => {
-           console.log(canvas)
+           // console.log(canvas)
         });
       }
     })
-    console.log(this.keywords)
+    //console.log(this.keywords)
   }
 
 }

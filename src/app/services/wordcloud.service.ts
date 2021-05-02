@@ -33,10 +33,10 @@ export class WordcloudService {
           return this.http.post(realURL,{}).pipe(
             map((res2, err2) => {
               if (res2) {
-                console.log(res2);
+               // console.log(res2);
                 return res2;
               } else {
-                console.log(err2);
+              //  console.log(err2);
                 return err2;
               }
             })
