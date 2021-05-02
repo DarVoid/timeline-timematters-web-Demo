@@ -8,7 +8,7 @@
       <br/><br><br>
 </div>
 <div style="background-color:rgba(3, 63, 114, 1) "><br ></div>
-<div *ngIf="!requestMade "></div>
+
 <div *ngIf="!requestMade " style="width: 100%;background-color: #033F72 ;display: flex;justify-content: center;">
 
   <form style="width: 100%;justify-content: center;" (submit)="showArticle($event)" >
@@ -57,11 +57,15 @@
     </div>
   </div>
   <ng-template #spinner >
+<div style="display: flex;justify-content: center;">
+  <div  style="display: block;  flex-wrap: wrap; margin-left: 5%;margin-right: 5%; ">
+    <div >criar narrativa para o url: <b><u>{{url}}</u></b></div>
+     <br>
+     <div>Pode demorar algum tempo...</div><br>
+    <div><img src="../../assets/loading.gif"/></div>
+  </div>
+</div>
 
-    <div style="display:flex;align-items: center; justify-content: center;">
-      <p>criar narrativa para o url: <b><u>{{url}}</u></b></p> <br/><p>Pode demorar algum tempo...</p><br/>
-      <img src="../../assets/loading.gif"/>
-    </div>
   </ng-template>
 
 

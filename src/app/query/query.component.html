@@ -96,17 +96,19 @@
 
 
           </mat-tab-group>
+          <div class="col-lg-12 text-right">
+            <button mat-fab (click)="goBack()" class="btn btn-primary"><i class="fas fa-undo-alt"></i></button>
+
+          </div>
         </mat-card>
           <br>
           <!--<div class="col-lg-12 text-right">
             <a *ngIf="options" color="primary" href="/"><button type="reset" class="btn btn-link">Go back</button></a>
             <button *ngIf="options" color="primary"  type="submit" (click)="copyToClipboard($event)" class="btn btn-primary"><i class="far fa-clipboard"></i> Copy to Clipboard</button>
           </div>-->
-        </ng-template>
-        <div class="col-lg-12 text-right">
-          <button mat-fab (click)="goBack()" class="btn btn-primary"><i class="fas fa-undo-alt"></i></button>
 
-        </div>
+        </ng-template>
+
 
       </div>
 
