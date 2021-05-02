@@ -114,27 +114,6 @@ export class TimelineScrollComponent implements OnInit {
       this.argumentos = this.argumentosTodos;
     }
     this.loading = true;
-    console.log("socoroor");
-    var novos = [];
-    this.argumentos.map((cada) => {
-      if (novos.length != 0) {
-        novos.push(cada);
-      } else {
-        let exists = false;
-        novos.map((all) => {
-          if (all.dateparsed2 == cada.dateparsed2) {
-            exists = true;
-          } else {
-          }
-        });
-        if (exists) {
-        } else {
-          novos.push(cada);
-        }
-      }
-    });
-    this.argumentos = novos;
-    console.log(this.argumentos);
     this.update();
   }
   public copyToClipboard(event: any) {
@@ -174,7 +153,7 @@ export class TimelineScrollComponent implements OnInit {
 
     // tslint:disable-next-line: forin
     for (let h = 0; h < this.argumentos.length; h++) {
-      console.log("conteudo");
+     // console.log("conteudo");
       if (this.argumentos[h].y.includes("<strong")) {
         this.yake
           .getKeywords(
@@ -198,29 +177,33 @@ export class TimelineScrollComponent implements OnInit {
           .pipe(take(1))
           .subscribe((res) => {
             if (res) {
-              console.log(res);
+              //console.log(res);
               let captio = res.keywords[0].ngram;
               let exists = false
               let index_for_this_request=0;
               this.imagens.map((cada)=>{
-                console.log(cada)
+                //console.log(cada)
                 if(cada.key==captio){
                   cada.current_index= cada.current_index +1
-                  index_for_this_request= cada.current_index
+                  if(index_for_this_request<=cada.current_index){
+                    index_for_this_request = cada.current_index +1
+                  }
                   exists = true
                 }
               })
               if(!exists){
                 this.imagens.push({key: captio, current_index:0})
+              }else{
+                this.imagens.push({key: captio, current_index:index_for_this_request})
               }
               this.arquivo
                 .getImgURL(captio)
                 .pipe(take(1))
                 .subscribe((res2: any) => {
                   if (res2) {
-                    console.log(res2);
+                    //console.log(res2);
                     let url2 = res2.responseItems[index_for_this_request].imgLinkToArchive;
-                    console.log("Storyline rule-based");
+                    //console.log("Storyline rule-based");
                     if (this.argumentos[h].x.length == 4) {
                       this.events.push({
                         start_date: {
@@ -245,47 +228,7 @@ export class TimelineScrollComponent implements OnInit {
                       }); //
                     } else if (this.argumentos[h].x.split("-").length === 2) {
                       let mes = this.argumentos[h].x.split("-")[1];
-                      let mes_string = "";
-                      switch (mes) {
-                        case "01":
-                          mes_string = "Janeiro";
-                          break;
-                        case "02":
-                          mes_string = "Fevereiro";
-                          break;
-                        case "03":
-                          mes_string = "Março";
-                          break;
-                        case "04":
-                          mes_string = "Abril";
-                          break;
-                        case "05":
-                          mes_string = "Maio";
-                          break;
-                        case "06":
-                          mes_string = "Junho";
-                          break;
-                        case "07":
-                          mes_string = "Julho";
-                          break;
-                        case "08":
-                          mes_string = "Agosto";
-                          break;
-                        case "09":
-                          mes_string = "Setembro";
-                          break;
-                        case "10":
-                          mes_string = "Outubro";
-                          break;
-                        case "11":
-                          mes_string = "Novembro";
-                          break;
-                        case "12":
-                          mes_string = "Dezembro";
-                          break;
-                        default:
-                          break;
-                      }
+                      let mes_string = this.translateMonth(mes);
                       // tslint:disable-next-line: max-line-length
                       this.events.push({
                         start_date: {
@@ -315,8 +258,8 @@ export class TimelineScrollComponent implements OnInit {
                     } else {
                       //,media:{url:url2, caption:captio}
                       if (this.argumentos[h].x.length > 10) {
-                        console.log("Horas");
-                        console.log(this.argumentos[h].x);
+                        //console.log("Horas");
+                        //console.log(this.argumentos[h].x);
                         if (
                           this.argumentos[h].x.charAt(10) == "t" ||
                           (this.argumentos[h].x.charAt(10) == "T" &&
@@ -329,53 +272,13 @@ export class TimelineScrollComponent implements OnInit {
                           let min = this.argumentos[h].x
                             .substring(10)
                             .split(":")[1];
-                          console.log("horas");
-                          console.log(horas);
-                          console.log("min");
-                          console.log(min);
+                          //console.log("horas");
+                          //console.log(horas);
+                          //console.log("min");
+                          //console.log(min);
                           if (min * 1 > 0 && min * 1 < 60) {
                             let mes = this.argumentos[h].x.split("-")[1];
-                            let mes_string = "";
-                            switch (mes) {
-                              case "01":
-                                mes_string = "Janeiro";
-                                break;
-                              case "02":
-                                mes_string = "Fevereiro";
-                                break;
-                              case "03":
-                                mes_string = "Março";
-                                break;
-                              case "04":
-                                mes_string = "Abril";
-                                break;
-                              case "05":
-                                mes_string = "Maio";
-                                break;
-                              case "06":
-                                mes_string = "Junho";
-                                break;
-                              case "07":
-                                mes_string = "Julho";
-                                break;
-                              case "08":
-                                mes_string = "Agosto";
-                                break;
-                              case "09":
-                                mes_string = "Setembro";
-                                break;
-                              case "10":
-                                mes_string = "Outubro";
-                                break;
-                              case "11":
-                                mes_string = "Novembro";
-                                break;
-                              case "12":
-                                mes_string = "Dezembro";
-                                break;
-                              default:
-                                break;
-                            }
+                            let mes_string = this.translateMonth(mes)
                             // tslint:disable-next-line: max-line-length
                             this.events.push({
                               start_date: {
@@ -416,47 +319,7 @@ export class TimelineScrollComponent implements OnInit {
                             });
                           } else {
                             let mes = this.argumentos[h].x.split("-")[1];
-                            let mes_string = "";
-                            switch (mes) {
-                              case "01":
-                                mes_string = "Janeiro";
-                                break;
-                              case "02":
-                                mes_string = "Fevereiro";
-                                break;
-                              case "03":
-                                mes_string = "Março";
-                                break;
-                              case "04":
-                                mes_string = "Abril";
-                                break;
-                              case "05":
-                                mes_string = "Maio";
-                                break;
-                              case "06":
-                                mes_string = "Junho";
-                                break;
-                              case "07":
-                                mes_string = "Julho";
-                                break;
-                              case "08":
-                                mes_string = "Agosto";
-                                break;
-                              case "09":
-                                mes_string = "Setembro";
-                                break;
-                              case "10":
-                                mes_string = "Outubro";
-                                break;
-                              case "11":
-                                mes_string = "Novembro";
-                                break;
-                              case "12":
-                                mes_string = "Dezembro";
-                                break;
-                              default:
-                                break;
-                            }
+                            let mes_string = this.translateMonth(mes);
                             this.events.push({
                               start_date: {
                                 year: this.argumentos[h].x
@@ -498,47 +361,7 @@ export class TimelineScrollComponent implements OnInit {
                           }
                         } else {
                           let mes = this.argumentos[h].x.split("-")[1];
-                          let mes_string = "";
-                          switch (mes) {
-                            case "01":
-                              mes_string = "Janeiro";
-                              break;
-                            case "02":
-                              mes_string = "Fevereiro";
-                              break;
-                            case "03":
-                              mes_string = "Março";
-                              break;
-                            case "04":
-                              mes_string = "Abril";
-                              break;
-                            case "05":
-                              mes_string = "Maio";
-                              break;
-                            case "06":
-                              mes_string = "Junho";
-                              break;
-                            case "07":
-                              mes_string = "Julho";
-                              break;
-                            case "08":
-                              mes_string = "Agosto";
-                              break;
-                            case "09":
-                              mes_string = "Setembro";
-                              break;
-                            case "10":
-                              mes_string = "Outubro";
-                              break;
-                            case "11":
-                              mes_string = "Novembro";
-                              break;
-                            case "12":
-                              mes_string = "Dezembro";
-                              break;
-                            default:
-                              break;
-                          }
+                          let mes_string = this.translateMonth(mes)
                           // tslint:disable-next-line: max-line-length
                           this.events.push({
                             start_date: {
@@ -581,47 +404,8 @@ export class TimelineScrollComponent implements OnInit {
                         }
                       } else {
                         let mes = this.argumentos[h].x.split("-")[1];
-                          let mes_string = "";
-                          switch (mes) {
-                            case "01":
-                              mes_string = "Janeiro";
-                              break;
-                            case "02":
-                              mes_string = "Fevereiro";
-                              break;
-                            case "03":
-                              mes_string = "Março";
-                              break;
-                            case "04":
-                              mes_string = "Abril";
-                              break;
-                            case "05":
-                              mes_string = "Maio";
-                              break;
-                            case "06":
-                              mes_string = "Junho";
-                              break;
-                            case "07":
-                              mes_string = "Julho";
-                              break;
-                            case "08":
-                              mes_string = "Agosto";
-                              break;
-                            case "09":
-                              mes_string = "Setembro";
-                              break;
-                            case "10":
-                              mes_string = "Outubro";
-                              break;
-                            case "11":
-                              mes_string = "Novembro";
-                              break;
-                            case "12":
-                              mes_string = "Dezembro";
-                              break;
-                            default:
-                              break;
-                          }
+                          let mes_string = this.translateMonth(mes);
+
                         // tslint:disable-next-line: max-line-length
                         this.events.push({
                           start_date: {
@@ -689,11 +473,11 @@ export class TimelineScrollComponent implements OnInit {
           //  return elemento
           //});
           this.loading = false;
-          console.log("DEBUG")
-          console.log(this.events)
+         //console.log("DEBUG")
+         //console.log(this.events)
           j = { events: this.events };
           this.jsonText = j;
-          console.log(j);
+         // console.log(j);
           const additionalOptions = {
             start_at_end: false,
             timenav_height: 10,
@@ -706,22 +490,39 @@ export class TimelineScrollComponent implements OnInit {
           return;
         }, 3500); //wait ten seconds before continuing
       }
-      console.log(
-        this.argumentos[h].y
-          .split("</p>")[1]
-          .split("(...)")
-          .join("")
-          .split("<kw>")
-          .join("")
-          .split("</kw>")
-          .join("")
-          .split("<d>")
-          .join("")
-          .split("</d>")
-          .join("")
-      );
-      console.log("HELP " + h);
+
       //
+    }
+  }
+  translateMonth(mes:string){
+    switch (mes) {
+      case "01":
+         return "Janeiro";
+      case "02":
+        return "Fevereiro";
+      case "03":
+        return "Março";
+      case "04":
+        return "Abril";
+      case "05":
+        return "Maio";
+      case "06":
+        return "Junho";
+        break;
+      case "07":
+        return "Julho";
+      case "08":
+        return "Agosto";
+      case "09":
+        return "Setembro";
+      case "10":
+        return "Outubro";
+      case "11":
+        return "Novembro";
+      case "12":
+        return "Dezembro";
+      default:
+        break;
     }
   }
 }

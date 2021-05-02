@@ -73,7 +73,7 @@ export class QueryComponent implements OnChanges {
   public putOnClipboard(event: any, cena: string) {
     event.preventDefault();
     const clipboard = document.createElement("input");
-    console.log(cena);
+   // console.log(cena);
     clipboard.setAttribute("value", cena);
     document.body.appendChild(clipboard);
     clipboard.select();
@@ -83,7 +83,7 @@ export class QueryComponent implements OnChanges {
   public copyToClipboard(event: any) {
     if (!this.withKeywords) {
       event.preventDefault();
-      console.log(this.page);
+     // console.log(this.page);
       this._snackBar.open(
         "Mensagem copiada para o clipboard",
         "Length: " + this.options.result.TextNormalized.length + " characters",
@@ -99,7 +99,7 @@ export class QueryComponent implements OnChanges {
       document.body.removeChild(clipboard);
     } else {
       event.preventDefault();
-      console.log(this.page);
+     // console.log(this.page);
       this._snackBar.open(
         "Mensagem copiada para o clipboard",
         "Tamanho: " +
@@ -146,7 +146,7 @@ export class QueryComponent implements OnChanges {
     } else {
       this.docOrSentence = false;
     }
-    console.log("temporal cenas");
+   // console.log("temporal cenas");
     let last = "";
     this.numero_total = this.options.result.TempExpressions.length;
     this.numero_total2 = this.options.result.TempExpressions.filter((cada) => {
@@ -159,9 +159,9 @@ export class QueryComponent implements OnChanges {
     //console.log(this.numero_total);
 
     last = "";
-    console.log("Temp Expressions");
-    console.log(this.options.result.TempExpressions);
-    console.log(this.differentValues);
+   // console.log("Temp Expressions");
+   // console.log(this.options.result.TempExpressions);
+   // console.log(this.differentValues);
 
     this.differentValues = this.options.result.TempExpressions.sort(
       (a, b) => a[0] - b[0]
@@ -209,31 +209,31 @@ export class QueryComponent implements OnChanges {
 
       let valores = Object.keys(this.options.result.Score);
 
-      console.log(valores);
+     // console.log(valores);
       let total2 = 0;
       valores.map((kelp) => {
-        console.log(this.options.result.Score[kelp]);
+       // console.log(this.options.result.Score[kelp]);
         Object.keys(this.options.result.SentencesTokens).map((kolp) => {
-          console.log(kolp);
+         // console.log(kolp);
           if (this.options.result.Score[kelp][kolp + ""]) {
             if (this.options.result.Score[kelp][kolp + ""][0] > 0.5) {
               total2++;
-              console.log(this.options.result.Score[kelp][kolp + ""][0]);
-              console.log(this.options.result.Score[kelp][kolp + ""]);
+             // console.log(this.options.result.Score[kelp][kolp + ""][0]);
+             // console.log(this.options.result.Score[kelp][kolp + ""]);
             }
           }
         });
       });
       this.numero_total2 = total2;
-      console.log("teste");
+     // console.log("teste");
       valores = Object.keys(this.options.result.Score);
 
-      console.log(valores);
+     // console.log(valores);
       total2 = 0;
       valores.map((kelp) => {
-        console.log(this.options.result.Score[kelp]);
+       // console.log(this.options.result.Score[kelp]);
         Object.keys(this.options.result.SentencesTokens).map((kolp) => {
-          console.log(kolp);
+         // console.log(kolp);
           if (this.options.result.Score[kelp][kolp + ""]) {
             if (this.options.result.Score[kelp][kolp + ""][0] >= 0) {
               total2++;
@@ -245,8 +245,8 @@ export class QueryComponent implements OnChanges {
       });
       this.numero_total = total2;
     }
-    console.log(this.differentRelValues);
-    console.log(this.differentValues);
+   // console.log(this.differentRelValues);
+   // console.log(this.differentValues);
 
     let c = [];
     let a = {};
@@ -263,9 +263,9 @@ export class QueryComponent implements OnChanges {
       // handle Dataset
       if (this.options.docOrSentence == "doc") {
         // descobrir se este é sentence ou doc
-        console.log("RESULTADO SET");
+       // console.log("RESULTADO SET");
         let value_to_be_replaced = Object.keys(this.options.result.Score)[i];
-        console.log(value_to_be_replaced);
+       // console.log(value_to_be_replaced);
         //[Object.keys(this.result.Score)[i].toLowerCase()]);
         let value_to_replace_for = this.options.result.TempExpressions.filter(
           (a) => {
@@ -274,10 +274,10 @@ export class QueryComponent implements OnChanges {
             );
           }
         )[0][1];
-        console.log(value_to_replace_for);
+       // console.log(value_to_replace_for);
         value_to_replace_for =
           "<strong><d>" + value_to_replace_for + "</d></strong>";
-        console.log(value_to_replace_for);
+       // console.log(value_to_replace_for);
 
         let sentence_to_write = this.options.result.SentencesNormalized.map(
           (a) => {
@@ -296,12 +296,12 @@ export class QueryComponent implements OnChanges {
                 "<d>" + value_to_replace_for + "</d>"
               );
 
-              console.log(nova);
+             // console.log(nova);
               nova = nova.replace(
                 "<d>" + value_to_be_replaced.toUpperCase() + "</d>",
                 "<d>" + value_to_replace_for + "</d>"
               ); //.toLowerCase().toString().replace(Object.keys(this.result.Score)[i].toLowerCase(), )
-              console.log(nova);
+             // console.log(nova);
               return nova;
             }
           }
@@ -354,10 +354,10 @@ export class QueryComponent implements OnChanges {
             sentence_to_write +
             "</p>";
 
-          console.log("z");
-          console.log(
-            this.options.result.Score[Object.keys(this.options.result.Score)[i]]
-          );
+         // console.log("z");
+         // console.log(
+         //   this.options.result.Score[Object.keys(this.options.result.Score)[i]]
+         // );
 
           a2 =
             '<p class="noticem4">Score: ' +
@@ -412,9 +412,9 @@ export class QueryComponent implements OnChanges {
             ][xd][0],
             series: xd,
           });
-          console.log("ver DUPLICADOS");
+         // console.log("ver DUPLICADOS");
 
-          console.log(d);
+          //console.log(d);
 
           // tslint:disable-next-line: max-line-length
 
@@ -455,8 +455,8 @@ export class QueryComponent implements OnChanges {
               ][xd][0],
               series: xd,
             });
-            console.log("ver DUPLICADOS");
-            console.log(d);
+            //console.log("ver DUPLICADOS");
+            //console.log(d);
 
             // console.log(d2);
           } else {
@@ -473,8 +473,8 @@ export class QueryComponent implements OnChanges {
               "</p></span>";
           }
 
-          console.log("array de relevantes");
-          console.log(d);
+          //console.log("array de relevantes");
+          //console.log(d);
         }
         a = valorDeA;
         a2 = valorDeA2;
@@ -510,7 +510,7 @@ export class QueryComponent implements OnChanges {
       )
         ? ""
         : c2.pop();
-      console.log(c2);
+     // console.log(c2);
       c2 = c2.filter((y) => {
         if (y.y) {
           return true;
@@ -518,7 +518,7 @@ export class QueryComponent implements OnChanges {
           return false;
         }
       });
-      console.log(c2);
+      //console.log(c2);
     }
     // tslint:disable-next-line: forin
     for (const data in c) {
@@ -552,31 +552,31 @@ export class QueryComponent implements OnChanges {
       c2[data].dateparsed2 = data_prov;
     }
     c = c.sort((a, b) => {
-      console.log("a");
-      console.log("b");
-      console.log(a);
-      console.log(b);
+     // console.log("a");
+     // console.log("b");
+     // console.log(a);
+     // console.log(b);
       return a.dateparsed - b.dateparsed;
     });
     c2 = c2.sort((a, b) => {
-      console.log("a");
-      console.log("b");
-      console.log(a);
-      console.log(b);
+    //  console.log("a");
+    //  console.log("b");
+    //  console.log(a);
+    //  console.log(b);
       return a.dateparsed - b.dateparsed;
     });
     c = c.sort((a, b) => {
-      console.log("a");
-      console.log("b");
-      console.log(a);
-      console.log(b);
+     // console.log("a");
+     // console.log("b");
+     // console.log(a);
+     // console.log(b);
       return a.dateparsed2 - b.dateparsed2;
     });
     c2 = c2.sort((a, b) => {
-      console.log("a");
-      console.log("b");
-      console.log(a);
-      console.log(b);
+    //  console.log("a");
+    //  console.log("b");
+    //  console.log(a);
+    //  console.log(b);
       return a.dateparsed2 - b.dateparsed2;
     });
     // console.log("a,b,join");
@@ -590,7 +590,7 @@ export class QueryComponent implements OnChanges {
     this.datasetFixed = this.dataset;
     for (let hu = 0; hu < this.datasetFixed.length; hu++) {
       this.options.result.TempExpressions.map((a) => {
-        console.log(a);
+      //  console.log(a);
         if (this.datasetFixed[hu].y.search("<d>" + a[0] + "</d>") != -1) {
           this.datasetFixed[hu].y = this.datasetFixed[hu].y.replace(
             "<d>" + a[0] + "</d>",
@@ -613,7 +613,7 @@ export class QueryComponent implements OnChanges {
     this.datasetFixed2 = this.datasetRelOnly;
     for (let hu = 0; hu < this.datasetFixed2.length; hu++) {
       this.options.result.TempExpressions.map((a) => {
-        console.log(a);
+       // console.log(a);
         if (this.datasetFixed2[hu].y.search("<d>" + a[0] + "</d>") != -1) {
           this.datasetFixed2[hu].y = this.datasetFixed2[hu].y.replace(
             "<d>" + a[0] + "</d>",
@@ -632,18 +632,18 @@ export class QueryComponent implements OnChanges {
       });
     }
     this.datasetFixed = this.datasetFixed.filter((cada) => {
-      console.log("cada");
-      console.log(cada);
+     // console.log("cada");
+     // console.log(cada);
       return cada.y.includes("<strong");
     });
     this.datasetFixed2 = this.datasetFixed2.filter((cada) => {
-      console.log("cada");
-      console.log(cada);
+     // console.log("cada");
+     // console.log(cada);
       return cada.y.includes("<strong");
     });
-    console.log("this.dataset");
-    console.log(this.dataset);
-    console.log("this.datasetRelOnly");
-    console.log(this.datasetRelOnly);
+   //console.log("this.dataset");
+   //console.log(this.dataset);
+   //console.log("this.datasetRelOnly");
+   //console.log(this.datasetRelOnly);
   }
 }

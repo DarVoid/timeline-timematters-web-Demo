@@ -39,7 +39,7 @@
 
                 <hr>
                 <div class="dateScoreColors">
-                  <span><b>Escala Likert de {{!showOnlyRel?"5": "3"}} cores para representar a importância das expressões temporais:   </b></span>
+                  <span>Escala Likert de {{!showOnlyRel?"5": "3"}} cores para representar a importância das expressões temporais:  </span>
                   <span class='{{!showOnlyRel?"black": "nonviewable"}}'>[0; 0.35]</span>
                   <span class='{{!showOnlyRel?"green": "nonviewable"}}' >]0.35; 0.5]</span>
                   <span class="blue">]0.5; 0.7]</span>
@@ -65,7 +65,7 @@
 
             <br>
             <div style="display: flex; justify-content: flex-end;">
-              <mat-slide-toggle style="z-index: 10;margin-top:25px;margin-right: 50px ;" (toggleChange)='toggleRel()' [checked]="showOnlyRel" class="afterAnnotated" color="warn" >Apenas datas relevantes</mat-slide-toggle>
+              <mat-slide-toggle *ngIf="datasetFixed.length != datasetFixed2.length" style="z-index: 10;margin-top:25px;margin-right: 50px ;" (toggleChange)='toggleRel()' [checked]="showOnlyRel" class="afterAnnotated" color="warn" >Apenas datas relevantes</mat-slide-toggle>
 
             </div>
             <br><br>

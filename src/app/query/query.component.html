@@ -1,8 +1,7 @@
 
     <div class="col-md-11 col-sm-8 col-xs-6 my-col2">
       <!--FRASE DOS TEMPOS DE EXECUÇÃO-->
-      <span title=" "><p class="frase1"></p>
-      </span>
+      <br>
       <!--FRASE DOS TEMPOS DE EXECUÇÃO-->
       <div *ngIf="!options else graficos">
         <h1>Não foram encontrados dados, em caso de dúvida, a culpa é da API 🤣</h1>
@@ -20,7 +19,7 @@
                 <app-frame [docOrSentence]="options.docOrSentence" [argumentos]="options.result" [showOnlyRelevants]="showOnlyRel" [keywordsMatter]="withKeywords"   class="result"></app-frame>
                 <hr>
                 <div class="dateScoreColors">
-                  <span><b>Escala Likert de <i>{{!showOnlyRel?"5": "4"}}</i> cores para representar a importância das expressões temporais:   </b></span>
+                  <span>Escala Likert de <i>{{!showOnlyRel?"5": "4"}}</i> cores para representar a importância das expressões temporais:   </span>
                   <span class='{{!showOnlyRel?"black": "nonviewable"}}'>[0; 0.35]</span>
                   <span class='{{!showOnlyRel?"green": "nonviewable"}}'>]0.35; 0.5]</span>
                   <span class="blue">]0.5; 0.7]</span>
@@ -47,9 +46,9 @@
           <mat-tab label="Agrupamento Temporal" *ngIf="dataset.length>0">
             <br>
             <div style="display:flex; justify-content: flex-end; overflow-x: none;">
-              <mat-slide-toggle style="z-index: 10;margin-top:25px;margin-right: 50px ;" [checked]="showOnlyRel" (toggleChange)='toggleRel()' class="afterAnnotated" color="warn" >Apenas datas relevantes </mat-slide-toggle>
+              <mat-slide-toggle  *ngIf="datasetFixed.length != datasetFixed2.length" style="z-index: 10;margin-top:25px;margin-right: 50px ;" [checked]="showOnlyRel" (toggleChange)='toggleRel()' class="afterAnnotated" color="warn" >Apenas datas relevantes </mat-slide-toggle>
             </div>
-            <br><br>
+            <br><br><br>
             <div *ngIf="!showOnlyRel else onlyRel">
               <div style="margin-top:-70px;"  *ngIf="datasetFixed.length>0 else nodata1">
                 <table class="table table-borderless">

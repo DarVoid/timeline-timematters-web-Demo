@@ -1,7 +1,8 @@
 {"data":[
   {
 	"fotoGrande": "RCampos.jpg",
-	"title":"Ricardo Campos",
+	"firstName":"Ricardo",
+  "lastName":"Campos",
   "links": [
     {
       "tipo": "LinkedIn",
@@ -22,7 +23,8 @@
 	},
 {
 	"fotoGrande": "fotoJorge.png",
-	"title":"Jorge Duque",
+	"firstName":"Jorge",
+  "lastName":"Duque",
   "links":[
     {
       "tipo":"LinkedIn",
@@ -43,7 +45,8 @@
 },
 {
 	"fotoGrande": "Alipio.jpg",
-	"title":"Alípio Jorge",
+	"firstName":"Alípio",
+  "lastName":"Jorge",
   "links": [
     {
       "tipo": "LinkedIn",
@@ -64,7 +67,8 @@
 },
 {
 	"fotoGrande": "GD.jpg",
-	"title":"Gaël Dias",
+	"firstName":"Gaël",
+  "lastName":"Dias",
   "links": [
     {
       "tipo": "LinkedIn",
@@ -85,7 +89,8 @@
 },
 {
 	"fotoGrande": "CN.jpg",
-	"title":"Célia Nunes",
+	"firstName":"Célia",
+  "lastName":"Nunes",
   "links": [
     {
       "tipo": "LinkedIn",

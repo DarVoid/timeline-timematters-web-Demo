@@ -295,7 +295,7 @@ export class ExctractionComponent implements OnInit {
     if (event.preventDefault) {
       event.preventDefault();
     }
-    console.log(event);
+   // console.log(event);
     if (event.source) {
       this.TH = event.value;
       return;
@@ -316,11 +316,11 @@ export class ExctractionComponent implements OnInit {
   }
   selecionarDataFim(event: any) {
     this.dateEnd = event.target.value;
-    console.log(event.target.value);
+   // console.log(event.target.value);
   }
   selecionarDataInicio(event: any) {
     this.dateBegin = event.target.value;
-    console.log(event.target.value);
+   // console.log(event.target.value);
   }
   toggleKeywords() {
     this.withKeywords = !this.withKeywords;
@@ -343,45 +343,45 @@ export class ExctractionComponent implements OnInit {
   ngOnInit() {}
   selecionarngram(event: any) {
     this.ngramSelected = event.target.value;
-    console.log(event.target.value);
+   // console.log(event.target.value);
   }
   selecionarDataReferencia(event: any) {
     this.documentCreationTime = event.target.value;
-    console.log("DATA!");
-    console.log(event.target.value);
+  //  console.log("DATA!");
+   // console.log(event.target.value);
   }
   maxSimba(event: any) {
-    console.log("simba");
-    console.log(event.checked);
+   // console.log("simba");
+   // console.log(event.checked);
     this.simbaValueMax = event.checked;
   }
   selecionarNKeywords(event: any) {
     this.numberOfKeyWords = event.target.value;
-    console.log(event.target.value);
+   // console.log(event.target.value);
   }
   selecionarTipoDocumento(event: any) {
     this.documentTypeSelected = event;
   }
   selecionaTamanhoSimbaVectors(event: any) {
-    console.log(event.target.value);
+   // console.log(event.target.value);
     this.simbaValue = event.target.value;
   }
   selecionarGranularidade(event: any) {
-    console.log("entrou mudar granularidade");
+   // console.log("entrou mudar granularidade");
     this.dateGranularitySelected = event;
-    console.log(event);
+   // console.log(event);
   }
   selecionarAlgoritmo(event: any) {
     this.algoritmoSelected = event;
     this.documentCreationTime = "";
   }
   fullSentence(event: any) {
-    console.log("full_sentence?");
-    console.log(event.checked);
+   // console.log("full_sentence?");
+   // console.log(event.checked);
     this.contextFullSentence = event.checked;
   }
   selecionarContextualWindow(event: any) {
-    console.log(event.target.value);
+   // console.log(event.target.value);
     this.contextWindow = event.target.value;
   }
   selecionarLanguage(event: any) {
@@ -389,18 +389,18 @@ export class ExctractionComponent implements OnInit {
   }
   setDefaultText(num: number, language: string) {
     this.selecionarLanguage(language);
-    console.log();
+   // console.log();
     this.conteudoDefault = this.listaConteudos[num];
   }
   setDefaultTexto(texto: any) {
-    console.log(texto.value);
+   // console.log(texto.value);
     this.conteudoDefault = texto.value;
   }
 
   public putOnClipboard(event: any, cena: string) {
     event.preventDefault();
     const clipboard = document.createElement("input");
-    console.log(cena);
+  //  console.log(cena);
     clipboard.setAttribute("value", cena);
     document.body.appendChild(clipboard);
     clipboard.select();
@@ -473,17 +473,17 @@ export class ExctractionComponent implements OnInit {
         3
       );
     }
-    console.log("temporal cenas");
-    console.log(this.result.TempExpressions);
+   // console.log("temporal cenas");
+   // console.log(this.result.TempExpressions);
     let last = "";
     this.numero_total = this.result.TempExpressions.length;
     this.numero_total2 = this.result.TempExpressions.filter((cada) => {
       return this.result.Score[cada[0].toLowerCase()][0] > 0.5;
     }).length;
-    console.log(this.numero_total);
+   // console.log(this.numero_total);
     last = "";
-    console.log("LISTA Expressoes");
-    console.log(this.result.TempExpressions);
+   // console.log("LISTA Expressoes");
+   // console.log(this.result.TempExpressions);
     this.differentValues = this.result.TempExpressions.sort(
       (a, b) => a[0] - b[0]
     ).filter((element, index, array) => {
@@ -523,39 +523,39 @@ export class ExctractionComponent implements OnInit {
       });
 
       //this.numero_total2 = this.result.Score.filter((cada)=>{return cada[0]>0.35}).length;
-      console.log("teste");
+     // console.log("teste");
       let valores = Object.keys(this.result.Score);
 
-      console.log(valores);
+     // console.log(valores);
       let total2 = 0;
       valores.map((kelp) => {
-        console.log(this.result.Score[kelp]);
+     //   console.log(this.result.Score[kelp]);
         Object.keys(this.result.SentencesTokens).map((kolp) => {
-          console.log(kolp);
+       //   console.log(kolp);
           if (this.result.Score[kelp][kolp + ""]) {
             if (this.result.Score[kelp][kolp + ""][0] > 0.5) {
               total2++;
-              console.log(this.result.Score[kelp][kolp + ""][0]);
-              console.log(this.result.Score[kelp][kolp + ""]);
+          //    console.log(this.result.Score[kelp][kolp + ""][0]);
+           //   console.log(this.result.Score[kelp][kolp + ""]);
             }
           }
         });
       });
       this.numero_total2 = total2;
-      console.log("teste");
+     // console.log("teste");
       valores = Object.keys(this.result.Score);
 
-      console.log(valores);
+     // console.log(valores);
       total2 = 0;
       valores.map((kelp) => {
-        console.log(this.result.Score[kelp]);
+     //   console.log(this.result.Score[kelp]);
         Object.keys(this.result.SentencesTokens).map((kolp) => {
-          console.log(kolp);
+        //  console.log(kolp);
           if (this.result.Score[kelp][kolp + ""]) {
             if (this.result.Score[kelp][kolp + ""][0] >= 0) {
               total2++;
-              console.log(this.result.Score[kelp][kolp + ""][0]);
-              console.log(this.result.Score[kelp][kolp + ""]);
+            //  console.log(this.result.Score[kelp][kolp + ""][0]);
+            //  console.log(this.result.Score[kelp][kolp + ""]);
             }
           }
         });
@@ -581,16 +581,16 @@ export class ExctractionComponent implements OnInit {
       // console.log(this.result.Score[Object.keys(this.result.Score)[i]][0]);
       // handle Dataset
       if (this.byDocOrSentece) {
-        console.log("resultado");
+       // console.log("resultado");
         let value_to_be_replaced = Object.keys(this.result.Score)[i];
-        console.log(value_to_be_replaced);
+       // console.log(value_to_be_replaced);
         //[Object.keys(this.result.Score)[i].toLowerCase()]);
         let value_to_replace_for = this.result.TempExpressions.filter((a) => {
           return a[0].toLowerCase() == Object.keys(this.result.Score)[i];
         })[0][1];
         value_to_replace_for =
           "<strong><d>" + value_to_replace_for + "</d></strong>";
-        console.log(value_to_replace_for);
+       // console.log(value_to_replace_for);
         let sentence_to_write = this.result.SentencesNormalized.map((a) => {
           //console.log(a);
           //console.log(a.toString().search(Object.keys(this.result.Score)[i]))
@@ -604,20 +604,20 @@ export class ExctractionComponent implements OnInit {
               "<d>" + value_to_be_replaced + "</d>",
               "<d>" + value_to_replace_for + "</d>"
             );
-            console.log(nova);
+           // console.log(nova);
             nova = nova.replace(
               "<d>" + value_to_be_replaced.toUpperCase() + "</d>",
               "<d>" + value_to_replace_for + "</d>"
             ); //.toLowerCase().toString().replace(Object.keys(this.result.Score)[i].toLowerCase(), )
-            console.log(nova);
+           // console.log(nova);
             return nova;
           }
         });
 
         sentence_to_write = sentence_to_write.join("__,");
         this.result.TempExpressions.map((a) => {
-          console.log("DEBUG TEMPORAL");
-          console.log(a);
+         // console.log("DEBUG TEMPORAL");
+         // console.log(a);
           if (sentence_to_write.search(a[0]) != -1) {
             sentence_to_write = sentence_to_write.replace(
               "<d>" + a[0] + "</d>",
@@ -671,7 +671,7 @@ export class ExctractionComponent implements OnInit {
           });
           // console.log(d);
 
-          console.log(a);
+         // console.log(a);
           let sentence_to_write = this.result.SentencesNormalized[xd.toString()]
             .split('"')
             .join("''");
@@ -803,17 +803,17 @@ export class ExctractionComponent implements OnInit {
       c2[data].dateparsed2 = data_prov;
     }
     c = c.sort((a, b) => {
-      console.log("a");
-      console.log("b");
-      console.log(a);
-      console.log(b);
+     // console.log("a");
+     // console.log("b");
+     // console.log(a);
+     // console.log(b);
       return a.dateparsed2 - b.dateparsed2;
     });
     c2 = c2.sort((a, b) => {
-      console.log("a");
-      console.log("b");
-      console.log(a);
-      console.log(b);
+     // console.log("a");
+     // console.log("b");
+     // console.log(a);
+     // console.log(b);
       return a.dateparsed2 - b.dateparsed2;
     });
     c = c.sort((a, b) => {
@@ -851,7 +851,7 @@ export class ExctractionComponent implements OnInit {
     this.datasetFixed2 = this.datasetRelOnly;
     for (let hu = 0; hu < this.datasetFixed2.length; hu++) {
       this.result.TempExpressions.map((a) => {
-        console.log(a);
+       // console.log(a);
         if (this.datasetFixed2[hu].y.search(a[0]) != -1) {
           this.datasetFixed2[hu].y = this.datasetFixed2[hu].y.replace(
             "<d>" + a[0] + "</d>",
@@ -867,19 +867,19 @@ export class ExctractionComponent implements OnInit {
       });
     }
     this.datasetFixed = this.datasetFixed.filter((cada) => {
-      console.log("cada");
-      console.log(cada);
+     // console.log("cada");
+     // console.log(cada);
       return cada.y.includes("<strong");
     });
     this.datasetFixed2 = this.datasetFixed2.filter((cada) => {
-      console.log("cada");
-      console.log(cada);
+    // console.log("cada");
+    // console.log(cada);
       return cada.y.includes("<strong");
     });
-    console.log("SEE DATA");
-
-    console.log(this.dataset);
-    console.log(this.datasetRelOnly);
+   // console.log("SEE DATA");
+//
+   // console.log(this.dataset);
+   // console.log(this.datasetRelOnly);
   }
   public getKeyword(event: any) {
     event.preventDefault();
@@ -985,7 +985,7 @@ export class ExctractionComponent implements OnInit {
 
                 return " ";
               } else {
-                console.log("oof");
+               // console.log("oof");
                 return " ";
               }
             });
@@ -1032,7 +1032,7 @@ export class ExctractionComponent implements OnInit {
             this.loading = false;
             return " ";
           } else {
-            console.log("oof");
+           // console.log("oof");
             return " ";
           }
         });
