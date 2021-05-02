@@ -38,15 +38,15 @@ export class TimelineService {
         formData.append("document_creation_time", options.docCreatTime);
       }
       if (options.language) {
-        formData.append("language", options.language);
+       // formData.append("language", options.language);
       }
     } else {
-      realURL += "/RuleBased/api/v1.0";
+      // realURL += "/RuleBased/api/v1.0";
       if (options.dateBegin) {
-        formData.append("begin_date", options.dateBegin);
+       // formData.append("begin_date", options.dateBegin);
       }
       if (options.dateEnd) {
-        formData.append("end_date", options.dateEnd);
+       // formData.append("end_date", options.dateEnd);
       }
     }
     if (options.docOrSentence === "doc") {
@@ -58,28 +58,28 @@ export class TimelineService {
     formData.append("text", search); //.split("“").join("\'").split("”").join("\'").split('\"').join('\'')
 
     if (options.dateGranularity) {
-      formData.append("date_granularity", options.dateGranularity);
+     // formData.append("date_granularity", options.dateGranularity);
     }
     if (options.documentType) {
-      formData.append("document_type", options.documentType);
+     // formData.append("document_type", options.documentType);
     }
     if (options.tH) {
-      formData.append("TH", options.tH);
+     // formData.append("TH", options.tH);
       if (options.tH > 1) {
-        formData.append("TH", "1");
+     //   formData.append("TH", "1");
       }
     }
     if (options.n) {
-      formData.append("N", options.n);
+     // formData.append("N", options.n);
     }
     if (options.nContextualWindow) {
-      formData.append("n_contextual_window", options.nContextualWindow);
+     // formData.append("n_contextual_window", options.nContextualWindow);
     }
     if (options.numberOfKeywords) {
-      formData.append("num_of_keywords", options.numberOfKeywords);
+     // formData.append("num_of_keywords", options.numberOfKeywords);
     }
     if (options.ngram) {
-      formData.append("ngram", options.ngram);
+     // formData.append("ngram", options.ngram);
     }
     if (options.result) {
     }

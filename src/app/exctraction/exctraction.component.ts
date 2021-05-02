@@ -461,18 +461,10 @@ export class ExctractionComponent implements OnInit {
     this.withKeywordsSentence = "Keywords Off";
   }
   public update() {
-    this.exe_time_total = this.result.ExecutionTime.TotalTime.toFixed(3);
-    this.exe_time_YAKE = this.result.ExecutionTime.YAKE.toFixed(3);
-    this.exe_time_GTE = this.result.ExecutionTime.GTE.toFixed(3);
-    if (this.result.ExecutionTime.heideltime_processing) {
-      this.exe_time_algo = this.result.ExecutionTime.heideltime_processing.toFixed(
-        3
-      );
-    } else {
-      this.exe_time_algo = this.result.ExecutionTime.rule_based_processing.toFixed(
-        3
-      );
-    }
+    if (this.result) {
+
+
+
    // console.log("temporal cenas");
    // console.log(this.result.TempExpressions);
     let last = "";
@@ -880,7 +872,7 @@ export class ExctractionComponent implements OnInit {
 //
    // console.log(this.dataset);
    // console.log(this.datasetRelOnly);
-  }
+}}
   public getKeyword(event: any) {
     event.preventDefault();
     // console.log(event.target.docCreatDate.value);
@@ -896,7 +888,7 @@ export class ExctractionComponent implements OnInit {
     this._snackBar.open("Pedido efectuado", "", {
       duration: 2000,
     });
-    if (this.languagueSelected == "auto-detect") {
+    if (false) {
       this._lang
         .getLanguageFromContent(this.conteudoDefault)
         .pipe(take(1))
@@ -978,7 +970,7 @@ export class ExctractionComponent implements OnInit {
                 // console.log('nice');
                 this.result = res2;
                 // pedido recebido aqui
-                // console.log(res);
+                console.log(res);
                 this.update();
                 this.requestMade = true;
                 this.loading = false;
