@@ -47,11 +47,11 @@
     <p class="p1">Ricardo Campos e Alípio Jorge foram financiados pelo FEDER - Fundo Europeu de Desenvolvimento Regional através do Programa Operacional Regional do Norte de Portugal (NORTE 2020), no âmbito do PORTUGAL 2020 e por Fundos Nacionais através da agência de financiamento portuguesa FCT - Fundação para a Ciência e a Tecnologia ao abrigo do projeto PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-03185). Este financiamento enquadra-se na linha de pesquisa do projeto Text2Story <u><a class="naoBranco" target="_blank" href="https://text2story.inesctec.pt/">(https://text2story.inesctec.pt/)</a></u>. Célia Nunes foi financiada pela Fundação para a Ciência e a Tecnologia ao abrigo dos projetos UIDB/00212/2020</p>
     <br>
       <br>
-      <div style="display: flex;justify-content: space-evenly;flex-wrap: no-wrap;margin-right: 5px;margin-left: 5px;">
+      <div style="display: flex;justify-content: space-evenly;flex-wrap:  wrap;margin-right: 5px;margin-left: 5px;">
 
       <a class="example-card cardSmall" *ngFor="let item of data1" target="_blank" href="{{item.link}}">
 
-          <img mat-card-image  class="fotoCard"  src="../../assets/{{item.fotoGrande}}" alt="{{item.title}}">
+          <img mat-card-image class="example-card fotoCard"  src="../../assets/{{item.fotoGrande}}" alt="{{item.title}}">
 
 
       </a>
@@ -59,14 +59,16 @@
     </div>
     <br>
     <mat-divider></mat-divider><br><br><br>
-    <div style="display: flex;justify-content: space-evenly;flex-wrap: no-wrap;margin-right: 5px;">
+    <div style="display: flex;justify-content: space-evenly;flex-wrap:wrap;margin-right: 5px;">
+      <div style="margin-right: 5px;" *ngFor="let item of data2">
+        <a class="example-card cardSmall"  target="_blank" href="{{item.link}}">
 
-      <a class="example-card cardSmall" *ngFor="let item of data2" target="_blank" href="{{item.link}}">
-
-          <img mat-card-image  class="fotoCard"  src="../../assets/{{item.fotoGrande}}" alt="{{item.title}}">
+          <img mat-card-image  class="example-card fotoCard"  src="../../assets/{{item.fotoGrande}}" alt="{{item.title}}">
 
 
       </a>
+      </div>
+
 
     </div>
   </mat-card>
