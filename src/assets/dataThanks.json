@@ -1,4 +1,4 @@
-{"data":[
+{"data1":[
   {
 	"fotoGrande": "IPT.jpg",
 	"title":"IPT",
@@ -28,7 +28,12 @@
 	"fotoGrande": "UBI.jpg",
 	"title":"UBI",
   "link":"http://www.ubi.pt"
-},
+}
+
+
+],
+"data2":[
+
 {
 	"fotoGrande": "UE.png",
 	"title":"UE",
@@ -48,8 +53,11 @@
 	"fotoGrande": "norte2020.png",
 	"title":"Norte2020",
   "link":"https://www.norte2020.pt/"
+},
+{
+	"fotoGrande": "humaneAI.png",
+	"title":"HumaneAI",
+  "link":"https://www.humane-ai.eu/"
+}]
 }
 
-
-]
-}

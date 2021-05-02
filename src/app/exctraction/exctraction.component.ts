@@ -229,7 +229,7 @@ export class ExctractionComponent implements OnInit {
     Wikimedia Commons has media related to 2013 Boston Marathon bombings.`,
     ];
 
-    this.conteudoDefault = this.listaConteudos[0];
+    this.conteudoDefault = this.listaConteudos[3];
     this.algoritmosDate = [
       [
         "py_heideltime",

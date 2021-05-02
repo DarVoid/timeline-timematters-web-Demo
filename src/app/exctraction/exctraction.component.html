@@ -48,9 +48,9 @@
                 </div>
                 <br>
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
-                <mat-slide-toggle class="afterAnnotated" [checked]="hiddenoptionKW" color="warn" (toggleChange)="toggleKeywords()">Keywords?</mat-slide-toggle>
+                <mat-slide-toggle class="afterAnnotated" [checked]="hiddenoptionKW" color="warn" (toggleChange)="toggleKeywords()">Keywords</mat-slide-toggle>
                 <br>
-                <mat-slide-toggle class="afterAnnotated" (toggleChange)="toggleRel()" [checked]="showOnlyRel" color="warn" >Apenas datas relevantes?</mat-slide-toggle>
+                <mat-slide-toggle class="afterAnnotated" (toggleChange)="toggleRel()" [checked]="showOnlyRel" color="warn" >Apenas datas relevantes</mat-slide-toggle>
                 <!--EM CIMA-->
                 <br>
                 <br>
@@ -65,7 +65,7 @@
 
             <br>
             <div style="display: flex; justify-content: flex-end;">
-              <mat-slide-toggle style="z-index: 10;margin-top:25px;margin-right: 50px ;" (toggleChange)='toggleRel()' [checked]="showOnlyRel" class="afterAnnotated" color="warn" >Apenas datas relevantes?</mat-slide-toggle>
+              <mat-slide-toggle style="z-index: 10;margin-top:25px;margin-right: 50px ;" (toggleChange)='toggleRel()' [checked]="showOnlyRel" class="afterAnnotated" color="warn" >Apenas datas relevantes</mat-slide-toggle>
 
             </div>
             <br><br>
@@ -142,8 +142,9 @@
               <mat-card>
 
                 <mat-form-field class="example-full-width" >
+                  <div   class='{{loading?"viewable": "nonviewable"}}'><mat-progress-bar mode="indeterminate"></mat-progress-bar></div>
                   <div class="col-lg-12 text-right" >
-                    <span title="Example Texts"><button style="z-index: 10;margin-top:20px ;" class="btn btn-link" mat-button type="button" mat-icon-button [matMenuTriggerFor]="menuy" aria-label="Example icon-button with a menu">
+                    <span title="Example Texts"><button style="z-index: 10;margin-top:15px ;" class="btn btn-link" mat-button type="button" mat-icon-button [matMenuTriggerFor]="menuy" aria-label="Example icon-button with a menu">
                      <mat-icon >more_vert</mat-icon>
                   </button></span>
                   <mat-menu #menuy="matMenu">
@@ -165,8 +166,8 @@
                     </button>
                   </mat-menu>
                   </div>
-                  <mat-label>Criar narrativa a partir texto livre</mat-label>
-                  <textarea matInput #texto class="text-area" (change)='setDefaultTexto(texto)' style="width:100%;" type="text" value="{{conteudoDefault}}" min_rows="4" rows="7" name="texto"></textarea>
+                  <mat-label>Criar narrativa a partir de texto livre</mat-label>
+                  <textarea matInput #texto class="text-area" (change)='setDefaultTexto(texto)' style="width:100%;" type="text" value="{{conteudoDefault}}" min_rows="20" rows="20" name="texto"></textarea>
                 </mat-form-field>
 
 
@@ -184,9 +185,9 @@
             </div>
           </div>
 
-          <div class="form-group"  style="z-index: 10;margin-top:-95px ;margin-right:6px ;">
+          <div class="form-group"  style="z-index: 10;margin-top:-95px ;margin-right:6px ">
             <div class="col-lg-12 text-right">
-              <button mat-fab class="btn btn-primary" type="submit" [disabled]="loading" ><i class="fas fa-book-open" ></i>
+              <button  mat-mini-fab class="btn btn-primary" type="submit" [disabled]="loading" ><i class="fas fa-book-open" ></i>
                 <div class='{{loading?"viewable": "nonviewable"}}'><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                   </div>
               </button>

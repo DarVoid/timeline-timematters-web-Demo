@@ -30,9 +30,9 @@
                 <br>
 
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
-                <mat-slide-toggle [checked]="!withKeywords" class="afterAnnotated" color="warn" (toggleChange)="toggleKeywords()">Keywords?</mat-slide-toggle>
+                <mat-slide-toggle [checked]="!withKeywords" class="afterAnnotated" color="warn" (toggleChange)="toggleKeywords()">Keywords</mat-slide-toggle>
                 <br>
-                <mat-slide-toggle *ngIf="datasetFixed.length != datasetFixed.length" class="afterAnnotated" color="warn" [checked]="showOnlyRel" (toggleChange)="toggleRel()">Apenas datas relevantes?</mat-slide-toggle>
+                <mat-slide-toggle *ngIf="datasetFixed.length != datasetFixed.length" class="afterAnnotated" color="warn" [checked]="showOnlyRel" (toggleChange)="toggleRel()">Apenas datas relevantes</mat-slide-toggle>
                 <!--EM CIMA-->
                 <br>
                 <br>
@@ -47,7 +47,7 @@
           <mat-tab label="Agrupamento Temporal" *ngIf="dataset.length>0">
             <br>
             <div style="display:flex; justify-content: flex-end; overflow-x: none;">
-              <mat-slide-toggle style="z-index: 10;margin-top:25px;margin-right: 50px ;" [checked]="showOnlyRel" (toggleChange)='toggleRel()' class="afterAnnotated" color="warn" >Apenas datas relevantes? </mat-slide-toggle>
+              <mat-slide-toggle style="z-index: 10;margin-top:25px;margin-right: 50px ;" [checked]="showOnlyRel" (toggleChange)='toggleRel()' class="afterAnnotated" color="warn" >Apenas datas relevantes </mat-slide-toggle>
             </div>
             <br><br>
             <div *ngIf="!showOnlyRel else onlyRel">

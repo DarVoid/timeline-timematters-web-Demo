@@ -1,14 +1,14 @@
 {"data":[
   {
-	"fotoGrande": "p6-mario-soares-1024x683.jpg",
-	"fotoPequena": "12Soares.jpg",
-	"title":"Mario Soares",
-	"caption":"Morreu o antigo presidente Mário Soares, aos 92 anos",
-	"byX":"by Dinheiro Vivo",
-	"date":"07-01-2017",
-	"snippet":"Morreu este sábado Mário Soares. O antigo Presidente da República tinha 92 anos e estava internado no Hospital da Cruz Vermelha desde 13 de dezembro de 2016.",
-	"link":"https://arquivo.pt/wayback/20170107192028/https://www.dinheirovivo.pt/outras/morreu-mario-soares/"
-},
+    "fotoGrande": "p6-mario-soares-1024x683.jpg",
+    "fotoPequena": "12Soares.jpg",
+    "title":"Mario Soares",
+    "caption":"Morreu o antigo presidente Mário Soares, aos 92 anos",
+    "byX":"by Dinheiro Vivo",
+    "date":"07-01-2017",
+    "snippet":"Morreu este sábado Mário Soares. O antigo Presidente da República tinha 92 anos e estava internado no Hospital da Cruz Vermelha desde 13 de dezembro de 2016.",
+    "link":"https://arquivo.pt/wayback/20170107192028/https://www.dinheirovivo.pt/outras/morreu-mario-soares/"
+  },
 {
 	"fotoGrande": "8Base_RicardoSalgado.jpg",
 	"fotoPequena": "8Redonda_RicardoSalgado.jpg",
@@ -78,6 +78,16 @@
 	"date":"15-09-2011",
 	"snippet":"Os técnicos do Fundo Monetário Internacional, Banco Central Europeu e Comissão Europeia chegam hoje a Lisboa, onde permanecem durante cinco dias, para debater a descida na Taxa Social Única e o Orçamento do Estado para 2012. ",
 	"link":"https://arquivo.pt/wayback/20110915152844/http://noticias.sapo.pt/info/artigo/1185988.html"
+},
+{
+  "fotoGrande": "2Base_JeroenDijsselbloem.jpg",
+  "fotoPequena": "2Redonda_JeroenDijsselbloem.jpg",
+  "title":"Jeroen Dijsselbloem",
+  "caption":"Europa discute fim do programa da Troika em Portugal no início de 2014.",
+  "byX":"by Jornal de Negócios",
+  "date":"14-10-2013",
+  "snippet":"Presidente do Eurogrupo (organismo que reúne os ministros das Finanças da Zona Euro), Jeroen Dijsselbloem, sublinha que a Europa vai discutir o fim do programa de resgate português nos primeiros três meses do 2014.",
+  "link":"https://arquivo.pt/wayback/20131015160312/http://www.jornaldenegocios.pt/economia/ajuda_externa/detalhe/europa_discute_fim_do_programa_da_troika_em_portugal_no_inicio_de_2014.html"
 },
 
 {

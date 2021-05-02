@@ -8,9 +8,12 @@ import * as data from '../../assets/dataThanks.json';
 })
 export class AboutRelatedWorkComponent implements OnInit {
   public data: any;
+  public data1: any;
+  public data2: any;
   constructor() {
     this.data = data
-    this.data = this.data.default.data
+    this.data1 = this.data.default.data1
+    this.data2 = this.data.default.data2
   }
 
   ngOnInit(): void {}

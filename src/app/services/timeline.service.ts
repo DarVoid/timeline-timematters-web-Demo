@@ -100,4 +100,24 @@ export class TimelineService {
       })
     );
   }
+  public getTextKeyDateFromUrl(
+    urlstr: string
+  ): Observable<any> {
+    const formData = new FormData();
+    let realURL = this.url + '/SingleDoc/Heideltime/api/v1.0/ScoreByDoc_by_url?url='+urlstr
+    return this.http.get(realURL).pipe(
+      map((res, err) => {
+        if (res) {
+          console.log("bem");
+          console.log(res);
+          return res;
+        } else {
+          console.log("erro");
+          console.log(realURL);
+          console.log(err);
+          return err;
+        }
+      })
+    );
+  }
 }

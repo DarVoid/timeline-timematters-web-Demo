@@ -367,194 +367,38 @@ export class QuerysingledocComponent implements OnInit {
       this.queryValue.emit(this.url);
     }
     this.update();
-    let sizeOfURL1 = "https://arquivo.pt/noFrame/replay/".length;
-    if (
-      this.url.substring(0, sizeOfURL1) == "https://arquivo.pt/noFrame/replay/"
-    ) {
-      let ano = this.url.substring(sizeOfURL1, sizeOfURL1 + 4);
-      let mes = this.url.substring(sizeOfURL1 + 4, sizeOfURL1 + 6);
-      let dia = this.url.substring(sizeOfURL1 + 6, sizeOfURL1 + 8);
-      this.documentCreationTime = ano + "-" + mes + "-" + dia;
-      console.log("data");
-      console.log(this.documentCreationTime);
-    }
+    this.timeline.getTextKeyDateFromUrl(this.url).pipe(take(1)).subscribe((res)=>{
+      if(res){
+        console.log("NOVO")
+        console.log(res);
+        this.resultado = res;
 
-    let sizeOfURL2 = "https://arquivo.pt/wayback/".length;
-    if (this.url.substring(0, sizeOfURL2) == "https://arquivo.pt/wayback/") {
-      let ano = this.url.substring(sizeOfURL2, sizeOfURL2 + 4);
-      let mes = this.url.substring(sizeOfURL2 + 4, sizeOfURL2 + 6);
-      let dia = this.url.substring(sizeOfURL2 + 6, sizeOfURL2 + 8);
-      this.documentCreationTime = ano + "-" + mes + "-" + dia;
-      console.log("data");
-      console.log(this.documentCreationTime);
-      this.mudou = true;
-      this.antigo = this.url;
-      this.url =
-        "https://arquivo.pt/noFrame/replay/" +
-        this.url.substring(sizeOfURL2, this.url.length);
-    }
-    this.article
-      .getArticles(this.url)
-      .pipe(take(1))
-      .subscribe(
-        (res) => {
-          if (this.mudou) {
-            this.url = this.antigo;
-          }
-          if (res) {
-            console.log(res);
-            this.artigo = res;
-            console.log("texto artigo");
-            console.log(this.artigo.content);
-            // this.documentCreationTime="";
-            // tslint:disable-next-line: max-line-length
-            if (this.documentCreationTime) {
-            } else {
-              // tslint:disable-next-line: max-line-length
-              let month: number = new Date().getMonth();
-              let month_string = "";
-
-              if (month * 1 < 10) {
-                month_string = "0" + (month + 1);
-              } else {
-                month_string = month + 1 + "";
-              }
-              let day: any = new Date().getDate();
-              if (day * 1 < 10) {
-                day = "0" + day;
-              }
-              this.documentCreationTime =
-                new Date().getFullYear() + "-" + month_string + "-" + day;
-            }
-            switch (res.lang) {
-              case "en":
-                this.languagueSelected = "English";
-                this.update();
-                break;
-              case "fr":
-                this.languagueSelected = "French";
-                this.update();
-                break;
-              case "pt":
-                this.languagueSelected = "Portuguese";
-                this.update();
-                break;
-              case "ge":
-                this.languagueSelected = "German";
-                this.update();
-                break;
-              case "it":
-                this.languagueSelected = "Italian";
-                this.update();
-                break;
-              case "nl":
-                this.languagueSelected = "Dutch";
-                this.update();
-                break;
-              case "es":
-                this.languagueSelected = "Spanish";
-                this.update();
-                break;
-              default:
-                console.log(res);
-                this._snackBar.open("O idioma vai ser detetado: ", res.lang, {
-                  duration: 2000,
-                });
-                //auto-dete
-                this._langDetec
-                  .getLanguageFromContent(this.artigo.content)
-                  .pipe(take(1))
-                  .subscribe((response) => {
-                    console.log("LINGUA DO TEXTO");
-                    console.log(response);
-                    switch (response.lang) {
-                      case "en":
-                        this.languagueSelected = "English";
-                        this.update();
-                        break;
-                      case "fr":
-                        this.languagueSelected = "French";
-                        this.update();
-                        break;
-                      case "pt":
-                        this.languagueSelected = "Portuguese";
-                        this.update();
-                        break;
-                      case "ge":
-                        this.languagueSelected = "German";
-                        this.update();
-                        break;
-                      case "it":
-                        this.languagueSelected = "Italian";
-                        this.update();
-                        break;
-                      case "nl":
-                        this.languagueSelected = "Dutch";
-                        this.update();
-                        break;
-                      case "es":
-                        this.languagueSelected = "Spanish";
-                        this.update();
-                        break;
-                      default:
-                    }
-                  });
-                break;
-            }
-
-            console.log(this.opcoes);
-            console.log(this.artigo);
-            //let cenak= this.artigo.content.replace("\\u21b5",'');
-          }
-
-          return;
-        },
-        (err) => {},
-        () => {
-          this.scheduler = setTimeout(() => {
-            console.log("reached this place");
-            console.log(this.artigo.content.toString());
-            console.log(this.opcoes);
-
-            this.timeline
-              .getTextKeyDateFromSingleDoc(this.artigo.content, this.opcoes)
-              .pipe(take(1))
-              .subscribe((res) => {
-                if (res) {
-                  console.log(res);
-                  this.resultado = res;
-
-                  // pedido recebido aqui
-                  if (res.message) {
-                    this.requestMade = false;
-                    this.requestMake.emit(this.requestMade)
-                    this.loading = false;
-                    this.loaded.emit(false);
-                    return " ";
-                  }
-                  if (res.length == 0) {
-                    this._snackBar.open("Sem dados para mostrar", "😭", {
-                      duration: 2000,
-                    });
-                    this.requestMade = false;
-                    this.requestMake.emit(this.requestMade)
-                    this.loading = false;
-                    this.loaded.emit(false);
-                    return " ";
-                  }
-                  this.requestMade = true;
-                  this.update();
-                  this.loading = false;
-                  this.loaded.emit(false);
-
-                  return " ";
-                } else {
-                  console.log("oof");
-                  return " ";
-                }
-              });
-          }, 1000);
+        // pedido recebido aqui
+        if (res.message) {
+          this.requestMade = false;
+          this.requestMake.emit(this.requestMade)
+          this.loading = false;
+          this.loaded.emit(false);
+          return " ";
         }
-      );
+        if (res.length == 0) {
+          this._snackBar.open("Sem dados para mostrar", "😭", {
+            duration: 2000,
+          });
+          this.requestMade = false;
+          this.requestMake.emit(this.requestMade)
+          this.loading = false;
+          this.loaded.emit(false);
+          return " ";
+        }
+        this.requestMade = true;
+        this.update();
+        this.loading = false;
+        this.loaded.emit(false);
+
+        return " ";
+      }
+    })
+
   }
 }
