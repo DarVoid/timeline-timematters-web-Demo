@@ -6,6 +6,7 @@ import {
   HttpHeaders,
   HttpErrorResponse,
 } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 export interface ReceivedData {
   res: any;
@@ -17,7 +18,7 @@ export interface ReceivedData {
 })
 export class TimelineService {
   url: string;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.url = "https://tm-websuiteapps.ipt.pt/timematters";
   }
 

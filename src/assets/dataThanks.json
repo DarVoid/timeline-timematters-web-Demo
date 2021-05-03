@@ -45,9 +45,9 @@
   "link":"https://www.fct.pt/"
 },
 {
-	"fotoGrande": "portugal2020.png",
-	"title":"Portugal2020",
-  "link":"https://www.portugal2020.pt/"
+	"fotoGrande": "humaneAI.png",
+	"title":"HumaneAI",
+  "link":"https://www.humane-ai.eu/"
 },
 {
 	"fotoGrande": "norte2020.png",
@@ -55,9 +55,9 @@
   "link":"https://www.norte2020.pt/"
 },
 {
-	"fotoGrande": "humaneAI.png",
-	"title":"HumaneAI",
-  "link":"https://www.humane-ai.eu/"
+	"fotoGrande": "portugal2020.png",
+	"title":"Portugal2020",
+  "link":"https://www.portugal2020.pt/"
 }]
 }
 

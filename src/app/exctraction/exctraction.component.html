@@ -1,28 +1,20 @@
-<!--<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>-->
+<div style="display:flex; justify-content: center; background-color: #033F72; ">
 
-
- <!---->
- <div style="background-color: #033F72 ">
-  <div class="headliner">
-    <br>
-      <h1 class="miniText">
-        narrArquivo
-      </h1><br>
-      <h1 class="miniText2">
-        Narrativas a partir da web
-      </h1>
-    </div><br><br><br>
-</div><br>
+  <br>
+    <!--<h1 class="miniText">
+      narrArquivo
+    </h1>-->
+    <img style="width: 300px; " src="../../assets/narrArquivogran.png"/>
+    <br/><br><br>
+</div>
+<div style="background-color:rgba(3, 63, 114, 1) "><br ></div><br>
   <div *ngIf="result else textBox" >
 
     <div class="col-md-11 col-sm-8 col-xs-6 my-col2">
       <!--FRASE DOS TEMPOS DE EXECUÇÃO-->
       <span title=""><a class="frase1"></a></span>
       <!--FRASE DOS TEMPOS DE EXECUÇÃO-->
-        <div>
+
       <div *ngIf="!result else graficos">
         <h1>Não foram encontrados dados, em caso de dúvida, a culpa é da API 🤣</h1>
       </div>
@@ -50,7 +42,7 @@
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
                 <mat-slide-toggle class="afterAnnotated" [checked]="hiddenoptionKW" color="warn" (toggleChange)="toggleKeywords()">Keywords</mat-slide-toggle>
                 <br>
-                <mat-slide-toggle class="afterAnnotated" (toggleChange)="toggleRel()" [checked]="showOnlyRel" color="warn" >Apenas datas relevantes</mat-slide-toggle>
+                <mat-slide-toggle  *ngIf="datasetFixed.length != datasetFixed2.length" class="afterAnnotated" (toggleChange)="toggleRel()" [checked]="showOnlyRel" color="warn" >Apenas datas relevantes</mat-slide-toggle>
                 <!--EM CIMA-->
                 <br>
                 <br>
@@ -116,8 +108,8 @@
 
 
           </mat-tab-group>
-          <div class="col-lg-12 text-right" style="z-index: 10;margin-top: -65px;">
-            <button  mat-fab (click)="goBack()" class="btn btn-primary"><i class="fas fa-undo-alt"></i></button>
+          <div class="col-lg-12 text-right" >
+            <button style="z-index: 10;margin-top: -65px;" mat-fab (click)="goBack()" class="btn btn-primary"><i class="fas fa-undo-alt"></i></button>
 
           </div>
         </mat-card>
@@ -125,7 +117,6 @@
 
 
         </ng-template>
-      </div>
 
 
   </div>
@@ -135,7 +126,7 @@
 
   <br/>
   <form (submit)="getKeyword($event)">
-      <div class="col-md-11 col-sm-8 col-xs-6 my-col">
+      <div class="col-md-11 col-sm-8 col-xs-6 my-col" style="margin-top: -4px;">
 
          <div class="col-lg-12">
             <div class="form-group">
@@ -187,10 +178,15 @@
 
           <div class="form-group"  style="z-index: 10;margin-top:-95px ;margin-right:6px ">
             <div class="col-lg-12 text-right">
+              <button *ngIf="!loading" style="margin-right: 4px;" class='{{loading?"viewable": "nonviewable"}}' mat-mini-fab class="btn btn-primary" type="button" [disabled]="loading" (click)="deleteContent($event)"><i class="fas fa-trash" ></i>
+                <div class='{{loading?"viewable": "nonviewable"}}'><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  </div>
+              </button>
               <button  mat-mini-fab class="btn btn-primary" type="submit" [disabled]="loading" ><i class="fas fa-book-open" ></i>
                 <div class='{{loading?"viewable": "nonviewable"}}'><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                   </div>
               </button>
+
 
              </div>
           </div>

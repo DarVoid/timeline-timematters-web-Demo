@@ -1,14 +1,13 @@
-<div style="background-color: #033F72 ">
-  <div class="headliner">
-    <br>
-      <h1 class="miniText">
-        narrArquivo
-      </h1><br>
-      <h1 class="miniText2">
-        Crie e visualize  narrativas a partir de arquivos da web
-      </h1>
-    </div><br><br><br>
-</div><br>
+<div style="display:flex; justify-content: center; background-color: #033F72; ">
+
+  <br>
+    <!--<h1 class="miniText">
+      narrArquivo
+    </h1>-->
+    <img style="width: 300px; " src="../../assets/narrArquivogran.png"/>
+    <br/><br><br>
+</div>
+<div style="background-color:rgba(3, 63, 114, 1) "><br ></div><br>
 <br>
 
 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
@@ -16,24 +15,26 @@
 
   <mat-card >
     <div class="sobreTitulo">
-      Referências académicas:
+      Referências académicas
     </div>
 
     <mat-divider></mat-divider>
     <mat-list >
+
       <p class="p1">Este projecto foi desenvolvido por investigadores afiliados ao Instituto Politécnico de Tomar, Ci2 - Centro de Investigação em Cidades Inteligentes, INESC TEC, Universidade do Porto, Universidade de Caën, Universidade da Beira Interior, Centro de Matemática e Aplicações (CMA – UBI) e Centro de Matemática e Aplicações (CMA), FCT Nova.
       </p>
       <p class="p1">
         Referências Bibliográficas: </p>
+        <p class="p1">
+          - Campos, R., Duque, J., Jorge, A., Dias, G., Nunes, C., (2021). Narrarquivo. Memória Descritiva. Prémio Arquivo.pt 2021. <a class="naoBranco" target="_blank" href="http://www.ccc.ipt.pt/~ricardo/ficheiros/narrarquiv,o.pdf"> <b>[pdf]</b> </a>
+        </p>
       <p class="p1">
         - Campos, R., Duque, J., Cândido, T., Mendes, J., Dias, G., Jorge, A., Nunes, C., (2021). Time-Matters: Temporal Unfolding of Texts. In: Hiemstra D., Moens M-F., Mothe J., Perego R., Potthast M., Sebastiani F. (eds), Advances in Information Retrieval. ECIR'21 (Lucca, Italy. March 28 - April 1). Lecture Notes in Computer Science, vol 12657, pp. 492 - 497. Springer. <a class="naoBranco"  href="https://link.springer.com/chapter/10.1007/978-3-030-72240-1_53" target="_blank"><b>[pdf]</b></a><a  class="naoBranco" target ="_blank"href="https://youtu.be/Q8yT4aVM_Mw"><b> [video]</b></a> <a class="naoBranco"  target="_blank" href="http://www.ccc.ipt.pt/~ricardo/ficheiros/ECIR2021Poster.pdf"><b> [poster]</b></a>
       </p>
       <p class="p1">
         - Campos, R., Dias, G., Jorge, A., Nunes, C. (2017). Identifying Top Relevant Dates for Implicit Time Sensitive Queries. In Information Retrieval Journal. Springer, Vol 20(4), pp 363-398. <a class="naoBranco" target="_blank" href="https://link.springer.com/article/10.1007/s10791-017-9302-1"> <b>[pdf]</b> </a>
       </p>
-      <p class="p1">
-        - Campos, R., Duque, J., Jorge, A., Dias, G., Nunes, C., (2021). Narrarquivo. Memória Descritiva. Prémio Arquivo.pt 2021. <a class="naoBranco" target="_blank" href="http://www.ccc.ipt.pt/~ricardo/ficheiros/narrarquiv,o.pdf"> <b>[pdf]</b> </a>
-      </p>
+
 
 
     </mat-list>
@@ -52,7 +53,7 @@
     </div>
 
     <mat-divider></mat-divider><br>
-    <p class="p1">Ricardo Campos e Alípio Jorge foram financiados pelo FEDER - Fundo Europeu de Desenvolvimento Regional através do Programa Operacional Regional do Norte de Portugal (NORTE 2020), no âmbito do PORTUGAL 2020 e por Fundos Nacionais através da agência de financiamento portuguesa FCT - Fundação para a Ciência e a Tecnologia ao abrigo do projeto PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-03185). Este financiamento enquadra-se na linha de pesquisa do projeto Text2Story <u><b><a class="naoBranco" target="_blank" href="https://text2story.inesctec.pt/">(https://text2story.inesctec.pt/)</a></b></u>. Célia Nunes foi financiada pela Fundação para a Ciência e a Tecnologia ao abrigo dos projetos UIDB/00212/2020</p>
+    <p class="p1">Ricardo Campos e Alípio Jorge foram financiados pelo FEDER - Fundo Europeu de Desenvolvimento Regional através do Programa Operacional Regional do Norte de Portugal (NORTE 2020), no âmbito do PORTUGAL 2020 e por Fundos Nacionais através da agência de financiamento portuguesa FCT - Fundação para a Ciência e a Tecnologia ao abrigo do projeto PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-03185). Este financiamento enquadra-se na linha de pesquisa do projeto Text2Story <u><b><a class="naoBranco" target="_blank" href="https://text2story.inesctec.pt/">(https://text2story.inesctec.pt/)</a></b></u>. Célia Nunes foi financiada pela Fundação para a Ciência e a Tecnologia ao abrigo dos projetos UIDB/00212/2020.</p>
     <br>
       <br>
       <div style="display: flex;justify-content: space-evenly;flex-wrap:  wrap;margin-right: 5px;margin-left: 5px;">
@@ -68,7 +69,7 @@
     <br>
     <mat-divider></mat-divider><br><br><br>
     <div style="display: flex;justify-content: space-evenly;flex-wrap:wrap;margin-right: 5px;">
-      <div style="margin-right: 5px;" *ngFor="let item of data2">
+      <div style="margin-right: 6px;" *ngFor="let item of data2">
         <a class="example-card cardSmall"  target="_blank" href="{{item.link}}">
 
           <img mat-card-image  class="example-card fotoCard"  src="../../assets/{{item.fotoGrande}}" alt="{{item.title}}">
