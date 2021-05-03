@@ -14,15 +14,22 @@
   <form style="width: 100%;justify-content: center;" (submit)="showArticle($event)" >
     <div class="col-md-11 col-sm-8 col-xs-6 my-col" style="display: flex;justify-content: center;">
 
-      <div class="col-lg-12 ">
+      <div class="col-lg-6 ">
         <div class="form-group"  style="display:flex;justify-content: center;">
-          <div class="example-almost-width">
-            <input  style="background-color: white;margin-top: -25px;" [disabled]="loading" value="{{inpu?inpu:url}}" (change)="setURL($event)" type="text" class="form-control" id="narrativaURL"  placeholder="Insira URL...">
-            <a style="color: white;cursor: link;" (click)="toggleOption()">opções avançadas</a>
+          <div class="example-full-width">
+            <div  style="display:flex;justify-content: center;margin-top: -25px;">
+              <div class="input-group" style="display:flex;justify-content: center;">
+                <input style="background-color: white;"  [disabled]="loading" value="{{inpu?inpu:url}}" (change)="setURL($event)" type="text" class="form-control" id="narrativaURL"  placeholder="Insira URL..."  >
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="submit"><i class="fas fa-book-open"></i></button>
+                </span>
+              </div>
+            </div>
+            <a class="branco" style="color: white;cursor: link;" (click)="toggleOption()">opções avançadas</a>
             <div style="color: white;" *ngIf="hiddenoption">
               <div class="form-group row">
                 <label for="example-date-input" class="col-1 col-form-label">Date</label>
-                <div class="col-3">
+                <div class="col-4">
                   <input class="form-control small" value="documentCreationTime" type="date" (change)="selecionarDataReferencia($event)" id="example-date-input">
                 </div>
               </div>

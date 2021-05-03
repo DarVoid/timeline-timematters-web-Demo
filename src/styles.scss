@@ -144,6 +144,29 @@ a:active.naoBranco {
   color:#033F72 !important;
   text-decoration-color:#033F72 !important;
 }
+a:link.branco {
+  text-decoration: none;
+  color:#fff !important;
+  text-decoration-color:#fff !important;
+}
+
+
+a:visited.branco {
+  text-decoration: none;
+  color:#fff !important;
+  text-decoration-color:#fff !important;
+}
+
+a:hover.branco {
+  text-decoration: #fff !important;
+  color:#fff !important;
+}
+a:active.branco{
+  text-decoration: none;
+  color:#fff !important;
+  text-decoration-color:#fff !important;
+
+}
 
 .example-full-width{
   width: 100% !important;

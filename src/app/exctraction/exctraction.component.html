@@ -7,7 +7,25 @@
     <img style="width: 300px; " src="../../assets/narrArquivogran.png"/>
     <br/><br><br>
 </div>
-<div style="background-color:rgba(3, 63, 114, 1) "><br ></div><br>
+<div style="background-color:rgba(3, 63, 114, 1);display: flex;justify-content: center;">
+  <div class="col-6">
+    <a class="branco" style="color: white;cursor: link;" (click)="toggleOption()">opções avançadas</a>
+
+        <div style="color: white;" *ngIf="hiddenoption">
+          <div class="form-group row">
+            <label for="example-date-input" class="col-1 col-form-label">Date</label>
+            <div class="col-4">
+              <input class="form-control small" value="documentCreationTime" type="date" (change)="selecionarDataReferencia($event)" id="example-date-input">
+            </div>
+          </div>
+
+
+
+        </div>
+
+        <br ></div>
+</div>
+<br>
   <div *ngIf="result else textBox" >
 
     <div class="col-md-11 col-sm-8 col-xs-6 my-col2">

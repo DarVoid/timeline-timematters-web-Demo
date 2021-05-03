@@ -348,7 +348,7 @@ export class ExctractionComponent implements OnInit {
   selecionarDataReferencia(event: any) {
     this.documentCreationTime = event.target.value;
   //  console.log("DATA!");
-   // console.log(event.target.value);
+    console.log(event.target.value);
   }
   maxSimba(event: any) {
    // console.log("simba");
