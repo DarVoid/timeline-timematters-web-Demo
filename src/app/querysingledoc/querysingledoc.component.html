@@ -18,6 +18,18 @@
         <div class="form-group"  style="display:flex;justify-content: center;">
           <div class="example-almost-width">
             <input  style="background-color: white;margin-top: -25px;" [disabled]="loading" value="{{inpu?inpu:url}}" (change)="setURL($event)" type="text" class="form-control" id="narrativaURL"  placeholder="Insira URL...">
+            <a style="color: white;cursor: link;" (click)="toggleOption()">opções avançadas</a>
+            <div style="color: white;" *ngIf="hiddenoption">
+              <div class="form-group row">
+                <label for="example-date-input" class="col-1 col-form-label">Date</label>
+                <div class="col-3">
+                  <input class="form-control small" value="documentCreationTime" type="date" (change)="selecionarDataReferencia($event)" id="example-date-input">
+                </div>
+              </div>
+
+
+
+            </div>
           </div>
 
           <br>

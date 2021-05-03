@@ -160,6 +160,7 @@ export class QuerysingledocComponent implements OnInit {
     //this.contextFullSentence = true;
     //this.simbaValueMax = true;
     //this.simbaValue = 1;
+    this.documentCreationTime=''
     this.cheating = false;
     this.showOnlyRel = false;
     //this.ngramSelected = 1;
@@ -367,7 +368,7 @@ export class QuerysingledocComponent implements OnInit {
       this.queryValue.emit(this.url);
     }
     this.update();
-    this.timeline.getTextKeyDateFromUrl(this.url).pipe(take(1)).subscribe((res)=>{
+    this.timeline.getTextKeyDateFromUrl(this.url, this.opcoes).pipe(take(1)).subscribe((res)=>{
       if(res){
         console.log("NOVO")
         console.log(res);

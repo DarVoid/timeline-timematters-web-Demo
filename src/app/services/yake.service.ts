@@ -65,7 +65,7 @@ export class YakeService {
          // console.log(res);
           return res;
         } else {
-         // console.log(err);
+          console.log(err);
           return err;
         }
       })

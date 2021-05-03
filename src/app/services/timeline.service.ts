@@ -37,6 +37,7 @@ export class TimelineService {
       realURL += "/Heideltime/api/v1.0";
       if (options.docCreatTime) {
         formData.append("document_creation_time", options.docCreatTime);
+        console.log(options.docCreatTime)
       }
       if (options.language) {
        // formData.append("language", options.language);
@@ -102,10 +103,15 @@ export class TimelineService {
     );
   }
   public getTextKeyDateFromUrl(
-    urlstr: string
+    urlstr: string,
+    options: any
   ): Observable<any> {
-    const formData = new FormData();
-    let realURL = this.url + '/SingleDoc/Heideltime/api/v1.0/ScoreByDoc_by_url?url='+urlstr
+    let cena=''
+    if (options.docCreatTime) {
+      cena = ["&document_creation_time=", options.docCreatTime].join("");
+      console.log(options.docCreatTime)
+    }
+    let realURL = [this.url , '/SingleDoc/Heideltime/api/v1.0/ScoreByDoc_by_url?url=',urlstr,cena].join("")
     return this.http.get(realURL).pipe(
       map((res, err) => {
         if (res) {
