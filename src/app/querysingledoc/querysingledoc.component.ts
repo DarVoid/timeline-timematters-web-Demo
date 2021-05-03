@@ -48,6 +48,7 @@ export class QuerysingledocComponent implements OnInit {
   public resultado: any;
   public TH: number;
   public mudou: boolean;
+  public deuAsneira: boolean;
   public antigo: string;
   public hiddenoptionTM: boolean;
   public right: string;
@@ -61,7 +62,8 @@ export class QuerysingledocComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private _langDetec: LangdetectService
   ) {
-    this.loading2 =false
+    this.deuAsneira = false;
+    this.loading2 = false;
     this.data = data;
     this.data = this.data.default.data;
     this.mudou = false;
@@ -126,6 +128,7 @@ export class QuerysingledocComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.deuAsneira = false;
     this.requestMade = false;
     this.requestMake.emit(this.requestMade);
     this.loaded.emit(this.loading);
@@ -140,12 +143,13 @@ export class QuerysingledocComponent implements OnInit {
     console.log(this.data);
   }
   ngOnChanges() {
-    if(this.dostuffs){
+    if (this.dostuffs) {
       this.goBack();
-
     }
   }
   goBack() {
+    this.url = "";
+    this.deuAsneira = false;
     this.mudou = false;
     this.antigo = "";
     //this.algoritmoSelected = this.algoritmosDate[0];
@@ -160,7 +164,7 @@ export class QuerysingledocComponent implements OnInit {
     //this.contextFullSentence = true;
     //this.simbaValueMax = true;
     //this.simbaValue = 1;
-    this.documentCreationTime=''
+    this.documentCreationTime = "";
     this.cheating = false;
     this.showOnlyRel = false;
     //this.ngramSelected = 1;
@@ -169,7 +173,7 @@ export class QuerysingledocComponent implements OnInit {
     this.hiddenoption = false;
     this.loading = false;
     this.requestMade = false;
-    this.requestMake.emit(this.requestMade)
+    this.requestMake.emit(this.requestMade);
     this.hiddenoptionTM = false;
     //this.TH=0.05;
   }
@@ -283,13 +287,15 @@ export class QuerysingledocComponent implements OnInit {
   setURL(event: any) {
     event.preventDefault();
     console.log(event.target.value);
-    this.url = event.target.value;
-    this.queryValue.emit(this.url);
+    if(event.target.value){
+      this.url = event.target.value;
+      this.queryValue.emit(this.url);
+
+    }
   }
   setURL2(valor) {
     this.url = valor;
     this.showArticle2();
-
   }
   maxSimba(event: any) {
     console.log("simba");
@@ -368,38 +374,41 @@ export class QuerysingledocComponent implements OnInit {
       this.queryValue.emit(this.url);
     }
     this.update();
-    this.timeline.getTextKeyDateFromUrl(this.url, this.opcoes).pipe(take(1)).subscribe((res)=>{
-      if(res){
-        console.log("NOVO")
-        console.log(res);
-        this.resultado = res;
+    this.timeline
+      .getTextKeyDateFromUrl(this.url, this.opcoes)
+      .pipe(take(1))
+      .subscribe((res) => {
+        if (res) {
+          console.log("NOVO");
+          console.log(res);
+          this.resultado = res;
 
-        // pedido recebido aqui
-        if (res.message) {
-          this.requestMade = false;
-          this.requestMake.emit(this.requestMade)
+          // pedido recebido aqui
+          if (res.message) {
+            this.deuAsneira = true
+            this.requestMade = false;
+            this.requestMake.emit(this.requestMade);
+            this.loading = false;
+            this.loaded.emit(false);
+            return " ";
+          }
+          if (res.length == 0) {
+            this._snackBar.open("Sem dados para mostrar", "😭", {
+              duration: 2000,
+            });
+            this.requestMade = false;
+            this.requestMake.emit(this.requestMade);
+            this.loading = false;
+            this.loaded.emit(false);
+            return " ";
+          }
+          this.requestMade = true;
+          this.update();
           this.loading = false;
           this.loaded.emit(false);
+
           return " ";
         }
-        if (res.length == 0) {
-          this._snackBar.open("Sem dados para mostrar", "😭", {
-            duration: 2000,
-          });
-          this.requestMade = false;
-          this.requestMake.emit(this.requestMade)
-          this.loading = false;
-          this.loaded.emit(false);
-          return " ";
-        }
-        this.requestMade = true;
-        this.update();
-        this.loading = false;
-        this.loaded.emit(false);
-
-        return " ";
-      }
-    })
-
+      });
   }
 }

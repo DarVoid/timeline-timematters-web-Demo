@@ -8,24 +8,10 @@
     <br/><br><br>
 </div>
 <div style="background-color:rgba(3, 63, 114, 1);display: flex;justify-content: center;">
-  <div class="col-6">
-    <a class="branco" style="color: white;cursor: link;" (click)="toggleOption()">opções avançadas</a>
 
-        <div style="color: white;" *ngIf="hiddenoption">
-          <div class="form-group row">
-            <label for="example-date-input" class="col-1 col-form-label">Date</label>
-            <div class="col-4">
-              <input class="form-control small" value="documentCreationTime" type="date" (change)="selecionarDataReferencia($event)" id="example-date-input">
-            </div>
-          </div>
-
-
-
-        </div>
-
-        <br ></div>
 </div>
 <br>
+<div *ngIf="!deuAsneira else erro2">
   <div *ngIf="result else textBox" >
 
     <div class="col-md-11 col-sm-8 col-xs-6 my-col2">
@@ -177,9 +163,26 @@
                   </div>
                   <mat-label>Criar narrativa a partir de texto livre</mat-label>
                   <textarea matInput #texto class="text-area" (change)='setDefaultTexto(texto)' style="width:100%;" type="text" value="{{conteudoDefault}}" min_rows="20" rows="20" name="texto"></textarea>
+
                 </mat-form-field>
 
+                <div  style="cursor:pointer;" class="col-8">
+                  <a class="naoBranco" *ngIf=" !requestMade" style="color: black;cursor: link;" (click)="toggleOption()">opções avançadas</a>
+                  <br>
 
+                      <div  style="color: black;cursor:pointer;" *ngIf="hiddenoption && !requestMade">
+                        <div class="form-group row">
+                          <label for="example-date-input" class="col-1 col-form-label">Data</label>
+                          <div class="col-4">
+                            <input class="form-control small" value="documentCreationTime" type="date" (change)="selecionarDataReferencia($event)" id="example-date-input">
+                          </div>
+                        </div>
+
+
+
+                      </div>
+
+                      <br ></div><br>
                 </mat-card>
               <!--
                 EXTRA options
@@ -214,3 +217,27 @@
 </ng-template>
 
 <br>
+
+
+</div>
+
+<ng-template #erro2 >
+
+  <div style="display: flex;justify-content: center;">
+    <div  style="display: block;  flex-wrap: wrap; margin-left: 5%;margin-right: 5%; ">
+      <div style="display: block; justify-content: center;">
+        <div style="text-align: center;">oops...</div>
+      </div>
+       <br>
+      <div style="display: flex;justify-content: center;"><img style="width: 150px;"src="../../assets/narrArquivo.png"/></div>
+      <div style="text-align: center;display: flex;justify-content: center;"> Não foi possível construir narrativa.</div>
+
+      <br><div style="text-align: center;display: flex;justify-content: center;"> Valor inserido:</div>
+      <div style="text-align: center;display: flex;justify-content: center;"> {{conteudoDefault}}</div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+
+    </ng-template>

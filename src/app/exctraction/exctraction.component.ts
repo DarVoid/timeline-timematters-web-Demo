@@ -66,12 +66,14 @@ export class ExctractionComponent implements OnInit {
   public numero_total: number;
   public numero_total2: number;
   public right: string;
+  public deuAsneira: boolean;
   constructor(
     private yake: YakeService,
     private timeline: TimelineService,
     private _snackBar: MatSnackBar,
     private _lang: LangdetectService
   ) {
+    this.deuAsneira=false;
     /*private timeline: TimelineService*/
     this.ngramSelected = 1;
     this.right = "right";
@@ -340,7 +342,9 @@ export class ExctractionComponent implements OnInit {
     this.conteudoDefault = "";
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.deuAsneira=false;
+  }
   selecionarngram(event: any) {
     this.ngramSelected = event.target.value;
    // console.log(event.target.value);
@@ -348,7 +352,7 @@ export class ExctractionComponent implements OnInit {
   selecionarDataReferencia(event: any) {
     this.documentCreationTime = event.target.value;
   //  console.log("DATA!");
-    console.log(event.target.value);
+   // console.log(event.target.value);
   }
   maxSimba(event: any) {
    // console.log("simba");
@@ -459,6 +463,7 @@ export class ExctractionComponent implements OnInit {
     this.languagueSelected = this.languageOptions[0];
     this.withKeywords = true;
     this.withKeywordsSentence = "Keywords Off";
+    this.deuAsneira=false;
   }
   public update() {
     if (this.result) {
@@ -1016,9 +1021,14 @@ export class ExctractionComponent implements OnInit {
         .subscribe((res) => {
           if (res) {
             // console.log('nice');
+            if (res.message){
+              this.deuAsneira = true;
+              return ""
+            }
             this.result = res;
             // pedido recebido aqui
-            // console.log(res);
+
+            console.log(res);
             this.update();
             this.requestMade = true;
             this.loading = false;

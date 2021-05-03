@@ -54,6 +54,12 @@ export class HomeComponent implements OnInit {
         this.dostuff+="1"
         this.router.navigate(["/"]);
       }
+    }if (pagina == "2") {
+      if (pagina == this.page) {
+        this.url = ""
+        this.page = "3"
+        return
+      }
     }
     console.log(pagina);
     this.page = pagina;
