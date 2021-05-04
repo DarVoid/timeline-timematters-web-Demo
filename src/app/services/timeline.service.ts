@@ -88,6 +88,7 @@ export class TimelineService {
    // console.log("pedido FINAL");
    // console.log(realURL);
    setTimeout(() => {
+     console.log("deu timeout")
      return of({message:"deu asneira"})
    }, 90000);
     return this.http.post(realURL, formData).pipe(

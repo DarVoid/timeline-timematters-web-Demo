@@ -52,6 +52,8 @@ export class QuerysingledocComponent implements OnInit {
   public antigo: string;
   public hiddenoptionTM: boolean;
   public right: string;
+  public errodaAPI: string;
+  public errorcode: string;
   public data: any;
   @Input() inpu: any;
   @Input() dostuffs: string;
@@ -149,6 +151,9 @@ export class QuerysingledocComponent implements OnInit {
   }
   goBack() {
     this.url = "";
+    this.inpu = "";
+    this.errorcode = "";
+    this.errodaAPI = "";
     this.deuAsneira = false;
     this.mudou = false;
     this.antigo = "";
@@ -288,6 +293,7 @@ export class QuerysingledocComponent implements OnInit {
     event.preventDefault();
     console.log(event.target.value);
     if(event.target.value){
+      this.deuAsneira=false;
       this.url = event.target.value;
       this.queryValue.emit(this.url);
 
@@ -295,6 +301,7 @@ export class QuerysingledocComponent implements OnInit {
   }
   setURL2(valor) {
     this.url = valor;
+    this.deuAsneira=false;
     this.showArticle2();
   }
   maxSimba(event: any) {
@@ -386,6 +393,8 @@ export class QuerysingledocComponent implements OnInit {
           // pedido recebido aqui
           if (res.message) {
             this.deuAsneira = true
+            this.errodaAPI = res.message
+            this.errorcode = res.code
             this.requestMade = false;
             this.requestMake.emit(this.requestMade);
             this.loading = false;

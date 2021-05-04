@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit {
     //this.openDialog();
   }
   changePage(pagina: string) {
+    this.url = ""
     console.log(pagina)
     console.log(this.page)
     if (pagina == "1") {

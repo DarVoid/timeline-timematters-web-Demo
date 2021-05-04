@@ -19,7 +19,7 @@
           <div class="example-full-width">
             <div  style="display:flex;justify-content: center;margin-top: -25px;">
               <div class="input-group" style="display:flex;justify-content: center;">
-                <input style="background-color: white;"  [disabled]="loading" value="{{inpu?inpu:url}}" (change)="setURL($event)" type="text" class="form-control" id="narrativaURL"  placeholder="Insira URL..."  >
+                <input style="background-color: white;"  [disabled]="loading" value="{{inpu?inpu:url}}" (change)="setURL($event)" type="text" class="form-control" id="narrativaURL"  placeholder="https://"  >
                 <span class="input-group-btn">
                   <button style="margin-left: -3px;"class="btn btn-secondary" type="submit"><i class="fas fa-book-open"></i></button>
                 </span>
@@ -124,17 +124,19 @@
 
   <ng-template #erro2 >
 
-    <div style="display: flex;justify-content: center;">
+    <div style="display: flex;justify-content: center; align-items: center;">
       <div  style="display: block;  flex-wrap: wrap; margin-left: 5%;margin-right: 5%; ">
         <div style="display: block; justify-content: center;">
-          <div style="text-align: center;">oops...</div>
+          <div style="text-align: center;"><br><br><br><br><b>oops...</b></div>
         </div>
          <br>
-        <div style="display: flex;justify-content: center;"><img style="width: 150px;"src="../../assets/narrArquivo.png"/></div>
-        <div style="text-align: center;display: flex;justify-content: center;"> Não foram identificadas notícias suficientes para construir uma narrativa.</div>
+        <div style="display: flex;justify-content: center;"><img style="width: 90px;"src="../../assets/narrArquivo.png"/></div>
+        <br>
+        <br>
+        <div style="text-align: center;display: flex;justify-content: center;"> {{errorcode=="404" || errorcode=="403" ?errodaAPI:"Não foi possivel criar uma narrativa para o URL introduzido. Tente com outro URL"}}</div>
 
-        <br><div style="text-align: center;display: flex;justify-content: center;"> Valor inserido:</div>
-        <div style="text-align: center;display: flex;justify-content: center;"> <b><a class="naoBranco" target="_blank" href="{{url}}">{{url}}</a></b></div>
+        <br>
+
       </div>
     </div>
 
