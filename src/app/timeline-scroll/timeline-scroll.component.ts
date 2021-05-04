@@ -46,7 +46,7 @@ export class TimelineScrollComponent implements OnInit {
     this.loading = false;
     this.relevant = false;
     this.nodata = false;
-    this.relevant_string = "Apenas datas relevantes";
+    this.relevant_string = "Datas menos relevantes";
     this.events = [];
     this.imagens = [];
   }

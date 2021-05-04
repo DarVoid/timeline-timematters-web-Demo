@@ -44,9 +44,9 @@
                 </div>
                 <br>
                 <!--ESTA AQUI O BOTAO NOVO, DEPOIS APAGA ESTE COMENTARIO-->
-                <mat-slide-toggle class="afterAnnotated" [checked]="hiddenoptionKW" color="warn" (toggleChange)="toggleKeywords()">Keywords</mat-slide-toggle>
+                <mat-slide-toggle class="afterAnnotated" [checked]="hiddenoptionKW" color="warn" (toggleChange)="toggleKeywords()">Palavras-chave</mat-slide-toggle>
                 <br>
-                <mat-slide-toggle  *ngIf="datasetFixed.length != datasetFixed2.length" class="afterAnnotated" (toggleChange)="toggleRel()" [checked]="showOnlyRel" color="warn" >Apenas datas relevantes</mat-slide-toggle>
+                <mat-slide-toggle [disabled]="datasetFixed.length == datasetFixed2.length" class="afterAnnotated" (toggleChange)="toggleRel()" [checked]="showOnlyRel" color="warn" >Datas menos relevantes</mat-slide-toggle>
                 <!--EM CIMA-->
                 <br>
                 <br>
@@ -61,7 +61,7 @@
 
             <br>
             <div style="display: flex; justify-content: flex-end;">
-              <mat-slide-toggle *ngIf="datasetFixed.length != datasetFixed2.length" style="z-index: 10;margin-top:25px;margin-right: 50px ;" (toggleChange)='toggleRel()' [checked]="showOnlyRel" class="afterAnnotated" color="warn" >Apenas datas relevantes</mat-slide-toggle>
+              <mat-slide-toggle *ngIf="datasetFixed.length != datasetFixed2.length" style="z-index: 10;margin-top:25px;margin-right: 50px ;" (toggleChange)='toggleRel()' [checked]="showOnlyRel" class="afterAnnotated" color="warn" >Datas menos relevantes</mat-slide-toggle>
 
             </div>
             <br><br>
