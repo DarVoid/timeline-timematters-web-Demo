@@ -1,112 +1,182 @@
-<div style="display:flex; justify-content: center; background-color: #033F72; ">
-
-    <br>
-      <!--<h1 class="miniText">
+<div style="display: flex; justify-content: center; background-color: #033f72">
+  <br />
+  <!--<h1 class="miniText">
         narrArquivo
       </h1>-->
-      <img style="width: 300px; " src="../../assets/narrArquivogran.png"/>
-      <br/><br><br>
+  <img style="width: 300px" src="../../assets/narrArquivogran.png" />
+  <br /><br /><br />
 </div>
-<div style="background-color:rgba(3, 63, 114, 1) "><br ></div>
+<div style="background-color: rgba(3, 63, 114, 1)"><br /></div>
 
-<div *ngIf="!requestMade " style="width: 100%;background-color: #033F72 ;display: flex;justify-content: center;">
-
-  <form style="width: 100%;justify-content: center;" (submit)="showArticle($event)" >
-    <div class="col-md-11 col-sm-8 col-xs-6 my-col" style="display: flex;justify-content: center;">
-
-      <div class="col-lg-6 ">
-        <div class="form-group"  style="display:flex;justify-content: center;">
+<div
+  *ngIf="!requestMade"
+  style="
+    width: 100%;
+    background-color: #033f72;
+    display: flex;
+    justify-content: center;
+  "
+>
+  <form
+    style="width: 100%; justify-content: center"
+    (submit)="showArticle($event)"
+  >
+    <div
+      class="col-md-11 col-sm-8 col-xs-6 my-col"
+      style="display: flex; justify-content: center"
+    >
+      <div class="col-lg-6">
+        <div class="form-group" style="display: flex; justify-content: center">
           <div class="example-full-width">
-            <div  style="display:flex;justify-content: center;margin-top: -25px;">
-              <div class="input-group" style="display:flex;justify-content: center;">
-                <input style="background-color: white;"  [disabled]="loading" value="{{inpu?inpu:url}}" (change)="setURL($event)" type="text" class="form-control" id="narrativaURL"  placeholder="https://"  >
+            <div
+              style="display: flex; justify-content: center; margin-top: -25px"
+            >
+              <div
+                class="input-group"
+                style="display: flex; justify-content: center"
+              >
+                <input
+                  style="background-color: white"
+                  [disabled]="loading"
+                  value="{{ inpu ? inpu : url }}"
+                  (change)="setURL($event)"
+                  type="text"
+                  class="form-control"
+                  id="narrativaURL"
+                  placeholder="https://"
+                />
                 <span class="input-group-btn">
-                  <button style="margin-left: -3px;"class="btn btn-secondary" type="submit"><i class="fas fa-book-open"></i></button>
+                  <button
+                    style="margin-left: -3px"
+                    class="btn btn-secondary"
+                    type="submit"
+                  >
+                    <i class="fas fa-book-open"></i>
+                  </button>
                 </span>
               </div>
             </div>
-            <a class="branco" style="color: white;cursor:pointer;" (click)="toggleOption()">opções avançadas</a>
-            <div style="color: white;" *ngIf="hiddenoption">
+            <a
+              class="branco"
+              style="color: white; cursor: pointer"
+              (click)="toggleOption()"
+              >opções avançadas</a
+            >
+            <div style="color: white" *ngIf="hiddenoption">
               <div class="form-group row">
-                <label for="example-date-input" class="col-1 col-form-label">Data</label>
+                <label for="example-date-input" class="col-1 col-form-label"
+                  >Data</label
+                >
                 <div class="col-4">
-                  <input  class="form-control small" value="documentCreationTime" type="date" (change)="selecionarDataReferencia($event)" id="example-date-input">
+                  <input
+                    class="form-control small"
+                    value="documentCreationTime"
+                    type="date"
+                    (change)="selecionarDataReferencia($event)"
+                    id="example-date-input"
+                  />
                 </div>
               </div>
-
-
-
             </div>
           </div>
 
-          <br>
-
+          <br />
         </div>
-
-
       </div>
     </div>
   </form>
-</div><br>
-<div *ngIf="!deuAsneira else erro2" >
-  <div *ngIf="!requestMade else mostra" >
-
-    <br>
-    <h1 *ngIf="!loading" class="miniText3" style="margin-left: 40px;">As nossas narrativas:</h1>
-    <br>
-      <div *ngIf="!loading else spinner" style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-left: 5%;margin-right: 5%; overflow-x: auto;" >
-
-        <div *ngFor="let item of data" title="{{item.caption}}" type="submit" >
-          <mat-card  class="example-card cardBig" (click)="!loading?setURL2(item.link):''">
-            <mat-card-header>
-              <div mat-card-avatar  style="background-image: url('../../assets/{{item.fotoPequena}}');"  class="example-header-image"></div>
-              <mat-card-title>{{item.title}}</mat-card-title>
-              <mat-card-subtitle>{{item.byX}}</mat-card-subtitle>
-              <mat-card-subtitle>      {{item.date}}</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image  class="fotoCard"  src="../../assets/{{item.fotoGrande}}" alt="{{item.title}}">
-            <mat-card-content>
-              <p style="flex-wrap: nowrap;">
-                {{item.snippet}}
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-
-            </mat-card-actions>
-          </mat-card>
-        </div>
-      </div>
-      <ng-template #spinner >
-    <div style="display: flex;justify-content: center;">
-      <div  style="display: block;  flex-wrap: wrap; margin-left: 5%;margin-right: 5%; ">
-        <div style="display: block; justify-content: center;">
-          <div >A criar narrativa para o url introduzido.</div>
-        </div>
-        <div style="display: flex;justify-content: center;"><div>Pode demorar algum tempo...</div>
-        </div>
-         <br>
-         <br>
-        <div style="display: flex;justify-content: center;"><img src="../../assets/loading.gif"/></div>
+</div>
+<br />
+<div *ngIf="!deuAsneira; else erro2">
+  <div *ngIf="!requestMade; else mostra">
+    <br />
+    <h1 *ngIf="!loading" class="miniText3" style="margin-left: 40px">
+      As nossas narrativas:
+    </h1>
+    <br />
+    <div
+      *ngIf="!loading; else spinner"
+      style="
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-left: 5%;
+        margin-right: 5%;
+        overflow-x: auto;
+      "
+    >
+      <div *ngFor="let item of data" title="{{ item.caption }}" type="submit">
+        <mat-card
+          class="example-card cardBig"
+          (click)="!loading ? setURL2(item.link) : ''"
+        >
+          <mat-card-header>
+            <div
+              mat-card-avatar
+              style="background-image: url('../../assets/{{item.fotoPequena              }}');"
+              class="example-header-image"
+            ></div>
+            <mat-card-title>{{ item.title }}</mat-card-title>
+            <mat-card-subtitle>{{ item.byX }}</mat-card-subtitle>
+            <mat-card-subtitle> {{ item.date }}</mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-image
+            class="fotoCard"
+            src="../../assets/{{ item.fotoGrande }}"
+            alt="{{ item.title }}"
+          />
+          <mat-card-content>
+            <p style="flex-wrap: nowrap">
+              {{ item.snippet }}
+            </p>
+          </mat-card-content>
+          <mat-card-actions> </mat-card-actions>
+        </mat-card>
       </div>
     </div>
+    <ng-template #spinner>
+      <div style="display: flex; justify-content: center">
+        <div
+          style="
+            display: block;
+            flex-wrap: wrap;
+            margin-left: 5%;
+            margin-right: 5%;
+          "
+        >
+          <div style="display: block; justify-content: center">
+            <div>A criar narrativa para o url introduzido.</div>
+          </div>
+          <div style="display: flex; justify-content: center">
+            <div>Pode demorar algum tempo...</div>
+          </div>
+          <br />
+          <br />
+          <div style="display: flex; justify-content: center">
+            <img src="../../assets/loading.gif" />
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
 
-      </ng-template>
-
-
-
-    </div>
-
-      <ng-template #mostra>
-        <app-query (goBackque)="goBack()" [url]="url" [article]="resultado" [options]="opcoes" > </app-query>
-        <br><br>
-        <!--<footer>
+  <ng-template #mostra>
+    <app-query
+      (goBackque)="goBack()"
+      [url]="url"
+      [article]="resultado"
+      [options]="opcoes"
+    >
+    </app-query>
+    <br /><br />
+    <!--<footer>
           <div class="col-md-11 col-sm-8 col-xs-6 my-col5">
             <div class="col-lg-12 text-right">
               <button class="btn btn-link" (click)="goBack()" type="button">Go Back</button>
             </div>
           </div>
         </footer>-->
-
 
     <!--
         <div><h1>Texto:</h1>
@@ -117,32 +187,34 @@
         {{artigo.language}}
 
         </div>-->
-      </ng-template>
+  </ng-template>
 </div>
 
-
-
-  <ng-template #erro2 >
-
-    <div style="display: flex;justify-content: center; align-items: center;">
-      <div  style="display: block;  flex-wrap: wrap; margin-left: 5%;margin-right: 5%; ">
-        <div style="display: block; justify-content: center;">
-          <div style="text-align: center;"><br><br><br><br><b>oops...</b></div>
+<ng-template #erro2>
+  <div style="display: flex; justify-content: center; align-items: center">
+    <div
+      style="display: block; flex-wrap: wrap; margin-left: 5%; margin-right: 5%"
+    >
+      <div style="display: block; justify-content: center">
+        <div style="text-align: center">
+          <br /><br /><br /><br /><b>oops...</b>
         </div>
-         <br>
-        <div style="display: flex;justify-content: center;"><img style="width: 90px;"src="../../assets/narrArquivo.png"/></div>
-        <br>
-        <br>
-        <div style="text-align: center;display: flex;justify-content: center;"> {{errorcode=="404" || errorcode=="403" ?errodaAPI:"Não foi possivel criar uma narrativa para o URL introduzido. Tente com outro URL"}}</div>
-
-        <br>
-
       </div>
+      <br />
+      <div style="display: flex; justify-content: center">
+        <img style="width: 90px" src="../../assets/narrArquivo.png" />
+      </div>
+      <br />
+      <br />
+      <div style="text-align: center; display: flex; justify-content: center">
+        {{
+          errorcode == "404" || errorcode == "403"
+            ? errodaAPI
+            : "Não foi possivel criar uma narrativa para o URL introduzido. Tente com outro URL"
+        }}
+      </div>
+
+      <br />
     </div>
-
-      </ng-template>
-
-
-
-
-
+  </div>
+</ng-template>

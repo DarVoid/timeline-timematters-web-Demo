@@ -389,12 +389,18 @@ export class QuerysingledocComponent implements OnInit {
           console.log("NOVO");
           console.log(res);
           this.resultado = res;
+          this.url = this.resultado.url
+          console.log(this.url);
 
           // pedido recebido aqui
           if (res.message) {
             this.deuAsneira = true
             this.errodaAPI = res.message
             this.errorcode = res.code
+            if(!this.errorcode){
+              this.url= "https://"+ this.url
+              console.log(this.url);
+            }
             this.requestMade = false;
             this.requestMake.emit(this.requestMade);
             this.loading = false;

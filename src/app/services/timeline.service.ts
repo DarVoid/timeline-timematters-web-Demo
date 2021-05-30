@@ -32,7 +32,7 @@ export class TimelineService {
    // console.log(options);
    // console.log("search");
    // console.log(search);
-    let realURL = this.url + "/SingleDoc";
+    let realURL = this.url + "/Narrarquivo/SingleDoc";
     if (options.algo === "py_heideltime") {
       realURL += "/Heideltime/api/v1.0";
       if (options.docCreatTime) {
@@ -115,7 +115,7 @@ export class TimelineService {
       cena = ["&document_creation_time=", options.docCreatTime].join("");
       console.log(options.docCreatTime)
     }
-    let realURL = [this.url , '/SingleDoc/Heideltime/api/v1.0/ScoreByDoc_by_url?url=',urlstr,cena].join("")
+    let realURL = [this.url , '/Narrarquivo/SingleDoc/Heideltime/api/v1.0/ScoreByDoc_by_url?url=',urlstr,cena].join("")
     return this.http.get(realURL).pipe(
       map((res, err) => {
         if (res) {
